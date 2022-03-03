@@ -1,27 +1,25 @@
 import React from "react";
 import { useRouter } from 'next/router'
-import styles from '../styles/Home.module.css';
 import Link from 'next/link'
+import Dropdown from "./DropDown"
+
 
 const Navbar = () => {
   const router = useRouter()
   const { pathname, asPath, query } = router
   return (
-    <div>
-        <h1 className="bg-sky-500 text-white" flex>
-            Header
-        </h1>
-        <div>
+ 
+    <div className="flex bg-sky-500 w-screen h-20">
+         <Dropdown/>
           <Link href="/" locale="mn">
-            <a className={styles.locale}>Mn</a>
+            <a className="w-8 bg-green-500">Mn</a>
           </Link>
           <Link href="/" locale="en">
-            <a className={styles.locale}>En</a>
+            <a className="w-8 bg-green-300">En</a>
           </Link>
           <Link href="/" locale="cn">
-            <a className={styles.locale}>Cn</a>
+            <a className="w-8 bg-green-400">Cn</a>
           </Link>
-        </div>
     </div>
   );
 };

@@ -8,16 +8,13 @@ import { cn } from '../locales/cn';
 
 function Home() {
   const router = useRouter();
-  let t;
-  if (router.locale === 'en') t = en;
-  else if (router.locale === 'cn') t = cn;
-  else t = mn;   
+  const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn 
   return (
    <div>
-     <h1 className={styles.title}>
+     <h3 className={styles.title}>
         {t.title} 
         <a href="https://nextjs.org">Next.js!</a>
-      </h1>
+      </h3>
    </div>
   );
 }
