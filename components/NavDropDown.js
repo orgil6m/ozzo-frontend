@@ -1,0 +1,95 @@
+import { Menu, Transition } from '@headlessui/react'
+import { Fragment, useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/router'
+import { ChevronDownIcon } from '@heroicons/react/solid'
+
+import { mn } from '../locales/Navbar/mn';
+import { en } from '../locales/Navbar/en';
+import { cn } from '../locales/Navbar/cn';
+
+import { mon } from '../locales/Services/mn';
+import { eng } from '../locales/Services/en';
+import { chn } from '../locales/Services/cn';
+
+import academy from '../pages/services/academy';
+import store from '../pages/services/store';
+
+
+export default function Example() {
+    const router = useRouter();
+    const { pathname, asPath, query } = router;
+    const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn
+    const s = router.locale === 'en' ? eng : router.locale === 'cn' ?  chn : mon
+
+    console.log({router})
+    console.log({pathname})
+    console.log({asPath})
+    
+    return (
+    <div>
+      <Menu as="div" className="relative inline-block text-left">
+        <div>
+          <Menu.Button className="inline-flex justify-center w-full px-4 py-2 rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 text-black text-sm" >
+            {t.services}
+            <ChevronDownIcon
+              className="w-5 h-5 ml-2 -mr-1 text-slate-400"
+              aria-hidden="true"
+            />
+          </Menu.Button>
+        </div>
+        <Transition
+          as={Fragment}
+          enter="transition ease-out duration-100"
+          enterFrom="transform opacity-0 scale-95"
+          enterTo="transform opacity-100 scale-100"
+          leave="transition ease-in duration-75"
+          leaveFrom="transform opacity-100 scale-100"
+          leaveTo="transform opacity-0 scale-95"
+        >
+          <Menu.Items className="absolute right-0 w-64 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <div className="px-1 py-1 ">
+            <Menu.Item>
+              {({ active }) => (
+                  <button className={`${ active ? 'bg-sky-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
+                  onClick={() => { router.replace('/services/academy')}} >
+                    {active ? (  <StudyIcon />): (
+                    <StudyIcon /> )}
+                    {s.academy}
+                  </button>
+                )}
+            </Menu.Item>
+            <Menu.Item>
+                 {({ active }) => (
+                  <button className={`${ active ? 'bg-sky-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
+                  onClick={() => { router.replace('/services/store')}} >
+                    {active ? (  <StoreIcon />): (
+                    <StoreIcon /> )}
+                    {s.store}
+                  </button>
+                )}
+            </Menu.Item>
+            </div>
+          </Menu.Items>
+        </Transition>
+      </Menu>
+    </div>
+  )
+}
+
+function StudyIcon(props){
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 m-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="#d64635" strokeWidth={2}>
+        <path d="M12 14l9-5-9-5-9 5 9 5z" />
+        <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+    </svg>
+  )
+}
+
+function StoreIcon(props){
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 m-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="#d64635" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+    </svg>
+  )
+}

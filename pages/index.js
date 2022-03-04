@@ -2,9 +2,9 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import styles from '../styles/Home.module.css';
 
-import { mn } from '../locales/mn';
-import { en } from '../locales/en';
-import { cn } from '../locales/cn';
+import { mn } from '../locales/Home/mn';
+import { en } from '../locales/Home/en';
+import { cn } from '../locales/Home/cn';
 
 function Home() {
   const router = useRouter();
@@ -13,7 +13,6 @@ function Home() {
    <div>
      <h3 className={styles.title}>
         {t.title} 
-        <a href="https://nextjs.org">Next.js!</a>
       </h3>
    </div>
   );
