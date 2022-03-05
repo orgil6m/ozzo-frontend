@@ -16,14 +16,16 @@ export default function Example() {
     const { pathname, asPath, query } = router;
     const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn
     const s = router.locale === 'en' ? eng : router.locale === 'cn' ?  chn : mon
-    
+    const [sOpen, setsOpen] = useState(false);
+
     return (
     <div>
       <Menu as="div" className="relative inline-block text-left">
-        <div>
-          <Menu.Button className="transition-all duration-500 ease-in-out inline-flex justify-center w-full px-4 py-2 text-gray-500 text-sm hover:text-black hover:border-red-500 border-b-2 border-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+        <div >
+          <Menu.Button className="transition-all duration-500 ease-in-out inline-flex justify-center w-full px-4 py-2 text-gray-500 text-md hover:text-black hover:border-red-500 border-b-2 border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75" >
+    
             {t.services}
-            <ChevronDownIcon className="w-5 h-5 ml-2 -mr-1 text-slate-400 " aria-hidden="true" />
+           <ChevronDownIcon className="w-5 h-5 ml-2 mt-1 text-slate-400" aria-hidden="true" />
           </Menu.Button>
         </div>
         <Transition

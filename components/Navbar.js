@@ -25,39 +25,43 @@ const Navbar = () => {
   };
   return (
     <>
-      <nav className=' flex items-center flex-wrap bg-white p-3 w-full ' >
+      <nav className='flex items-center flex-wrap p-3 w-full lg:flex hidden sticky top-0' >
         <Link href='/'>
           <a className='inline-flex items-center p-2 mr-4 '>
-            <div className="h-10 w-24 relative ml-5"> 
+            <div className="h-10 w-24 relative ml-2"> 
               <Image src={OzzoLogo} layout="fill" />
             </div>
          </a>
         </Link>
-      <div className="lg:flex hidden justify-around items-center h-10 text-gray-500">
+      <div className=" lg:flex hidden justify-start items-center h-10 text-gray-500 w-9/12">
         <Link href='/' >
-          <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-sm hover:text-black hover:border-red-500 ${router.pathname == "/" ? "border-red-500  text-black " : "border-white"}`}>
+          <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/" ? "border-red-500  text-black " : "border-transparent"}`}>
             {t.home}
           </a>
         </Link>
         <Link href='/news'>
-        <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-sm hover:text-black hover:border-red-500 ${router.pathname == "/news" ? "border-red-500  text-black " : "border-white"}`}>
+        <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/news" ? "border-red-500  text-black " : "border-transparent"}`}>
             {t.news}
           </a>
         </Link>
         <Link href='/about'>
-          <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-sm hover:text-black hover:border-red-500 ${router.pathname == "/about" ? "border-red-500  text-black " : "border-white"}`}>
+          <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/about" ? "border-red-500  text-black " : "border-transparent"}`}>
               {t.aboutus}
           </a>
         </Link>
         <NavDropDown />
         <Link href='/contact'>
-          <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-sm hover:text-black hover:border-red-500 ${router.pathname == "/contact" ? "border-red-500  text-black " : "border-white"}`}>
+          <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/contact" ? "border-red-500  text-black " : "border-transparent"}`}>
             {t.contact}
           </a>
         </Link>
+        <div className="absolute top-6 right-10">
+          <LocaleDropdown  />
+        </div>
       </div>
-      <LocaleDropdown />
+        
       </nav>
+        
     </>
   );
 };
