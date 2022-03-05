@@ -4,7 +4,7 @@ import Link from 'next/link'
 import LocaleDropdown from "./LocaleDropDown"
 import NavDropDown from "./NavDropDown"
 import Image from "next/image";
-import OzzoLogo from '../Assets/Ozzo.png'
+import OzzoLogo from '../Assets/LOGO.png'
 
 import { useState } from 'react'
 
@@ -25,7 +25,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <nav className='flex items-center flex-wrap p-3 w-full lg:flex hidden sticky top-0' >
+      <nav className='flex items-center flex-wrap p-3 w-full lg:flex hidden sticky top-0 shadow-sm ' >
         <Link href='/'>
           <a className='inline-flex items-center p-2 mr-4 '>
             <div className="h-10 w-24 relative ml-2"> 
@@ -46,7 +46,7 @@ const Navbar = () => {
         </Link>
         <Link href='/about'>
           <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/about" ? "border-red-500  text-black " : "border-transparent"}`}>
-              {t.aboutus}
+              {t.about}
           </a>
         </Link>
         <NavDropDown />

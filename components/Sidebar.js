@@ -3,16 +3,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/router'
 import { useState } from 'react';
 import Image from 'next/image';
-import OzzoLogo from '../Assets/Ozzo.png'
+import OzzoLogo from '../Assets/LOGO.png'
 import LocaleDropDown from './LocaleDropDown'
 
 import { mn } from '../locales/Navbar/mn';
 import { en } from '../locales/Navbar/en';
 import { cn } from '../locales/Navbar/cn';
-
-import { mon } from '../locales/Services/mn';
-import { eng } from '../locales/Services/en';
-import { chn } from '../locales/Services/cn';
 
 function Sidebar() {
 
@@ -21,11 +17,9 @@ function Sidebar() {
     const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn 
     const [showSidebar, setShowSidebar] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const s = router.locale === 'en' ? eng : router.locale === 'cn' ?  chn : mon
-
     return (
         <>
-        <div className='lg:hidden w-full flex items-center p-3 bg-white justify-between sticky top-0'>
+        <div className='lg:hidden w-full flex items-center p-3 bg-white justify-between sticky top-0 shadow-sm'>
             <div className=''>
                 <Link href='/'>
                     <a className='inline-flex items-center p-2 mr-4 '>
@@ -84,17 +78,17 @@ function Sidebar() {
                     <div>
                         <Link href='/service/academy'>     
                             <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${!isOpen ? "hidden":"block" } ${router.pathname == "/service/academy" ? "border-red-500  text-black " : "border-white"}`}>
-                                {s.academy}
+                                {t.academy}
                             </a>
                         </Link>
                          <Link href='/service/store'>     
                             <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${!isOpen ? "hidden":"block" } ${router.pathname == "/service/store" ? "border-red-500  text-black " : "border-white"}`}>
-                                {s.store}
+                                {t.store}
                             </a>
                         </Link>
                          <Link href='/service/service'>     
                             <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${!isOpen ? "hidden":"block" } ${router.pathname == "/service/service" ? "border-red-500  text-black " : "border-white"}`}>
-                                {s.service}
+                                {t.service}
                             </a>
                         </Link>        
                     </div>    

@@ -4,10 +4,9 @@ import styles from '../styles/Home.module.css';
 
 import Head from "next/head";
 
-
-import { mn } from '../locales/Home/mn';
-import { en } from '../locales/Home/en';
-import { cn } from '../locales/Home/cn';
+import { mn } from '../locales/Navbar/mn';
+import { en } from '../locales/Navbar/en';
+import { cn } from '../locales/Navbar/cn';
 
 function Home() {
   const router = useRouter();
@@ -15,14 +14,10 @@ function Home() {
   return (
    <div className=''>
      <Head>
-       <title>{t.title}</title>
+       <title>{t.home} | {t.ozzo}</title>
      </Head>
-     {/* <div className='w-full h-screen bg-sky-500 text-white'>  
-    <p>hi</p>
-      </div> */}
      <h3 className={styles.title}>
-       {t.title}
-       
+       {t.home}
       </h3>
    </div>
   );

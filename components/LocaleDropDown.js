@@ -12,9 +12,9 @@ export default function Example() {
     <div className="w-24 text-right ">
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="transition-all duration-500 ease-in-out inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-black  hover:opacity-70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+          <Menu.Button className="transition-all duration-500 ease-in-out inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-800 hover:opacity-70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
             <GlobeIcon aria-hidden="true"/>
-            {t[0]}
+            <p>{t[0]}</p>
             <ChevronDownIcon className="w-5 h-5 ml-2 -mr-1 text-slate-400" aria-hidden="true" />
           </Menu.Button>
         </div>

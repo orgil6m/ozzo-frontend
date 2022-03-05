@@ -7,15 +7,10 @@ import { mn } from '../locales/Navbar/mn';
 import { en } from '../locales/Navbar/en';
 import { cn } from '../locales/Navbar/cn';
 
-import { mon } from '../locales/Services/mn';
-import { eng } from '../locales/Services/en';
-import { chn } from '../locales/Services/cn';
-
 export default function Example() {
     const router = useRouter();
     const { pathname, asPath, query } = router;
-    const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn
-    const s = router.locale === 'en' ? eng : router.locale === 'cn' ?  chn : mon
+    const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn;
     const [sOpen, setsOpen] = useState(false);
 
     return (
@@ -24,7 +19,7 @@ export default function Example() {
         <div >
           <Menu.Button className="transition-all duration-500 ease-in-out inline-flex justify-center w-full px-4 py-2 text-gray-500 text-md hover:text-black hover:border-red-500 border-b-2 border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75" >
     
-            {t.services}
+            {t.service}
            <ChevronDownIcon className="w-5 h-5 ml-2 mt-1 text-slate-400" aria-hidden="true" />
           </Menu.Button>
         </div>
@@ -45,7 +40,7 @@ export default function Example() {
                   onClick={() => { router.replace('/service/academy')}} >
                     {active ? (  <StudyIcon />): (
                     <StudyIcon /> )}
-                    {s.academy}
+                    {t.academy}
                   </button>
                 )}
             </Menu.Item>
@@ -57,7 +52,7 @@ export default function Example() {
                   onClick={() => { router.replace('/service/store')}} >
                     {active ? (  <StoreIcon />): (
                     <StoreIcon /> )}
-                    {s.store}
+                    {t.store}
                   </button>
                 )}
             </Menu.Item>
@@ -66,10 +61,10 @@ export default function Example() {
             <Menu.Item>
                  {({ active }) => (
                   <button className={`${ active ? 'transition duration-300 ease-in-out  bg-gray-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
-                  onClick={() => { router.replace('/service/store')}} >
+                  onClick={() => { router.replace('/service/services')}} >
                     {active ? (  <SettingsIcon />): (
                     <SettingsIcon /> )}
-                    {s.service}
+                    {t.service}
                   </button>
                 )}
             </Menu.Item>

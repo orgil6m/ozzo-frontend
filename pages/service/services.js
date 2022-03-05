@@ -8,20 +8,19 @@ import { mn } from '../../locales/Navbar/mn';
 import { en } from '../../locales/Navbar/en';
 import { cn } from '../../locales/Navbar/cn';
 
-
-function Academy() {
+function Services() {
    const router = useRouter();
   const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn ;
   return (
     <div>
       <Head>
-        <title>{t.academy} | {t.ozzo}</title>
+        <title>{t.service} | {t.ozzo}</title>
       </Head>
       <h3 className={styles.title}>
-       {t.home}
+        {t.service}
       </h3>
     </div>
   )
 }
 
-export default Academy
+export default Services;
