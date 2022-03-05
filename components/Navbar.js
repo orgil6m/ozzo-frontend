@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import LocaleDropdown from "./LocaleDropDown"
 import NavDropDown from "./NavDropDown"
-import Sidebar from "./Sidebar";
 import Image from "next/image";
 import OzzoLogo from '../Assets/Ozzo.png'
 
