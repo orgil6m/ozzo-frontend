@@ -18,7 +18,7 @@ function Academy() {
         <title>{t.academy} | {t.ozzo}</title>
       </Head>
       <h3 className={styles.title}>
-       {t.home}
+        {t.academy}
       </h3>
     </div>
   )
