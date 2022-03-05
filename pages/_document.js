@@ -7,6 +7,9 @@ class MyDocument extends Document
             <Html lang="en">
                 <Head>
                     <meta name="OZZO" content="ozzo" />
+                    <link rel="shortcut icon" href="/ozzo.ico" />
+                    
+                    {/* <title></title> */}
                 </Head>
                 <body>
                     <Main />

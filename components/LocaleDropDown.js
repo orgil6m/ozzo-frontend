@@ -23,7 +23,7 @@ export default function Example() {
             <div className="px-1 py-1 ">         
               <Menu.Item>
                 {({ active }) => (
-                  <button className={`${ active ? 'bg-sky-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
+                  <button className={`${ active ? 'bg-gray-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
                   onClick={() => { router.push({ pathname, query }, asPath, { locale: t[1] })}} >
                     {active ? (  <GlobeIcon className="w-5 h-5 mr-2" aria-hidden="true" />): (
                     <GlobeIcon className="w-5 h-5 mr-2" aria-hidden="true" /> )}
@@ -31,10 +31,12 @@ export default function Example() {
                   </button>
                 )}
               </Menu.Item>
+              </div>
+               <div className="px-1 py-1 ">
               <Menu.Item>
                 {({ active }) => (
-                  <button className={`${ active ? 'bg-sky-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
-                   onClick={() => { router.push({ pathname, query }, asPath, {  })}} >
+                  <button className={`${ active ? 'bg-gray-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
+                   onClick={() => { router.push({ pathname, query }, asPath, { locale: t[2] })}} >
                     {active ? ( <GlobeIcon className="w-5 h-5 mr-2 " aria-hidden="true" /> ) : ( 
                     <GlobeIcon className="w-5 h-5 mr-2" aria-hidden="true" /> )}
                         {t[2]}

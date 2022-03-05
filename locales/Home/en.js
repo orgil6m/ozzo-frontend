@@ -1,3 +1,3 @@
 export const en = {
-  title: 'Welcome',
+  title: 'OZZO LLC',
 };

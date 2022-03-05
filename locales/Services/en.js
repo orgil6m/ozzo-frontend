@@ -1,4 +1,5 @@
 export const eng = {
   academy: 'DGL Music Academy',
-  store : 'OZZO Music Store ',
+  store : 'Ozzo Music Store ',
+  service : 'Music Service'
 };

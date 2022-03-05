@@ -1,3 +1,3 @@
 export const cn= {
-  title: '欢迎 ',
+  title: '奥佐公司 ',
 };

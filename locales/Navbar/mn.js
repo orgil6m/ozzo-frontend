@@ -1,7 +1,7 @@
 export const mn = {
   home: 'Нүүр',
-  aboutus : 'Бидний тухай',
+  aboutus : 'Бидний Тухай',
   services: 'Үйлчилгээ',
-  contact : 'Холбоо барих',
+  contact : 'Холбоо Барих',
   news : 'Мэдээлэл',
 };

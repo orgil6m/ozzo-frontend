@@ -11,25 +11,17 @@ import { mon } from '../locales/Services/mn';
 import { eng } from '../locales/Services/en';
 import { chn } from '../locales/Services/cn';
 
-import academy from '../pages/services/academy';
-import store from '../pages/services/store';
-
-
 export default function Example() {
     const router = useRouter();
     const { pathname, asPath, query } = router;
     const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn
     const s = router.locale === 'en' ? eng : router.locale === 'cn' ?  chn : mon
-
-    console.log({router})
-    console.log({pathname})
-    console.log({asPath})
     
     return (
     <div>
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="inline-flex justify-center w-full px-4 py-2 rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 text-black text-sm" >
+          <Menu.Button className="transition-all duration-500 ease-in-out inline-flex justify-center w-full px-4 py-2 -md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 text-gray-500 text-sm hover:text-black  hover:border-red-500 border-b-2 border-white "  >
             {t.services}
             <ChevronDownIcon
               className="w-5 h-5 ml-2 -mr-1 text-slate-400"
@@ -50,18 +42,20 @@ export default function Example() {
         <div className="px-1 py-1 ">
             <Menu.Item>
               {({ active }) => (
-                  <button className={`${ active ? 'bg-sky-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
-                  onClick={() => { router.replace('/services/academy')}} >
+                  <button className={`${ active ? 'transition duration-300 ease-in-out bg-gray-200 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
+                  onClick={() => { router.replace('/service/academy')}} >
                     {active ? (  <StudyIcon />): (
                     <StudyIcon /> )}
                     {s.academy}
                   </button>
                 )}
             </Menu.Item>
+               </div>
+                <div className="px-1 py-1 ">
             <Menu.Item>
                  {({ active }) => (
-                  <button className={`${ active ? 'bg-sky-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
-                  onClick={() => { router.replace('/services/store')}} >
+                  <button className={`${ active ? 'transition duration-300 ease-in-out bg-gray-200 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
+                  onClick={() => { router.replace('/service/store')}} >
                     {active ? (  <StoreIcon />): (
                     <StoreIcon /> )}
                     {s.store}
@@ -69,6 +63,19 @@ export default function Example() {
                 )}
             </Menu.Item>
             </div>
+             <div className="px-1 py-1 ">
+            <Menu.Item>
+                 {({ active }) => (
+                  <button className={`${ active ? 'transition duration-300 ease-in-out  bg-gray-200 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
+                  onClick={() => { router.replace('/service/store')}} >
+                    {active ? (  <SettingsIcon />): (
+                    <SettingsIcon /> )}
+                    {s.service}
+                  </button>
+                )}
+            </Menu.Item>
+            </div>
+         
           </Menu.Items>
         </Transition>
       </Menu>
@@ -90,6 +97,15 @@ function StoreIcon(props){
   return (
     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 m-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="#d64635" strokeWidth={2}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+    </svg>
+  )
+}
+
+function SettingsIcon(props){
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 m-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="#d64635" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
     </svg>
   )
 }
