@@ -6,10 +6,8 @@ class MyDocument extends Document
         return (
             <Html lang="en">
                 <Head>
-                    <meta name="OZZO" content="ozzo" />
+                    <meta name="OZZO LLC" content="ozzo" />
                     <link rel="shortcut icon" href="/ozzo.ico" />
-                    
-                    {/* <title></title> */}
                 </Head>
                 <body>
                     <Main />
