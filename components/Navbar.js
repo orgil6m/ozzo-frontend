@@ -25,7 +25,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <nav className='flex items-center flex-wrap p-3 w-full lg:flex hidden sticky top-0 shadow-sm ' >
+      <nav className='flex items-center flex-wrap p-3 w-full bg-white lg:flex hidden sticky top-0 shadow-sm ' >
         <Link href='/'>
           <a className='inline-flex items-center p-2 mr-4 '>
             <div className="h-10 w-24 relative ml-2"> 

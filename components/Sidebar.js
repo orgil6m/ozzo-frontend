@@ -63,7 +63,7 @@ function Sidebar() {
                 <div className='w-screen h-px bg-gray-100 ml-2'></div>
                 <Link href='/about'>
                     <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${router.pathname == "/about" ? "border-red-500  text-black " : "border-white"}`}>
-                        {t.aboutus}
+                        {t.about}
                     </a>
                 </Link>
                 <div className='w-screen h-px bg-gray-100 ml-2'></div>

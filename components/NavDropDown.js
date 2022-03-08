@@ -19,7 +19,7 @@ export default function Example() {
         <div >
           <Menu.Button className="transition-all duration-500 ease-in-out inline-flex justify-center w-full px-4 py-2 text-gray-500 text-md hover:text-black hover:border-red-500 border-b-2 border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75" >
     
-            {t.service}
+            {t.services}
            <ChevronDownIcon className="w-5 h-5 ml-2 mt-1 text-slate-400" aria-hidden="true" />
           </Menu.Button>
         </div>

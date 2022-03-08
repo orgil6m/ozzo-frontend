@@ -4,7 +4,7 @@ class MyDocument extends Document
 {
     render(){
         return (
-            <Html lang="en">
+            <Html lang="en" className='dark'>
                 <Head>
                     <meta name="OZZO LLC" content="ozzo" />
                     <link rel="shortcut icon" href="/ozzo.ico" />

@@ -13,7 +13,7 @@ const Contact = () => {
   const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn ;
 
   return (
-    <div className="bg-green-500">
+    <div >
     <Head>
       <title>{t.contact}  | {t.ozzo}</title>
     </Head>

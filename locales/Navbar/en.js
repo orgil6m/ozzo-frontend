@@ -2,11 +2,11 @@ export const en = {
   ozzo: "OZZO LLC",
   home: "Home",
   about : 'About Us',
-  service: 'Services',
+  services: 'Services',
   contact : 'Contact',
   news : 'News',
-  academy: 'DGL Music Academy',
-  store : 'Ozzo Music Store ',
+  academy: 'Music Academy',
+  store : 'Music Store ',
   service : 'Music Service'
 
 };

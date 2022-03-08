@@ -11,7 +11,7 @@ const News = () => {
     const router = useRouter();
     const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn ;
     return (
-    <div className="bg-yellow-500">
+    <div>
         <Head>
           <title>{t.news} | {t.ozzo}</title>
         </Head>

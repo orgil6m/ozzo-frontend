@@ -13,7 +13,7 @@ const About = () => {
   const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn ;
   
   return (
-  <div className="bg-red-500">
+  <div>
       <Head>
           <title>{t.about} | {t.ozzo}</title>
         </Head>
