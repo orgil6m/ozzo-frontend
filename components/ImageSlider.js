@@ -1,125 +1,92 @@
 import React, { useState, useEffect } from 'react';
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css'
 
 import image1 from '../Assets/1.png'
 import image2 from '../Assets/2.png'
 import image3 from '../Assets/3.png'
 
 const slideImages = [
-  {
-    url: '1.png',
-    caption: 'Slide 1'
-  },
-  {
-    url: '2.png',
-    caption: 'Slide 2'
-  },
-  {
-    url: '3.png',
-    caption: 'Slide 3'
-  },
+    {
+        bgImage:`${image1.src}`,
+        text1: "ДЭЛГҮҮР",
+        class1: "",
+        class2:"text-gray-700 -mt-10 ",
+        class3: " border-gray-500 text-gray-500 hover:bg-gray-500/10",
+        class4: "text-gray-600",
+        text2: '  Enya Guitars Mongolia | NUX Mongolia',
+        class5: '',
+        text4: "",
+    },
+    {
+        bgImage:`${image2.src}`,
+        text1: "АКАДЕМИ",
+        class1: "bg-gradient-to-l from-black/20 to-black/10 items-end" ,
+        class2:" -mt-40 text-right text-white ",
+        class3: "border-white text-white hover:bg-white/10 hover:text-white",
+        class4: "text-gray-400 text-right",
+        text2: "Хүн бүр хөгжимчин болох ёсгүй ч",
+        text3: "Хүн бүрт хөгжмийн боловсрол хэрэгтэй",
+        class5: 'font-medium',
+        text4: "П.Даваацэрэн"
+    },
+    {
+        bgImage:`${image3.src}`,
+        text1: "ЗАСВАР",
+        class1: "bg-gradient-to-l from-transparent to-black/40",
+        class2:"-mt-40 text-white",
+        class3: "border-white text-white cursor-default hover:bg-white/10 hover:text-white ",
+        class4: 'text-gray-300',
+        text2: "Та хайртай хөгжимдөө шаардлагатай ",
+        text3: "засвар үйлчилгээг нь хийлгэсэн үү?",
+        class5: '',
+        text4: "",
+    },
 ];
 
 function ImageSlider() {
     const [seconds, setSeconds] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-        
-        }, 10000);
-        return () => clearInterval(interval);
-    }, []);
-
-  return (
+    return (
      <div className=''>
-        <div className='w-screen h-fit bg-cover bg-center' style={{ backgroundImage: `url( ${image1.src} )`}}>
-            <div className='w-screen h-screen bg-gradient-to-l from-transparent to-black/40 flex justify-center flex-col p-20' >
-                <div className='text-white font-medium text-6xl -mt-40 '>
-                    <p  className='break-inside-auto'>
-                    ХӨГЖМИЙН
-                    </p>
-                    <p>
-                    ЗАСВАР
-                    </p>
-                </div>
-                <div className='tracking-widest text-gray-300 font-thin text-sm pt-10'>
-                    <p className='break-inside-auto'>
-                  Та хайртай хөгжимдөө шаардлагатай 
-                  </p>
-                  <p>
-                  засвар үйлчилгээг нь хийлгэсэн үү?
-                  </p>
-                </div>
-                <div className='transition-all duration-300 ease-in-out border border-white mt-10 w-40 h-12 flex items-center justify-center rounded-lg text-white cursor-default hover:bg-white/10 hover:text-white hover:translate-x-2'>
-                    <p className='p-2  font-medium opacity-80'>Дэлгэрэнгүй </p>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
-                    </svg>
-                </div>
-                <div className='absolute inset-x-0 bottom-16  flex w-72 items-center justify-around'>
-                    <div className='w-20 h-0.5 bg-red-500'>
+         <div className="slide-container">
+        <Slide>
+         {slideImages.map((slideImage, index)=> (
+            <div className="each-slide" key={index}>
+              <div className='w-screen h-screen bg-cover bg-center z-10' style={{'backgroundImage': `url(${slideImage.bgImage}`}}>
+                <div className={`w-screen h-screen flex justify-center flex-col p-20 ${slideImage.class1}`} >
+                    <div className={`font-medium text-6xl ${slideImage.class2}`}>
+                        <p  className='break-inside-auto'>
+                        ХӨГЖМИЙН
+                        </p>
+                        <p>
+                        {slideImage.text1}
+                        </p>
                     </div>
-                    <div className='w-20 h-0.5 bg-gray-300'>
-                    </div>
-                    <div className='w-20 h-0.5 bg-gray-300'>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div className='w-screen h-fit bg-cover bg-center' style={{ backgroundImage: `url( ${image2.src} )`}}>
-            <div className='w-screen h-screen bg-gradient-to-l from-black/20 to-black/10 flex justify-center flex-col items-end p-20' >
-                <div className=' text-white font-medium text-6xl -mt-40 text-right'>
-                     <p  className='break-inside-auto'>
-                    ХӨГЖМИЙН 
-                    </p>
-                    <p>
-                    АКАДЕМИ
-                    </p>
-        
-                </div>
-                <div className='tracking-widest text-gray-400 font-thin text-sm pt-10 text-right'>
+                <div className={`tracking-widest font-thin text-sm pt-10 ${slideImage.class4}`}>
                     <p className='break-inside-auto'>
-                        Хүн бүр хөгжимчин болох ёсгүй ч
+                        {slideImage.text2}
                     </p>
                     <p className='break-inside-auto'>
-                        Хүн бүрт хөгжмийн боловсрол хэрэгтэй
+                      {slideImage.text3}
                     </p>
-                    <p className='font-medium'>
-                        П.Даваацэрэн
-                    </p>
-                </div>
-                <div className='transition-all duration-300 ease-in-out border border-white mt-10 w-40 h-12 flex items-center justify-center rounded-lg text-white cursor-default hover:bg-white/10 hover:text-white hover:translate-x-2'>
-                    <p className='p-2  font-medium opacity-80'>Дэлгэрэнгүй </p>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
-                    </svg>
-                </div>
-            </div>
-        </div>
-        <div className='w-screen h-fit bg-cover bg-center' style={{ backgroundImage: `url( ${image3.src} )`}}>
-            <div className='w-screen h-screen flex justify-center flex-col p-20' >
-                <div className='text-gray-700 font-medium text-6xl -mt-10 '>
-                    <p  className='break-inside-auto'>
-                    ХӨГЖМИЙН
-                    </p>
-                    <p>
-                    ДЭЛГҮҮР
+                    <p className={`${slideImage.class5}`}>
+                       {slideImage.text4}
                     </p>
                 </div>
-                <div className='tracking-widest text-gray-600 font-thin text-sm pt-10'>
-                    <p className='break-inside-auto'>
-                Enya Guitars Mongolia | NUX Mongolia
-                  </p>
-                </div>
-                <div className='transition-all duration-300 ease-in-out border border-gray-500 mt-10  w-40 h-12 flex items-center justify-center rounded-lg text-gray-500 cursor-default hover:bg-gray-500/10 hover:translate-x-2'>
+                <div className={`transition-all duration-300 ease-in-out border mt-10 w-40 h-12 flex items-center justify-center rounded-lg cursor-default  hover:translate-x-2 ${slideImage.class3}`}>
                     <p className='p-2 font-medium'>Дэлгэрэнгүй </p>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
                     </svg>
                 </div>
+                </div>
+              </div>
             </div>
-        </div>
+          ))} 
+        </Slide>
+      </div>
     </div>
-  )
+)
 }
 
 export default ImageSlider;

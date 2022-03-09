@@ -19,7 +19,7 @@ function Sidebar() {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <>
-        <div className='lg:hidden w-full flex items-center p-3 bg-white justify-between sticky top-0 shadow-sm'>
+        <div className='lg:hidden w-full flex items-center p-3 bg-white justify-between sticky top-0 shadow-sm '>
             <div className=''>
                 <Link href='/'>
                     <a className='inline-flex items-center p-2 mr-4 '>

@@ -18,3 +18,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.react-slideshow-container .default-nav {
+  background: none !important;
+}

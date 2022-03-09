@@ -15,17 +15,11 @@ import { cn } from '../locales/Navbar/cn';
 
 const Navbar = () => {
   const router = useRouter()
-  const { pathname, asPath, query } = router
   const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn 
-
   const [active, setActive] = useState(false);
-
-  const handleClick = () => {
-    setActive(!active);
-  };
   return (
     <>
-      <nav className='flex items-center flex-wrap p-3 w-full bg-white lg:flex hidden sticky top-0 shadow-sm ' >
+      <nav className='flex items-center flex-wrap p-3 w-full bg-white lg:flex hidden sticky top-0 shadow-sm z-50' >
         <Link href='/'>
           <a className='inline-flex items-center p-2 mr-4 '>
             <div className="h-10 w-24 relative ml-2"> 
@@ -63,7 +57,7 @@ const Navbar = () => {
       </nav>
         
     </>
-  );
-};
+  )
+}
 
-export default Navbar; 
+export default Navbar
