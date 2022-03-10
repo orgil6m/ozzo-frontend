@@ -3,9 +3,9 @@ import { Fragment, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
-import { mn } from '../locales/Navbar/mn';
-import { en } from '../locales/Navbar/en';
-import { cn } from '../locales/Navbar/cn';
+import { mn } from '../locales/Navbar';
+import { en } from '../locales/Navbar';
+import { cn } from '../locales/Navbar';
 
 export default function Example() {
     const router = useRouter();
@@ -18,7 +18,6 @@ export default function Example() {
       <Menu as="div" className="relative inline-block text-left">
         <div >
           <Menu.Button className="transition-all duration-500 ease-in-out inline-flex justify-center w-full px-4 py-2 text-gray-500 text-md hover:text-black hover:border-red-500 border-b-2 border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75" >
-    
             {t.services}
            <ChevronDownIcon className="w-5 h-5 ml-2 mt-1 text-slate-400" aria-hidden="true" />
           </Menu.Button>
@@ -37,7 +36,7 @@ export default function Example() {
             <Menu.Item>
               {({ active }) => (
                   <button className={`${ active ? 'transition duration-300 ease-in-out bg-gray-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
-                  onClick={() => { router.replace('/service/academy')}} >
+                  onClick={() => { router.push('/service/academy')}} >
                     {active ? (  <StudyIcon />): (
                     <StudyIcon /> )}
                     {t.academy}
@@ -49,7 +48,7 @@ export default function Example() {
             <Menu.Item>
                  {({ active }) => (
                   <button className={`${ active ? 'transition duration-300 ease-in-out bg-gray-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
-                  onClick={() => { router.replace('/service/store')}} >
+                  onClick={() => { router.push('/service/store')}} >
                     {active ? (  <StoreIcon />): (
                     <StoreIcon /> )}
                     {t.store}
@@ -61,7 +60,7 @@ export default function Example() {
             <Menu.Item>
                  {({ active }) => (
                   <button className={`${ active ? 'transition duration-300 ease-in-out  bg-gray-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
-                  onClick={() => { router.replace('/service/services')}} >
+                  onClick={() => { router.push('/service/services')}} >
                     {active ? (  <SettingsIcon />): (
                     <SettingsIcon /> )}
                     {t.service}

@@ -3,9 +3,9 @@ import Head from "next/head";
 import { useRouter } from 'next/router';
 import styles from '../styles/Home.module.css';
 
-import { mn } from '../locales/Navbar/mn';
-import { en } from '../locales/Navbar/en';
-import { cn } from '../locales/Navbar/cn';
+import { mn } from '../locales/Navbar';
+import { en } from '../locales/Navbar';
+import { cn } from '../locales/Navbar';
 
 
 const Contact = () => {
