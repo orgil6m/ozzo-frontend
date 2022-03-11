@@ -35,12 +35,12 @@ const en = {
   store : 'Music Store ',
   maintenance : 'Music Maintenance',
   text0: {
-    slide1: "MUSIC",
-    slide2: "MUSIC",
+    slide1: "OZZO",
+    slide2: "DGL MUSIC",
     slide3: "INSTRUMENT",
   },
   text1: {
-    slide1:"STORE",
+    slide1:"MUSIC STORE",
     slide2: "ACADEMY",
     slide3: "MAINTENANCE",
   },
@@ -56,7 +56,7 @@ const en = {
   },
   text4:{ 
     slide1: "",
-    slide2: "Davaatseren.P",
+    slide2: "Daavka Berd",
     slide3: "",
   },
   text5: "Learn More"

@@ -13,13 +13,12 @@ import { cn } from '../locales/Navbar';
 function Sidebar() {
 
     const router = useRouter()
-    const { pathname, asPath, query } = router
     const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn 
     const [showSidebar, setShowSidebar] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     return (
         <>
-        <div className='lg:hidden w-full flex items-center p-3 bg-white justify-between sticky top-0 shadow-sm z-30'>
+        <div className='lg:hidden w-full flex items-center p-3 bg-white justify-between fixed top-0 shadow-sm z-10'>
             <div className=''>
                 <Link href='/'>
                     <a className='inline-flex items-center p-2 mr-4 '>
@@ -88,7 +87,7 @@ function Sidebar() {
                         </Link>
                         <Link href='/service/service'>     
                             <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${!isOpen ? "hidden":"block" } ${router.pathname == "/service/service" ? "border-red-500  text-black " : "border-white"}`}>
-                                {t.service}
+                                {t.maintenance}
                             </a>
                         </Link>        
                         <Link href='/service/service'>     

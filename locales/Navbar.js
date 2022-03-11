@@ -34,8 +34,8 @@ const cn = {
   academy: "音乐学院",
   store : '音乐店 ',
   maintenance : '音乐服务',
-  rent: "Instrument Rental",
-  web: "Web Development",
+  rent: "仪器租赁",
+  web: "网站开发",
 };
 module.exports = {
   mn,

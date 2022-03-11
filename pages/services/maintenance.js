@@ -18,7 +18,7 @@ function Services() {
       </Head>
        <div className='lg:flex hidden w-full h-20'></div>
       <h3 className={styles.title}>
-        {t.service}
+        {t.maintenance}
       </h3>
     </div>
   )
