@@ -8,20 +8,22 @@ import { mn } from '../../locales/Navbar';
 import { en } from '../../locales/Navbar';
 import { cn } from '../../locales/Navbar';
 
-
-function Academy() {
-   const router = useRouter();
-  const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn ;
+function Store() {
+    const router = useRouter();
+    const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn ;
   return (
     <div>
       <Head>
-        <title>{t.academy} | {t.ozzo}</title>
+        <title>{t.store} | {t.ozzo}</title>
       </Head>
+      <div className='lg:flex hidden w-full h-20'></div>
+      <p>hi
+        </p>
       <h3 className={styles.title}>
-        {t.academy}
+       {t.store}
       </h3>
     </div>
   )
 }
-
-export default Academy
+  
+export default Store

@@ -1,7 +1,7 @@
 const mn = {
   academy: "Хөгжмийн Академи",
   store : 'Хөгжмийн Дэлгүүр ',
-  service : 'Хөгжмийн засвар',
+  maintenance : 'Хөгжмийн Засвар',
   text0: {
     slide1: "ХӨГЖМИЙН",
     slide2: "ХӨГЖМИЙН",
@@ -33,7 +33,7 @@ const mn = {
 const en = {
   academy: 'Music Academy',
   store : 'Music Store ',
-  service : 'Music Service',
+  maintenance : 'Music Maintenance',
   text0: {
     slide1: "MUSIC",
     slide2: "MUSIC",
@@ -65,7 +65,7 @@ const en = {
  const cn = {
   academy: "音乐学院",
   store : '音乐店 ',
-  service : '音乐服务',
+  maintenance : '音乐服务',
   text0: {
     slide1:"",
     slide2: "",

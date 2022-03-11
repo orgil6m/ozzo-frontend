@@ -7,7 +7,9 @@ const mn = {
   news : 'Мэдээлэл',
   academy: "Хөгжмийн Академи",
   store : 'Хөгжмийн Дэлгүүр ',
-  service : 'Хөгжмийн засвар'
+  maintenance : 'Хөгжмийн Засвар',
+  rent: "Хөгжмийн Түрээс",
+  web: "Веб Хөгжүүлэлт"
 };
 const en = {
   ozzo: "OZZO LLC",
@@ -18,7 +20,9 @@ const en = {
   news : 'News',
   academy: 'Music Academy',
   store : 'Music Store ',
-  service : 'Music Service'
+  maintenance : 'Instrument Maintenance',
+  rent: "Instrument Rental",
+  web: "Web Development"
 }; 
 const cn = {
   ozzo: "奥佐公司",
@@ -29,7 +33,9 @@ const cn = {
   news : '消息',
   academy: "音乐学院",
   store : '音乐店 ',
-  service : '音乐服务'
+  maintenance : '音乐服务',
+  rent: "Instrument Rental",
+  web: "Web Development",
 };
 module.exports = {
   mn,

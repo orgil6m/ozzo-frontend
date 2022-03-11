@@ -18,15 +18,9 @@ function Home() {
      <Head>
       <title>{t.home} | {t.ozzo}</title>
      </Head>
-     <h3 className={styles.title}>
-       {/* {t.home} */}
-      </h3>
+     
       <ImageSlider />
-      <div className='w-full h-screen bg-sky-500'>
-      <p>
-        hi
-      </p>
-      </div>
+      
    </div>
   );
 }

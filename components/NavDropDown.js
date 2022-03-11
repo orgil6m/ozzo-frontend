@@ -9,10 +9,8 @@ import { cn } from '../locales/Navbar';
 
 export default function Example() {
     const router = useRouter();
-    const { pathname, asPath, query } = router;
     const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn;
     const [sOpen, setsOpen] = useState(false);
-
     return (
     <div>
       <Menu as="div" className="relative inline-block text-left">
@@ -36,7 +34,7 @@ export default function Example() {
             <Menu.Item>
               {({ active }) => (
                   <button className={`${ active ? 'transition duration-300 ease-in-out bg-gray-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
-                  onClick={() => { router.push('/service/academy')}} >
+                  onClick={() => { router.push('/services/academy')}} >
                     {active ? (  <StudyIcon />): (
                     <StudyIcon /> )}
                     {t.academy}
@@ -48,7 +46,7 @@ export default function Example() {
             <Menu.Item>
                  {({ active }) => (
                   <button className={`${ active ? 'transition duration-300 ease-in-out bg-gray-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
-                  onClick={() => { router.push('/service/store')}} >
+                  onClick={() => { router.push('/services/store')}} >
                     {active ? (  <StoreIcon />): (
                     <StoreIcon /> )}
                     {t.store}
@@ -60,10 +58,34 @@ export default function Example() {
             <Menu.Item>
                  {({ active }) => (
                   <button className={`${ active ? 'transition duration-300 ease-in-out  bg-gray-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
-                  onClick={() => { router.push('/service/services')}} >
+                  onClick={() => { router.push('/services/maintenance')}} >
                     {active ? (  <SettingsIcon />): (
                     <SettingsIcon /> )}
-                    {t.service}
+                    {t.maintenance}
+                  </button>
+                )}
+            </Menu.Item>
+            </div>
+            <div className="px-1 py-1 ">
+            <Menu.Item>
+                 {({ active }) => (
+                  <button className={`${ active ? 'transition duration-300 ease-in-out  bg-gray-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
+                  onClick={() => { router.push('/services/rent')}} >
+                    {active ? (  <RentIcon />): (
+                    <RentIcon /> )}
+                    {t.rent}
+                  </button>
+                )}
+            </Menu.Item>
+            </div>
+             <div className="px-1 py-1 ">
+            <Menu.Item>
+                 {({ active }) => (
+                  <button className={`${ active ? 'transition duration-300 ease-in-out  bg-gray-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
+                  onClick={() => { router.push('/services/web')}} >
+                    {active ? (  <WebIcon />): (
+                    <WebIcon /> )}
+                    {t.web}
                   </button>
                 )}
             </Menu.Item>
@@ -100,5 +122,20 @@ function SettingsIcon(props){
         <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
         <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
     </svg>
+  )
+}
+function RentIcon(props){
+  return (
+  <svg className="h-5 w-5 m-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="#d64635" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+  </svg>
+  )
+}
+
+function WebIcon(props){
+  return (
+  <svg className="h-5 w-5 m-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="#D64635" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+  </svg>
   )
 }

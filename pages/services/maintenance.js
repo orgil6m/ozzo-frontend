@@ -14,8 +14,9 @@ function Services() {
   return (
     <div>
       <Head>
-        <title>{t.service} | {t.ozzo}</title>
+        <title>{t.maintenance} | {t.ozzo}</title>
       </Head>
+       <div className='lg:flex hidden w-full h-20'></div>
       <h3 className={styles.title}>
         {t.service}
       </h3>

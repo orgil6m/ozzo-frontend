@@ -15,6 +15,7 @@ const News = () => {
         <Head>
           <title>{t.news} | {t.ozzo}</title>
         </Head>
+       <div className='lg:flex hidden w-full h-20'></div>
         <h1 className={styles.title}>
           News
         </h1>

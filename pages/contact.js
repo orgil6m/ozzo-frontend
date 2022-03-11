@@ -17,6 +17,7 @@ const Contact = () => {
     <Head>
       <title>{t.contact}  | {t.ozzo}</title>
     </Head>
+    <div className='lg:flex hidden w-full h-20'></div>
     <h1 className={styles.title}>
           Contact
       </h1>

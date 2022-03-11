@@ -20,6 +20,7 @@ a {
 }
 
 .react-slideshow-container .default-nav {
+  margin-top: 6rem;
   background: none !important;
 }
 .react-slideshow-container .default-nav svg {
