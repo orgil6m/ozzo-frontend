@@ -17,8 +17,6 @@ function Store() {
         <title>{t.store} | {t.ozzo}</title>
       </Head>
       <div className='lg:flex hidden w-full h-20'></div>
-      <p>hi
-        </p>
       <h3 className={styles.title}>
        {t.store}
       </h3>

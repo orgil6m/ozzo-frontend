@@ -7,8 +7,8 @@ import { mn } from '../locales/SlideImagesText';
 import { en } from '../locales/SlideImagesText';
 import { cn } from '../locales/SlideImagesText';
 
-import image1 from '../Assets/Slide14.png'
-import image2 from '../Assets/Slide22.png'
+import image1 from '../Assets/Slide1.png'
+import image2 from '../Assets/Slide2.png'
 import image3 from '../Assets/Slide3.png'
 
 function ImageSlider() {
@@ -33,7 +33,7 @@ function ImageSlider() {
     {
         bgImage:`${image2.src}`,
         url:"../services/academy",
-        class1: "bg-gradient-to-l from-transparent md:to-black/20 to-black/90 items-end" ,
+        class1: "bg-gradient-to-l from-transparent lg:to-black/20 to-black/90 items-end" ,
         class2:" text-right",
         class3: "border-white text-white hover:bg-white/10",
         class4: "text-gray-400 text-right",
