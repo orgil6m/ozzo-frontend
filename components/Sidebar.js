@@ -19,7 +19,7 @@ function Sidebar() {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <>
-        <div className='lg:hidden w-full flex items-center p-3 bg-white justify-between sticky top-0 shadow-sm '>
+        <div className='lg:hidden w-full flex items-center p-3 bg-white justify-between sticky top-0 shadow-sm z-20'>
             <div className=''>
                 <Link href='/'>
                     <a className='inline-flex items-center p-2 mr-4 '>
@@ -34,14 +34,14 @@ function Sidebar() {
                 <div className='pr-5'>
                     <LocaleDropDown />
                 </div>
-                     <svg onClick={() => setShowSidebar(!showSidebar)} className={`lg:hidden h-6 w-6 z-50 flex items-center cursor-pointer right-10 top-6 ease-in-out duration-300 ${showSidebar ? "hidden" :"flex"}` } fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                     <svg onClick={() => setShowSidebar(!showSidebar)} className="lg:hidden h-6 w-6 z-50 flex items-center cursor-pointer right-10 top-6 ease-in-out duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                     
             </div>
         </div>
         
-        <div  onClick={() => setShowSidebar(!showSidebar)} className={`top-0 right-0 w-screen bg-black text-white fixed h-screen z-0 bg-black ease-in-out duration-300 ${ showSidebar ? "opacity-50 z-10 " : "hidden " }`}>
+        <div  onClick={() => setShowSidebar(!showSidebar)} className={`top-0 right-0 w-screen bg-black text-white fixed h-screen z-0 bg-black ease-in-out duration-300 ${ showSidebar ? "opacity-50 z-20 " : "hidden " }`}>
         </div>
 
         <div className={`top-0 right-0 w-72 bg-white p-5 text-black fixed h-full z-40 ease-in-out duration-300 shadow-2xl ${ showSidebar ? "translate-x-0 " : "translate-x-full" }`} >

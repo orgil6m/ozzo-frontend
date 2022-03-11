@@ -3,30 +3,27 @@ import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import { useRouter } from 'next/router'
 
-
 import { mn } from '../locales/SlideImagesText';
 import { en } from '../locales/SlideImagesText';
 import { cn } from '../locales/SlideImagesText';
 
-import image1 from '../Assets/1.png'
-import image2 from '../Assets/2.png'
-import image3 from '../Assets/3.png'
-
+import image1 from '../Assets/Slide1.png'
+import image2 from '../Assets/Slide2.png'
+import image3 from '../Assets/Slide3.png'
 
 function ImageSlider() {
     const router = useRouter();
     const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn;
-    console.log(t)
     const slideImages = [
     {
         bgImage:`${image1.src}`,
         url:"../service/store",
         class1: "",
         class2:"text-gray-700 -mt-40 ",
-        class3: " border-gray-500 text-gray-500 hover:bg-gray-500/10",
+        class3: "border-gray-500 text-gray-500 hover:bg-gray-500/10",
         class4: "text-gray-600",
         class5: '',
-        text0: `${t.text0}`,
+        text0: `${t.text0.slide1}`,
         text1: `${t.text1.slide1}`,
         text2: `${t.text2.slide1}`,
         text3: `${t.text3.slide1}`,
@@ -36,12 +33,12 @@ function ImageSlider() {
     {
         bgImage:`${image2.src}`,
          url:"../service/academy",
-        class1: "bg-gradient-to-l from-black/20 to-black/10 items-end" ,
+        class1: "bg-gradient-to-l from-transparent to-black/40 items-end" ,
         class2:" -mt-40 text-right text-white ",
         class3: "border-white text-white hover:bg-white/10 hover:text-white",
         class4: "text-gray-400 text-right",
         class5: 'font-medium',
-        text0: `${t.text0}`,
+        text0: `${t.text0.slide2}`,
         text1: `${t.text1.slide2}`,
         text2: `${t.text2.slide2}`,
         text3: `${t.text3.slide2}`,
@@ -51,12 +48,12 @@ function ImageSlider() {
     {
         bgImage:`${image3.src}`,
         url:"../service/services",
-        class1: "bg-gradient-to-l from-transparent to-black/40",
+        class1: "bg-gradient-to-l from-transparent to-black/50",
         class2:"-mt-40 text-white",
         class3: "border-white text-white cursor-default hover:bg-white/10 hover:text-white ",
         class4: 'text-gray-300',
         class5: '',
-        text0: `${t.text0}`,
+        text0: `${t.text0.slide3}`,
         text1: `${t.text1.slide3}`,
         text2: `${t.text2.slide3}`,
         text3: `${t.text3.slide3}`,
@@ -70,7 +67,7 @@ function ImageSlider() {
         <Slide>
          {slideImages.map((slideImage, index)=> (
             <div className="each-slide" key={index}>
-              <div className='w-screen h-screen bg-cover bg-center z-10' style={{'backgroundImage': `url(${slideImage.bgImage}`}}>
+              <div className='w-screen h-screen bg-cover bg-center' style={{'backgroundImage': `url(${slideImage.bgImage}`}}>
                 <div className={`w-screen h-screen flex justify-center flex-col p-20 ${slideImage.class1}`} >
                     <div className={`font-medium text-6xl ${slideImage.class2}`}>
                         <p  className='break-inside-auto'>

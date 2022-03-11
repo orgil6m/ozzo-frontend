@@ -22,3 +22,8 @@ a {
 .react-slideshow-container .default-nav {
   background: none !important;
 }
+.react-slideshow-container .default-nav svg {
+  fill: white !important;
+  filter: drop-shadow(0px 0px 5px rgb(0 0 0 / 0.2));
+  opacity: 50%;
+}
