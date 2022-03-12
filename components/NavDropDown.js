@@ -66,6 +66,7 @@ export default function Example() {
                 )}
             </Menu.Item>
             </div>
+           
             <div className="px-1 py-1 ">
             <Menu.Item>
                  {({ active }) => (
@@ -82,10 +83,10 @@ export default function Example() {
             <Menu.Item>
                  {({ active }) => (
                   <button className={`${ active ? 'transition duration-300 ease-in-out  bg-gray-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
-                  onClick={() => { router.push('/services/web')}} >
-                    {active ? (  <WebIcon />): (
-                    <WebIcon /> )}
-                    {t.web}
+                  onClick={() => { router.push('/services/dev')}} >
+                    {active ? (  <DevIcon />): (
+                    <DevIcon /> )}
+                    {t.dev}
                   </button>
                 )}
             </Menu.Item>
@@ -132,7 +133,7 @@ function RentIcon(props){
   )
 }
 
-function WebIcon(props){
+function DevIcon(props){
   return (
   // <svg className="h-5 w-5 m-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="#D64635" strokeWidth={2}>
   //   <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
@@ -140,5 +141,13 @@ function WebIcon(props){
   <svg className="h-5 w-5 m-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="#D64635" strokeWidth={2}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
   </svg>
+  )
+}
+function WebIcon(props){
+  return (
+  <svg className="h-5 w-5 m-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="#D64635" strokeWidth={2}>
+  <path strokeLinecap="round" strokeLinejoin="round" d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+
   )
 }

@@ -11,11 +11,10 @@ const News = () => {
     const router = useRouter();
     const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn ;
     return (
-    <div>
+    <div className="pt-20">
         <Head>
           <title>{t.news} | {t.ozzo}</title>
         </Head>
-       <div className='lg:flex hidden w-full h-20'></div>
         <h1 className={styles.title}>
           News
         </h1>

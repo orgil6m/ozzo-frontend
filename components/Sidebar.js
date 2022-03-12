@@ -23,7 +23,7 @@ function Sidebar() {
                 <Link href='/'>
                     <a className='inline-flex items-center p-2 mr-4 '>
                         <div className="h-10 w-24 relative ml-2"> 
-                            <Image src={OzzoLogo} layout="fill" />
+                            <Image src={OzzoLogo} layout="fill" alt='Logo' />
                         </div>
                     </a>
                 </Link>
@@ -40,7 +40,7 @@ function Sidebar() {
             </div>
         </div>
         
-        <div  onClick={() => setShowSidebar(!showSidebar)} className={`top-0 right-0 w-screen bg-black text-white fixed h-screen z-0 bg-black ease-in-out duration-300 ${ showSidebar ? "opacity-50 z-20 " : "hidden " }`}>
+        <div  onClick={() => setShowSidebar(!showSidebar)} className={`top-0 right-0 w-screen text-white fixed h-screen z-0 bg-black ease-in-out duration-300 ${ showSidebar ? "opacity-50 z-20 " : "hidden " }`}>
         </div>
 
         <div className={`top-0 right-0 w-72 bg-white p-5 text-black fixed h-full z-40 ease-in-out duration-300 shadow-2xl ${ showSidebar ? "translate-x-0 " : "translate-x-full" }`} >
@@ -75,29 +75,29 @@ function Sidebar() {
              
                 <div>
                     <div className='pl-4'>
-                        <Link href='/service/academy'>     
-                            <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${!isOpen ? "hidden":"block" } ${router.pathname == "/service/academy" ? "border-red-500  text-black " : "border-white"}`}>
+                        <Link href='/services/academy'>     
+                            <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${!isOpen ? "hidden":"block" } ${router.pathname == "/services/academy" ? "border-red-500  text-black " : "border-white"}`}>
                                 {t.academy}
                             </a>
                         </Link>
-                         <Link href='/service/store'>     
-                            <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${!isOpen ? "hidden":"block" } ${router.pathname == "/service/store" ? "border-red-500  text-black " : "border-white"}`}>
+                         <Link href='/services/store'>     
+                            <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${!isOpen ? "hidden":"block" } ${router.pathname == "/services/store" ? "border-red-500  text-black " : "border-white"}`}>
                                 {t.store}
                             </a>
                         </Link>
-                        <Link href='/service/service'>     
-                            <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${!isOpen ? "hidden":"block" } ${router.pathname == "/service/service" ? "border-red-500  text-black " : "border-white"}`}>
+                        <Link href='/services/maintenance'>     
+                            <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${!isOpen ? "hidden":"block" } ${router.pathname == "/services/maintenance" ? "border-red-500  text-black " : "border-white"}`}>
                                 {t.maintenance}
                             </a>
                         </Link>        
-                        <Link href='/service/service'>     
-                            <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${!isOpen ? "hidden":"block" } ${router.pathname == "/service/service" ? "border-red-500  text-black " : "border-white"}`}>
+                        <Link href='/services/rent'>     
+                            <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${!isOpen ? "hidden":"block" } ${router.pathname == "/services/rent" ? "border-red-500  text-black " : "border-white"}`}>
                                 {t.rent}
                             </a>
                         </Link>     
-                        <Link href='/service/service'>     
-                            <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${!isOpen ? "hidden":"block" } ${router.pathname == "/service/service" ? "border-red-500  text-black " : "border-white"}`}>
-                                {t.web}
+                        <Link href='/services/dev'>     
+                            <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${!isOpen ? "hidden":"block" } ${router.pathname == "/services/dev" ? "border-red-500  text-black " : "border-white"}`}>
+                                {t.dev}
                             </a>
                         </Link>     
                     </div>    
@@ -109,7 +109,7 @@ function Sidebar() {
                         {t.contact}
                     </a>
                 </Link>
-      </div>
+                </div>
            </div>
         </>
     )

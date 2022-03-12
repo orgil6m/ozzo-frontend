@@ -12,13 +12,11 @@ import { cn } from '../../locales/Navbar';
 function Academy() {
    const router = useRouter();
   const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn ;
-  console.log(t);
   return (
-    <div>
+    <div className='pt-20'>
       <Head>
         <title>{t.academy} | {t.ozzo}</title>
       </Head>
-     <div className='lg:flex hidden w-full h-20'></div>
       <h3 className={styles.title}>
         {t.academy}
       </h3>

@@ -7,11 +7,11 @@ import { mn } from '../locales/SlideImagesText';
 import { en } from '../locales/SlideImagesText';
 import { cn } from '../locales/SlideImagesText';
 
-import image1 from '../Assets/Slide1.png'
-import image2 from '../Assets/Slide2.png'
-import image3 from '../Assets/Slide3.png'
+import image1 from '../Assets/Slide1.jpg'
+import image2 from '../Assets/Slide2.jpg'
+import image3 from '../Assets/Slide3.jpg'
 
-function ImageSlider() {
+const ImageSlider = () => {
     const router = useRouter();
     const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn;
     const slideImages = [
@@ -61,6 +61,7 @@ function ImageSlider() {
         text5: `${t.text5}`,
     },
 ];
+
     const SlideProperties = { 
         duration: 5000,
         transitionDuration: 1000,
@@ -72,7 +73,7 @@ function ImageSlider() {
         <Slide {...SlideProperties} easing="ease">
          {slideImages.map((slideImage, index)=> (
             <div className="each-slide w-screen h-screen" key={index}>
-                <div className='w-full h-full bg-cover bg-center' style={{'backgroundImage': `url(${slideImage.bgImage}`}}>
+                <div className='w-full h-full bg-cover bg-center'  style={{'backgroundImage': `url(${slideImage.bgImage}`}}>
                     <div className={`w-screen h-full flex justify-center flex-col md:p-20 p-10 ${slideImage.class1}`} >
                         <div className={`font-medium text-white md:text-6xl mt-20 text-4xl ${slideImage.class2}`}>
                             <p  className='break-inside-auto'>

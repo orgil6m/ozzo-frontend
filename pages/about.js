@@ -13,11 +13,10 @@ const About = () => {
   const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn ;
   
   return (
-  <div>
+  <div className="pt-20">
       <Head>
           <title>{t.about} | {t.ozzo}</title>
         </Head>
-      <div className='lg:flex hidden w-full h-20'></div>
       <h1 className={styles.title}>
           About us
       </h1>

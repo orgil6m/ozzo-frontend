@@ -12,11 +12,11 @@ function Services() {
    const router = useRouter();
   const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn ;
   return (
-    <div>
+    <div className='pt-20'>
       <Head>
         <title>{t.maintenance} | {t.ozzo}</title>
       </Head>
-       <div className='lg:flex hidden w-full h-20'></div>
+      
       <h3 className={styles.title}>
         {t.maintenance}
       </h3>

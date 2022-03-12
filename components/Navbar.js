@@ -19,11 +19,11 @@ const Navbar = () => {
   const [active, setActive] = useState(false);
   return (
     <>
-      <nav className='flex items-center flex-wrap p-3 w-full bg-white lg:flex hidden fixed top-0 shadow-sm z-30' >
+      <nav className='items-center flex-wrap p-3 w-full bg-white lg:flex hidden fixed top-0 shadow-sm z-30' >
         <Link href='/'>
           <a className='inline-flex items-center p-2 mr-4 '>
             <div className="h-10 w-24 relative ml-2"> 
-              <Image src={OzzoLogo} layout="fill" />
+              <Image src={OzzoLogo} layout="fill" alt="LOGO" />
             </div>
          </a>
         </Link>
@@ -49,6 +49,7 @@ const Navbar = () => {
             {t.contact}
           </a>
         </Link>
+
         <div className="absolute top-6 right-10">
           <LocaleDropdown  />
         </div>
