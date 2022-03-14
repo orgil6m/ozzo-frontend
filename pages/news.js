@@ -43,6 +43,7 @@ const News = ({ NewsData }) => {
                             <div className='pt-2 font-thin flex justify-between text-sm pb-1 items-center'>
                                 <p className='text-white/50  font-light italic'>{FeaturedNewsData.date}</p>
                             </div>
+                            
                         </div>
                     </div>
                 </div>

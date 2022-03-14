@@ -41,7 +41,7 @@ const News = ({ news }) => {
             <p>{news.langs[`${l}`].title}</p>
         </div>
         <div className='italic opacity-50 text-xs h-12 flex items-center'>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           {news.date}
@@ -50,7 +50,7 @@ const News = ({ news }) => {
       </div>
       <div className='grid lg:grid-cols-3 gap-10 md:pl-10 md:pr-10'>
         <div className='col-span-2'>
-          {/* <div className='transition-all duration-500 ease-in-out aspect-video bg-cover bg-center drop-shadow-x hover:opacity-90 ' style={{'backgroundImage': `url(${news.cover}`}}> </div> */}
+          <div className='transition-all duration-500 ease-in-out aspect-video bg-cover bg-center drop-shadow-x hover:opacity-90 ' style={{'backgroundImage': `url(${news.cover}`}}> </div>
           <article>
             <p className='text-justify md:text-base text-sm pt-5'> {news.langs[`${l}`].text}</p>
           </article>
