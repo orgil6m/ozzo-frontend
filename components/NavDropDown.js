@@ -3,9 +3,7 @@ import { Fragment, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
-import { mn } from '../locales/Navbar';
-import { en } from '../locales/Navbar';
-import { cn } from '../locales/Navbar';
+import { mn, en , cn } from '../locales/Navbar';
 
 export default function Example() {
     const router = useRouter();

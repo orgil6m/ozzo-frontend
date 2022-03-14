@@ -3,14 +3,13 @@ import Head from "next/head";
 import { useRouter } from 'next/router';
 import styles from '../styles/Home.module.css';
 
-import { mn } from '../locales/Navbar';
-import { en } from '../locales/Navbar';
-import { cn } from '../locales/Navbar';
+import { NavbarLocale } from '../locales/Navbar';
 
 
 const Contact = () => {
   const router = useRouter();
-  const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn ;
+  const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
+  const t = NavbarLocale[`${l}`]
   return (
     <div className="pt-20">
     <Head>

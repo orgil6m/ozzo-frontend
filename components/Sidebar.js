@@ -6,9 +6,7 @@ import Image from 'next/image';
 import OzzoLogo from '../Assets/LOGO.png'
 import LocaleDropDown from './LocaleDropDown'
 
-import { mn } from '../locales/Navbar';
-import { en } from '../locales/Navbar';
-import { cn } from '../locales/Navbar';
+import { mn, en , cn } from '../locales/Navbar';
 
 function Sidebar() {
 

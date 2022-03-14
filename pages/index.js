@@ -6,20 +6,22 @@ import ImageSlider from '../components/ImageSlider';
 import FeaturedNews from '../components/FeaturedNews';
 
 
-import { mn } from '../locales/Navbar';
-import { en } from '../locales/Navbar';
-import { cn } from '../locales/Navbar';
+import { NavbarLocale } from '../locales/Navbar';
 
 function Home() {
   const router = useRouter();
-  const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn 
+  const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
+  const t = NavbarLocale[`${l}`]
   return (
-   <div className='pt-20'>
+   <div className=''>
      <Head>
+        <title>{t.home}  | {t.ozzo}</title>
      </Head>
-     
       <ImageSlider />
-      <FeaturedNews />
+      <div className='md:p-10 p-5'>
+        <FeaturedNews />
+      </div>
+      
    </div>
   );
 }

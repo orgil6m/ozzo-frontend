@@ -3,9 +3,8 @@ import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import { useRouter } from 'next/router'
 
-import { mn } from '../locales/SlideImagesText';
-import { en } from '../locales/SlideImagesText';
-import { cn } from '../locales/SlideImagesText';
+import { SlideImagesText } from '../locales/SlideImagesText';
+
 
 import image1 from '../Assets/Slide1.jpg'
 import image2 from '../Assets/Slide2.jpg'
@@ -13,7 +12,10 @@ import image3 from '../Assets/Slide3.jpg'
 
 const ImageSlider = () => {
     const router = useRouter();
-    const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn;
+    const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
+    const t = SlideImagesText[`${l}`]
+    // console.log(SlideImagesText[`${l}`].text0.slide1)
+    // const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn;
     const slideImages = [
     {
         bgImage:`${image1.src}`,

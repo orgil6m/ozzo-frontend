@@ -8,9 +8,7 @@ import OzzoLogo from '../Assets/LOGO.png'
 
 import { useState } from 'react'
 
-import { mn } from '../locales/Navbar';
-import { en } from '../locales/Navbar';
-import { cn } from '../locales/Navbar';
+import { mn, cn , en } from '../locales/Navbar';
 
 
 const Navbar = () => {
