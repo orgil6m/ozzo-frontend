@@ -11,7 +11,9 @@ const NavbarLocale = [
     maintenance : 'Хөгжмийн Засвар',
     web : "DaavkaTunes.mn",
     rent: "Хөгжмийн Түрээс",
-    dev: "Веб Хөгжүүлэлт"
+    dev: "Веб Хөгжүүлэлт",
+    recent : "Сүүлд нэмэгдсэн",
+    more : "Бүгдийг үзэх",
   },
   {
     ozzo: "OZZO LLC",
@@ -25,7 +27,9 @@ const NavbarLocale = [
     maintenance : 'Instrument Maintenance',
     web : "DaavkaTunes.mn",
     rent: "Instrument Rental",
-    dev: "Web Development"
+    dev: "Web Development",
+    recent : "Recent news",
+    more : "See all",
   },
   {
     ozzo: "奥佐公司",
@@ -40,6 +44,8 @@ const NavbarLocale = [
     web : "DaavkaTunes.mn",
     rent: "仪器租赁",
     dev: "网站开发",
+    recent : "最近的新闻",
+    more : "查看全部",
   },
 ]
 

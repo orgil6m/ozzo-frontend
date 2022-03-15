@@ -1,12 +1,12 @@
 const NewsLocale = [
     {
-        title : "МЭДЭЭЛЭЛ"
+        title : "МЭДЭЭЛЭЛ",
     },
     {
         title : "NEWS"
     },
     {
-        title : "消息"
+        title : "消息",     
     }
 ]
 module.exports = {

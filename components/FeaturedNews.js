@@ -38,22 +38,22 @@ function FeaturedNews() {
     },
 ];
     return (
-    <div className='w-full md:p-10 p-5 '>
-        <div className='transition-all duration-1000 ease-in-out lg:w-full font-semibold md:text-2xl text-lg flex items-center text-gray-800 mb-10'> 
-            <div className='transition-all duration-1000 ease-in-out md:h-10 h-8 w-1 bg-red-500 mdmr-5 mr-2'></div>
+    <div className='w-full pt-5 '>
+        <div className='transition-all duration-500 ease-in-out lg:w-full font-semibold md:text-2xl text-lg flex items-center text-gray-800 mb-10'> 
+            <div className='transition-all duration-1000 ease-in-out md:h-10 h-8 w-1 bg-red-500 mr-2'></div>
             <p className='w-4/6'>{t.title}</p>
-             <div className='transition-all duration-1000 ease-in-out cursor-default w-3/6 h-10 font-thin text-base flex items-center justify-end ' onClick={() => { router.push('/news')}}>
+            <div className='md:flex transition-all duration-1000 ease-in-out cursor-default w-3/6 h-10 font-thin text-base hidden items-center justify-end ' onClick={() => { router.push('/news')}}>
                 {t.more}
-                <svg className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                <svg className="h-3 w-3 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
                 </svg>
             </div>
         </div>
         <div className='grid lg:grid-cols-3 gap-10 md:grid-cols-2 '>
             {FeaturedNewsData.map((FeaturedNewsData, index) => (
             <div key={index}>
-                <div className='transition-all duration-500 ease-in-out w-full bg-cover bg-center drop-shadow-x hover:opacity-90' style={{'backgroundImage': `url(${FeaturedNewsData.cover}`}} onClick={() => { router.push(`/news/${FeaturedNewsData.path}`)}} > 
-                    <div className=' w-full h-96 flex justify-end items-start flex-col p-5 bg-gradient-to-b from-transparent to-black/90 backdrop-brightness-150'>
+                <div className='transition-all duration-500 ease-in-out rounded-md w-full bg-cover bg-center drop-shadow-x hover:opacity-90' style={{'backgroundImage': `url(${FeaturedNewsData.cover}`}} onClick={() => { router.push(`/news/${FeaturedNewsData.path}`)}} > 
+                    <div className=' w-full h-96 flex justify-end rounded-md items-start flex-col p-5 bg-gradient-to-b from-transparent to-black/90 backdrop-brightness-150'>
                         <div className=''>
                             <div className='flex w-full h-8 items-center mb-3'>
                                 <div className='bg-red-500 w-0.5 h-full mr-3'> </div>  
@@ -69,6 +69,9 @@ function FeaturedNews() {
             </div>
           ))} 
         </div>
+         <div className='md:hidden cursor-default transition-all ease-in-out duration-200 w-full mt-5 flex justify-center items-center bg-zinc-800 text-white h-10 rounded-md hover:opacity-90' onClick={() => { router.push('/news')}}>
+            {t.more}
+         </div>
     </div>
   )
 }

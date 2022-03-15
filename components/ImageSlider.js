@@ -14,8 +14,6 @@ const ImageSlider = () => {
     const router = useRouter();
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     const t = SlideImagesText[`${l}`]
-    // console.log(SlideImagesText[`${l}`].text0.slide1)
-    // const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn;
     const slideImages = [
     {
         bgImage:`${image1.src}`,
