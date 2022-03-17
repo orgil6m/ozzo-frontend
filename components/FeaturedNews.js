@@ -42,7 +42,7 @@ function FeaturedNews() {
         <div className='transition-all duration-500 ease-in-out lg:w-full font-semibold md:text-2xl text-lg flex items-center text-gray-800 mb-10'> 
             <div className='transition-all duration-1000 ease-in-out md:h-10 h-8 w-1 bg-red-500 mr-2'></div>
             <p className='w-4/6'>{t.title}</p>
-            <div className='md:flex transition-all duration-1000 ease-in-out cursor-default w-3/6 h-10 font-thin text-base hidden items-center justify-end ' onClick={() => { router.push('/news')}}>
+            <div className='md:flex hidden transition-all duration-1000 ease-in-out cursor-default w-3/6 h-10 font-thin text-base  items-center justify-end ' onClick={() => { router.push('/news')}}>
                 {t.more}
                 <svg className="h-3 w-3 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
@@ -69,9 +69,17 @@ function FeaturedNews() {
             </div>
           ))} 
         </div>
-         <div className='md:hidden cursor-default transition-all ease-in-out duration-200 w-full mt-5 flex justify-center items-center bg-zinc-800 text-white h-10 rounded-md hover:opacity-90' onClick={() => { router.push('/news')}}>
-            {t.more}
-         </div>
+        <div className='md:hidden flex transition-all duration-1000 ease-in-out cursor-default w-full mt-5 font-thin text-base items-center justify-end ' onClick={() => { router.push('/news')}}>
+                {t.more}
+                <svg className="h-3 w-3 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                </svg>
+        </div> 
+        <div className='w-screen left-0 absolute bottom-5 flex justify-center'>
+            <svg className="animate-bounce h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#fff" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+        </div>
     </div>
   )
 }

@@ -5,7 +5,6 @@ import { useRouter } from 'next/router'
 
 import { SlideImagesText } from '../locales/SlideImagesText';
 
-
 import image1 from '../Assets/Slide1.jpg'
 import image2 from '../Assets/Slide2.jpg'
 import image3 from '../Assets/Slide3.jpg'

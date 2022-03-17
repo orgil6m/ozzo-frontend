@@ -4,6 +4,8 @@ import Head from "next/head";
 
 import ImageSlider from '../components/ImageSlider';
 import FeaturedNews from '../components/FeaturedNews';
+import FeaturedActivities from '../components/FeaturedActivities';
+import FeaturedServices from '../components/FeaturedServices';
 
 import { NavbarLocale } from '../locales/Navbar';
 
@@ -13,14 +15,18 @@ function Home() {
   const t = NavbarLocale[`${l}`]
   return (
    <div className=''>
-     <Head>
+      <Head>
         <title>{t.home}  | {t.ozzo}</title>
-     </Head>
+      </Head>
       <ImageSlider />
-      <div className='md:p-10 p-5'>
-        <FeaturedNews />
-      </div>
       
+      <div className='md:p-10 p-5'>
+        <FeaturedActivities />
+        <FeaturedServices />
+        <FeaturedNews />
+      
+      </div>
+     
    </div>
   );
 }

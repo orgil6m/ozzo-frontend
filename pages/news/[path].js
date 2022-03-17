@@ -15,7 +15,6 @@ export async function getStaticPaths() {
   };
 }
 
-
 export async function getStaticProps({ params }) {
   const { path } = params;
   const news = await getNews();
@@ -88,9 +87,9 @@ const News = ({ news, moreNews }) => {
               </div> 
             </div>
           ))} 
-          <div className='cursor-default transition-all ease-in-out duration-200 md:w-2/3 w-full mt-5 flex justify-center items-center bg-zinc-800 text-white h-10 rounded-md hover:opacity-90' onClick={() => { router.push('/news')}}>
+          {/* <div className='cursor-default transition-all ease-in-out duration-200 md:w-2/3 w-full mt-5 flex justify-center items-center bg-zinc-800 text-white h-10 rounded-md hover:opacity-90' onClick={() => { router.push('/news')}}>
             {NavbarLocale[l].more}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
