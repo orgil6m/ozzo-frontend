@@ -4,12 +4,12 @@ class MyDocument extends Document
 {
     render(){
         return (
-            <Html lang="en" className='dark'>
+            <Html lang="en">
                 <Head>
                     <meta name="OZZO LLC" content="ozzo" />
                     <link rel="shortcut icon" href="/ozzo.ico" />
                 </Head>
-                <body className='bg-white text-black'>
+                <body >
                     <Main />
                     <NextScript />
                 </body>

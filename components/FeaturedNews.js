@@ -57,7 +57,7 @@ function FeaturedNews() {
                         <div className=''>
                             <div className='flex w-full h-8 items-center mb-3'>
                                 <div className='bg-red-500 w-0.5 h-full mr-3'> </div>  
-                                <h2 className='text-white font-bold uppercase text-lg '>{FeaturedNewsData.title}</h2>
+                                <h2 className='text-white font-black uppercase text-lg '>{FeaturedNewsData.title}</h2>
                             </div>
                             <p className='text-white/60 text-sm'>{FeaturedNewsData.text.slice(0, 75)}... </p>
                             <div className='pt-2 font-thin flex justify-between text-sm pb-1 items-center'>

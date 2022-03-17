@@ -47,12 +47,12 @@ const SlideImagesText = [
   text2 :{
       slide1:"Enya Guitars Mongolia | NUX Mongolia",
       slide2: "Not everyone should be a musician",
-      slide3: "Do you need to service a instrument?",
+      slide3: "Have you done the necessary ",
     },
     text3:{
       slide1: "",
       slide2: "But everyone needs music education",
-      slide3: ""
+      slide3: "maintenance for your instrument?"
     },
     text4:{ 
       slide1: "",

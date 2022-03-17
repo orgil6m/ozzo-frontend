@@ -28,7 +28,7 @@ const FeaturedActivities = () => {
         <div className="lg:w-1/3 md:w-1/2 w-full flex">
           <Image src={logo1} alt="logo" className="mr-10"  />
           <div className="w-full"></div>
-          <Image src={logo2} aspect-video alt="logo"  />
+          <Image src={logo2} alt="logo"  />
         </div>
       </div>
       <div className="w-full h-0.5 bg-gray-100 rounded-full"></div>

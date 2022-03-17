@@ -117,9 +117,9 @@ function SettingsIcon(props){
 }
 function RentIcon(props){
   return (
-  <svg className="h-5 w-5 m-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="#d64635" strokeWidth={2}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-  </svg>
+   <svg className="h-5 w-5 m-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="#D64635" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
   )
 }
 
