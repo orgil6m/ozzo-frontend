@@ -7,9 +7,11 @@ import FeaturedNews from '../components/FeaturedNews';
 import FeaturedActivities from '../components/FeaturedActivities';
 import FeaturedServices from '../components/FeaturedServices';
 import FeaturedMission from '../components/FeaturedMission';
+import FeaturedPartners from '../components/FeaturedPartners';
+import FeaturedStats from '../components/FeaturedStats';
+import ContactLocale from '../components/FeaturedContact';
 
 import { NavbarLocale } from '../locales/Navbar';
-import FeaturedStats from '../components/FeaturedStats';
 
 function Home() {
   const router = useRouter();
@@ -21,16 +23,15 @@ function Home() {
         <title>{t.home}  | {t.ozzo}</title>
       </Head>
       <ImageSlider />
-      <div className='md:p-10 p-5'>
+      <div className='lg:px-32 md:px-20 lg:py-10 p-5'>
+        <FeaturedNews />
         <FeaturedActivities />
         <FeaturedServices />
         <FeaturedMission />
         <FeaturedStats />
-        
-        <FeaturedNews />
-     
-      </div>
-     
+        <FeaturedPartners />
+      </div>     
+      <ContactLocale />
    </div>
   );
 }

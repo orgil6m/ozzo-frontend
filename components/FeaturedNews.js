@@ -38,7 +38,7 @@ function FeaturedNews() {
     },
 ];
     return (
-    <div className='w-full pt-5 '>
+    <div className='w-full pb-10 '>
         <div className='transition-all duration-500 ease-in-out lg:w-full font-semibold md:text-2xl text-lg flex items-center text-gray-800 mb-10'> 
             <div className='transition-all duration-1000 ease-in-out md:h-10 h-8 w-1 bg-red-500 mr-2'></div>
             <p className='w-4/6'>{t.title}</p>

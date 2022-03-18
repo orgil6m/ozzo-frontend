@@ -17,13 +17,12 @@ function FeaturedStats() {
                 <p className='my-2 font-bold uppercase'>
                     {stats.title}
                 </p>
-                <span className='text-gray-700 mt-2'>{stats.icon}</span>
-                <div className={`w-12 h-1 my-3 ${stats.class1} `}></div>
+                <span className='text-gray-700 mt-2 scale-75'>{stats.icon}</span>
+                <div className={`w-12 h-1 my-3   ${stats.class1} `}></div>
                 <p className='text-4xl font-black text-gray-700'><CountUp end={stats.number} /></p>
-                <p>{stats.text1}</p>
+                <p className='font-light'>{stats.text1}</p>
                 <p className='text-sm w-4/5 text-justify my-5'>{stats.text2}</p>
                 </div>
-           
           </div>
         ))}
       </div>

@@ -14,6 +14,7 @@ const NavbarLocale = [
     dev: "Веб Хөгжүүлэлт",
     recent : "Сүүлд нэмэгдсэн",
     more : "Бүгдийг үзэх",
+    learnmore: "Дэлгэрэнгүй"
   },
   {
     ozzo: "OZZO LLC",
@@ -30,6 +31,7 @@ const NavbarLocale = [
     dev: "Web Development",
     recent : "Recent news",
     more : "See all",
+    learnmore: "Learn more"
   },
   {
     ozzo: "奥佐公司",
@@ -46,6 +48,7 @@ const NavbarLocale = [
     dev: "网站开发",
     recent : "最近的新闻",
     more : "查看全部",
+    learnmore: "了解更多"
   },
 ]
 

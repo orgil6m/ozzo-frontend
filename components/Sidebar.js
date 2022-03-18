@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router'
 import { useState } from 'react';
 import Image from 'next/image';
-import OzzoLogo from '../Assets/LOGO.png'
+import OzzoLogo from '../Assets/LOGO_ozzo.png'
 import LocaleDropDown from './LocaleDropDown'
 
 import { mn, en , cn } from '../locales/Navbar';

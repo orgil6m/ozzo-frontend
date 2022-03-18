@@ -4,7 +4,7 @@ import Link from 'next/link'
 import LocaleDropdown from "./LocaleDropDown"
 import NavDropDown from "./NavDropDown"
 import Image from "next/image";
-import OzzoLogo from '../Assets/LOGO.png'
+import OzzoLogo from '../Assets/LOGO_ozzo.png'
 
 import { useState } from 'react'
 
