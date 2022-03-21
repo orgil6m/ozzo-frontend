@@ -34,13 +34,20 @@ const News = ({ news, moreNews }) => {
     return <></>
   }
   return(
-    <div className='mt-20 md:pl-10 md:pr-10 p-5'>
+    <div className='pt-20'>
       <Head>
         <title>{news.langs[`${l}`].title}  | {t.ozzo}</title>
       </Head>
-      <div className=' md:pl-10 md:pr-10 '>
-        <div className='w-full h-12 md:text-2xl text-lg uppercase font-semibold text-gray-800 flex items-center justify-start '>
-           <div className='transition-all duration-500 ease-in-out md:h-10 h-8 w-1 bg-red-500 mr-3'></div>
+      <div className='lg:px-32 md:px-20 lg:pt-10 pt-5 px-5 cursor-default'>
+         <div className="lg:mb-10 mb-5 flex ">
+            <p className="text-sm text-black/50 pr-2 hover:text-black" onClick={() => router.push("/")}> {t.home} </p>
+            <p className="text-sm text-black/50 pr-2 "> / </p>
+            <p className="text-sm text-black/50 hover:text-black pr-2"  onClick={() => router.push("/news")}> {t.news} </p>
+            <p className="text-sm text-black/50 pr-2 "> / </p>
+            <p className="text-sm text-black/50 hover:text-black"> {news.langs[`${l}`].title} </p>
+        </div>
+        <div className='w-full md:text-2xl text-lg uppercase font-semibold text-gray-800 flex items-center justify-start '>
+           <div className='transition-all duration-500 ease-in-out md:h-10 h-8 w-1 bg-red-500 mr-5'></div>
             <p>{news.langs[`${l}`].title}</p>
         </div>
         <div className='opacity-50 text-xs h-12 flex items-center'>
@@ -58,7 +65,8 @@ const News = ({ news, moreNews }) => {
           </div>
         </div>
       </div>
-      <div className='md:grid md:grid-cols-3 gap-10 md:pl-10 md:pr-10'>
+
+      <div className='w-full lg:px-32 md:px-20 md:grid md:grid-cols-3 gap-10 pb-5 px-5'>
         <div className='col-span-2'>
           <div className='transition-all duration-500 ease-in-out aspect-video bg-cover bg-center rounded-md' style={{'backgroundImage': `url(${news.cover}`}}> </div>
           <article>

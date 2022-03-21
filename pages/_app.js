@@ -1,5 +1,7 @@
 import "../styles/globals.css";
 import Layout from "../components/Layout";
+import React, { useEffect } from "react";
+
 
 
 

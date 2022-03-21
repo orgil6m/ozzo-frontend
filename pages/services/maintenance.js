@@ -17,8 +17,15 @@ function Services() {
       </Head>
       
       <h3 className={styles.title}>
-        {t.maintenance}
+        {t.maintenance}      
       </h3>
+      <p>
+          uusch boloh asuudluud
+          <br />
+        tuunii shalgaan
+        <br />
+        graph
+      </p>
     </div>
   )
 }

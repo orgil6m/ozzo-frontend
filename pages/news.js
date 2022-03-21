@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import {getNews} from "../Datas/news"
 
 import { NavbarLocale} from '../locales/Navbar';
-import {NewsLocale} from '../locales/News'
 
 export async function getServerSideProps() {
   const NewsData = await getNews();
@@ -18,17 +17,21 @@ const News = ({ NewsData }) => {
     const router = useRouter(); 
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     const t = NavbarLocale[`${l}`]
+    console.log(t)
     return (
     <div className="pt-20">
         <Head>
           <title>{t.news} | {t.ozzo}</title>
         </Head>
-        <div className='w-full p-10 '>
+        <div className='w-full lg:px-32 md:px-20 lg:py-10 p-5 '>
+        <div className="lg:mb-10 mb-5 flex cursor-default">
+            <p className="text-sm text-black/50 pr-2 hover:text-black" onClick={() => router.push("/")}> {t.home} </p>
+            <p className="text-sm text-black/50 pr-2 "> / </p>
+            <p className="text-sm text-black/50 hover:text-black"> {t.news} </p>
+        </div>
         <div className='transition-all duration-1000 ease-in-out lg:w-full font-semibold text-2xl flex items-center text-gray-800 mb-10'> 
             <div className='transition-all duration-1000 ease-in-out  md:h-10 h-8 w-1 bg-red-500 mdmr-5 mr-5'></div>
-            <p className='w-3/6'>{NewsLocale[`${l}`].title}</p>
-             <div className='transition-all duration-1000 ease-in-out cursor-default w-3/6 h-10 font-thin text-base flex items-center justify-end ' onClick={() => { router.push('/news')}}>
-            </div>
+            <p className='w-3/6 uppercase'>{t.news}</p>
         </div>
         <div className='grid lg:grid-cols-3 gap-10 md:grid-cols-2 '>
             {NewsData.map((FeaturedNewsData, index) => (

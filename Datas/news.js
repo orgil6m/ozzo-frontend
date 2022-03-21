@@ -3,8 +3,6 @@ const getNews = async () => {
     const jsonData = await data.json()
     return jsonData.data
 }
-
-
 module.exports = {
   getNews
 }

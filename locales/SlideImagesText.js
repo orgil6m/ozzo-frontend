@@ -36,7 +36,7 @@ const SlideImagesText = [
     maintenance : 'Music Maintenance',
     text0: {
       slide1: "OZZO",
-      slide2: "DGL MUSIC",
+      slide2: "MUSIC",
       slide3: "INSTRUMENT",
     },
     text1: {

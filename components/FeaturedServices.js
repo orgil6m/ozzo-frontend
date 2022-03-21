@@ -22,11 +22,11 @@ function FeaturedServices() {
                   </p>
                 </div>
               </div>
-              <div className="w-4/5 text-justify flex my-3 text-white/80">
+              {/* <div className="w-4/5 text-justify flex my-3 text-white/80">
                 <p className="">
                   {Activities.text1}
                 </p>
-              </div>
+              </div> */}
               <div className='transition-all duration-500 ease-in-out pt-3 text-justify flex items-center text-sm text-white hover:translate-x-2'>
                 {NavbarLocale[l].learnmore}
                 <svg className="h-3 w-3 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
