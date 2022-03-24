@@ -16,7 +16,7 @@ function Sidebar() {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <>
-        <div className='lg:hidden w-full flex items-center p-3 bg-white justify-between fixed top-0 shadow-sm z-10'>
+        <div className='lg:hidden w-full flex items-center p-3 bg-white justify-between fixed top-0 shadow-sm z-10 cursor-default'>
             <div className=''>
                 <Link href='/'>
                     <a className='inline-flex items-center p-2 mr-4 '>
@@ -51,18 +51,13 @@ function Sidebar() {
                         {t.home}
                     </a>
                 </Link>
-                <div className='w-screen h-px bg-gray-100 ml-2'></div>
-                <Link href='/news'>
-                    <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${router.pathname == "/news" ? "border-red-500  text-black " : "border-white"}`}>
-                        {t.news}
-                    </a>
-                </Link>
-                <div className='w-screen h-px bg-gray-100 ml-2'></div>
                 <Link href='/about'>
                     <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${router.pathname == "/about" ? "border-red-500  text-black " : "border-white"}`}>
                         {t.about}
                     </a>
                 </Link>
+                
+                <div className='w-screen h-px bg-gray-100 ml-2'></div>  
                 <div className='w-screen h-px bg-gray-100 ml-2'></div>
                 <div onClick={() => setIsOpen(!isOpen)} className='flex transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 border-white text-lg hover:text-black' >
                     {t.services}
@@ -101,7 +96,14 @@ function Sidebar() {
                     </div>    
                       
                 </div>
-               <div className='w-screen h-px bg-gray-100 ml-2'></div>
+                <div className='w-screen h-px bg-gray-100 ml-2'></div>
+                <Link href='/news'>
+                    <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${router.pathname == "/news" ? "border-red-500  text-black " : "border-white"}`}>
+                        {t.news}
+                    </a>
+                </Link>
+
+                <div className='w-screen h-px bg-gray-100 ml-2'></div>
                 <Link href='/contact'>
                     <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-lg hover:text-black hover:border-red-500 ${router.pathname == "/contact" ? "border-red-500  text-black " : "border-white"}`}>
                         {t.contact}

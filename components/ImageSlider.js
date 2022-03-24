@@ -87,7 +87,7 @@ const ImageSlider = () => {
                             <p className='break-inside-auto'> {slideImage.text3} </p>
                             <p className={`${slideImage.class5}`}> {slideImage.text4} </p>
                         </div>
-                        <div className={`transition-all duration-300 ease-in-out border md:mt-10 w-40 sm:h-12 h-10 mt-5 flex items-center justify-center rounded-lg cursor-default  hover:translate-x-2  ${slideImage.class3}`} onClick={() => {router.push(slideImage.url)}}>
+                        <div className={`transition-all duration-500 ease-in-out border md:mt-10 w-40 sm:h-12 h-10 mt-5 flex items-center justify-center rounded-lg cursor-default hover:translate-x-2  ${slideImage.class3}`} onClick={() => {router.push(slideImage.url)}}>
                             <p className='p-2 font-medium'>{slideImage.text5} </p>
                             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />

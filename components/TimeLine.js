@@ -1,19 +1,17 @@
-import { data } from 'autoprefixer';
 import React, { useRef } from "react";
-
-
 import { useRouter } from 'next/router';
-
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import { TimeLineLocale } from '../locales/TimeLine';
+import logo from "../Assets/logo_ozzo_3.svg"
 
 const TimeLine = () => {
     const router = useRouter();
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
-      const slideRef = useRef();
-
+    const slideRef = useRef();
     const TimeLine = TimeLineLocale[l]
+    const even = TimeLine.years.filter(v => v.year % 2 == 0)
+    const odd = TimeLine.years.filter(v => v.year % 2 == 1)
     const SlideProperties = { 
       duration: 5000,
       transitionDuration: 1000,
@@ -25,7 +23,7 @@ const TimeLine = () => {
          {
             breakpoint: 1024,
               settings: {
-                slidesToShow: 3,
+                slidesToShow: 4,
                 slidesToScroll: 2,
                  indicators: i => (<div className='indicator'> </div>),
             }
@@ -40,15 +38,15 @@ const TimeLine = () => {
         },
     ]
     }
-     const goto = ({ target }) => {
-    slideRef.current.goTo(parseInt(target.value, 10));
-  }
+    const goto = ({ target }) => {
+      slideRef.current.goTo(parseInt(target.value, 10));
+    }
   return (
-    <div className="w-full flex flex-col pt-10 text-gray-200 cursor-default select-none py-20 ">
-      <div className='transition-all duration-1000 ease-in-out lg:w-full font-semibold  flex items-center text-gray-800 mb-10'> 
-      <div className='transition-all duration-1000 ease-in-out  md:h-10 h-8 w-1 bg-cyan-500 mdmr-5 mr-5'></div>
+  <div className="w-full flex flex-col pt-10 text-gray-200 cursor-default select-none py-20 ">
+      <div className='lg:w-full font-semibold  flex items-center text-gray-800'> 
+      <div className='md:h-10 h-8 w-1 bg-cyan-500 mdmr-5 mr-5'></div>
         <p className=' mr-5 uppercase lg:text-2xl text-base'>{TimeLine.title}</p>
-        <select onChange={goto} className="transition-all duration-500 ease-out text-lg font-light bg-transparent focus:outline-none opacity-50 hover:opacity-100 ">
+        <select onChange={goto} className="transition-all duration-300 ease-in-out text-lg font-light bg-transparent focus:outline-none opacity-50 hover:opacity-100 ">
             <option value="0">2022</option>
             <option value="1">2021</option>
             <option value="2">2020</option>
@@ -63,33 +61,35 @@ const TimeLine = () => {
             <option value="11">2011</option>
             <option value="12">2010</option>
         </select>
-      </div>
+        </div>
       <Slide ref={slideRef} {...SlideProperties} easing="ease">
         {TimeLine.years.map((data, index)=>(
-          <div key={index} className="">         
-          <div className='text-2xl text-gray-800 p-5 w-full flex justify-between items-center'> 
-              {data.year}
-              <svg className="animate-pulse h-4 w-4 sm:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
-              </svg>
-          </div>
-          <div className='relative top-2 solute w-4 h-4 bg-white mx-10 rounded-full border-2 border-cyan-500'>
-          </div>
-          <div className='w-full bg-cyan-500 shadow-2xl shadow-cyan-500/50 h-0.5'>
-          </div>
-          <div  className=' bg-gradient-to-b from-cyan-500/20 to-transparent h-56 px-10 py-5 text-gray-700 lg:text-base font-light '>
-              {data.text.map((text, index) => (
-                <div key={index}>
-                    <p className='text-sm'>
-                      {text}
-                    </p>
-                </div>
-              ))}
-          </div>
+          <div key={index}>
+            <div className="p-10 bg-white h-full text-gray-800 font-bold text-xl m-2 ">
+              <div className="mb-3 flex items-center ">
+                {data.year} 
+              </div>
+              <p className="font-light text-sm">
+                {data.text.map((text, index) =>(
+                  <>
+                  <div key={index} className="flex items-start my-1" >
+                      <div className="mr-2 mt-1 opacity-90 ">
+                        <svg className="h-3 w-3 text-cyan-500" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                      </div>
+                      <div className="text-sm">
+                        {text} 
+                      </div>
+                    </div>
+                  </>
+                ))}
+              </p>
+            </div>
           </div>
         ))}
-        
       </Slide>
+
          
   </div>
   )

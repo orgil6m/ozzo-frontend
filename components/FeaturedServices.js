@@ -8,30 +8,21 @@ function FeaturedServices() {
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     return (
     <div>
-      <div className="transition-all duration-500 ease-in-out grid lg:grid-cols-3 md:grid-cols-2 gap-5 lg:my-10 my-5">
+      <div className=" grid lg:grid-cols-6 md:grid-cols-3 grid-cols-2 gap-5 lg:my-10 my-5 cursor-default">
         {ActivitesLocale[`${l}`].services.map((Activities, index) =>(
           <div key={index}>
-            <div className={`transition-all duration-300 ease-in-out w-full h-full bg-gradient-to-r flex flex-col items-center justify-start rounded-lg py-8 hover:opacity-90  ${Activities.class}` } >
-              <div className="flex w-4/5 items-center">
-                <div className="mr-3 flex justify-start items-center">
+            <div className={`transition-all duration-300 ease-in-out w-full h-full bg-gradient-to-r flex flex-col items-center justify-start rounded-lg py-5 hover:opacity-90 relative overflow-hidden ${Activities.class}` }   onClick={() => { router.push(`/services/${Activities.url}`)}}>
+                <div className='w-full p-1 flex justify-center items-center'>
                   {Activities.icon}
                 </div>
-                <div className="h-full flex items-center ">
-                  <p className="font-black text-base text-white uppercase">
-                  {Activities.title}
-                  </p>
+                <div className='w-full  p-5 h-full flex justify-center text-center items-center text-white font-black uppercase'>
+                    {Activities.title}
                 </div>
-              </div>
-              {/* <div className="w-4/5 text-justify flex my-3 text-white/80">
-                <p className="">
-                  {Activities.text1}
-                </p>
-              </div> */}
-              <div className='transition-all duration-500 ease-in-out pt-3 text-justify flex items-center text-sm text-white hover:translate-x-2'>
+                <div className='absolute -bottom-16 -right-16 opacity-10'>
+                    {Activities.icon1}
+                </div>
+              <div className='transition-all duration-300 ease-in-out p-1 text-justify flex items-center text-sm text-white'>
                 {NavbarLocale[l].learnmore}
-                <svg className="h-3 w-3 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
-                </svg>
               </div>
             </div>
           </div>

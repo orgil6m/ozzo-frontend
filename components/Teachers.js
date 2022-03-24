@@ -12,16 +12,11 @@ const Teachers = () => {
     const teachers  = Teacherslocale[l]
     return (
         <div className="w-full flex flex-col pt-10 text-gray-200 cursor-default select-none py-20 ">
-            <div className='transition-all duration-1000 ease-in-out lg:w-full font-semibold  flex items-center text-gray-800 mb-10'> 
-                <div className='transition-all duration-1000 ease-in-out  md:h-10 h-8 w-1 bg-teal-500 mdmr-5 mr-5'></div>
-                <p className=' mr-5 uppercase lg:text-2xl text-base'>{teachers.title}</p>
+            <div className=' lg:w-full font-semibold  flex items-center text-gray-800 mb-10'> 
+                <div className='  md:h-10 h-8 w-1 bg-teal-500 mdmr-5 mr-5'></div>
+                <p className='mr-5 uppercase lg:text-2xl text-base'>{teachers.title}</p>
             </div>
             <div className="">
-            {/* {users.map((user, index) =>(
-                <div key={index}>
-                    {user.username}
-                </div>
-            ))} */}
             </div>
         </div>
     )

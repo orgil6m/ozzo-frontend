@@ -14,18 +14,18 @@ const FeaturedActivities = () => {
   const tt = ActivitesLocale[`${l}`]
   
   return (
-    <div className='w-full pt-5 mb-10'>
-      <div className='transition-all duration-500 ease-in-out lg:w-full font-semibold md:text-2xl text-lg flex items-center text-gray-800 mb-5 '> 
-        <div className='transition-all duration-1000 ease-in-out md:h-10 h-8 w-1 bg-red-500 mr-2'></div>
+    <div className='w-full pt-5 mb-10 cursor-default'>
+      <div className=' lg:w-full font-semibold md:text-2xl text-lg flex items-center text-gray-800 mb-5 '> 
+        <div className=' md:h-10 h-8 w-1 bg-red-500 mr-5'></div>
         <p className='w-4/6'>{tt.title}</p>
       </div>
-      <div className='transition-all duration-500 ease-in-out lg:w-full text-justify flex items-center text-gray-800 mb-5 '> 
+      <div className=' lg:w-full text-justify flex items-center text-gray-800 mb-5 '> 
         <p>
           {tt.text}
         </p>
       </div>
       <div className="w-full flex items-center justify-center my-5">
-        <div className="lg:w-1/3 md:w-1/2 w-full flex">
+        <div className="lg:w-1/3 md:w-1/2 w-full flex my-5">
           <Image src={logo1} alt="logo" className="mr-10"  />
           <div className="w-full"></div>
           <Image src={logo2} alt="logo"  />

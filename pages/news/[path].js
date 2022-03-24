@@ -34,17 +34,17 @@ const News = ({ news, moreNews }) => {
     return <></>
   }
   return(
-    <div className='pt-20'>
+    <div className='pt-20 cursor-default'>
       <Head>
         <title>{news.langs[`${l}`].title}  | {t.ozzo}</title>
       </Head>
       <div className='lg:px-32 md:px-20 lg:pt-10 pt-5 px-5 cursor-default'>
          <div className="lg:mb-10 mb-5 flex ">
-            <p className="text-sm text-black/50 pr-2 hover:text-black" onClick={() => router.push("/")}> {t.home} </p>
+            <p className="transition-all duration-300 ease-in-out text-sm text-black/50 pr-2 hover:text-black" onClick={() => router.push("/")}> {t.home} </p>
             <p className="text-sm text-black/50 pr-2 "> / </p>
-            <p className="text-sm text-black/50 hover:text-black pr-2"  onClick={() => router.push("/news")}> {t.news} </p>
+            <p className="transition-all duration-300 ease-in-out text-sm text-black/50 hover:text-black pr-2"  onClick={() => router.push("/news")}> {t.news} </p>
             <p className="text-sm text-black/50 pr-2 "> / </p>
-            <p className="text-sm text-black/50 hover:text-black"> {news.langs[`${l}`].title} </p>
+            <p className="transition-all duration-300 ease-in-out text-sm text-black"> {news.langs[`${l}`].title} </p>
         </div>
         <div className='w-full md:text-2xl text-lg uppercase font-semibold text-gray-800 flex items-center justify-start '>
            <div className='transition-all duration-500 ease-in-out md:h-10 h-8 w-1 bg-red-500 mr-5'></div>
@@ -52,7 +52,7 @@ const News = ({ news, moreNews }) => {
         </div>
         <div className='opacity-50 text-xs h-12 flex items-center'>
           <div className='flex h-full items-center mr-5'>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
             <p>Admin</p> 
@@ -68,9 +68,9 @@ const News = ({ news, moreNews }) => {
 
       <div className='w-full lg:px-32 md:px-20 md:grid md:grid-cols-3 gap-10 pb-5 px-5'>
         <div className='col-span-2'>
-          <div className='transition-all duration-500 ease-in-out aspect-video bg-cover bg-center rounded-md' style={{'backgroundImage': `url(${news.cover}`}}> </div>
+          <div className='transition-all duration-500 ease-in-out aspect-w-16 aspect-h-9 bg-cover bg-center rounded-md' style={{'backgroundImage': `url(${news.cover}`}}> </div>
           <article>
-            <p className='text-justify md:text-base text-sm pt-5'> {news.langs[`${l}`].text}</p>
+            <p className='text-justify text-sm pt-5'> {news.langs[`${l}`].text}</p>
           </article>
         </div>
         <div className='md:hidden w-full h-px bg-gray-800 my-5'>
@@ -82,7 +82,7 @@ const News = ({ news, moreNews }) => {
           </div>
           {moreNews.map((moreNews, index) => (
             <div key={index} className='md:w-2/3 mt-5'>
-              <div className='transition-all duration-500 ease-in-out aspect-video bg-cover bg-center rounded-md' style={{'backgroundImage': `url(${moreNews.cover}`}} 
+              <div className='transition-all duration-500 ease-in-out aspect-w-16 aspect-h-9 bg-cover bg-center rounded-md' style={{'backgroundImage': `url(${moreNews.cover}`}} 
               onClick={() => { router.push(`/news/${moreNews.path}`)}} > 
                 <div className='w-full h-full flex rounded-md justify-end items-start flex-col p-2 bg-gradient-to-b from-transparent to-black/90 backdrop-brightness-150'>
                   <div className='text-white/80 text-xs italic flex flex-col my-2 '>
