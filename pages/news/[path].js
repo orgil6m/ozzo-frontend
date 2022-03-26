@@ -38,6 +38,7 @@ const News = ({ news, moreNews }) => {
       <Head>
         <title>{news.langs[`${l}`].title}  | {t.ozzo}</title>
       </Head>
+
       <div className='lg:px-32 md:px-20 lg:pt-10 pt-5 px-5 cursor-default'>
          <div className="lg:mb-10 mb-5 flex ">
             <p className="transition-all duration-300 ease-in-out text-sm text-black/50 pr-2 hover:text-black" onClick={() => router.push("/")}> {t.home} </p>

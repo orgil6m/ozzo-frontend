@@ -34,19 +34,19 @@ const News = ({ NewsData }) => {
             <p className='w-3/6 uppercase'>{t.news}</p>
         </div>
         <div className='grid lg:grid-cols-3 gap-10 md:grid-cols-2 '>
-            {NewsData.map((FeaturedNewsData, index) => (
+            {NewsData.map((news, index) => (
             <div key={index}>
-                <div className='transition-all duration-300 ease-in-out rounded-md w-full aspect-w-16 aspect-h-9 bg-cover bg-center drop-shadow-x hover:opacity-90' style={{'backgroundImage': `url(${FeaturedNewsData.cover}`}} onClick={() => { router.push(`/news/${FeaturedNewsData.path}`)}} >    
+                <div className='transition-all duration-300 ease-in-out rounded-md w-full aspect-w-16 aspect-h-9 bg-cover bg-center drop-shadow-x hover:opacity-90' style={{'backgroundImage': `url(${news.cover}`}} onClick={() => { router.push(`/news/${news.path}`)}} >    
                 </div>
                 <div className='flex w-full h-8 items-center my-3'>
-                    <h2 className='text-gray-800 font-bold uppercase text-lg '>{FeaturedNewsData.langs[l].title}</h2>
+                    <h2 className='text-gray-800 font-bold uppercase text-lg '>{news.langs[l].title}</h2>
                 </div>
-                <p className='text-gray-800/80 text-sm'>{FeaturedNewsData.langs[0].text.slice(0, 75)}... </p>
+                <p className='text-gray-800/80 text-sm'>{news.langs[0].text.slice(0, 75)}... </p>
                 <div className='pt-2 font-thin flex text-sm pb-1 items-center text-gray-800/50'>
                     <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <p className='font-light italic'>{FeaturedNewsData.date}</p>
+                    <p className='font-light italic'>{news.date}</p>
                 </div>
             </div>
           ))} 

@@ -18,8 +18,10 @@ import solongo from "../Assets/ADMINS/solongo.jpg"
 import otgonbat from "../Assets/ADMINS/otgonbat.jpg"
 import nyamdalai from "../Assets/ADMINS/nyamdalai.jpg"
 import munkhorgil from "../Assets/ADMINS/munkhorgil.jpg"
+
 import signature from "../Assets/signature.png"
-import { useState } from "react";
+import { useState , useEffect} from "react";
+import ShowTeacher from "../components/ShowTeacher";
 
 
 export async function getServerSideProps() {
@@ -35,10 +37,20 @@ const About = ({ UserData}) => {
   const t = NavbarLocale[l]
   const about = AboutLocale[l]
   const teachers  = Teacherslocale[l]
-
   const [showTeacher, setShowTeacher] = useState(false)
+  const [currentTeacher, setCurrentTeacher] = useState({})
+  const [scrollStop, setScrollStop] = useState(false)
 
 
+  useEffect(() => {
+    if (scrollStop) {
+      document.body.style.overflow = "hidden";
+    } else{
+    document.body.style.overflow = 'unset';
+    }
+  });
+  
+  
   return (
   <div className="pt-20 cursor-default ">
     <Head>
@@ -103,7 +115,7 @@ const About = ({ UserData}) => {
             </div>
           </div>
       </div>
-      <div className="mt-20 border-l-4 p-5 border-indigo-400 uppercase">
+      <div className="mt-20 border-l-4 p-5 border-indigo-400 uppercase md:text-sm text-xs">
         {about.text4}
       </div>
       <div className="w-full flex justify-end z-10">
@@ -111,9 +123,9 @@ const About = ({ UserData}) => {
         </div>
       </div>
       <div className="w-full flex flex-col pt-20 text-gray-200  select-none ">
-        <div className=' lg:w-full font-semibold  flex items-center text-gray-800 mb-10'> 
-          <div className='  md:h-10 h-8 w-1 bg-teal-500 mdmr-5 mr-5'></div>
-          <p className=' mr-5 uppercase lg:text-2xl text-base'>{teachers.title}</p>
+        <div className='lg:w-full font-semibold  flex items-center text-gray-800 mb-10'> 
+          <div className='md:h-10 h-8 w-1 bg-teal-500 mr-5'></div>
+          <p className='mr-5 uppercase lg:text-2xl text-base'>{teachers.title}</p>
         </div>
         <p className="text-gray-800 mb-10 text-justify">{teachers.text}</p>
         <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-5 ">
@@ -123,14 +135,13 @@ const About = ({ UserData}) => {
                   style={{'backgroundImage': `url(${user.profilephoto}`}}>
                   </div>
                   <div className="w-full flex flex-col items-center p-5 text-gray-600">
-                    <div className="flex font-bold">
-                      <p className="mr-1">{user.firstname[l]}</p>
-                      <p>{user.lastname[l]}</p>
+                    <div className="flex font-bold text-center">
+                      <p className="mr-1">{user.firstname[l]} {user.lastname[l]}</p>
                     </div>
-                    <div className="px-3 flex justify-center flex-col items-center text-gray-500 font-thin lg:text-xs rounded-lg">
+                    <div className="px-3 flex justify-center flex-col items-center text-gray-500 font-thin lg:text-xs rounded-lg text-center">
                       <p>{user.title[l]}</p>
                       <p className="transition-all duration-300 ease-in-out font-bold text-gray-500 pt-1 hover:text-gray-400"  
-                        onClick={() => setShowTeacher(true) }>
+                        onClick={() => {setShowTeacher(true); setCurrentTeacher(user); setScrollStop(true)  }}>
                         {about.readmore}
                       </p>
                     </div>
@@ -138,22 +149,8 @@ const About = ({ UserData}) => {
                 </div>
               ))}
         </div>
-       {showTeacher ? (
-        <>
-          <div className="flex justify-center items-center  fixed inset-0 z-50 outline-none focus:outline-none ">
-            <div className="bg-white rounded-lg flex flex-col aspect-square ">
-              <div className="text-black w-full flex justify-end items-center">
-                <div className="transition-all duration-200 ease-in-out hover:bg-gray-100 p-1 rounded-full m-5" onClick={() => setShowTeacher(false)}>
-                  <svg className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="opacity-50 fixed inset-0 z-40 bg-black"></div>
-        </>
-      ) : null}
+        {showTeacher ? <ShowTeacher profile={currentTeacher} setShowTeacher={setShowTeacher} setScrollStop={setScrollStop} /> : <></>}
+        
       </div>
       <TimeLine />
       <FeaturedPartners />

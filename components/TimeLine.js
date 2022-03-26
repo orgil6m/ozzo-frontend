@@ -10,8 +10,7 @@ const TimeLine = () => {
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     const slideRef = useRef();
     const TimeLine = TimeLineLocale[l]
-    const even = TimeLine.years.filter(v => v.year % 2 == 0)
-    const odd = TimeLine.years.filter(v => v.year % 2 == 1)
+
     const SlideProperties = { 
       duration: 5000,
       transitionDuration: 1000,
@@ -38,13 +37,15 @@ const TimeLine = () => {
         },
     ]
     }
+
     const goto = ({ target }) => {
       slideRef.current.goTo(parseInt(target.value, 10));
     }
+    
   return (
   <div className="w-full flex flex-col pt-10 text-gray-200 cursor-default select-none py-20 ">
-      <div className='lg:w-full font-semibold  flex items-center text-gray-800'> 
-      <div className='md:h-10 h-8 w-1 bg-cyan-500 mdmr-5 mr-5'></div>
+      <div className='lg:w-full font-semibold  flex items-center text-gray-800 mb-10'> 
+        <div className='md:h-10 h-8 w-1 bg-cyan-500 mr-5'></div>
         <p className=' mr-5 uppercase lg:text-2xl text-base'>{TimeLine.title}</p>
         <select onChange={goto} className="transition-all duration-300 ease-in-out text-lg font-light bg-transparent focus:outline-none opacity-50 hover:opacity-100 ">
             <option value="0">2022</option>
@@ -61,17 +62,19 @@ const TimeLine = () => {
             <option value="11">2011</option>
             <option value="12">2010</option>
         </select>
-        </div>
+      </div>
+       
       <Slide ref={slideRef} {...SlideProperties} easing="ease">
         {TimeLine.years.map((data, index)=>(
           <div key={index}>
-            <div className="p-10 bg-white h-full text-gray-800 font-bold text-xl m-2 ">
+             <div className="h-5 w-5 rounded-full bg-cyan-500 mx-12 scale-50"></div>
+             <div className="w-full h-1 bg-cyan-500 my-10 -mt-3 scale-y-50"></div>
+            <div className="px-10 pb-5 h-full text-gray-800 font-bold text-xl m-2 ">
               <div className="mb-3 flex items-center ">
                 {data.year} 
               </div>
-              <p className="font-light text-sm">
+              <div className="font-light text-sm">
                 {data.text.map((text, index) =>(
-                  <>
                   <div key={index} className="flex items-start my-1" >
                       <div className="mr-2 mt-1 opacity-90 ">
                         <svg className="h-3 w-3 text-cyan-500" viewBox="0 0 20 20" fill="currentColor">
@@ -82,9 +85,8 @@ const TimeLine = () => {
                         {text} 
                       </div>
                     </div>
-                  </>
                 ))}
-              </p>
+              </div>
             </div>
           </div>
         ))}

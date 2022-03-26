@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
+
 import { PartnersLocale } from "../locales/Partners";
 import { NavbarLocale } from '../locales/Navbar';
 
