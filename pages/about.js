@@ -8,7 +8,7 @@ import { NavbarLocale } from '../locales/Navbar';
 import { AboutLocale } from "../locales/About";
 import { Teacherslocale } from '../locales/Teachers';
 
-import TimeLine from "../components/TimeLine";
+import TimeLine from "../components/About/TimeLine";
 import FeaturedPartners from "../components/FeaturedPartners"
 import FeaturedContact from "../components/FeaturedContact"
 import {getUsers} from "../Datas/Teachers";
@@ -21,7 +21,7 @@ import munkhorgil from "../Assets/ADMINS/munkhorgil.jpg"
 
 import signature from "../Assets/signature.png"
 import { useState , useEffect} from "react";
-import ShowTeacher from "../components/ShowTeacher";
+import ShowTeacher from "../components/About/ShowTeacher";
 
 
 export async function getServerSideProps() {
@@ -40,7 +40,6 @@ const About = ({ UserData}) => {
   const [showTeacher, setShowTeacher] = useState(false)
   const [currentTeacher, setCurrentTeacher] = useState({})
   const [scrollStop, setScrollStop] = useState(false)
-
 
   useEffect(() => {
     if (scrollStop) {
@@ -138,10 +137,10 @@ const About = ({ UserData}) => {
                     <div className="flex font-bold text-center">
                       <p className="mr-1">{user.firstname[l]} {user.lastname[l]}</p>
                     </div>
-                    <div className="px-3 flex justify-center flex-col items-center text-gray-500 font-thin lg:text-xs rounded-lg text-center">
+                    <div className="px-3 flex justify-center flex-col items-center text-gray-500 font-thin md:text-xs rounded-lg text-center">
                       <p>{user.title[l]}</p>
                       <p className="transition-all duration-300 ease-in-out font-bold text-gray-500 pt-1 hover:text-gray-400"  
-                        onClick={() => {setShowTeacher(true); setCurrentTeacher(user); setScrollStop(true)  }}>
+                        onClick={() => {setShowTeacher(true); setCurrentTeacher(user); setScrollStop(true)}}>
                         {about.readmore}
                       </p>
                     </div>

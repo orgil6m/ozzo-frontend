@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import CountUp from 'react-countup';
 
 
-import { StatsLocale } from "../locales/Stats";
+import { StatsLocale } from "../../locales/Stats";
 
 function FeaturedStats() {
     const router = useRouter()

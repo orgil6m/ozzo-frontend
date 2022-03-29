@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router';
-import { ActivitesLocale } from "../locales/Activites";
-import {NavbarLocale} from "../locales/Navbar"
+import { ActivitesLocale } from "../../locales/Activites";
+import {NavbarLocale} from "../../locales/Navbar"
  
 function FeaturedServices() {
     const router = useRouter();
@@ -15,7 +15,7 @@ function FeaturedServices() {
                 <div className='w-full p-1 flex justify-center items-center'>
                   {Activities.icon}
                 </div>
-                <div className='w-full  p-5 h-full flex justify-center text-center items-center text-white font-black uppercase'>
+                <div className='w-full  p-5 h-full flex justify-center text-center items-center text-white font-semibold uppercase'>
                     {Activities.title}
                 </div>
                 <div className='absolute -bottom-16 -right-16 opacity-10'>

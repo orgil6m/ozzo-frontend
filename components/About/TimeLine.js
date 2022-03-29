@@ -2,8 +2,7 @@ import React, { useRef } from "react";
 import { useRouter } from 'next/router';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
-import { TimeLineLocale } from '../locales/TimeLine';
-import logo from "../Assets/logo_ozzo_3.svg"
+import { TimeLineLocale } from '../../locales/TimeLine';
 
 const TimeLine = () => {
     const router = useRouter();

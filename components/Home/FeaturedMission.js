@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router';
 
-import { MissionLocale } from "../locales/Mission";
+import { MissionLocale } from "../../locales/Mission";
 
 function FeaturedMission() {
     const router = useRouter()

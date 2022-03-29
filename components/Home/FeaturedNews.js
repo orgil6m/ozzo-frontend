@@ -1,11 +1,11 @@
 import React from 'react'
 import { useRouter } from 'next/router';
 
-import { FeaturedNewsLocale } from '../locales/FeaturedNews';
+import { FeaturedNewsLocale } from '../../locales/FeaturedNews';
 
-import Cover1 from '../Assets/Cover1.jpg'
-import Cover2 from '../Assets/Cover2.jpg'
-import Cover3 from '../Assets/Cover3.jpg'
+import Cover1 from '../../Assets/Cover1.jpg'
+import Cover2 from '../../Assets/Cover2.jpg'
+import Cover3 from '../../Assets/Cover3.jpg'
 
 function FeaturedNews() {
     const router = useRouter()

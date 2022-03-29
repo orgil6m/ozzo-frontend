@@ -17,7 +17,6 @@ const News = ({ NewsData }) => {
     const router = useRouter(); 
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     const t = NavbarLocale[`${l}`]
-    console.log(t)
     return (
     <div className="pt-20">
         <Head>

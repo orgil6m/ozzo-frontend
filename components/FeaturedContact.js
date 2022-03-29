@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from 'next/router';
 import { NavbarLocale } from '../locales/Navbar';
-import { ContactLocale, PhoneNumbers, Addresses, Socials } from "../locales/Contact";
+import { ContactLocale, Numbers, Addresses, Socials } from "../locales/Contact";
 
 const FeaturedContact = () => {
   const router = useRouter();
@@ -78,14 +78,14 @@ const FeaturedContact = () => {
                     </div>
                 </div>
                 <div className=" flex flex-col justify-center">
-                    {PhoneNumbers.map((numbers, index) => (
+                    {Numbers.map((numbers, index) => (
                         <div key={index}>
-                            <a href={`tel: ${numbers.number}`}>
+                            <a href={`tel: ${numbers}`}>
                                 <div className=" flex items-center hover:underline" >
                                     <svg className="h-3 w-3 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                     </svg>
-                                    <p className="font-thin text-sm">{numbers.number}</p>
+                                    <p className="font-thin text-sm">{numbers}</p>
                                 </div>
                             </a>
                         </div>

@@ -1,11 +1,11 @@
 import React from "react";
 import { useRouter } from 'next/router';
 import Image from "next/image";
-import logo1 from "../Assets/logo_muzg_4.png"
-import logo2 from "../Assets/logo_muzg_3.png"
+import logo1 from "../../Assets/logo_muzg_4.png"
+import logo2 from "../../Assets/logo_muzg_3.png"
 
-import { NavbarLocale } from '../locales/Navbar';
-import { ActivitesLocale } from "../locales/Activites";
+import { NavbarLocale } from '../../locales/Navbar';
+import { ActivitesLocale } from "../../locales/Activites";
 
 const FeaturedActivities = () => {
   const router = useRouter();

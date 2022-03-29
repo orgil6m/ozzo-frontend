@@ -35,16 +35,16 @@ const SlideImagesText = [
     store : 'Music Store ',
     maintenance : 'Music Maintenance',
     text0: {
-      slide1: "OZZO",
-      slide2: "MUSIC",
+      slide1: "",
+      slide2: "",
       slide3: "INSTRUMENT",
     },
     text1: {
-      slide1:"MUSIC STORE",
-      slide2: "ACADEMY",
+      slide1:" MUSIC STORE",
+      slide2: "MUSIC ACADEMY",
       slide3: "MAINTENANCE",
     },
-  text2 :{
+    text2 :{
       slide1:"Enya Guitars Mongolia | NUX Mongolia",
       slide2: "Not everyone should be a musician",
       slide3: "Have you done the necessary ",
@@ -56,7 +56,7 @@ const SlideImagesText = [
     },
     text4:{ 
       slide1: "",
-      slide2: "Daavka Berd",
+      slide2: "Davaatseren Purevdagva",
       slide3: "",
     },
     text5: "Learn More"
@@ -78,17 +78,17 @@ const SlideImagesText = [
     },
     text2 :{
       slide1:"Enya Guitars Mongolia | NUX Mongolia",
-      slide2: "Хүн бүр хөгжимчин болох ёсгүй ч",
-      slide3: "Та хайртай хөгжимдөө шаардлагатай",
+      slide2: "不是每个人都应该成为音乐家",
+      slide3: "您是否对仪器进行了必要的维护？",
     },
     text3:{
       slide1: "",
-      slide2: "Хүн бүрт хөгжмийн боловсрол хэрэгтэй",
-      slide3: "засвар үйлчилгээг нь хийлгэсэн үү?"
+      slide2: "但每个人都需要音乐教育",
+      slide3: ""
     },
     text4:{ 
       slide1: "",
-      slide2: "П.Даваацэрэн",
+      slide2: "Davaatseren Purevdagva",
       slide3: "",
     },
     text5: "了解更多"

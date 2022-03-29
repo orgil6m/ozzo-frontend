@@ -3,11 +3,11 @@ import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import { useRouter } from 'next/router'
 
-import { SlideImagesText } from '../locales/SlideImagesText';
+import { SlideImagesText } from '../../locales/SlideImagesText';
 
-import image1 from '../Assets/Slide1.jpg'
-import image2 from '../Assets/Slide2.jpg'
-import image3 from '../Assets/Slide3.jpg'
+import image1 from '../../Assets/Slide1.jpg'
+import image2 from '../../Assets/Slide2.jpg'
+import image3 from '../../Assets/Slide3.jpg'
 
 const ImageSlider = () => {
     const router = useRouter();
@@ -33,7 +33,7 @@ const ImageSlider = () => {
         bgImage:`${image2.src}`,
         url:"../services/academy",
         class1: "bg-gradient-to-l from-transparent lg:to-black/20 to-black/90 items-end" ,
-        class2:" text-right",
+        class2: "text-right",
         class3: "border-white text-white hover:bg-white/10",
         class4: "text-gray-400 text-right",
         class5: 'font-medium',
@@ -75,7 +75,7 @@ const ImageSlider = () => {
                 <div className='w-full h-full bg-cover bg-center'  style={{'backgroundImage': `url(${slideImage.bgImage}`}}>
                     <div className={`w-screen h-full flex justify-center flex-col md:p-20 p-10 ${slideImage.class1}`} >
                         <div className={`font-medium text-white md:text-6xl mt-20 text-4xl ${slideImage.class2}`}>
-                            <p  className='break-inside-auto'>
+                            <p className='break-inside-auto'>
                             {slideImage.text0}
                             </p>
                             <p>

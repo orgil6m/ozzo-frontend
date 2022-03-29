@@ -2,13 +2,13 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import Head from "next/head";
 
-import ImageSlider from '../components/ImageSlider';
-import FeaturedNews from '../components/FeaturedNews';
-import FeaturedActivities from '../components/FeaturedActivities';
-import FeaturedServices from '../components/FeaturedServices';
-import FeaturedMission from '../components/FeaturedMission';
+import ImageSlider from '../components/Home/ImageSlider';
+import FeaturedNews from '../components/Home/FeaturedNews';
+import FeaturedActivities from '../components/Home/FeaturedActivities';
+import FeaturedServices from '../components/Home/FeaturedServices';
+import FeaturedMission from '../components/Home/FeaturedMission';
 import FeaturedPartners from '../components/FeaturedPartners';
-import FeaturedStats from '../components/FeaturedStats';
+import FeaturedStats from '../components/Home/FeaturedStats';
 import ContactLocale from '../components/FeaturedContact';
 
 import { NavbarLocale } from '../locales/Navbar';
