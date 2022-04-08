@@ -20,19 +20,27 @@ export async function getStaticProps({ params }) {
   const news = await getNews();
   const current_news = news.find((p) => p.path === path)
   const moreNewsData = news.filter((p) => p.path !== path )
+  const base = process.env.BASE_URL
   moreNewsData.reverse();
   const moreNews = moreNewsData.slice(0, 2)
   return {
-    props: { news: current_news, moreNews }
+    props: { news: current_news, moreNews,base }
   };
 }
-const News = ({ news, moreNews }) => {
+
+
+const News = ({ news, moreNews,base }) => {
   const router = useRouter()
   const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
   const t = NavbarLocale[`${l}`]
+ const path=process.env.BASE_URL;
   if(!news || news === undefined){
     return <></>
-  }
+}
+
+
+
+
   return(
     <div className='pt-20 cursor-default'>
       <Head>
@@ -69,7 +77,8 @@ const News = ({ news, moreNews }) => {
 
       <div className='w-full lg:px-32 md:px-20 md:grid md:grid-cols-3 gap-10 pb-5 px-5'>
         <div className='col-span-2'>
-          <div className='transition-all duration-500 ease-in-out aspect-w-16 aspect-h-9 bg-cover bg-center rounded-md' style={{'backgroundImage': `url(${news.cover}`}}> </div>
+          <div className='transition-all duration-500 ease-in-out aspect-w-16 aspect-h-9 bg-cover bg-center rounded-md' 
+          style={{'backgroundImage': `url(${base+news.cover}`}}> </div>
           <article>
             <p className='text-justify text-sm pt-5'> {news.langs[`${l}`].text}</p>
           </article>
@@ -83,7 +92,7 @@ const News = ({ news, moreNews }) => {
           </div>
           {moreNews.map((moreNews, index) => (
             <div key={index} className='md:w-2/3 mt-5'>
-              <div className='transition-all duration-500 ease-in-out aspect-w-16 aspect-h-9 bg-cover bg-center rounded-md' style={{'backgroundImage': `url(${moreNews.cover}`}} 
+              <div className='transition-all duration-500 ease-in-out aspect-w-16 aspect-h-9 bg-cover bg-center rounded-md' style={{'backgroundImage': `url(${base+moreNews.cover}`}} 
               onClick={() => { router.push(`/news/${moreNews.path}`)}} > 
                 <div className='w-full h-full flex rounded-md justify-end items-start flex-col p-2 bg-gradient-to-b from-transparent to-black/90 backdrop-brightness-150'>
                   <div className='text-white/80 text-xs italic flex flex-col my-2 '>

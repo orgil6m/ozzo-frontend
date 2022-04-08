@@ -26,12 +26,13 @@ import ShowTeacher from "../components/About/ShowTeacher";
 
 export async function getServerSideProps() {
   const UserData = await getUsers();
+  const base = process.env.BASE_URL
   return {
-    props: {UserData},
+    props: {UserData, base},
   }
 }
 
-const About = ({ UserData}) => {
+const About = ({ UserData, base}) => {
   const router = useRouter();
   const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
   const t = NavbarLocale[l]
@@ -48,7 +49,6 @@ const About = ({ UserData}) => {
     document.body.style.overflow = 'unset';
     }
   });
-  
   
   return (
   <div className="pt-20 cursor-default ">
@@ -131,7 +131,7 @@ const About = ({ UserData}) => {
               {UserData.map((user, index) => (
                 <div key={index}>
                   <div className="transition-all duration-500 ease-in-out rounded-lg hover:-translate-y-2 w-full aspect-1 bg-cover bg-sky-200 bg-center"
-                  style={{'backgroundImage': `url(${user.profilephoto}`}}>
+                  style={{'backgroundImage': `url(${base+user.profilephoto}`}}>
                   </div>
                   <div className="w-full flex flex-col items-center p-5 text-gray-600">
                     <div className="flex font-bold text-center">
@@ -140,7 +140,7 @@ const About = ({ UserData}) => {
                     <div className="px-3 flex justify-center flex-col items-center text-gray-500 font-thin md:text-xs rounded-lg text-center">
                       <p>{user.title[l]}</p>
                       <p className="transition-all duration-300 ease-in-out font-bold text-gray-500 pt-1 hover:text-gray-400"  
-                        onClick={() => {setShowTeacher(true); setCurrentTeacher(user); setScrollStop(true)}}>
+                        onClick={() => {setShowTeacher(true); setCurrentTeacher(user); setScrollStop(true);}}>
                         {about.readmore}
                       </p>
                     </div>
@@ -148,7 +148,7 @@ const About = ({ UserData}) => {
                 </div>
               ))}
         </div>
-        {showTeacher ? <ShowTeacher profile={currentTeacher} setShowTeacher={setShowTeacher} setScrollStop={setScrollStop} /> : <></>}
+        {showTeacher ? <ShowTeacher profile={currentTeacher} setShowTeacher={setShowTeacher} setScrollStop={setScrollStop} base={base} /> : <></>}
         
       </div>
       <TimeLine />

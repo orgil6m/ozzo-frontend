@@ -21,11 +21,11 @@ const Pricing = () => {
     <div className='w-full py-5 cursor-default my-10'>
       <div className=' lg:w-full font-semibold md:text-xl text-lg flex items-center text-gray-800 mb-5 '> 
         <div className=' md:h-10 h-8 w-1 bg-sky-500 mr-5'></div>
-        <p className='w-4/6 uppercase'>{pricingInfo.title}</p>
+        <p className='w-full uppercase'>{pricingInfo.title}</p>
       </div>
       <div className='md:flex justify-center py-10'>
       {pricingTab.map((price, index) => (
-        <div key={index} onClick={() => {setTab(index)}} className="group">
+        <div key={index} onClick={() => {setTab(index)}} className="group  mb-3">
           <div className='px-5 flex items-center'>
           <div className={`transition-all duration-100 ease-in-out w-4 h-4 group border-2 mr-2 flex items-center justify-center rounded-full group-hover:border-sky-500 ${tab===index ? 'border-sky-500 ' : 'border-gray-300' }`}>
             <div className={`h-2 w-2 group-hover:bg-sky-500 rounded-full ${tab===index ? 'bg-sky-500 ' : '' } `}>

@@ -4,8 +4,9 @@ import { useRouter } from 'next/router';
 const ShowTeacher = ({partner,  setShowPartner, setScrollStop})=>{
     const router = useRouter();
     return   (
-          <div className="transition-all duration-300 ease-in-out flex justify-center items-center fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur-sm backdrop-brightness-50 cursor-default" >
-            <div className="bg-white rounded-lg flex flex-col lg:w-1/2 relative max-h-full w-2/3 overflow-y-scroll ">
+          <div className="transition-all duration-300 ease-in-out flex justify-center items-center fixed inset-0 z-50 outline-none focus:outline-none cursor-default" >
+            <div className='w-screen h-screen fixed bg-black/60 backdrop-blur-sm inset-0' onClick={() => {setShowPartner(false); setScrollStop(false)}}></div>
+            <div className="bg-white rounded-lg flex flex-col lg:w-1/2 relative max-h-[90%] w-11/12 overflow-y-scroll ">
               <div className=" text-black absolute right-0 top-0 transition-all duration-200 ease-in-out hover:bg-gray-100/50 p-2 rounded-full m-5" 
               onClick={() => {setShowPartner(false); setScrollStop(false)}}>
                 <svg className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -15,7 +16,6 @@ const ShowTeacher = ({partner,  setShowPartner, setScrollStop})=>{
               <div className='my-10 flex flex-col items-center w-full justify-center'>
                 <div className='lg:w-1/3 w-1/2'>
                   <img src={partner.logo}/>
-                   
                 </div>
                 <div className='w-full lg:px-20 p-10  text-justify'>
                   <p className='font-semibold text-lg uppercase'>{partner.title}</p>
@@ -25,7 +25,7 @@ const ShowTeacher = ({partner,  setShowPartner, setScrollStop})=>{
               <div className='flex'>
                  {partner.fb ? 
                       <div className='mx-1 hover:opacity-90'>
-                                <a href={partner.fb} target="_blank">
+                                <a href={partner.fb} >
                                   <div className=" flex items-center hover:underline my-1">
                                     <div className="bg-gradient-to-r from-sky-500 to-sky-600 rounded-md w-6 h-6 flex items-center justify-center">
                                       <svg  x="0px" y="0px" width="16" height="16" viewBox="0 0 24 24" fill="#fff">  
@@ -38,7 +38,7 @@ const ShowTeacher = ({partner,  setShowPartner, setScrollStop})=>{
                       : <div></div>}  
                   {partner.ig ? 
                       <div className='mx-1 hover:opacity-90'>
-                        <a href={partner.ig} target="_blank">
+                        <a href={partner.ig} >
                           <div className=" flex items-center hover:underline my-1">
                             <div className="bg-gradient-to-r from-fuchsia-400 to-fuchsia-500 rounded-md w-6 h-6 flex items-center justify-center">
                               <svg x="0px" y="0px" width="16" height="16" viewBox="0 0 30 30" fill="white">   
@@ -51,7 +51,7 @@ const ShowTeacher = ({partner,  setShowPartner, setScrollStop})=>{
                       : <div></div>}
                    {partner.web ? 
                       <div className='mx-1 hover:opacity-90'>
-                                  <a href={partner.web} target="_blank">
+                                  <a href={partner.web} >
                                     <div className=" flex items-center hover:underline my-1">
                                         <div className="bg-gradient-to-r from-indigo-400 to-indigo-500 rounded-lg w-6 h-6 flex items-center justify-center">
                                           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={2}>

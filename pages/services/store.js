@@ -8,14 +8,14 @@ import { NavbarLocale } from '../../locales/Navbar';
 function Store() {
   const router = useRouter();
   const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
-  const t = NavbarLocale[`${l}`]
+  const t = NavbarLocale[l]
   return (
     <div className='pt-20'>
       <Head>
-        <title>{t.store} | {t.ozzo}</title>
+        <title>{t.service[1].title} </title>
       </Head>
       <h3 className={styles.title}>
-       {t.store}
+        {t.service[1].title}
       </h3>
     </div>
   )

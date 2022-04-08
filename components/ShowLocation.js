@@ -1,8 +1,7 @@
-
+import react from 'react';
 import { useRouter } from 'next/router';
 
 const showLocation = ({setScrollStop})=>{
-    const router = useRouter();
     return (
         <div className="transition-all duration-300 ease-in-out flex justify-center items-center fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur-sm backdrop-brightness-50 cursor-default" >
             <div className="bg-white rounded-lg flex flex-col lg:w-1/2 relative max-h-full w-2/3 overflow-y-scroll ">

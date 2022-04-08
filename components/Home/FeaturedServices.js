@@ -11,19 +11,20 @@ function FeaturedServices() {
       <div className=" grid lg:grid-cols-6 md:grid-cols-3 grid-cols-2 gap-5 lg:my-10 my-5 cursor-default">
         {ActivitesLocale[`${l}`].services.map((Activities, index) =>(
           <div key={index}>
-            <div className={`transition-all duration-300 ease-in-out w-full h-full bg-gradient-to-r flex flex-col items-center justify-start rounded-lg py-5 hover:opacity-90 relative overflow-hidden ${Activities.class}` }   onClick={() => { router.push(`/services/${Activities.url}`)}}>
-                <div className='w-full p-1 flex justify-center items-center'>
+            <div className={`transition-all duration-300 ease-in-out w-full h-full bg-gradient-to-r flex flex-col items-center justify-start rounded-lg py-5 hover:opacity-90 relative overflow-hidden text-gray-800 border border-gray-200` }   onClick={() => { router.push(`/services/${Activities.url}`)}}>
+                <div className='w-full p-1 flex justify-center items-center text-red-500'>
                   {Activities.icon}
                 </div>
-                <div className='w-full  p-5 h-full flex justify-center text-center items-center text-white font-semibold uppercase'>
+                <div className='w-full  p-5 h-full flex justify-center text-center items-center  font-semibold uppercase'>
                     {Activities.title}
                 </div>
-                <div className='absolute -bottom-16 -right-16 opacity-10'>
+                <div className='absolute -bottom-16 -right-16 opacity-[4%] '>
                     {Activities.icon1}
                 </div>
-              <div className='transition-all duration-300 ease-in-out p-1 text-justify flex items-center text-sm text-white'>
+              <div className='transition-all duration-300 ease-in-out p-1 text-justify flex items-center text-xs text-gray-500'>
                 {NavbarLocale[l].learnmore}
               </div>
+           
             </div>
           </div>
         ))}

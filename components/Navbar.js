@@ -8,16 +8,17 @@ import OzzoLogo from '../Assets/LOGO_ozzo.png'
 
 import { useState } from 'react'
 
-import { mn, cn , en } from '../locales/Navbar';
+import {NavbarLocale } from '../locales/Navbar';
 
 
 const Navbar = () => {
   const router = useRouter()
-  const t = router.locale === 'en' ? en : router.locale === 'cn' ?  cn : mn 
+  const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
+  const t = NavbarLocale[l]
   const [active, setActive] = useState(false);
   return (
     <>
-      <nav className='items-center flex-wrap p-3 w-full bg-white  lg:flex hidden fixed top-0 shadow-sm z-30' >
+      <nav className='items-center flex-wrap p-3 w-full bg-white text-sm lg:flex hidden fixed top-0 shadow-sm z-30' >
         <Link href='/'>
           <a className='inline-flex items-center p-2 mr-4 '>
             <div className="h-10 w-24 relative ml-2"> 

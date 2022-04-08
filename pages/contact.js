@@ -3,14 +3,14 @@ import Head from "next/head";
 import { useRouter } from 'next/router';
 import MapGoogle from "../components/Contact/Map"
 import { NavbarLocale } from '../locales/Navbar';
-import { ContactLocale, PhoneNumbers, Addresses, Emails, placeholder, SocialLinks, Youtube } from "../locales/Contact";
+import Branches from "../components/Academy/Branches";
+import { ContactLocale, PhoneNumbers, Emails, placeholder, SocialLinks, Youtube } from "../locales/Contact";
 
 const Contact = () => {
   const router = useRouter();
   const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
   const t = NavbarLocale[l]
   const contact = ContactLocale[l]
-  const address = Addresses[l]
 
   return (
     <div className="pt-20 cursor-default">
@@ -24,27 +24,9 @@ const Contact = () => {
           <p className="text-sm text-black/50 pr-2 "> / </p>
           <p className="transition-all duration-300 ease-in-out text-sm  hover:text-black"> {t.contact} </p>
         </div>
-        <div className="grid lg:grid-cols-2 lg:gap-20">
+        <Branches />
+        <div className="grid lg:grid-cols-2 lg:gap-20 mt-5">
           <div>
-              <div className="my-10">
-                <div className='lg:w-full font-semibold flex items-center text-gray-800'> 
-                  <div className='md:h-10 h-8 w-1 bg-sky-400 mr-5'></div>
-                  <p className='mr-5 uppercase lg:text-xl text-base'>{contact.locations}</p>
-                </div>
-              </div>
-              {address.address.map((location, index) => (
-                  <div key={index}>
-                    <div className="flex items-start text-gray-700">
-                      <div className="my-1 bg-sky-400 p-1 rounded-md">
-                        <svg  className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                      </div>
-                      <p className="font-light my-1 mx-2 hover:underline"> {location} </p>
-                    </div>
-                  </div> 
-              ))} 
               <div className="my-10">
                   <div className='lg:w-full font-semibold flex items-center text-gray-800 '> 
                     <div className='md:h-10 h-8 w-1 bg-emerald-500 mr-5'></div>
@@ -74,7 +56,7 @@ const Contact = () => {
               </div>
               {SocialLinks[l].facebook.map((fb, index) => (
                     <div key={index}>
-                    <a href={`${fb.url}`}  target="_blank" >
+                    <a href={`${fb.url}`}   >
                       <div className="flex items-start text-gray-700">
                         <div className="my-1 p-1 bg-sky-500 rounded-md">
                           <svg  x="0px" y="0px" width="16" height="16" viewBox="0 0 24 24" fill="#fff">  
@@ -89,7 +71,7 @@ const Contact = () => {
                <div className="w-full my-5 border-b border-gray-100"></div>
               {SocialLinks[l].instagram.map((ig, index) => (
                     <div key={index}>
-                    <a href={`${ig.url}`}  target="_blank" >
+                    <a href={`${ig.url}`}   >
                       <div className="flex items-start text-gray-700">
                         <div className="my-1 p-1 bg-pink-500 rounded-md">
                            <svg x="0px" y="0px" width="16" height="16" viewBox="0 0 30 30" fill="white">   
@@ -104,7 +86,7 @@ const Contact = () => {
                <div className="my-5 border-b border-gray-100"></div>
               {Youtube.map((yt, index) => (
                 <div key={index}>
-                   <a href={`${yt.url}`}  target="_blank" >
+                   <a href={`${yt.url}`}   >
                       <div className="flex items-start text-gray-700">
                         <div className="my-1 p-1 bg-red-600 rounded-md">
                            <svg  x="0px" y="0px" width="16" height="16" viewBox="0 0 64 64" fill="white">

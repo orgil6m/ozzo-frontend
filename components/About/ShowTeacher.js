@@ -1,12 +1,25 @@
-
 import { useRouter } from 'next/router';
+import { motion } from "framer-motion";
 
-const ShowTeacher = ({profile,  setShowTeacher, setScrollStop})=>{
+const ShowTeacher = ({profile,  setShowTeacher, setScrollStop, base})=>{
     const router = useRouter();
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     return   (
-          <div className="transition-all duration-300 ease-in-out flex justify-center items-center fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur-sm backdrop-brightness-50" >
-            <div className="bg-white rounded-lg flex flex-col lg:w-2/3 relative max-h-full w-full  overflow-y-scroll ">
+          <div className="transition-all duration-300 ease-in-out flex justify-center items-center fixed inset-0 z-50 outline-none focus:outline-none " >
+            <div className='w-screen h-screen absolute left-0 top-0 bg-black/60 backdrop-blur-sm'  onClick={() => {setShowTeacher(false); setScrollStop(false)}}>
+            </div>
+            <motion.div className="bg-white rounded-lg flex flex-col lg:w-2/3 relative max-h-[90%] w-11/12  overflow-y-scroll "
+            initial="hidden" animate="visible" variants={{
+            hidden :{
+                scale :.8,
+                opacity:0,
+            },
+            visible:{
+                scale:1,
+                opacity:1,
+               
+            },
+          }}>
               <div className=" text-black absolute right-0 top-0 transition-all duration-200 ease-in-out hover:bg-gray-100/50 p-2 rounded-full m-5" 
               onClick={() => {setShowTeacher(false); setScrollStop(false)}}>
                 <svg className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -15,13 +28,13 @@ const ShowTeacher = ({profile,  setShowTeacher, setScrollStop})=>{
               </div>
               <div className='md:flex lg:w-full '>
                 <div className='md:w-1/3 m-10'>
-                  <div className='aspect-1 bg-cover bg-center  rounded-lg' style={{'backgroundImage': `url(${profile.profilephoto}`}}> </div>
+                  <div className='aspect-1 bg-cover bg-center  rounded-lg' style={{'backgroundImage': `url(${base+profile.profilephoto}`}}> </div>
                   <div>
                    
                     <div className='my-5 flex justify-center'>
                       {profile.linkedin ? 
                       <div className='mx-1 hover:opacity-90'>
-                                <a href={profile.linkedin} target="_blank">
+                                <a href={profile.linkedin} >
                                   <div className=" flex items-center hover:underline my-1">
                                       <div className="bg-gradient-to-r from-sky-600 to-sky-700 rounded-md w-6 h-6 flex items-center justify-center">
                                           <svg width="16" height="16" viewBox="0 0 32 32" fill="white" >
@@ -36,7 +49,7 @@ const ShowTeacher = ({profile,  setShowTeacher, setScrollStop})=>{
 
                       {profile.facebook ? 
                       <div className='mx-1 hover:opacity-90'>
-                                <a href={profile.facebook} target="_blank">
+                                <a href={profile.facebook} >
                                   <div className=" flex items-center hover:underline my-1">
                                     <div className="bg-gradient-to-r from-sky-500 to-sky-600 rounded-md w-6 h-6 flex items-center justify-center">
                                       <svg  x="0px" y="0px" width="16" height="16" viewBox="0 0 24 24" fill="#fff">  
@@ -50,7 +63,7 @@ const ShowTeacher = ({profile,  setShowTeacher, setScrollStop})=>{
 
                       {profile.instagram ? 
                       <div className='mx-1 hover:opacity-90'>
-                                <a href={profile.instagram} target="_blank">
+                                <a href={profile.instagram} >
                                   <div className=" flex items-center hover:underline my-1">
                                     <div className="bg-gradient-to-r from-fuchsia-400 to-fuchsia-500 rounded-md w-6 h-6 flex items-center justify-center">
                                       <svg x="0px" y="0px" width="16" height="16" viewBox="0 0 30 30" fill="white">   
@@ -64,7 +77,7 @@ const ShowTeacher = ({profile,  setShowTeacher, setScrollStop})=>{
 
                       {profile.youtube ? 
                         <div className='mx-1 hover:opacity-90'>
-                                  <a href={profile.youtube} target="_blank">
+                                  <a href={profile.youtube} >
                                     <div className=" flex items-center hover:underline my-1">
                                       <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-md w-6 h-6 flex items-center justify-center">
                                         <svg  x="0px" y="0px" width="16" height="16" viewBox="0 0 64 64" fill="white">
@@ -78,7 +91,7 @@ const ShowTeacher = ({profile,  setShowTeacher, setScrollStop})=>{
 
                       {profile.email ? 
                         <div className='mx-1 hover:opacity-90'>
-                                    <a href="mailto:${profile.mail}" target="_blank">
+                                    <a href="mailto:${profile.mail}" >
                                       <div className=" flex items-center hover:underline my-1">
                                         <div className="bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-md w-6 h-6 flex items-center justify-center">
                                           <svg className="h-4 w-4" viewBox="0 0 20 20" fill="white">
@@ -93,7 +106,7 @@ const ShowTeacher = ({profile,  setShowTeacher, setScrollStop})=>{
 
                       {profile.website ? 
                         <div className='mx-1 hover:opacity-90'>
-                                  <a href={profile.website} target="_blank">
+                                  <a href={profile.website} >
                                     <div className=" flex items-center hover:underline my-1">
                                         <div className="bg-gradient-to-r from-indigo-400 to-indigo-500 rounded-lg w-6 h-6 flex items-center justify-center">
                                           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={2}>
@@ -145,7 +158,7 @@ const ShowTeacher = ({profile,  setShowTeacher, setScrollStop})=>{
                           </div>
                        ))}
                     </div>
-                  </div> : <div className='text-gray-700 uppercase font-light text-sm'>Боловсрол оруулаагүй</div>}
+                  </div> : <div className='text-gray-700 uppercase font-light text-sm mt-5 mr-5'>Боловсрол оруулаагүй</div>}
                   {profile.experience ? 
                   <div className='w-full text-gray-700 mt-5 mb-10 mr-5'>
                     <p className='uppercase font-bold'>{profile.experience[l].title}</p>
@@ -159,11 +172,11 @@ const ShowTeacher = ({profile,  setShowTeacher, setScrollStop})=>{
                           </div>
                        ))}
                     </div>
-                  </div> : <div className='text-gray-700 uppercase font-light text-sm'>Туршлага оруулаагүй</div> }
+                  </div> : <div className='text-gray-700 uppercase font-light text-sm mt-5 mr-5'>Туршлага оруулаагүй</div> }
 
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>      
     )
 }

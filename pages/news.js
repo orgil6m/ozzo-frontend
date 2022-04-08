@@ -7,18 +7,19 @@ import { NavbarLocale} from '../locales/Navbar';
 
 export async function getServerSideProps() {
   const NewsData = await getNews();
+  const base = process.env.BASE_URL;
   NewsData.reverse();
   return {
-    props: {NewsData},
+    props: {NewsData, base},
   }
 }
 
-const News = ({ NewsData }) => {
+const News = ({ NewsData, base }) => {
     const router = useRouter(); 
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     const t = NavbarLocale[`${l}`]
     return (
-    <div className="pt-20">
+    <div className="pt-20 cursor-default">
         <Head>
           <title>{t.news} | {t.ozzo}</title>
         </Head>
@@ -35,7 +36,7 @@ const News = ({ NewsData }) => {
         <div className='grid lg:grid-cols-3 gap-10 md:grid-cols-2 '>
             {NewsData.map((news, index) => (
             <div key={index}>
-                <div className='transition-all duration-300 ease-in-out rounded-md w-full aspect-w-16 aspect-h-9 bg-cover bg-center drop-shadow-x hover:opacity-90' style={{'backgroundImage': `url(${news.cover}`}} onClick={() => { router.push(`/news/${news.path}`)}} >    
+                <div className='transition-all duration-300 ease-in-out rounded-md w-full aspect-w-16 aspect-h-9 bg-cover bg-center drop-shadow-x hover:opacity-90' style={{'backgroundImage': `url(${base+news.cover}`}} onClick={() => { router.push(`/news/${news.path}`)}} >    
                 </div>
                 <div className='flex w-full h-8 items-center my-3'>
                     <h2 className='text-gray-800 font-bold uppercase text-lg '>{news.langs[l].title}</h2>

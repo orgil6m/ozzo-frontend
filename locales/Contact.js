@@ -2,8 +2,7 @@ const ContactLocale = [
     {
         title: "Холбогдох",
         title2: "Хаяг",
-        locations : "Байршлууд",
-        numbers : "Холбогдох Дугаар",
+        numbers : "Холбогдох Дугаарууд",
         emails : "И-мейл хаягууд",
         message : "Зурвас илгээх",
         socials :  "Сошиал хаягууд"
@@ -11,8 +10,7 @@ const ContactLocale = [
     {
         title : "Contact Us",
         title2: "Address",
-        locations : "Locations",
-        numbers : "Contact Number",
+        numbers : "Contact Numbers",
         emails : "Email Addresses",
         message : "Send message",
         socials :  "Social Links"
@@ -20,7 +18,6 @@ const ContactLocale = [
     {
         title : "联系我们",
         title2: "地址",
-        locations : "地点",
         numbers : "联系电话",
         emails : "电子邮件地址",
         message : "发信息",

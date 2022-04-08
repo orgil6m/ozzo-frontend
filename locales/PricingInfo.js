@@ -1,7 +1,7 @@
 const PricingLocale =[
     {
-        title:"Сургалтын Төлбөрийн Mэдээлэл",
-        text: "Сургалтын Төлбөрийн Mэдээлэл",
+        title:"Төлбөрийн Mэдээлэл",
+        text: "Төлбөрийн Mэдээлэл",
         monthly : "Сараар",
         seasonally : "Улирлаар",
         semiannualy : "Хагас жилээр",
