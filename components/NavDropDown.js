@@ -33,7 +33,7 @@ export default function Example() {
               <div key={index}>
                   <Menu.Item>
                     {({ active }) => (
-                      <div className={`${ active ? `transition duration-300 ease-in-out ${service.color} text-black` : '' } flex rounded-md items-center w-full px-2 py-2 text-sm cursor-default`} 
+                      <div className={`${ active ? `transition duration-300 ease-in-out ${service.color} text-black` : '' } flex rounded-md items-center w-full px-2 py-2 text-sm`} 
                       onClick={() => {router.push(service.url)}}>
                       <div className={`p-1 mr-2 rounded-lg ${service.color}`}>
                         {service.icon}

@@ -25,7 +25,7 @@ const Pricing = () => {
       </div>
       <div className='md:flex justify-center py-10'>
       {pricingTab.map((price, index) => (
-        <div key={index} onClick={() => {setTab(index)}} className="group  mb-3">
+        <div key={index} onClick={() => {setTab(index)}} className="group mb-3">
           <div className='px-5 flex items-center'>
           <div className={`transition-all duration-100 ease-in-out w-4 h-4 group border-2 mr-2 flex items-center justify-center rounded-full group-hover:border-sky-500 ${tab===index ? 'border-sky-500 ' : 'border-gray-300' }`}>
             <div className={`h-2 w-2 group-hover:bg-sky-500 rounded-full ${tab===index ? 'bg-sky-500 ' : '' } `}>
@@ -43,7 +43,7 @@ const Pricing = () => {
         </div>
       <div className='lg:w-full text-gray-800 h-full grid lg:grid-cols-3 md:grid-cols-2 gap-5'> 
         {pricings.types.map((pricing, index) => (
-          <div key={index} className='relative group transition-all duration-300 ease-in-out border border-gray-100 rounded-md p-10 h-full hover:shadow-md'>
+          <div key={index} className='relative group transition-all overflow-hidden duration-300 ease-in-out border border-gray-100 rounded-md p-10 h-full hover:border-gray-300'>
             <div className='w-full flex items-center flex-col '>  
               <p className='uppercase font-semibold text-gray-500 text-sm'>{pricing.type}</p>
               <p className='font-black text-gray-600 uppercase text-2xl mb-3'>
@@ -54,7 +54,7 @@ const Pricing = () => {
               <p className='text-xs text-gray-400'>{pricing.condition}</p>
               
             </div>
-             <div className='absolute left-0 top-1/2 transition-all duration-500 ease-in-out group-hover:-translate-y-1/2 opacity-0 group-hover:opacity-100  bg-white '>
+             <div className='absolute left-0 top-1/2 transition-all duration-500 ease-in-out rounded-lg group-hover:-translate-y-1/2 opacity-0 group-hover:opacity-100  bg-white '>
               <p className='font-light px-10 py-2 pt-10 text-gray-700 text-xs text-justify'>{pricing.text1}</p>
               <p className='font-light px-10 py-2 pb-10 text-gray-700 text-xs text-justify'>{pricing.text2}</p>
             </div> 

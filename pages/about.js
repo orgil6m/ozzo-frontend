@@ -9,23 +9,33 @@ import { AboutLocale } from "../locales/About";
 import { Teacherslocale } from '../locales/Teachers';
 
 import TimeLine from "../components/About/TimeLine";
-import FeaturedPartners from "../components/FeaturedPartners"
-import FeaturedContact from "../components/FeaturedContact"
-import {getUsers} from "../Datas/Teachers";
+import Partners from "../components/Partners"
+import Contact from "../components/Contact"
+import {getTeachers} from "../Datas/Users";
 
 import davaatseren from "../Assets/ADMINS/davaatseren.jpg"
 import solongo from "../Assets/ADMINS/solongo.jpg"
 import otgonbat from "../Assets/ADMINS/otgonbat.jpg"
 import nyamdalai from "../Assets/ADMINS/nyamdalai.jpg"
 import munkhorgil from "../Assets/ADMINS/munkhorgil.jpg"
+import hishgee from "../Assets/ADMINS/hishigjargal.jpg"
+import anar from "../Assets/ADMINS/anar.jpg"
+import bilguun from "../Assets/ADMINS/bilguun.jpg"
+import bilguun_2 from "../Assets/ADMINS/bilguun_2.jpg"
+import nyamdorj from "../Assets/ADMINS/nyamdorj.jpg"
+import sarnai from "../Assets/ADMINS/sarnai.jpg"
+import davaanaran from "../Assets/ADMINS/davaanaran.jpg"
+import enkhbayar from "../Assets/ADMINS/enkhbayar.jpg"
+import anujin from "../Assets/ADMINS/anujin.jpg"
+import dolgion from "../Assets/ADMINS/dolgion.jpg"
+import mungunbileg from "../Assets/ADMINS/mungunbileg.jpg"
 
 import signature from "../Assets/signature.png"
 import { useState , useEffect} from "react";
 import ShowTeacher from "../components/About/ShowTeacher";
 
-
 export async function getServerSideProps() {
-  const UserData = await getUsers();
+  const UserData = await getTeachers();
   const base = process.env.BASE_URL
   return {
     props: {UserData, base},
@@ -81,7 +91,7 @@ const About = ({ UserData, base}) => {
       </div>
         
       <div className="w-full pt-20 grid lg:grid-cols-3 md:grid-cols-2 md:gap-10 gap-5">
-          <div className="transition-all duration-500 ease-in-out h-40 w-full border border-gray-100 hover:shadow-md rounded-lg">
+          <div className="transition-all duration-500 ease-in-out h-40 w-full border border-gray-100 hover:border-gray-300 rounded-lg">
             <div className="w-full flex justify-end -mt-2">
               <svg className="h-8 w-8  drop-shadow-md" viewBox="0 0 20 20" fill="rgb(20 184 166)">
                 <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
@@ -91,7 +101,7 @@ const About = ({ UserData, base}) => {
               {about.quote1}
             </div>
           </div>
-          <div className="transition-all duration-500 ease-in-out h-40 w-full  border border-gray-100 hover:shadow-md rounded-lg">
+          <div className="transition-all duration-500 ease-in-out h-40 w-full  border border-gray-100 hover:border-gray-300 rounded-lg">
             <div className="w-full flex justify-end -mt-2">
               <svg className="h-8 w-8 drop-shadow-md" viewBox="0 0 20 20" fill="#d64635">
                 <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
@@ -101,7 +111,7 @@ const About = ({ UserData, base}) => {
               {about.quote2}
             </div>
           </div> 
-          <div className="transition-all duration-500 ease-in-out h-40 w-full  border border-gray-100  hover:shadow-md rounded-lg">
+          <div className="transition-all duration-500 ease-in-out h-40 w-full  border border-gray-100 hover:border-gray-300  rounded-lg">
             <div className="w-full flex justify-end -mt-2">
               <svg className="h-8 w-8  drop-shadow-md" viewBox="0 0 20 20" fill="rgb(14 165 233)">
                 <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
@@ -114,14 +124,14 @@ const About = ({ UserData, base}) => {
             </div>
           </div>
       </div>
-      <div className="mt-20 border-l-4 p-5 border-indigo-400 uppercase md:text-sm text-xs">
+      <div className="mt-20 border-l-4 p-5 border-indigo-400 uppercase md:text-sm">
         {about.text4}
       </div>
-      <div className="w-full flex justify-end z-10">
-        <div className="w-80 h-40  bg-contain bg-no-repeat bg-center -mt-20" style={{'backgroundImage': `url(${signature.src}`}} >
+      <div className="w-full flex justify-end z-10 " >
+        <div className="w-80 h-40 bg-contain bg-no-repeat bg-center -mt-20" style={{'backgroundImage': `url(${signature.src}`}} >
         </div>
       </div>
-      <div className="w-full flex flex-col pt-20 text-gray-200  select-none ">
+      <div className="w-full flex flex-col pt-20 text-gray-200">
         <div className='lg:w-full font-semibold  flex items-center text-gray-800 mb-10'> 
           <div className='md:h-10 h-8 w-1 bg-teal-500 mr-5'></div>
           <p className='mr-5 uppercase lg:text-2xl text-base'>{teachers.title}</p>
@@ -130,9 +140,17 @@ const About = ({ UserData, base}) => {
         <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-5 ">
               {UserData.map((user, index) => (
                 <div key={index}>
-                  <div className="transition-all duration-500 ease-in-out rounded-lg hover:-translate-y-2 w-full aspect-1 bg-cover bg-sky-200 bg-center"
-                  style={{'backgroundImage': `url(${base+user.profilephoto}`}}>
+                  {user.profilephoto ? 
+                  <div className="transition-all duration-500 ease-in-out rounded-lg hover:-translate-y-2 w-full aspect-1 bg-cover bg-neutral-200 bg-center"
+                  style={{'backgroundImage': `url(${user.profilephoto}`}}>
                   </div>
+                  :
+                   <div className='transition-all duration-500 ease-in-out rounded-md hover:-translate-y-2 w-full aspect-1 bg-cover bg-neutral-200 bg-center flex items-center justify-center'>
+                      <svg className="h-40 w-40 text-white" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  }
                   <div className="w-full flex flex-col items-center p-5 text-gray-600">
                     <div className="flex font-bold text-center">
                       <p className="mr-1">{user.firstname[l]} {user.lastname[l]}</p>
@@ -152,9 +170,9 @@ const About = ({ UserData, base}) => {
         
       </div>
       <TimeLine />
-      <FeaturedPartners />
+      <Partners />
     </div>     
-      <FeaturedContact />
+      <Contact />
       
     
   </div>)

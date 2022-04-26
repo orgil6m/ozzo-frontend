@@ -15,9 +15,14 @@ function Dev() {
       <Head>
         <title>{t.dev} | {t.ozzo}</title>
       </Head>
-      <h3 className={styles.title}>
-        {t.dev}
-      </h3>
+      <div className='lg:px-32 md:px-20 lg:mt-10 p-5' >
+        {/* PATH ROUTER */}
+        <div className="lg:mb-10 mb-5 flex cursor-default">
+          <p className="transition-all duration-300 ease-in-out text-sm text-black/50 pr-2 hover:text-black" onClick={() => router.push("/")}> {t.home} </p>
+          <p className="text-sm text-black/50 pr-2 "> / </p>
+          <p className="transition-all duration-300 ease-in-out text-sm  hover:text-black"> {t.service[5].title} </p>
+        </div>
+      </div>
     </div>
   )
 }

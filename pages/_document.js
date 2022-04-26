@@ -9,7 +9,7 @@ class MyDocument extends Document
                     <meta name="OZZO LLC" content="ozzo" />
                     <link rel="shortcut icon" href="/ozzo.ico" />
                 </Head>
-                <body >
+                <body className='select-none'>
                     <Main />
                     <NextScript />
                     <div className='

@@ -1,12 +1,24 @@
 
 import { useRouter } from 'next/router';
+import { motion } from "framer-motion";
 
 const ShowTeacher = ({partner,  setShowPartner, setScrollStop})=>{
     const router = useRouter();
     return   (
           <div className="transition-all duration-300 ease-in-out flex justify-center items-center fixed inset-0 z-50 outline-none focus:outline-none cursor-default" >
             <div className='w-screen h-screen fixed bg-black/60 backdrop-blur-sm inset-0' onClick={() => {setShowPartner(false); setScrollStop(false)}}></div>
-            <div className="bg-white rounded-lg flex flex-col lg:w-1/2 relative max-h-[90%] w-11/12 overflow-y-scroll ">
+
+            <motion.div className="bg-white rounded-lg flex flex-col lg:w-1/2 relative max-h-[90%] w-11/12 overflow-y-scroll "
+             initial="hidden" animate="visible" variants={{
+            hidden :{
+                scale :.8,
+                opacity:0,
+            },
+            visible:{
+                scale:1,
+                opacity:1,
+            },
+          }}>
               <div className=" text-black absolute right-0 top-0 transition-all duration-200 ease-in-out hover:bg-gray-100/50 p-2 rounded-full m-5" 
               onClick={() => {setShowPartner(false); setScrollStop(false)}}>
                 <svg className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -19,7 +31,7 @@ const ShowTeacher = ({partner,  setShowPartner, setScrollStop})=>{
                 </div>
                 <div className='w-full lg:px-20 p-10  text-justify'>
                   <p className='font-semibold text-lg uppercase'>{partner.title}</p>
-                  <div className={`border scale-y-50 my-4  ${partner.class1}`}></div>
+                  <div className={`border scale my-4  border-purple-300`}></div>
                   <p className=' font-light'>{partner.text1}</p>
                 </div>
               <div className='flex'>
@@ -67,7 +79,7 @@ const ShowTeacher = ({partner,  setShowPartner, setScrollStop})=>{
               </div>
                  
              
-            </div>
+            </motion.div>
           </div>      
     )
 }

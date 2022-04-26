@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { Disclosure } from '@headlessui/react'
 import { ChevronUpIcon } from '@heroicons/react/solid'
 import { Academy_FAQ } from '../../locales/FAQ';
-import { useState } from 'react';
 
 const FAQ = () => {
     const router = useRouter()

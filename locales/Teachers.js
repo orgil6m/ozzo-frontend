@@ -4,7 +4,7 @@ const Teacherslocale =[
         text: `Манай хөгжмийн академи нь "Монгол Улсын Консерватори" болон "Соёл Урлагийн Их Сургуулийг" төгссөн мэргэжлийн багш болон хөгжимчид хичээлийг удирдан явуулдаг.`
     },
     {
-        title : "Faculties / Personnel",
+        title : "Teachers / Personnel",
         text: `Our academy is led by professional teachers and musicians who graduated from the "Mongolian Conservatory" and the "University of Culture and Arts."`
     },
     {

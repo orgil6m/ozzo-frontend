@@ -1,16 +1,16 @@
 import React from 'react'
+import {getNews} from "../../Datas/news"
 import { useRouter } from 'next/router';
 
 import { FeaturedNewsLocale } from '../../locales/FeaturedNews';
+import Cover1 from '../../Assets/NEWS/Cover1.jpg'
+import Cover2 from '../../Assets//NEWS/Cover2.jpg'
+import Cover3 from '../../Assets/NEWS/Cover3.jpg'
 
-import Cover1 from '../../Assets/Cover1.jpg'
-import Cover2 from '../../Assets/Cover2.jpg'
-import Cover3 from '../../Assets/Cover3.jpg'
-
-function FeaturedNews() {
+const FeaturedNews = () =>{
     const router = useRouter()
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
-    const t = FeaturedNewsLocale[`${l}`]
+    const t = FeaturedNewsLocale[l];
     const FeaturedNewsData = [
     {
         id : "1",
@@ -38,7 +38,7 @@ function FeaturedNews() {
     },
 ];
     return (
-    <div className='w-full pb-10 cursor-default'>
+    <div className='w-full py-10 cursor-default'>
         <div className='transition-all duration-500 ease-in-out lg:w-full font-semibold md:text-2xl text-lg flex items-center text-gray-800 mb-10'> 
             <div className='transition-all duration-1000 ease-in-out md:h-10 h-8 w-1 bg-emerald-500 mr-5'></div>
             <p className='w-4/6'>{t.title}</p>

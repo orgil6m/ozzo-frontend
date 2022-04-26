@@ -1,16 +1,16 @@
 import React from 'react'
 import { useRouter } from 'next/router';
-import academy_cover from "../../Assets/academy_cover.jpg"
+import academy_cover from "../../Assets/ACADEMY/academy_cover.jpg"
 import Head from "next/head";
+import Image from 'next/image';
 
 import Branches from '../../components/Academy/Branches';
-import FeaturedContact from "../../components/FeaturedContact"
+import Contact from "../../components/Contact"
 import PricingInfo from "../../components/Academy/PricingInfo"
 import Courses from "../../components/Academy/Courses"
 import FAQ from "../../components/Academy/FAQ"
 
 import { NavbarLocale } from '../../locales/Navbar';
-import { SlideImagesText } from '../../locales/SlideImagesText';
 
 
 function Academy() {
@@ -22,9 +22,8 @@ function Academy() {
       <Head>
         <title>{t.service[0].title}</title>
       </Head>
-        <div className='lg:flex hidden w-full bg-fixed bg-center bg-cover'  style={{'backgroundImage': `url(${academy_cover.src}`}}>
-          <div className='p-32 w-full h-[30rem]  from-black/40 to-black/50 flex justify-end items-center'>
-          </div>
+        <div className='w-full md:bg-fixed bg-top bg-cover lg:h-[30rem] h-[15rem]' style={{'backgroundImage': `url(${academy_cover.src}`}}>
+          
         </div>
         <div className='lg:px-32 md:px-20 lg:mt-10 p-5' >
           {/* PATH ROUTER */}
@@ -45,7 +44,7 @@ function Academy() {
             <PricingInfo />
             <FAQ />
         </div>
-      <FeaturedContact />
+      <Contact />
     </div>
   )
 }

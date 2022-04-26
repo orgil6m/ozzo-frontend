@@ -7,9 +7,9 @@ import FeaturedNews from '../components/Home/FeaturedNews';
 import FeaturedActivities from '../components/Home/FeaturedActivities';
 import FeaturedServices from '../components/Home/FeaturedServices';
 import FeaturedMission from '../components/Home/FeaturedMission';
-import FeaturedPartners from '../components/FeaturedPartners';
+import Partners from '../components/Partners';
 import FeaturedStats from '../components/Home/FeaturedStats';
-import ContactLocale from '../components/FeaturedContact';
+import Contact from '../components/Contact';
 
 import { NavbarLocale } from '../locales/Navbar';
 
@@ -31,9 +31,9 @@ function Home() {
         <FeaturedMission />
         <FeaturedStats />
         <FeaturedNews />
-        <FeaturedPartners />
+        <Partners />
       </div>     
-      <ContactLocale />
+      <Contact />
 
     
    </div>

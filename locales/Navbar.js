@@ -1,5 +1,3 @@
-const { Main } = require("next/document")
-
 const NavbarLocale = [
   {
     ozzo: 'ОЗЗО ХХК',
@@ -12,7 +10,7 @@ const NavbarLocale = [
     recent : "Сүүлд нэмэгдсэн",
     more : "Бүгдийг үзэх",
     learnmore: "Дэлгэрэнгүй",
-
+    artists: "Артистууд",
      service : [
       {
         title: 'Хөгжмийн Академи',
@@ -42,8 +40,7 @@ const NavbarLocale = [
         title: "Хөгжмийн Түрээс",
         url : "/services/rental",
         icon : <RentIcon />,
-         color :  "bg-teal-500/10"
-        
+        color :  "bg-teal-500/10"
       },
       {
         title: "Веб Хөгжүүлэлт",
@@ -61,6 +58,7 @@ const NavbarLocale = [
     contact : 'Contact',
     news : 'News',
 
+    artists: "Artists",
     recent : "Recent news",
     more : "See all",
     learnmore: "Learn more",
@@ -68,21 +66,39 @@ const NavbarLocale = [
     service : [
       {
         title: 'Music Academy',
+        url : "/services/academy",
+        icon : <AcademyIcon />,
+        color :  "bg-red-500/10"
       },
       {
         title : 'Music Store ', 
+        url: "/services/store",
+        icon : <StoreIcon />,
+        color :  "bg-sky-500/10"
       },
       {
-        title : "Music Label", 
+        title : "Music Label",
+        url : "/services/label",
+        icon :  <LabelIcon />,
+         color :  "bg-emerald-500/10"
       },
       {
         title : 'Instrument Maintenance',
+        url : "/services/maintenance",
+        icon : <MaintenanceIcon />,
+        color :  "bg-sky-700/10"
       },
       {
         title: "Instrument Rental",
+        url : "/services/rental",
+        icon : <RentIcon />,
+        color :  "bg-teal-500/10"
       },
       {
         title: "Web Development",
+        url : "/services/dev",
+        icon : <DevIcon />,
+        color :  "bg-indigo-500/10"
       },
     ]
   },
@@ -96,14 +112,45 @@ const NavbarLocale = [
     recent : "最近的新闻",
     more : "查看全部",
     learnmore: "了解更多",
-    services : { 
-      academy: "音乐学院",
-      store : '音乐店 ',
-      label :"音乐标签",
-      maintenance : '音乐服务',
-      rent: "仪器租赁",
-      dev: "网站开发",
-    }
+    artists: "艺术家",
+    service : [
+      {
+        title: "音乐学院",
+        url : "/services/academy",
+        icon : <AcademyIcon />,
+        color :  "bg-red-500/10"
+      },
+      {
+        title : '音乐店 ',
+        url: "/services/store",
+        icon : <StoreIcon />,
+        color :  "bg-sky-500/10"
+      },
+      {
+        title :"音乐标签",
+        url : "/services/label",
+        icon :  <LabelIcon />,
+         color :  "bg-emerald-500/10"
+      },
+      {
+        title : '音乐服务',
+        url : "/services/maintenance",
+        icon : <MaintenanceIcon />,
+        color :  "bg-sky-700/10"
+      },
+      {
+        title: "仪器租赁",
+        url : "/services/rental",
+        icon : <RentIcon />,
+        color :  "bg-teal-500/10"
+      },
+      {
+        title: "网站开发",
+        url : "/services/dev",
+        icon : <DevIcon />,
+        color :  "bg-indigo-500/10"
+      }
+    ]
   },
 ]
 

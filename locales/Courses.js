@@ -49,10 +49,10 @@ const CoursesLocale =[
                     "2-5 бүтэн зохиол",
                 ],
                 advanced :[
-                    "Ахисан Төвшний Хөгжмийн Онол",
+                    "Ахисан Түвшний Хөгжмийн Онол",
                     "Аккордны Бүтэц",
-                    "Ахисан Төвшний Сонсгол",
-                    "Ая зохиох",
+                    "Ахисан Түвшний Сонсгол",
+                    "Уран сэтгэмжээр хөгжимдөх арга барил",
                     "2-5 ахисан төвшний зохиол",
                 ]
             },
@@ -65,10 +65,25 @@ const CoursesLocale =[
                     ind : "195.000",
                 },
                 beginner : [
+                    "Онолын суурь хичээл",
+                    "Баруун, зүүн гарын барил",
+                    "Нот уншлага",
+                    "Жижиг аяз 3-5",
+                    "Өргөн хэрэглэгддэг хэмнэлүүд орсон аяз",
                 ],
                 intermediate : [
+                    "Дунд шатны хөгжмийн онол",
+                    "Хөгжмийн Нюанс",
+                    "Педальтай ажиллах",
+                    "2-5 дунд шатны зохиол",
+                    "Хамсран хөгжимдөх ур чадвар",
                 ],
                 advanced :[
+                    "Ахисан түвшний онолын хичээл",
+                    "Бие дааж зохиолтой ажиллах чадвар",
+                    "Хамсран хөгжимдөх ур чадвар",
+                    "2-3 Мэргэжлийн хөгжмийн зохиол",
+                    "Уран сэтгэмжээр хөгжимдөх арга барил",
                 ]
             },
             {
@@ -142,10 +157,25 @@ const CoursesLocale =[
                     ind : "195.000",
                 },
                 beginner : [
+                    "Онолын суурь хичээл",
+                    "Баруун гарын барил",
+                    "Нясалгааны төрлүүд", 
+                    "2-3 жижиг аяз",
+                    "2 ардын дуу",
                 ],
                 intermediate : [
+                    "Дунд шатны хөгжмийн онол",
+                    "Нюанс",
+                    "2 гараар хөгжимдөх арга барил",
+                    "Ардын дууг вариацлан хөгжимдөх арга барил",
+                    "2-5 дунд шатны зохиол /сонголтоор/",
                 ],
                 advanced :[
+                    "Ахисан түвшний онолын хичээл",
+                    "Бие дааж зохиолтой ажиллах чадвар",
+                    "Хамсран хөгжимдөх ур чадвар",
+                    "Уран сэтгэмжээр хөгжимдөх арга барил",
+                    "2-3 Мэргэжлийн хөгжмийн зохиол",
                 ]
             },
             {
@@ -213,11 +243,11 @@ const CoursesLocale =[
                     "2-5 full compositions",
                 ],
                 advanced :[
-                    "Adanced Music Theory",
+                    "Advanced Music Theory",
                     "Chord Structures",
                     "Advanced Listening",
-                    "Composing music",
-                    "2-5 advanced compositions",
+                    "Composing Skills",
+                    "2-5 Advanced Compositions",
                 ]
             },
             {
@@ -229,10 +259,25 @@ const CoursesLocale =[
                     ind : "195.000",
                 },
                 beginner : [
+                    "Fundamentals of Music Theory",
+                    "Hand positions",
+                    "Note Reading",
+                    "2-5 Simple Piano Pieces",
+                    "Piano Composition",
                 ],
                 intermediate : [
+                    "Intermediate Music Theory",
+                    "Music Nuance",
+                    "Piano Pedalling",
+                    "2-5 Intermediate Piano Pieces",
+                    "Ensemble skills",
                 ],
                 advanced :[
+                    "Advanced Music Theory",
+                    "Independent Learning skills",
+                    "Ensemble Skills",
+                    "Improvising Skills",
+                    "2-3 Advanced Compositions",
                 ]
             },
             {
@@ -306,10 +351,25 @@ const CoursesLocale =[
                     ind : "195.000",
                 },
                 beginner : [
+                    "Fundamentals of Music Theory",
+                    "Right Hand Positions",
+                    "Types of Flicking techniques", 
+                    "2-3 simple compositions",
+                    "2 folk songs",
                 ],
                 intermediate : [
+                    "Intermediate Music Theory",
+                    "Music Nuance",
+                    "2 Hands Techniques",
+                    "Variation Techniques",
+                    "2-5 Intermediate Compositions",
                 ],
                 advanced :[
+                    "Advanced Music Theory",
+                    "Independent Learning Skills",
+                    "Ensemble Skills",
+                    "Improvisation Skills",
+                    "2-3 Advanced Compositions",
                 ]
             },
             {
@@ -363,10 +423,25 @@ const CoursesLocale =[
                     group : "110.000",
                 },
                 beginner : [
+                    "和弦",
+                    "琶音技巧",
+                    "弹奏技巧",
+                    "标签/注释阅读",
+                    "2-5个简单的作文",
                 ],
                 intermediate : [
+                    "基础音乐理论",
+                    "交替和弦",
+                    "交替和弦",
+                    "即兴创作技巧",
+                    "2-5个完整的作品",
                 ],
                 advanced :[
+                    "高级音乐理论",
+                    "和弦结构",
+                    "高级听力",
+                    "作曲技巧",
+                    "2-5 高级作文",
                 ]
             },
             {
@@ -378,10 +453,25 @@ const CoursesLocale =[
                     ind : "195.000",
                 },
                 beginner : [
+                    "音乐理论基础",
+                    "手的位置",
+                    "笔记阅读",
+                    "2-5 简单的钢琴曲",
+                    "钢琴作曲",
                 ],
                 intermediate : [
+                    "中级音乐理论",
+                    "音乐细微差别",
+                    "钢琴踏板",
+                    "2-5 中级钢琴曲",
+                    "合奏技巧",
                 ],
                 advanced :[
+                    "高级音乐理论",
+                    "自主学习能力",
+                    "合奏技巧",
+                    "即兴技巧",
+                    "2-3 高级作曲",
                 ]
             },
             {
@@ -458,12 +548,25 @@ const CoursesLocale =[
                     ind : "195.000",
                 },
                 beginner : [
+                    "音乐理论基础",
+                    "右手位置",
+                    "轻弹技术的类型", 
+                    "2-3个简单的作文",
+                    "2 民歌",
                 ],
-                
                 intermediate : [
+                    "中级音乐理论",
+                    "音乐细微差别",
+                    "2手技巧",
+                    "变化技巧",
+                    "2-5 中间作文",
                 ],
-                
                 advanced :[
+                    "高级音乐理论",
+                    "独立学习技巧",
+                    "合奏技巧",
+                    "即兴技巧",
+                    "2-3 高级作曲",
                 ]
             },
             {
