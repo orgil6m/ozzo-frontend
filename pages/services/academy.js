@@ -35,7 +35,7 @@ function Academy() {
           {/* HOGJMIIN ACADEMY */}
           <div className="my-10">
             <div className='lg:w-full font-semibold flex items-center text-gray-800'> 
-                <div className='md:h-10 h-8 w-1 bg-red-500 mr-5'></div>
+                <div className='md:h-10 h-8 w-1 bg-sky-500 mr-5'></div>
                 <p className='mr-5 uppercase lg:text-2xl text-base'>{t.service[0].title}</p>
             </div>
           </div>

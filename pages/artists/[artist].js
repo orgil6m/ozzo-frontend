@@ -9,7 +9,7 @@ import label_cover from "../../Assets/LABEL/label_cover.jpg"
 export async function getStaticPaths() {
   const response = await getArtists();
   const paths = response.map(artist => ({
-    params: { artist: artist.artistname}
+    params: { artist: artist.artistName}
   }));
   return {
     paths,
@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { artist } = params;
   const artists = await getArtists();
-  const current_artist = artists.find((p) => p.artistname === artist)
+  const current_artist = artists.find((p) => p.artistName === artist)
   const base = process.env.BASE_URL
   return {
     props: { artist: current_artist, base }
@@ -46,7 +46,7 @@ const News = ({ artist, base }) => {
       
       <div className='w-full overflow-hidden flex lg:px-32 justify-center lg:-mt-36 rounded-full -mt-28'>
        
-        <div className='lg:w-72 w-56 lg:border-8 border-4 border-white aspect-1 bg-cover bg-center rounded-full bg-white' style={{'backgroundImage': `url(${artist.artistphoto}`}}>
+        <div className='lg:w-72 w-56 lg:border-8 border-4 border-white aspect-1 bg-cover bg-center rounded-full bg-white' style={{'backgroundImage': `url(${artist.artistPhoto}`}}>
         </div>
     
       </div>
@@ -55,7 +55,7 @@ const News = ({ artist, base }) => {
             {label.artist} : 
           </p>
           <p className='text-gray-700 font-medium text-3xl'>
-            {artist.artistname}
+            {artist.artistName}
           </p>
         </div>
       
@@ -69,17 +69,18 @@ const News = ({ artist, base }) => {
             <p className="text-sm text-black/50 pr-2 "> / </p>
             <p className="transition-all duration-300 ease-in-out text-sm text-black/50 hover:text-black pr-2"  onClick={() => router.replace("/services/label")}> {t.artists} </p>
             <p className="text-sm text-black/50 pr-2 "> / </p>
-            <p className="transition-all duration-300 ease-in-out text-sm text-black"> {artist.artistname} </p>
+            <p className="transition-all duration-300 ease-in-out text-sm text-black"> {artist.artistName} </p>
         </div>
-            {artist.bio ? 
+            {artist.informations[l].bio ? 
             <>
           <div className='transition-all duration-500 ease-in-out lg:w-full font-semibold text-2xl flex items-center mb-5 '> 
-           <p className='uppercase'>{artist.bio[l].title}</p>
+          {console.log(artist.informations)}
+           <p className='uppercase'>{artist.informations[l].bio.title}</p>
             <div className='h-2 w-2 rounded-full my-2 bg-sky-500 ml-2'></div>
           </div>
           <div className='w-full mb-5'>
             <p>
-              {artist.bio[l].text ? artist.bio[l].text : artist.bio[l].title }
+              {artist.informations[l].bio.text ? artist.informations[l].bio.text : artist.informations[l].bio.title}
             </p>
           </div>
             </>

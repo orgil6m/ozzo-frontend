@@ -1,16 +1,35 @@
 
 const MaintenanceLocale = [
     {
-        about:"ОЗЗО Хөгжмийн Засвар нь таны хөгжимд дараах гайхалтай үйлчилгээнүүдийг чанарын өндөр түвшинд, зах зээлийн хамгийн боломжийн үнээр хийж үйлчлэх болно.",
+        about:"ОЗЗО Хөгжмийн Засвар нь таны хөгжимд дараах гайхалтай үйлчилгээнүүдийг чанарын өндөр түвшинд, хамгийн боломжийн үнэ хөлсөөр хийж үйлчлэх болно.",
         services:[
-            "Хөгжмийн тохиргоо, их бие болон лад, хүзүү өнгөлгөө, цэвэрлэгээ, утас солих, хамгаалалтын наалт, хуулга наах зэрэг хөгжмийн насжилтыг уртасгах, хайртай хөгжмөө шинэ хэвээр нь хадгалах хүсэлтэй танд хамгийн төгс тохирох үйлчилгээг санал болгож байна"
+            "Хугарсан, эвдэрсэн эсвэл цуурч хагарсан гитарыг наах, засах",
+            "Гитаранд урсгал сервис буюу стандарт тохиргоо, цэвэрлэгээ, лад өнгөлгөө, тосолгоо хийх",
+            "Гитарын утас солих, хөглөх",
+            "Асуудал үүссэн хөгжмийг оношлож шаарлагатай засварыг хийх",
+            "Зөвлөгөө өгөх",
         ]
     },
     {
-      about : "OZZO Instrument Maintenance provides high quality repair services for all types of musical instruments, which are broken, cracked, damaged and rusty. We also offer routine maintenance services such as adjustment, polishing, cleaning, wire replacement, protective tape stripping to prolong the lifetime of your instrument and keep your loved instrument fresh."
+        about : "OZZO Music Maintenance will provide you with the following great services for your instrument at the highest quality and most affordable prices.",
+          services:[
+            "Repair broken and cracked guitars",
+            "Perform routine maintenance or cleaning, cleaning, polishing and lubrication of the guitar",
+            "Guitar string replacement and tuning",
+            "Diagnose the problem of the instrument and make necessary corrections",
+            "Give advice"
+        ]
+        
     },
     {
-        about : "OZZO乐器维修为各类乐器的破损、破裂、损坏和生锈提供优质的维修服务。我们还提供日常维护服务，例如调整、抛光、清洁、更换电线、剥离保护胶带，以延长您的乐器的使用寿命并让您喜爱的乐器保持新鲜。"
+        about : "OZZO音乐维修将以最高质量和最实惠的价格为您的乐器提供以下优质服务",
+          services:[
+            "修理损坏和破裂的吉他",
+            "对吉他进行日常维护或清洁、清洁、抛光和润滑",
+            "吉他弦更换和调音",
+            "诊断仪器问题并进行必要的修正",
+            "提出建议"
+        ]
     }
 ]
 

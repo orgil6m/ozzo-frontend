@@ -74,7 +74,7 @@ const News = ({ news, moreNews,base }) => {
       <div className='w-full lg:px-32 md:px-20 md:grid md:grid-cols-3 gap-10 pb-5 px-5'>
         <div className='col-span-2'>
           <div className='transition-all duration-500 ease-in-out aspect-w-16 aspect-h-9 bg-cover bg-center rounded-md mt-5' 
-          style={{'backgroundImage': `url(${base+news.cover}`}}> </div>
+          style={{'backgroundImage': `url(${news.cover}`}}> </div>
           <article className='mb-10'>
             <p className='text-justify text-sm pt-5'> {news.langs[l].text}</p>
           </article>
@@ -90,7 +90,7 @@ const News = ({ news, moreNews,base }) => {
 
           {moreNews.map((moreNews, index) => (
             <div key={index} className=' transition-all duration-300 ease-in-out md:w-2/3 mt-5 border border-gray-100 overflow-hidden rounded-lg hover:border-gray-300 group'>
-              <div className='transition-all duration-500 ease-in-out aspect-w-16 aspect-h-9 bg-cover bg-center group-hover:opacity-90 ' style={{'backgroundImage': `url(${base+moreNews.cover}`}} 
+              <div className='transition-all duration-500 ease-in-out aspect-w-16 aspect-h-9 bg-cover bg-center group-hover:opacity-90 ' style={{'backgroundImage': `url(${moreNews.cover}`}} 
               onClick={() => { router.push(`/news/${moreNews.path}`)}} > 
               </div> 
                  <div className='w-full flex rounded-md items-start flex-col p-2'>

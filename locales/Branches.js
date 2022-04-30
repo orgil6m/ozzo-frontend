@@ -16,6 +16,9 @@ const BranchesLocale = [
                 cover : `${branch1.src}`,
                 location : "Чингэлтэй Дүүрэг, Тэнгис Кино Театр, VICTORY CENTER 6 давхарт",
                 manager : "О.Нямдалай",
+                schedule : {
+                    days : "Даваа-Баасан"
+                },
                 url : "https://daavkatunes.mn/dgl?branch=3",
                 phone : "+976 86870330",
             },

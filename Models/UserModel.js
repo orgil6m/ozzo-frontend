@@ -1,213 +1,122 @@
-const educationModel = [
-    {
-        "at": {
-            type : String,
-            required : false,
-        },
-        "name": {
-            type : String,
-            required : false,
-        },
-        "years": {
-            type : String,
-            required : false,
-        },
-    },
-    {
-        "at": {
-            type : String,
-            required : false,
-        },
-        "name": {
-            type : String,
-            required : false,
-        },
-        "years": {
-            type : String,
-            required : false,
-        },
-    },
-    {
-        "at": {
-            type : String,
-            required : false,
-        },
-        "name": {
-            type : String,
-            required : false,
-        },
-        "years": {
-            type : String,
-            required : false,
-        },
-    },
-]
-
-const skillsModel = [
-    {
-        type : String,
-        required : false,
-    },
-    {
-        type : String,
-        required : false,
-    }, 
-    {
-        type : String,
-        required : false,
-    },
-]
-
-const experienceModel = [
-     {
-        "at": {
-            type : String,
-            required : false,
-        },
-        "name": {
-            type : String,
-            required : false,
-        },
-        "years": {
-            type : String,
-            required : false,
-        },
-    },
-    {
-        "at": {
-            type : String,
-            required : false,
-        },
-        "name": {
-            type : String,
-            required : false,
-        },
-        "years": {
-            type : String,
-            required : false,
-        },
-    },
-    {
-        "at": {
-            type : String,
-            required : false,
-        },
-        "name": {
-            type : String,
-            required : false,
-        },
-        "years": {
-            type : String,
-            required : false,
-        },
-    },
-]
-
-const rolesModel = [
-     {
-        type : String,
-        required : false,
-    },
-    {
-        type : String,
-        required : false,
-    }, 
-    {
-        type : String,
-        required : false,
-    },
-]
-
-const UserModel = [
-    {
-        "firstname": {
-            type : String,
-            required : true,
-        },
-        "lastname": {
-            type : String,
-            required :true,
-        },
-        "username": {
-            type : String,
-            required :true,
-        },
-        "password": {
-            type : String,
-            required :true,
-        },
-        "phone": {
-            type : String,
-            required : false,
-        },
-        "title": {
-            type : String,
-            required : true,
-        },
-
-        "email":{
-            type : String,
-            required : false,
-        },
-        "linkedin": {
-            type : String,
-            required : false,
-        },
-        "facebook": {
-            type : String,
-            required : false,
-        },
-        "instagram": {
-            type : String,
-            required : false,
-        },
-        "youtube": {
-            type : String,
-            required : false,
-        },
-        "website": {
-            type : String,
-            required : false,
-        },
-
-        "profilephoto": {
-            type : String,
-            required : false,
-        },
-
-        "education": {
-            "title": "Боловсрол",
-            "schools": [educationModel]
-        },
-        "experience": {
-            "title": "Ажлын туршлага",
-            "works": [experienceModel]
-        },
-        "skills": {
-            "title": "Чадварууд",
-            "skill": [skillsModel]
-        },
-        "roles": [rolesModel],
-
-        "artistphoto": {
-            type : String,
-            required : false,
-        },
-        "artistname": {
-            type : String,
-            required : false,
-        },
-        "bio": {
-            "title": "Био",
-            "text": {
-                type : String,
-                required : false,
+const UserModel = {
+    "username": "",
+    "password": "",
+    "phone": "",
+    "profilephoto": "",
+    "roles": [
+        "",
+    ],
+    "artistName": "",
+    "artistPhoto": "",
+    "email": "",
+    "linkedin": "",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "website": "",
+    "priority": "",
+    "informations": [
+        {
+            "firstname": "",
+            "lastname": "",
+            "title": "",
+            "education": {
+                "title": "",
+                "schools": [
+                    {
+                        "name": "",
+                        "years": ""
+                    }
+                ]
             },
+            "experience": {
+                "title": "Ажлын туршлага",
+                "works": [
+                    {
+                        "at": "",
+                        "name": "",
+                        "years": ""
+                    }
+                ]
+            },
+            "skills": {
+                "title": "Чадварууд",
+                "skill": [
+                    ""
+                ]
+            },
+            "Bio": {
+                "title": "Био",
+                "text": ""
+            }
         },
-
-        "priority" : {
-            type : Number,
-            required : false,
+        {
+            "firstname": "",
+            "lastname": "",
+            "title": "",
+            "education": {
+                "title": "Education",
+                "schools": [
+                    {
+                        "name": "",
+                        "years": ""
+                    }
+                ]
+            },
+            "experience": {
+                "title": "Experience",
+                "works": [
+                    {
+                        "at": "",
+                        "name": "",
+                        "years": "21"
+                    }
+                ]
+            },
+            "skills": {
+                "title": "Skills",
+                "skill": [
+                    ""
+                ]
+            },
+            "artistBio": {
+                "title": "Bio",
+                "text": ""
+            }
+        },
+        {
+            "firstname": "",
+            "lastname": "",
+            "title": "",
+            "education": {
+                "title": "教育",
+                "schools": [
+                    {
+                        "name": "",
+                        "years": ""
+                    }
+                ]
+            },
+            "experience": {
+                "title": "经验",
+                "works": [
+                    {
+                        "at": "",
+                        "name": "",
+                        "years": ""
+                    }
+                ]
+            },
+            "skills": {
+                "title": "技能",
+                "skill": [
+                    ""
+                ]
+            },
+            "artistBio": {
+                "title": "生物",
+                "text": ""
+            }
         }
-    }
-]
+    ]
+}

@@ -74,8 +74,6 @@ function Label({ArtistData, base}) {
             </div>
             <div className='col-span flex justify-center items-center lg:pb-20 ' >
                  <img className='w-2/3' src={label_about.src} />
-              {/* <div className='bg-cover bg-center w-full h-full ' style={{'backgroundImage': `url(${label_about.src}`}}>
-              </div> */}
             </div>
           </div>
         </div>
@@ -88,10 +86,10 @@ function Label({ArtistData, base}) {
         </div>
         <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 lg:gap-10 gap-5">
               {ArtistData.map((user, index) => (
-                <div key={index} onClick={() => { router.push(`/artists/${user.artistname}`)}}>
-                  {user.artistphoto ?
+                <div key={index} onClick={() => { router.push(`/artists/${user.artistName}`)}}>
+                  {user.artistPhoto ?
                   <div className="transition-all duration-500 ease-in-out rounded-md hover:-translate-y-2 w-full aspect-1 bg-cover bg-neutral-200 bg-center"
-                  style={{'backgroundImage': `url(${user.artistphoto}`}}>
+                  style={{'backgroundImage': `url(${user.artistPhoto}`}}>
                   </div>
                     :
                     <div className='transition-all duration-500 ease-in-out rounded-md hover:-translate-y-2 w-full aspect-1 bg-cover bg-neutral-200 bg-center flex items-center justify-center'>
@@ -102,7 +100,7 @@ function Label({ArtistData, base}) {
                     }
                     <div className="w-full flex flex-col items-center pt-3 text-gray-700/90">
                       <div className="flex font-semibold text-center">
-                        <p className="mr-1">{user.artistname}</p>
+                        <p className="mr-1">{user.artistName}</p>
                       </div>
                       <div className="px-3 flex justify-center flex-col items-center text-gray-500 font-thin md:text-xs rounded-lg text-center">
                         <p></p>

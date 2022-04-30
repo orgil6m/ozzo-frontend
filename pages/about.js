@@ -13,23 +13,6 @@ import Partners from "../components/Partners"
 import Contact from "../components/Contact"
 import {getTeachers} from "../Datas/Users";
 
-import davaatseren from "../Assets/ADMINS/davaatseren.jpg"
-import solongo from "../Assets/ADMINS/solongo.jpg"
-import otgonbat from "../Assets/ADMINS/otgonbat.jpg"
-import nyamdalai from "../Assets/ADMINS/nyamdalai.jpg"
-import munkhorgil from "../Assets/ADMINS/munkhorgil.jpg"
-import hishgee from "../Assets/ADMINS/hishigjargal.jpg"
-import anar from "../Assets/ADMINS/anar.jpg"
-import bilguun from "../Assets/ADMINS/bilguun.jpg"
-import bilguun_2 from "../Assets/ADMINS/bilguun_2.jpg"
-import nyamdorj from "../Assets/ADMINS/nyamdorj.jpg"
-import sarnai from "../Assets/ADMINS/sarnai.jpg"
-import davaanaran from "../Assets/ADMINS/davaanaran.jpg"
-import enkhbayar from "../Assets/ADMINS/enkhbayar.jpg"
-import anujin from "../Assets/ADMINS/anujin.jpg"
-import dolgion from "../Assets/ADMINS/dolgion.jpg"
-import mungunbileg from "../Assets/ADMINS/mungunbileg.jpg"
-
 import signature from "../Assets/signature.png"
 import { useState , useEffect} from "react";
 import ShowTeacher from "../components/About/ShowTeacher";
@@ -59,7 +42,6 @@ const About = ({ UserData, base}) => {
     document.body.style.overflow = 'unset';
     }
   });
-  
   return (
   <div className="pt-20 cursor-default ">
     <Head>
@@ -153,10 +135,10 @@ const About = ({ UserData, base}) => {
                   }
                   <div className="w-full flex flex-col items-center p-5 text-gray-600">
                     <div className="flex font-bold text-center">
-                      <p className="mr-1">{user.firstname[l]} {user.lastname[l]}</p>
+                      <p className="mr-1">{user.informations[l].firstname} {user.informations[l].lastname}</p>
                     </div>
                     <div className="px-3 flex justify-center flex-col items-center text-gray-500 font-thin md:text-xs rounded-lg text-center">
-                      <p>{user.title[l]}</p>
+                      {/* <p>{user.informations[l].title}</p> */}
                       <p className="transition-all duration-300 ease-in-out font-bold text-gray-500 pt-1 hover:text-gray-400"  
                         onClick={() => {setShowTeacher(true); setCurrentTeacher(user); setScrollStop(true);}}>
                         {about.readmore}

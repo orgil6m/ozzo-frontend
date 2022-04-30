@@ -14,15 +14,15 @@ const FeaturedNews = () =>{
     const FeaturedNewsData = [
     {
         id : "1",
-        cover:`${Cover1.src}`,
-        path : "DaavkaTunes-X-MongolNFT",
+        cover: "https://res.cloudinary.com/ozzo-web/image/upload/v1651213961/News/cover1.jpg",
+        path : "DaavkaTunes-X-ArdArt",
         date: ' 2022-04-01',
         title : t.id[0].title,
         text : t.id[0].text.slice(0, 100),
     },
     {
         id: "2",
-        cover:`${Cover2.src}`,
+        cover:"https://res.cloudinary.com/ozzo-web/image/upload/v1651067896/News/cover2.jpg",
         path : "DaavkaTunes-Movie-Night",
         date: ' 2022-03-01',
         title : t.id[1].title,
@@ -30,7 +30,7 @@ const FeaturedNews = () =>{
     },
     {
         id: "3",
-        cover:`${Cover3.src}`,
+        cover:"https://res.cloudinary.com/ozzo-web/image/upload/v1651067898/News/cover3.jpg",
         path : 'DT-Acoustic-Concert',
         date: ' 2021-10-10',
         title : t.id[2].title,

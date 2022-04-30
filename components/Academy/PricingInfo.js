@@ -20,15 +20,15 @@ const Pricing = () => {
     return (
     <div className='w-full py-5 cursor-default my-10'>
       <div className=' lg:w-full font-semibold md:text-xl text-lg flex items-center text-gray-800 mb-5 '> 
-        <div className=' md:h-10 h-8 w-1 bg-sky-500 mr-5'></div>
+        <div className=' md:h-10 h-8 w-1 bg-amber-400 mr-5'></div>
         <p className='w-full uppercase'>{pricingInfo.title}</p>
       </div>
       <div className='md:flex justify-center py-10'>
       {pricingTab.map((price, index) => (
         <div key={index} onClick={() => {setTab(index)}} className="group mb-3">
           <div className='px-5 flex items-center'>
-          <div className={`transition-all duration-100 ease-in-out w-4 h-4 group border-2 mr-2 flex items-center justify-center rounded-full group-hover:border-sky-500 ${tab===index ? 'border-sky-500 ' : 'border-gray-300' }`}>
-            <div className={`h-2 w-2 group-hover:bg-sky-500 rounded-full ${tab===index ? 'bg-sky-500 ' : '' } `}>
+          <div className={`transition-all duration-100 ease-in-out w-4 h-4 group border-2 mr-2 flex items-center justify-center rounded-full group-hover:border-amber-400 ${tab===index ? 'border-amber-400 ' : 'border-gray-300' }`}>
+            <div className={`h-2 w-2 group-hover:bg-amber-400 rounded-full ${tab===index ? 'bg-amber-400 ' : '' } `}>
             </div>
           </div>
           <p className='font-light text-sm uppercase transition-all duration-300 ease-in-out'>{price}</p>
@@ -49,7 +49,7 @@ const Pricing = () => {
               <p className='font-black text-gray-600 uppercase text-2xl mb-3'>
               {tab === 0 ? pricing.price : tab === 1 ? pricing.price_season : tab ===2 ? pricing.price_half :  pricing.price_annual}₮
               </p>
-              <div className='w-10 h-1 mb-3 bg-sky-500'></div>
+              <div className='w-10 h-1 mb-3 bg-amber-400'></div>
               
               <p className='text-xs text-gray-400'>{pricing.condition}</p>
               

@@ -43,7 +43,7 @@ const NavbarLocale = [
         color :  "bg-teal-500/10"
       },
       {
-        title: "Веб Хөгжүүлэлт",
+        title: "Оззо тек",
         url : "/services/dev",
         icon : <DevIcon />,
         color :  "bg-indigo-500/10"
@@ -95,7 +95,7 @@ const NavbarLocale = [
         color :  "bg-teal-500/10"
       },
       {
-        title: "Web Development",
+        title: "Ozzo Tech",
         url : "/services/dev",
         icon : <DevIcon />,
         color :  "bg-indigo-500/10"
@@ -145,7 +145,7 @@ const NavbarLocale = [
         color :  "bg-teal-500/10"
       },
       {
-        title: "网站开发",
+        title: "奥佐科技",
         url : "/services/dev",
         icon : <DevIcon />,
         color :  "bg-indigo-500/10"

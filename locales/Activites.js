@@ -39,7 +39,7 @@ const ActivitesLocale = [
                 color : "bg-teal-500/10",
             },
             {
-                title: 'Веб Хөгжүүлэлт',
+                title: 'Oззо Технологи',
                 icon : <DevIcon />,
                 icon1 : <DevIcon1 />,
                 url : "dev",
@@ -88,7 +88,7 @@ const ActivitesLocale = [
                  color : "bg-teal-500/10",
             },
             {
-                title: 'Web development',
+                title: 'Ozzo technologies',
                 icon : <DevIcon />,
                 icon1 : <DevIcon1 />,
                 url : "/dev",
@@ -136,7 +136,7 @@ const ActivitesLocale = [
                  color : "bg-teal-500/10",
             },
             {
-                title: '网站开发',
+                title: '奥佐科技',
                 icon : <DevIcon />,
                 icon1 : <DevIcon1 />,
                 url : "/dev",

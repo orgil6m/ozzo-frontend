@@ -7,7 +7,6 @@ import LocaleDropDown from './LocaleDropDown'
 import { DataContext } from '../store/GlobalState';
 import { NavbarLocale} from '../locales/Navbar';
 
-
 const Sidebar = () => {
     const {state, dispatch} = useContext(DataContext)
     const {auth, notify} = state
@@ -44,7 +43,7 @@ const Sidebar = () => {
                 </>
                 :
                 <></>}
-                {auth.user.roles.includes("teacher") ?
+                {auth.user.roles.includes("teacher") || auth.user.roles.includes("admin") ?
                 <>
                     <Link href='/teacher' >
                         <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-base hover:text-black hover:border-red-500 flex items-center ${router.pathname == "/teacher" ? "border-red-500  text-black " : "border-white"}`}>
@@ -60,7 +59,7 @@ const Sidebar = () => {
                 </>
                 :
                 <></>}
-                {auth.user.roles.includes("artist") ?
+                {auth.user.roles.includes("artist") || auth.user.roles.includes("admin") ?
                 <>
                     <Link href='/artist' >
                         <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-base hover:text-black hover:border-red-500 flex items-center ${router.pathname == "/artist" ? "border-red-500  text-black " : "border-white"}`}>
@@ -74,7 +73,7 @@ const Sidebar = () => {
                 </>
                 :
                 <></>}
-                {auth.user.roles.includes("service") ?
+                {auth.user.roles.includes("service") || auth.user.roles.includes("admin") ?
                 <>
                 <Link href='/admin' >
                     <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-base hover:text-black hover:border-red-500 flex items-center ${router.pathname == "/service" ? "border-red-500  text-black " : "border-white"}`}>

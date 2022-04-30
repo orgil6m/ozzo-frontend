@@ -5,7 +5,6 @@ import {
   GoogleMap,
   Marker,
   InfoWindow,
-  InfoWindowProps
 } from "react-google-maps";
 import { useState } from "react";
 import { useRouter } from 'next/router';

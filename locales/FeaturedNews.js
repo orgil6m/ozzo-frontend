@@ -4,7 +4,7 @@ const FeaturedNewsLocale = [
     more : "Бүгдийг үзэх",
     id: [
       {
-        title : 'DaavkaTunes X MongolNFT',
+        title : 'DaavkaTunes X Ard Art',
         text : 'OZZO болон MongolNFT хамтран DaavkaTunes NFT-г танилцуулахад бэлэн боллоо',
       },
       {

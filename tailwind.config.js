@@ -36,7 +36,11 @@ module.exports = {
     //     dark : '#FFF84F',
     //   },
     // },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--gradient-color-stops))',
+      }
+    },
   },
   plugins: [
     require('tailwind-scrollbar-hide'),
