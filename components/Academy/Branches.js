@@ -19,12 +19,12 @@ const Branches = () => {
     }
     });
     return (
-        <div className='h-full w-full grid lg:grid-cols-4 md:grid-cols-2 gap-5 mt-10 cursor-default'>
+        <div className='h-full w-full grid md:grid-cols-4 grid-cols-2 gap-5 mt-10 cursor-default'>
             {branches.branches.map((branch, index) => (
               <div key={index} className={`transition-all duration-300 ease-in-out border border-gray-200 rounded-md text-gray-700 font-semibold text-base uppercase overflow-hidden hover:-translate-y-2 flex flex-col items-center relative group`} onClick={()=> {setShowBranch(true); setCurrentBranch(branch); setScrollStop(true)}}>
                     <div className='w-full aspect-h-9 aspect-w-16 bg-cover bg-center' style={{'backgroundImage': `url(${branch.cover}`}}>
                     </div>
-                  <div className='w-full flex justify-center p-5 items-center'>
+                  <div className='w-full flex justify-center p-5 md:text-sm text-xs items-center text-center'>
                     {branch.title}
                   </div>
                   <div className='transition-all duration-300 ease-in-out absolute right-3 top-3 text-white p-1 rounded-full'>

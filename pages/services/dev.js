@@ -7,6 +7,7 @@ import daavkatunes from "../../Assets/DEV/daavkatunes.mn.png"
 import NFT from "../../Assets/DEV/NFT.jpg"
 import { motion } from 'framer-motion';
 import { DevLocale } from '../../locales/Dev';
+import Footer from "../../components/Footer"
 
 import Head from "next/head";
 
@@ -20,7 +21,7 @@ function Dev() {
   return (
     <div className='pt-20 '>
       <Head>
-        <title>{t.dev} | {t.ozzo}</title>
+        <title>{t.service[5].title}</title>
       </Head>
        <div className='w-full md:bg-fixed bg-top bg-cover lg:h-[30rem] h-[15rem]' style={{'backgroundImage': `url(${dev_cover.src}`}}>
           
@@ -75,7 +76,7 @@ function Dev() {
             </motion.div>
           </div>
         </div>
-          <div className='w-full flex justify-center uppercase font-medium text-2xl items-center text-gray-800'>
+          <div className='w-full flex justify-center uppercase font-medium text-2xl items-center text-gray-800 md:mt-0 mt-20'>
             <svg className="h-6 w-6 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
@@ -87,7 +88,7 @@ function Dev() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </div>
-        <div className='grid lg:grid-cols-3 md:grid-cols-2 md:gap-10 gap-5 my-20 '>
+        <div className='grid lg:grid-cols-3 md:grid-cols-2 md:gap-10 gap-5 mb-20 mt-10'>
            {locale.services.map((row, index) => (
                   <motion.div
                   initial={{ opacity : 0,}}
@@ -120,9 +121,9 @@ function Dev() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </div>
-        <motion.div    i
-              initial={{ opacity : 0 , x:-100}}
-              whileInView={{ opacity : 1 , x :0}}
+        <motion.div
+              initial={{ opacity : 0 , y:100}}
+              whileInView={{ opacity : 1 , y :0}}
               transition={{ type: "spring", duration: 3 }} className='my-10 grid md:grid-cols-2 gap-10 mb-20' >
             <motion.div className='relative mt-5 w-full aspect-w-16 aspect-h-9 bg-center bg-cover rounded-lg overflow-hidden' 
             style={{'backgroundImage': `url(${daavkatunes.src}`}} onClick={() => router.push('https://www.daavkatunes.mn')} >
@@ -152,6 +153,7 @@ function Dev() {
             <img className='w-1/4' src={dev2.src} />
           </div>
         </div> */}
+        
       </div>
     </div>
   )

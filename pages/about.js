@@ -121,7 +121,7 @@ const About = ({ UserData, base}) => {
         <p className="text-gray-800 mb-10 text-justify">{teachers.text}</p>
         <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-5 ">
               {UserData.map((user, index) => (
-                <div key={index}>
+                <div key={index} onClick={() => {setShowTeacher(true); setCurrentTeacher(user); setScrollStop(true)}}>
                   {user.profilephoto ? 
                   <div className="transition-all duration-500 ease-in-out rounded-lg hover:-translate-y-2 w-full aspect-1 bg-cover bg-neutral-200 bg-center"
                   style={{'backgroundImage': `url(${user.profilephoto}`}}>
@@ -135,9 +135,9 @@ const About = ({ UserData, base}) => {
                   }
                   <div className="w-full flex flex-col items-center p-5 text-gray-600">
                     <div className="flex font-bold text-center">
-                      <p className="mr-1">{user.informations[l].firstname} {user.informations[l].lastname}</p>
+                      <p className="">{user.informations[l].firstname} {user.informations[l].lastname}</p>
                     </div>
-                    <div className="px-3 flex justify-center flex-col items-center text-gray-500 font-thin md:text-xs rounded-lg text-center">
+                    <div className="px-3 flex justify-center flex-col items-center text-gray-500 font-thin text-xs rounded-lg text-center">
                       {/* <p>{user.informations[l].title}</p> */}
                       <p className="transition-all duration-300 ease-in-out font-bold text-gray-500 pt-1 hover:text-gray-400"  
                         onClick={() => {setShowTeacher(true); setCurrentTeacher(user); setScrollStop(true);}}>

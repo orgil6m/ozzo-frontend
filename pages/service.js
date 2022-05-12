@@ -5,7 +5,8 @@ import { motion } from 'framer-motion';
 import Head from 'next/head';
 import { NavbarLocale } from '../locales/Navbar';
 import {DataContext} from "../store/GlobalState"
-import Image from 'next/image';
+import Loading from '../components/Loading';
+
 
 
 export async function getServerSideProps() {
@@ -23,24 +24,37 @@ const Admin = ({base}) => {
     const router = useRouter()
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     const t = NavbarLocale[l]
-    const logout = ()=> {
-        window.localStorage.removeItem("token");
-        window.localStorage.removeItem("tokenExpTime");
-        window.localStorage.removeItem("user");
-        dispatch({type:'NOTIFY',payload:{success: "Амжилттай гарлаа!"}})
-        dispatch({type:'AUTH', payload:{}})
-        router.push('/login')
-    }
+
     useEffect(() => {
-    const token = window.localStorage.getItem("token");
-    const tokenExpTime = window.localStorage.getItem("tokenExpTime");
-    if (!token || moment().isAfter(moment(tokenExpTime))) {
-        logout()
+      const user = JSON.parse(window.localStorage.getItem("user"))
+      if(!user){
+      console.log("hi hi hi")
+      return router.push('/login')
+      }
+    }, [])
+
+    if(!auth.user || auth.user === undefined){
+      return(
+        <Loading />
+      )
     } 
-}, [])
-    if(Object.keys(auth).length === 0){
-      return <></>
+
+    if(auth.user.service !== true ){
+      return (
+        <div className='fixed inset-0 flex justify-center items-center flex-col'>
+          <p className=''>
+          Танд Сервис хэсэгт нэвтрэх эрх байхгүй байна!
+          </p>
+          <button className='transition-all duration-300 ease-in-out m-5 pr-8 pl-4 py-2 bg-sky-100 rounded-md text-sky-500 hover:bg-sky-500 hover:text-white flex items-center' type='button' onClick={()=> router.push('/profile')}>
+            <svg  className="h-4 w-4 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+            </svg>
+            Буцах
+          </button>
+        </div>
+      )
     }
+
 
     return(
       
@@ -49,10 +63,10 @@ const Admin = ({base}) => {
         <title> {t.ozzo}</title>
       </Head>
       <div className='w-full lg:px-32 md:px-20 lg:py-10 p-5  '>
-        <div className='p-2 px-10 m-5 rounded-md text-neutral-500 font-light text-sm flex flex-col items-end'>
-            <p>
-                Засвар удирдлагын хэсэгт тавтай морил! <span className='font-bold'>{auth.user.informations[l].firstname} {auth.user.informations[l].lastname} </span>
-              </p>
+        <div className='md:px-10 px-5 md:m-5 m-2 my-5 rounded-md text-neutral-500 font-light text-sm flex flex-col items-end'>
+          <p>
+            Засвар удирдлагын хэсэгт тавтай морил! <span className='font-bold'>{auth.user.informations[l].firstname} {auth.user.informations[l].lastname} </span>
+          </p>
         </div>
      </div>
     </div>

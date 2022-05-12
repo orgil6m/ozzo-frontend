@@ -6,7 +6,7 @@ const ShowTeacher = ({partner,  setShowPartner, setScrollStop})=>{
     const router = useRouter();
     return   (
           <div className="transition-all duration-300 ease-in-out flex justify-center items-center fixed inset-0 z-50 outline-none focus:outline-none cursor-default" >
-            <div className='w-screen h-screen fixed bg-black/60 backdrop-blur-sm inset-0' onClick={() => {setShowPartner(false); setScrollStop(false)}}></div>
+            <div className='w-screen h-screen fixed bg-black/30 backdrop-blur-sm inset-0' onClick={() => {setShowPartner(false); setScrollStop(false)}}></div>
 
             <motion.div className="bg-white rounded-lg flex flex-col lg:w-1/2 relative max-h-[90%] w-11/12 overflow-y-scroll "
              initial="hidden" animate="visible" variants={{

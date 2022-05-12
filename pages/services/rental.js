@@ -14,7 +14,7 @@ function Rent() {
   return (
     <div className='pt-20'>
       <Head>
-        <title>{t.rent} | {t.ozzo}</title>
+        <title>{t.service[4].title}</title>
       </Head>
        <div className='w-full md:bg-fixed bg-top bg-cover lg:h-[30rem] h-[15rem]' style={{'backgroundImage': `url(${rental_cover.src}`}}>
           

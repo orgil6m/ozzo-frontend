@@ -2,6 +2,7 @@
 import React, { useState, useContext, useEffect }  from 'react'
 import { useRouter } from 'next/router';
 import { DataContext } from '../store/GlobalState';
+import { route } from 'next/dist/server/router';
 
 export async function getServerSideProps() {
   const base = process.env.BASE_URL
@@ -18,6 +19,17 @@ const Login = ({api}) => {
     const [password, setPassword] = useState("");
     const [errmessage, setErrmessage] = useState("");
     const {auth, notify} = state
+
+    useEffect(() => {
+        const user = JSON.parse(window.localStorage.getItem("user"))
+        if(user){
+            return router.push('/profile')
+        } 
+        else {
+            return router.push("/login")
+        }
+    }, [])
+    
     const login = async (e) => {
         try {
             e.preventDefault()
@@ -31,7 +43,7 @@ const Login = ({api}) => {
         });
         const resJson = await response.json();
         if (response.status == 200) {
-             dispatch({type:'AUTH', payload:{
+            dispatch({type:'AUTH', payload:{
                 token: resJson.token,
                 user: resJson.user,
             }})
@@ -41,27 +53,25 @@ const Login = ({api}) => {
             window.localStorage.setItem("loggedTime", resJson.loggedTime);
             window.localStorage.setItem("tokenExpTime", resJson.tokenExpTime);
             const user = JSON.parse(window.localStorage.getItem("user"))
-            if(user.roles.includes("admin")){
-                router.push('/admin')
-            } else if(user.roles.includes("teacher")){
-                router.push("teacher")
-            } else if(user.roles.includes("service")){
-                router.push("service")
-            } else if(user.roles.includes("artist")){
-                router.push("artist")
+            if(user.admin === true){
+                return router.push('/admin')
+            } else if(user.teacher === true){
+               return  router.push("/teacher")
+            } else if(user.service === true){
+                return router.push("/service")
+            } else if(user.artist === true){
+               return router.push("/artist")
+            } else {
+               return router.push("/profile")
             }
-
         } else if (response.status == 401) {
             setErrmessage("Хэрэглэгчийн нэр эсвэл нууц үг буруу байна");
         } else {
             setErrmessage("Алдаа гарлаа");
         }
         } catch (err) {}
-  };
-  if(Object.keys(auth).length !== 0){
-      router.push("/admin")
-      return <></>
-    }
+    };
+
     return (
         <div className='w-screen h-screen absolute  flex justify-center items-center'>
             <div className='lg:w-1/2 md:w-2/3 w-11/12 py-20'>

@@ -6,7 +6,7 @@ const ShowTeacher = ({profile,  setShowTeacher, setScrollStop, base})=>{
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     return   (
           <div className="transition-all duration-300 ease-in-out flex justify-center items-center fixed inset-0 z-50 outline-none focus:outline-none " >
-            <div className='w-screen h-screen absolute left-0 top-0 bg-black/60 backdrop-blur-sm'  onClick={() => {setShowTeacher(false); setScrollStop(false)}}>
+            <div className='w-screen h-screen absolute left-0 top-0 bg-black/30 backdrop-blur-sm'  onClick={() => {setShowTeacher(false); setScrollStop(false)}}>
             </div>
             <motion.div className="bg-white rounded-lg flex flex-col lg:w-2/3 relative max-h-[90%] w-11/12  overflow-y-scroll "
             initial="hidden" animate="visible" variants={{

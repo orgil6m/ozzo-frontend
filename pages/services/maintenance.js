@@ -16,7 +16,7 @@ function Services() {
   return (
     <div className='pt-20'>
       <Head>
-        <title>{t.maintenance} | {t.ozzo}</title>
+        <title>{t.service[3].title}</title>
       </Head>
      
         <div className='w-full md:bg-fixed bg-top bg-cover lg:h-[30rem] h-[15rem]' style={{'backgroundImage': `url(${service_cover.src}`}}>

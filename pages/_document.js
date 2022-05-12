@@ -36,6 +36,11 @@ class MyDocument extends Document
                         text-emerald-500 
                         text-indigo-500 
                         text-sky-700
+                        bg-indigo-100 text-indigo-500
+                        bg-orange-100 text-orange-500
+                        bg-rose-100 text-rose-500
+                        bg-green-100 text-green-500
+                        bg-amber-100 text-amber-500
                         bg-red-500/10 
                         bg-sky-500/10
                         bg-sky-700/10

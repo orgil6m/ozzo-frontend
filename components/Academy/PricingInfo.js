@@ -41,12 +41,12 @@ const Pricing = () => {
             {tab === 0 ? pricingInfo.total : tab === 1 ? pricingInfo.total_season : tab ===2 ? pricingInfo.total_half : pricingInfo.total_annual}
           </p>
         </div>
-      <div className='lg:w-full text-gray-800 h-full grid lg:grid-cols-3 md:grid-cols-2 gap-5'> 
+      <div className='lg:w-full text-gray-800 h-full grid lg:grid-cols-3 grid-cols-2 gap-5'> 
         {pricings.types.map((pricing, index) => (
           <div key={index} className='relative group transition-all overflow-hidden duration-300 ease-in-out border border-gray-100 rounded-md p-10 h-full hover:border-gray-300'>
             <div className='w-full flex items-center flex-col '>  
-              <p className='uppercase font-semibold text-gray-500 text-sm'>{pricing.type}</p>
-              <p className='font-black text-gray-600 uppercase text-2xl mb-3'>
+              <p className='uppercase font-semibold text-gray-500 md:text-sm text-xs text-center'>{pricing.type}</p>
+              <p className='font-black text-gray-600 uppercase md:text-2xl text-lg my-3'>
               {tab === 0 ? pricing.price : tab === 1 ? pricing.price_season : tab ===2 ? pricing.price_half :  pricing.price_annual}₮
               </p>
               <div className='w-10 h-1 mb-3 bg-amber-400'></div>
@@ -55,8 +55,8 @@ const Pricing = () => {
               
             </div>
              <div className='absolute left-0 top-1/2 transition-all duration-500 ease-in-out rounded-lg group-hover:-translate-y-1/2 opacity-0 group-hover:opacity-100  bg-white '>
-              <p className='font-light px-10 py-2 pt-10 text-gray-700 text-xs text-justify'>{pricing.text1}</p>
-              <p className='font-light px-10 py-2 pb-10 text-gray-700 text-xs text-justify'>{pricing.text2}</p>
+              <p className='font-light md:px-10 px-2 py-2 pt-10 text-gray-700 text-xs md:text-justify text-center' >{pricing.text1}</p>
+              <p className='font-light md:px-10 px-2 py-2 pb-10 text-gray-700 text-xs md:text-justify text-center'>{pricing.text2}</p>
             </div> 
           </div>
         ))}

@@ -19,18 +19,18 @@ const Navbar = () => {
   const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
   const t = NavbarLocale[l]
   const logout = () => {
-      console.log("Logget Out!!!!!!!");
-      window.localStorage.removeItem("token");
-      window.localStorage.removeItem("tokenExpTime");
-      window.localStorage.removeItem("user");
-      dispatch({type:'NOTIFY',payload:{success: "Амжилттай гарлаа!"}})
-      dispatch({type:'AUTH', payload:{}})
-      router.push('/')
-    }
+    console.log("Logget Out!!!!!!!");
+    window.localStorage.removeItem("token");
+    window.localStorage.removeItem("tokenExpTime");
+    window.localStorage.removeItem("user");
+    dispatch({type:'NOTIFY',payload:{success: "Амжилттай гарлаа!"}})
+    dispatch({type:'AUTH', payload:{}})
+    router.push('/')
+  }
   const LoggedUser = () => {
     return (
         <>
-        {auth.user.roles.includes("admin") ?
+        {auth.user.admin === true ?
           <Link href='/admin' >
             <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/admin" ? "border-red-500  text-black " : "border-transparent"}`}>
               Админ
@@ -38,7 +38,7 @@ const Navbar = () => {
           </Link>
           :
         <></>}
-        {auth.user.roles.includes("artist") || auth.user.roles.includes("admin") ?
+        {auth.user.artist === true || auth.user.admin === true  ?
           <Link href='/artist'>
             <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/artist" ? "border-red-500  text-black " : "border-transparent"}`}>
                Артист
@@ -46,7 +46,7 @@ const Navbar = () => {
           </Link>
         :
         <></>}
-      {auth.user.roles.includes("teacher") || auth.user.roles.includes("admin")  ?
+      {auth.user.teacher === true  || auth.user.admin === true   ?
         <Link href='/teacher'>
           <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/teacher" ? "border-red-500  text-black " : "border-transparent"}`}>
               Багш
@@ -55,7 +55,7 @@ const Navbar = () => {
         :
         <></>}
 
-        {auth.user.roles.includes("service") || auth.user.roles.includes("admin") ?
+        {auth.user.service === true  || auth.user.admin === true  ?
         <Link href='/service'>
           <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/service" ? "border-red-500  text-black " : "border-transparent"}`}>
               Сервис
