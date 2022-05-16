@@ -9,24 +9,36 @@ import Image from 'next/image';
 import Loading from "../components/Loading"
 import {getUsers} from "../Datas/Users"
  
-export async function getServerSideProps(context) {
-  const UsersData = await getUsers()
-  return {
-    props: {UsersData},
-  }
-}
 
-const Admin = ({UsersData}) => {
+const Admin = () => {
     const {state, dispatch} = useContext(DataContext)
     const {auth} = state
     const router = useRouter()
     const [select, setSelect] = useState()
+    const [foundUsers, setFoundUsers] = useState()
+    const [usersData, setUsersData] = useState()
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     const t = NavbarLocale[l]
-
     useEffect(() => {
       const user = JSON.parse(window.localStorage.getItem("user"))
       if(!user) return router.push('/login')
+      getUsers().then(response => {
+        setUsersData(response)
+        setFoundUsers(response)
+      })
+      // getUsers().then(response => {
+      //   if(response.status === 200){
+         
+      //     return response.json()
+      //   }else if(response.status === 401){
+      //     localStorage.clear()
+      //     router.push('/login')
+      //     return []
+      //   }else{
+      //     return []
+      //   }
+      // }
+      // ).then(json => setFoundUsers(json.data))
     }, [])
     if(!auth.user || auth.user === undefined){
       return(
@@ -48,9 +60,123 @@ const Admin = ({UsersData}) => {
         </div>
       )
     }
-
+    const filter = (e, type) => {
+      if(type === "firstname"){
+        if(e !=  ''){
+          const result = foundUsers.filter(row => {
+          return row.informations[l].firstname.toLowerCase().startsWith(e.toLowerCase())
+        })
+        setFoundUsers(result)
+        } else{
+          setFoundUsers(usersData)
+        }
+      }
+      else if(type === 'username'){
+        if(e !=  ''){
+          const result = foundUsers.filter(row => {
+          return row.username.toLowerCase().startsWith(e.toLowerCase())
+        })
+        setFoundUsers(result)
+        } else{
+          setFoundUsers(usersData)
+        }
+      }
+      else if(type === 'number'){
+        if(e !=  ''){
+          const result = foundUsers.filter(row => {
+          return row.number && row.number.startsWith(e)
+        })
+        setFoundUsers(result)
+        } else{
+          setFoundUsers(usersData)
+        }
+      }
+     
+      else if(type === 'admin'){
+        if(e !=  ''){
+          console.log(e)
+          const result = foundUsers.filter(row => {
+            if(e == 'true' && row.admin === true) {
+              return row.admin 
+            } else if(e == 'false' && (row.admin == undefined || row.admin == "")){
+              return row
+            } 
+        })
+        setFoundUsers(result)
+        } else{
+          setFoundUsers(usersData)
+        }
+      }
+      else if(type === 'teacher') 
+      {
+        if(e !=  ''){
+          console.log(e)
+          const result = foundUsers.filter(row => {
+            if(e == 'true' && row.teacher === true) {
+              return row.teacher 
+            } else if(e == 'false' && (row.teacher == undefined || row.teacher == "")){
+              return row
+            } 
+        })
+        setFoundUsers(result)
+        } else{
+          setFoundUsers(usersData)
+        }
+      }
+      else if(type === 'service') 
+      {
+        {
+          if(e !=  ''){
+            const result = foundUsers.filter(row => {
+              if(e == 'true' && row.service === true) {
+                return row.service 
+              } else if(e == 'false' && (row.service == undefined || row.service == "")){
+                return row
+              } 
+          })
+          setFoundUsers(result)
+          } else{
+            setFoundUsers(usersData)
+          }
+        }
+      }
+      else if(type === 'artist')
+      {
+        {
+          if(e !=  ''){
+            const result = foundUsers.filter(row => {
+              if(e == 'true' && row.artist === true) {
+                return row.artist 
+              } else if(e == 'false' && (row.artist == undefined || row.artist == "")){
+                return row
+              } 
+          })
+          setFoundUsers(result)
+          } else{
+            setFoundUsers(usersData)
+          }
+        }
+      }
+      else if(type === 'label')
+      {
+        {
+          if(e !=  ''){
+            const result = foundUsers.filter(row => {
+              if(e == 'true' && row.label === true) {
+                return row.label 
+              } else if(e == 'false' && (row.label == undefined || row.label == "")){
+                return row
+              } 
+          })
+          setFoundUsers(result)
+          } else{
+            setFoundUsers(usersData)
+          }
+        }
+      }
+    }
   return(
-    <div className='pt-20 cursor-default w '>
+    <div className='pt-20 cursor-default'>
       <Head>
         <title> {t.ozzo}</title>
       </Head>
@@ -101,75 +227,75 @@ const Admin = ({UsersData}) => {
                 Хайх
               </th>
               <th scope="col" className="px-2 py-3">
-                <input className='transition-all duration-300 ease-in-out outline-none pl-4 py-2 rounded-sm border border-gray-100 focus:border-gray-300' placeholder='Хайх Утга...' />
+                <input className='transition-all duration-300 ease-in-out outline-none pl-4 py-2 rounded-sm border border-gray-100 focus:border-gray-300' placeholder='Хайх Утга...' onChange={(e)=> filter(e.target.value, "firstname")}  />
               </th>
               <th scope="col" className="px-2 py-3">
-                <input className='transition-all duration-300 ease-in-out outline-none pl-4 py-2 rounded-sm border border-gray-100 focus:border-gray-300' placeholder='Хайх Утга...' />
+                <input className='transition-all duration-300 ease-in-out outline-none pl-4 py-2 rounded-sm border border-gray-100 focus:border-gray-300' placeholder='Хайх Утга...' onChange={(e)=> filter(e.target.value, "username")}  />
               </th>
               <th scope="col" className="px-2 py-3">
-                <input className='transition-all duration-300 ease-in-out outline-none pl-4 py-2 rounded-sm border border-gray-100 focus:border-gray-300' placeholder='Хайх Утга...' />
+                <input className='transition-all duration-300 ease-in-out outline-none pl-4 py-2 rounded-sm border border-gray-100 focus:border-gray-300' placeholder='Хайх Утга...' onChange={(e)=> filter(e.target.value, "number")} />
               </th>
               <th scope="col" className="px-2 py-3">
-                <select className='py-2 outline-none px-4'>
-                  <option>
+                <select className='py-2 outline-none px-4' onChange={(e)=> filter(e.target.value, "admin")}>
+                  <option value={""}>
                     Шүүх
                   </option>
-                  <option>
+                  <option value={"true"}>
                     Тийм
                   </option>
-                  <option>
+                  <option value={false}>
                     Үгүй
                   </option>
                 </select>
               </th>
               <th scope="col" className="px-2 py-3">
-                  <select className='py-2 outline-none px-4'>
-                  <option>
+                <select className='py-2 outline-none px-4' onChange={(e)=> filter(e.target.value, "teacher")}>
+                  <option value={""}>
                     Шүүх
                   </option>
-                  <option>
+                  <option value={"true"}>
                     Тийм
                   </option>
-                  <option>
+                  <option value={false}>
                     Үгүй
                   </option>
                 </select>
               </th>
               <th scope="col" className="px-2 py-3">
-                <select className='py-2 outline-none px-4'>
-                  <option>
+                <select className='py-2 outline-none px-4' onChange={(e)=> filter(e.target.value, "service")}>
+                  <option value={""}>
                     Шүүх
                   </option>
-                  <option>
+                  <option value={true}>
                     Тийм
                   </option>
-                  <option>
+                  <option value={false}>
                     Үгүй
                   </option>
                 </select>
               </th>
               <th scope="col" className="px-2 py-3">
-                <select className='py-2 outline-none px-4'>
-                  <option>
+                <select className='py-2 outline-none px-4' onChange={(e)=> filter(e.target.value, "artist")}>
+                  <option value={""}>
                     Шүүх
                   </option>
-                  <option>
+                  <option value={true}>
                     Тийм
                   </option>
-                  <option>
+                  <option value={false}>
                     Үгүй
                   </option>
                 </select>
               </th>
               <th scope="col" className="px-2 py-3">
-                <select className='py-2 outline-none px-4'>
-                  <option>
+                <select className='py-2 outline-none px-4' onChange={(e)=> filter(e.target.value, "label")}>
+                  <option value={""}>
                     Шүүх
                   </option>
-                  <option>
+                  <option value={true}>
                     Тийм
                   </option>
-                  <option>
+                  <option value={false}>
                     Үгүй
                   </option>
                 </select>
@@ -177,7 +303,8 @@ const Admin = ({UsersData}) => {
             </tr>
           </thead>
           <tbody>
-            {UsersData.map((row, index) => (
+          {foundUsers && foundUsers.length > 0 ? (
+            foundUsers.map((row, index) => (
               <tr key={index} onClick={()=> {setSelect(index)} } className={`border-b ${select === index ? "text-gray-900 bg-gray-100" : ""}`}> 
               {row.profilephoto || row.artistPhoto ?
                 <td scope="row" className="w-20 font-medium text-gray-900 " >
@@ -195,12 +322,12 @@ const Admin = ({UsersData}) => {
                 </td>
                 }
                 <td scope="row" className='px-6 py-3'>
-                  <p className='hover:underline' n>
+                  <p className='hover:underline' onClick={()=> router.push("/user/"+row._id)}>
                   {row.informations[l].firstname}
                   </p>
                 </td>
                 <td  scope="row" className='px-6 py-3'>
-                  <p className='truncate'>
+                  <p className='truncate hover:underline' onClick={()=> router.push("/user/"+row._id)}>
                     {row.username}
                   </p>
                 </td>
@@ -275,7 +402,17 @@ const Admin = ({UsersData}) => {
                   }
                 </td>
               </tr>
-            ))}
+            )))
+            
+          :
+          <tr>
+            <td colSpan={10} className="text-center my-2">
+              <div className='my-5 text-red-400 font-medium'>
+                Илэрц олдсонгүй
+              </div>
+            </td>
+          </tr>
+          }
           </tbody>
         </table>
         </div>

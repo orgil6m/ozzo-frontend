@@ -1,11 +1,8 @@
 import { useRouter } from 'next/router'
 import React, {useContext, useEffect, useState, useRef} from 'react'
-import moment from 'moment';
-import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import { NavbarLocale } from '../locales/Navbar';
 import {DataContext} from "../store/GlobalState"
-import {initState} from "../Models/ProfileModel"
 import PasswordVerify from '../components/PasswordVerify';
 import Loading from '../components/Loading';
 export async function getServerSideProps() {
@@ -171,10 +168,18 @@ const Profile = ({api}) => {
         setSkills([...skills, ''])
     }
     const addFieldSchools = () =>{
-        setSchools([...schools, ''])
+        setSchools([...schools, {
+            "name": "",
+            "degree": "",
+            "years": ""
+        }])
     }
     const addFieldExp = () =>{
-        setExp([...exp, ''])
+        setExp([...exp, {
+            "at" : "",
+            "name" : "",
+            "years" : ""
+        }])
     }
     const deleteSkill = (index) => (
        setSkills([
@@ -242,7 +247,7 @@ const Profile = ({api}) => {
       dispatch({type:'NOTIFY',payload:{loading: true}})
       const data = new FormData()
       data.append("file", photo)
-      data.append("upload_preset", "artistcoverupload")
+      data.append("upload_preset", "adminCoverUpload")
       data.append("cloud_name", "ozzo-web")
       fetch("https://api.cloudinary.com/v1_1/ozzo-web/image/upload",{
           method:"post",
@@ -254,16 +259,15 @@ const Profile = ({api}) => {
           setProfilePhoto(data.secure_url)
       })
       .catch(err => console.log(err))
-  }
+    }
     const UpdateUser = async (id) => {
-
         setPasswordVerifyModal(true)
         const updatedField = [...informations]
         updatedField[l].lastname = lastname
         updatedField[l].firstname = firstname
         updatedField[l].title = title
         updatedField[l].skills.skill = skills
-        updatedField[l].education.shools = schools
+        updatedField[l].education.schools = schools
         updatedField[l].experience.works = exp
         setInformations(updatedField)
         const raw = { 
@@ -477,8 +481,8 @@ const Profile = ({api}) => {
                                             Зэрэг 
                                         </label>
                                             <input className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-light text-sm placeholder:text-black'   
-                                                id="firstname"
-                                                name="firstname"
+                                                id="degree"
+                                                name="degree"
                                                 type="text"
                                                 value={school.degree || ""}
                                                 onChange={(e)=> updateSchoolDegree(index, e.target.value)}  
@@ -487,8 +491,8 @@ const Profile = ({api}) => {
                                             Он (20**-20**)
                                         </label>
                                             <input className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-light text-sm placeholder:text-black'   
-                                                id="firstname"
-                                                name="firstname"
+                                                id="schoolYears"
+                                                name="schoolYears"
                                                 type="text"
                                                 value={school.years || ""}
                                                 onChange={(e)=> updateSchoolYear(index, e.target.value)}  
@@ -590,10 +594,10 @@ const Profile = ({api}) => {
             </form>
         </div>
       {passwordVerifyMdoal ?
-      <PasswordVerify body={body} setPasswordVerifyModal={setPasswordVerifyModal} setScrollStop={setScrollStop} api={api}/>
-      :
-      <>
-      </>
+        <PasswordVerify body={body} setPasswordVerifyModal={setPasswordVerifyModal} setScrollStop={setScrollStop} api={api}/>
+        :
+        <>
+        </>
       }
     </div>
   )  

@@ -33,7 +33,7 @@ const EditAudioModal = ({setAddAudioModal, setScrollStop , api})=>{
         setLoading(true)
         const data = new FormData()
         data.append("file", param)
-        data.append("upload_preset", "AudioUpload")
+        data.append("upload_preset", "audioUpload")
         data.append("cloud_name", "ozzo-web")
         fetch("https://api.cloudinary.com/v1_1/ozzo-web/video/upload",{
             method:"post",

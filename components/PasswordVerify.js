@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState, useRef, useEffect, useContext } from 'react';
 import {DataContext} from "../store/GlobalState"
 
-const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api})=>{
+const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api, type})=>{
 
     const {state, dispatch} = useContext(DataContext)
     const {auth} = state
@@ -29,15 +29,16 @@ const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api})
             });
             const resJson = await response.json();
         if(response.status == 200){
-            console.log(resJson)
             setPasswordVerifyModal(false)
-            dispatch({type:'NOTIFY', payload:{success: resJson.message}})
             setLoading(false)
+            dispatch({type:'NOTIFY', payload:{success: resJson.message}})
+            if(type !=="admin" ){
             dispatch({type:'AUTH', payload:{
                 ...auth,
                 user: resJson.user,
             }})
             window.localStorage.setItem("user", JSON.stringify(resJson.user));
+          }
         }
         }
         catch (err) {}
@@ -72,8 +73,8 @@ const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api})
             </div>
             <div className='relative flex w-2/3'>
             <input className='transition-all duration-300 ease-in-out w-full outline-none border text-sm border-gray-200 rounded-md h-10 px-2 focus:border-sky-500 font-light ' 
-              id="username-address"
-              name="username"
+              id="password"
+              name="password"
               type={passwordshow ? "text" : "password"}
               value={password}
               onChange={(e) => {

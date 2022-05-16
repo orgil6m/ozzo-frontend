@@ -138,7 +138,7 @@ const Admin = ({ api }) => {
             <div className='md:h-10 h-8 w-1 bg-red-500 mr-5'></div>
             <p className='uppercase'>Артистын Мэдээлэл Засах</p>
         </div>
-        <div className='w-full grid md:grid-cols-2 md:gap-10  text-gray-600' >
+        <div className='w-full grid md:grid-cols-2 md:gap-10 text-gray-600' >
           <form className='mt-10 md:pr-10'>
             <p className='md:mb-0 mb-5'>Артист Зураг</p>
             {artistPhoto ?
