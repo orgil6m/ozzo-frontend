@@ -4,6 +4,7 @@ const nextConfig = {
    env: {
     API_URL: process.env.API_URL,
   },
+  
   "presets": ["next/babel"],
   i18n: {
     locales: ['mn', 'en', 'cn'],
