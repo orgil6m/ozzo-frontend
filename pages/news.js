@@ -37,7 +37,7 @@ const News = ({ NewsData, base }) => {
         <div className='grid lg:grid-cols-3 gap-10 md:grid-cols-2 mb-10 '>
             {NewsData.map((news, index) => (
             <div key={index} className="transition-all duration-300 ease-in-out border group border-gray-100 overflow-hidden rounded-lg ">
-                <div className='transition-all duration-300 ease-in-out w-full aspect-w-16 aspect-h-9 bg-cover bg-center group-hover:opacity-90 group-hover:scale-105' style={{'backgroundImage': `url(${news.cover}`}} onClick={() => { router.push(`/news/${news.path}`)}} >    
+                <div className='transition-all duration-300 ease-in-out w-full aspect-w-16 aspect-h-9 bg-cover bg-center group-hover:opacity-90 group-hover:scale-105' style={{'backgroundImage': `url(${news.cover}`}} onClick={() => { router.push(`/news/${news._id}`)}} >    
                 </div>
                 <div className="p-5">
                     <div className='flex w-full h-8 items-center mb-3 '>

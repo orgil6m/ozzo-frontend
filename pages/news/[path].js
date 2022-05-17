@@ -7,7 +7,7 @@ import { NavbarLocale } from '../../locales/Navbar';
 export async function getStaticPaths() {
   const response = await getNews();
   const paths = response.map((news) => ({
-    params: { path: news.path }
+    params: { path: news && news._id }
   }));
   return {
     paths,
@@ -18,21 +18,21 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { path } = params;
   const news = await getNews();
-  const current_news = news.find((p) => p.path === path)
-  const moreNewsData = news.filter((p) => p.path !== path )
-  const base = process.env.BASE_URL
+  const current_news = news.find((p) => p && p._id === path)
+  const moreNewsData = news.filter((p) => p && p._id !== path )
+  
   moreNewsData.reverse();
   const moreNews = moreNewsData.slice(0, 2)
   return {
-    props: { news: current_news, moreNews,base }
+    props: { news: current_news, moreNews }
   };
 }
 
-const News = ({ news, moreNews,base }) => {
+const News = ({ news, moreNews }) => {
   const router = useRouter()
   const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
   const t = NavbarLocale[`${l}`]
- const path=process.env.BASE_URL;
+ 
   if(!news || news === undefined){
     return <></>
 }

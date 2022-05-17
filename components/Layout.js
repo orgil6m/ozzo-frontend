@@ -24,8 +24,7 @@ const Layout =({children})=> {
       }
     })
     }
-
-  }, []);
+  }, [dispatch]);
   return (
     <div>
       <Notify />

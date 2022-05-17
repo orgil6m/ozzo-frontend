@@ -11,7 +11,7 @@ import AudioPlayer from "../../components/AudioPlayer"
 export async function getStaticPaths() {
   const response = await getArtists();
   const paths = response.map(artist => ({
-    params: { artist: artist.artistName}
+    params: { artist: artist && artist.artistName || ''}
   }));
   return {
     paths,
@@ -22,14 +22,13 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { artist } = params;
   const artists = await getArtists();
-  const current_artist = artists.find((p) => p.artistName === artist)
-  const base = process.env.BASE_URL
+  const current_artist = artists.find((p) => p && p.artistName === artist || false)
   return {
-    props: { artist: current_artist, base }
+    props: { artist: current_artist }
   };
 }
 
-const News = ({ artist, base }) => {
+const News = ({ artist }) => {
   const router = useRouter()
   const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
   const t = NavbarLocale[l]

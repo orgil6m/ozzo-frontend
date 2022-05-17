@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from 'next/router'
 import React, {useContext, useEffect, useState, useRef} from 'react'
 import Head from 'next/head';
@@ -5,6 +6,7 @@ import { NavbarLocale } from '../locales/Navbar';
 import {DataContext} from "../store/GlobalState"
 import PasswordVerify from '../components/PasswordVerify';
 import Loading from '../components/Loading';
+
 export async function getServerSideProps() {
   const base = process.env.BASE_URL
   const api = process.env.API_URL

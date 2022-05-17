@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useRef, useEffect, useContext} from 'react'
 import { Switch } from '@headlessui/react';
 import {DataContext} from "../../store/GlobalState"

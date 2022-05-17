@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from 'next/router'
 import React, {useContext, useEffect, useState} from 'react'
 import moment from 'moment';
@@ -27,9 +28,9 @@ const Admin = ({base}) => {
     useEffect(() => {
       const user = JSON.parse(window.localStorage.getItem("user"))
       if(!user){
-      console.log("hi hi hi")
       return router.push('/login')
       }
+
     }, [])
 
     if(!auth.user || auth.user === undefined){

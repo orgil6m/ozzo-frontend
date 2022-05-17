@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef, ReactDOM } from "react";
 import AudioControls from "./AudioContols";
 import volume0 from "../Assets/Player/volume0.svg"

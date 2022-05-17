@@ -148,7 +148,7 @@ const About = ({ UserData, base}) => {
                 </div>
               ))}
         </div>
-        {showTeacher ? <ShowTeacher profile={currentTeacher} setShowTeacher={setShowTeacher} setScrollStop={setScrollStop} base={base} /> : <></>}
+        {showTeacher ? <ShowTeacher profile={currentTeacher} setShowTeacher={setShowTeacher} setScrollStop={setScrollStop}/> : <></>}
         
       </div>
       <TimeLine />

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { motion } from "framer-motion";
 
-const ShowTeacher = ({profile,  setShowTeacher, setScrollStop, base})=>{
+const ShowTeacher = ({profile,  setShowTeacher, setScrollStop})=>{
     const router = useRouter();
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     return   (

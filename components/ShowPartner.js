@@ -27,7 +27,7 @@ const ShowTeacher = ({partner,  setShowPartner, setScrollStop})=>{
               </div>
               <div className='my-10 flex flex-col items-center w-full justify-center'>
                 <div className='lg:w-1/3 w-1/2'>
-                  <img src={partner.logo}/>
+                  <img src={partner.logo} alt="logo" />
                 </div>
                 <div className='w-full lg:px-20 p-10  text-justify'>
                   <p className='font-semibold text-lg uppercase'>{partner.title}</p>
