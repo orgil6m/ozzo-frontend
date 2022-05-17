@@ -5,10 +5,6 @@ import { useState } from 'react';
 
 import label_cover from "../../Assets/LABEL/label_cover.jpg"
 import label_about from "../../Assets/LABEL/label_about.svg"
-import daavka from "../../Assets/LABEL/daavka.jpeg"
-import azzaya from "../../Assets/LABEL/azzaya.jpeg"
-import orgil from "../../Assets/LABEL/orgil.jpeg"
-import hishigee from "../../Assets/LABEL/hishgee.jpg"
 
 import {getArtists} from "../../Datas/Users";
 import { NavbarLocale } from '../../locales/Navbar';

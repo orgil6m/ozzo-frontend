@@ -3,9 +3,6 @@ import {getNews} from "../../Datas/news"
 import { useRouter } from 'next/router';
 
 import { FeaturedNewsLocale } from '../../locales/FeaturedNews';
-import Cover1 from '../../Assets/NEWS/Cover1.jpg'
-import Cover2 from '../../Assets//NEWS/Cover2.jpg'
-import Cover3 from '../../Assets/NEWS/Cover3.jpg'
 
 const FeaturedNews = () =>{
     const router = useRouter()
