@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router';
-import service_cover from "../../Assets/slide3.jpg"
+import service_cover from "../../Assets/Slide3.jpg"
 import service_about from "../../Assets/maintenance.svg"
 import Head from "next/head";
 import { motion } from 'framer-motion';

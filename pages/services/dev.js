@@ -72,7 +72,7 @@ function Dev() {
               transition={{ type: "spring", duration: 3 }} 
               className='col-span flex justify-center items-center lg:pb-20 ' 
             >
-                 <img className='w-2/3' src={dev_about.src} />
+                 <img className='w-2/3' src={dev_about.src} alt="about" />
             </motion.div>
           </div>
         </div>

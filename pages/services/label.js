@@ -73,7 +73,7 @@ function Label({ArtistData, base}) {
               </div>
             </div>
             <div className='col-span flex justify-center items-center lg:pb-20 ' >
-                 <img className='w-2/3' src={label_about.src} />
+                 <img className='w-2/3' src={label_about.src} alt="label about" />
             </div>
           </div>
         </div>

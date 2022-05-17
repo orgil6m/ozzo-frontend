@@ -105,7 +105,7 @@ const Store = ({GuitarsData, UkulelesData}) => {
                   <div className={`mt-10 ${row.color} font-light uppercase`}>
                     {row.title[l]}
                   </div>
-                <img className='w-2/3 my-5' src={row.cover}/>
+                <img className='w-2/3 my-5' src={row.cover} alt="nexg cover"/>
                 <div className='flex flex-col text-gray-800'>
                   {row.saleprice ?
                   <>
@@ -130,7 +130,7 @@ const Store = ({GuitarsData, UkulelesData}) => {
                   }
                 </div>
                 <div className='absolute top-3 right-3 bg-white rounded-full border border-gray-100 shadow-sm'>
-                  <img className='w-20' src={row.brand} />
+                  <img className='w-20' src={row.brand} alt="brand"/>
                 </div>
               </div>
            ))}
@@ -154,7 +154,7 @@ const Store = ({GuitarsData, UkulelesData}) => {
                 <div className={`mt-10 text-gray-500 font-medium`}>
                     {row.title}
                   </div>
-                <img className='my-5 ' src={row.cover}/>
+                <img className='my-5 ' src={row.cover} alt="guitars cover"/>
                 <div className='flex flex-col text-gray-800'>
                   {row.saleprice ?
                   <>
@@ -179,7 +179,7 @@ const Store = ({GuitarsData, UkulelesData}) => {
                   }
                 </div>
                 <div className='absolute top-3 right-3 bg-white rounded-full border border-gray-100 shadow-sm'>
-                  <img className='w-20' src={row.brand} />
+                  <img className='w-20' src={row.brand} alt="brands" />
                 </div>
                  <div className='absolute top-3 left-3 bg-white rounded-full flex'>
                   {row.colors.map((color, i) => (
@@ -207,7 +207,7 @@ const Store = ({GuitarsData, UkulelesData}) => {
                 <div className={`mt-10 text-gray-500 font-medium`}>
                     {row.title}
                   </div>
-                <img className='my-5 ' src={row.cover}/>
+                <img className='my-5 ' src={row.cover} alt="ukuleles cover"/>
                 <div className='flex flex-col text-gray-800'>
                   {row.saleprice ?
                   <>
@@ -232,7 +232,7 @@ const Store = ({GuitarsData, UkulelesData}) => {
                   }
                 </div>
                 <div className='absolute top-3 right-3 bg-white rounded-full border border-gray-100 shadow-sm'>
-                  <img className='w-20' src={row.brand} />
+                  <img className='w-20' src={row.brand} alt="ukuleles cover" />
                 </div>
                  <div className='absolute top-3 left-3 bg-white rounded-full flex'>
                   {row.colors.map((color, i) => (

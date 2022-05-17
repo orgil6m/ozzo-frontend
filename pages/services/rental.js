@@ -39,7 +39,7 @@ function Rent() {
               </div>
             </div>
             <div className='col-span flex justify-center items-center lg:pb-20 ' >
-                 <img className='w-2/3' src={rental_about.src} />
+                 <img className='w-2/3' src={rental_about.src}  alt="rental about"/>
             </div>
           </div>
         </div>
