@@ -146,21 +146,21 @@ const AdminUser = ({userData, api}) => {
         <Loading />
       )
     }
-  if(auth.user.admin !== true ){
-      return (
-        <div className='fixed inset-0 flex justify-center items-center flex-col'>
-          <p className=''>
-          Танд Админ хэсэгт нэвтрэх эрх байхгүй байна!
-          </p>
-          <button className='transition-all duration-300 ease-in-out m-5 pr-8 pl-4 py-2 bg-sky-100 rounded-md text-sky-500 hover:bg-sky-500 hover:text-white flex items-center' type='button' onClick={()=> router.push('/profile')}>
-            <svg  className="h-4 w-4 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-            </svg>
-            Буцах
-          </button>
-        </div>
-      )
-    }
+  // if(auth.user.admin !== true ){
+  //     return (
+  //       <div className='fixed inset-0 flex justify-center items-center flex-col'>
+  //         <p className=''>
+  //         Танд Админ хэсэгт нэвтрэх эрх байхгүй байна!
+  //         </p>
+  //         <button className='transition-all duration-300 ease-in-out m-5 pr-8 pl-4 py-2 bg-sky-100 rounded-md text-sky-500 hover:bg-sky-500 hover:text-white flex items-center' type='button' onClick={()=> router.push('/profile')}>
+  //           <svg  className="h-4 w-4 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+  //             <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+  //           </svg>
+  //           Буцах
+  //         </button>
+  //       </div>
+  //     )
+  //   }
 
   const setProfileInfos = (field, action) =>{
       if(action === "username") setUsername(field)
