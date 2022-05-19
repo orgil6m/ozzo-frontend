@@ -52,11 +52,11 @@ const AdminUser = ({userData, api}) => {
   const [password, setPassword] = useState()
   const [body, setBody] = useState()
 
-  const [isAdmin, setIsAdmin] = useState()
-  const [isTeacher, setIsTeacher] = useState()
-  const [isService, setIsService] = useState()
-  const [isArtist, setIsArtist] = useState()
-  const [isLabel, setIsLabel] = useState()
+  const [isAdmin, setIsAdmin] = useState(false)
+  const [isTeacher, setIsTeacher] = useState(false)
+  const [isService, setIsService] = useState(false)
+  const [isArtist, setIsArtist] = useState(false)
+  const [isLabel, setIsLabel] = useState(false)
 
   const profileInfos = [
       {
@@ -94,27 +94,27 @@ const AdminUser = ({userData, api}) => {
     {
       title : "Админы Эрх",
       initialState : isAdmin,
-      setInitialState : setIsAdmin,
+      setInitialStat : setIsAdmin,
     },
     {
       title : "Багшийн эрх",
       initialState : isTeacher,
-      setInitialState : setIsTeacher,
+      setInitialStat : setIsTeacher,
     },
     {
       title : "Артистын эрх",
       initialState : isArtist,
-      setInitialState : setIsArtist,
+      setInitialStat : setIsArtist,
     },
     {
       title : "Cервисийн эрх",
       initialState : isService,
-      setInitialState : setIsService,
+      setInitialStat : setIsService,
     },
     {
       title : "Лабель эрх",
       initialState : isLabel,
-      setInitialState : setIsLabel,
+      setInitialStat : setIsLabel,
     }
   ]
 
@@ -190,6 +190,7 @@ const AdminUser = ({userData, api}) => {
       };
       setBody(JSON.stringify(raw))
   }
+  console.log(isTeacher)
   return (
      <div className='pt-20 cursor-default'>
         <Head>
@@ -263,7 +264,7 @@ const AdminUser = ({userData, api}) => {
                     </p>
                     <Switch
                         checked={row.initialState}
-                        onChange={row.setInitialState}
+                        onChange={row.setInitialStat}
                         className={`${row.initialState ? 'bg-sky-500' : 'bg-gray-500'}
                           relative inline-flex h-8 w-14 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 scale-75`}
                       >
