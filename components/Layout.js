@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react'
+import React, {useContext, useEffect, useRef} from 'react'
 import Footer from './Footer'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
@@ -7,8 +7,11 @@ import Notify from './Notify'
 import { DataContext } from '../store/GlobalState'
 
 const Layout =({children})=> {
+    const timer = useRef();
     const {state, dispatch} = useContext(DataContext)
     const {auth} = state
+
+
     useEffect(() => {
     const token = window.localStorage.getItem("token");
     const user = JSON.parse(window.localStorage.getItem("user"))
@@ -18,10 +21,10 @@ const Layout =({children})=> {
       window.localStorage.removeItem("tokenExpTime");
       window.localStorage.removeItem("user");
     }else{
-        dispatch({type:'AUTH', payload:{
-        token: token,
-        user: user, 
-      }
+      dispatch({type:'AUTH', payload:{
+          token: token,
+          user: user, 
+        }
     })
     }
   }, [dispatch]);

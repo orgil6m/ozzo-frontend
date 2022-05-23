@@ -59,11 +59,10 @@ const Admin = ({ api }) => {
       setInformations(user && user.informations)
     }
   }, [])
-  if(!auth.user || auth.user === undefined){
-      return(
-        <Loading />
-      )
+    if(!auth.user || auth.user ===  undefined) {
+      return <Loading />
     }
+
     if(auth.user.artist !== true ){
       return (
         <div className='fixed inset-0 flex justify-center items-center flex-col'>
@@ -141,7 +140,6 @@ const Admin = ({ api }) => {
         </div>
         <div className='w-full grid md:grid-cols-2 md:gap-10 text-gray-600' >
           <form className='mt-10 md:pr-10'>
-            <p className='md:mb-0 mb-5'>Артист Зураг</p>
             {artistPhoto ?
             <div className='transition-all duration-300 ease-in-out aspect-1 overflow-hidden w-full bg-cover bg-center rounded-lg mb-10 mt-5 '>
               <div className='relative w-full h-full bg-cover bg-center rounded-lg' style={{'backgroundImage': `url(${artistPhoto}`}}>

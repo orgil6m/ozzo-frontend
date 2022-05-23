@@ -198,7 +198,7 @@ const News = ({ artist }) => {
                   <div className='w-20 h-10 flex justify-start items-center text-gray-500 ' >
                   <p className='mx-3 text-sm font-bold'>{row.duration && row.duration }</p>
                   </div>
-                  <div className='md:w-20 flex justify-center items-center text-gray-500 hover:text-sky-500' onClick={()=> console.log("hi")}>
+                  <div className='md:w-20 flex justify-center items-center text-gray-500 hover:text-sky-500' >
                     <svg className="h-4 w-4 " fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                     </svg>

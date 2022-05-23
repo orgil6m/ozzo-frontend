@@ -124,10 +124,6 @@ const Maps = ()=> {
   const [selectedPlace, setSelectedPlace] = useState()
   const [activeMarker, setActiveMarker] = useState()
 
-   const onMarkerClick = () =>
-   {
-     console.log()
-   }
  
   const onMapClicked = (props) => {
     

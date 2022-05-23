@@ -27,7 +27,6 @@ const Admin = ({base}) => {
     useEffect(() => {
       const user = JSON.parse(window.localStorage.getItem("user"))
       if(!user){
-      console.log("hi hi hi")
       return router.push('/login')
       }
     }, [])

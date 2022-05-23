@@ -95,7 +95,6 @@ const Admin = () => {
      
       else if(type === 'admin'){
         if(e !=  ''){
-          console.log(e)
           const result = foundUsers.filter(row => {
             if(e == 'true' && row.admin === true) {
               return row.admin 
@@ -111,7 +110,6 @@ const Admin = () => {
       else if(type === 'teacher') 
       {
         if(e !=  ''){
-          console.log(e)
           const result = foundUsers.filter(row => {
             if(e == 'true' && row.teacher === true) {
               return row.teacher 

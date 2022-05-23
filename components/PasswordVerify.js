@@ -29,6 +29,7 @@ const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api, 
             });
             const resJson = await response.json();
         if(response.status == 200){
+            setScrollStop(false)
             setPasswordVerifyModal(false)
             setLoading(false)
             dispatch({type:'NOTIFY', payload:{success: resJson.message}})

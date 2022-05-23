@@ -73,7 +73,9 @@ const EditAudioModal = ({currentAudio,  setEditAudioModal, setScrollStop , api})
                     ...auth,
                     user: resJson.user,
                 }})
+                dispatch({type:'NOTIFY',payload:{success: "Амжилттай засагдлаа"}})
                 window.localStorage.setItem("user", JSON.stringify(resJson.user));
+                setScrollStop(false)
                 setEditAudioModal(false)
             } else{
                 setErr(resJson.message)

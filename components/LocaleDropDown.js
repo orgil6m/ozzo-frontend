@@ -7,14 +7,14 @@ import { useRouter } from 'next/router'
 export default function Example() {
     const router = useRouter();
     const { pathname, asPath, query } = router;
-    const t = router.locale === 'en' ? ["En" , "Mn", "Cn"]: router.locale === 'cn' ?  ["Cn" , "Mn", "En"] : ["Mn" , "En", "Cn"]
+    const t = router.locale === 'en' ? ["en" , "mn", "cn"]: router.locale === 'cn' ?  ["cn" , "mn", "en"] : ["mn" , "en", "cn"]
     return ( 
     <div className="w-24 text-right ">
       <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button className="transition-all duration-500 ease-in-out inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-800 hover:opacity-70 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
             <GlobeIcon aria-hidden="true"/>
-            <p>{t[0]}</p>
+            <p className='capitalize'>{t[0]}</p>
             <ChevronDownIcon className="w-5 h-5 ml-2 -mr-1 text-slate-400" aria-hidden="true" />
           </Menu.Button>
         </div>
@@ -27,7 +27,7 @@ export default function Example() {
                   onClick={() => { router.push({ pathname, query }, asPath, { locale: t[1] })}} >
                     {active ? (  <TranlationIcon className="w-5 h-5 mr-2" aria-hidden="true" />): (
                     <TranlationIcon className="w-5 h-5 mr-2" aria-hidden="true" /> )}
-                    {t[1]}
+                    <p className='capitalize'>{t[1]}</p>
                   </button>
                 )}
               </Menu.Item>
@@ -39,7 +39,7 @@ export default function Example() {
                    onClick={() => { router.push({ pathname, query }, asPath, { locale: t[2] })}} >
                     {active ? ( <TranlationIcon/> ) : ( 
                     <TranlationIcon /> )}
-                        {t[2]}
+                      <p className='capitalize'>{t[2]}</p>
                   </button>
                 )}
               </Menu.Item>

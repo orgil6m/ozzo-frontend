@@ -210,7 +210,7 @@ const AdminUser = ({userData, api}) => {
                 <div className='transition-all duration-300 ease-in-out aspect-1 overflow-hidden w-full bg-cover bg-center rounded-lg mb-10 mt-5 md:pr-10 '>
                   <div className='relative w-full h-full bg-cover bg-center rounded-lg' style={{'backgroundImage': `url(${profilephoto}`}}>
                   <div className='transition-all duration-300 ease-in-out absolute top-5 right-5 rounded-full bg-white/20 text-white hover:bg-white/50' 
-                  onClick={()=> console.log("Тийм юм байдаггүй юм аа")}>
+                  onClick={()=> setProfilePhoto("")}>
                   <svg className="h-4 w-4 m-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                   </svg>

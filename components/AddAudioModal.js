@@ -6,7 +6,7 @@ import { useState, useRef, useEffect, useContext } from 'react';
 import {DataContext} from "../store/GlobalState"
 import {secondFormat} from "../utils/format" 
 
-const EditAudioModal = ({setAddAudioModal, setScrollStop , api})=>{
+const AddAudioModal = ({setAddAudioModal, setScrollStop , api})=>{
     const {state, dispatch} = useContext(DataContext)
     const {auth} = state
     const router = useRouter();
@@ -208,4 +208,4 @@ const EditAudioModal = ({setAddAudioModal, setScrollStop , api})=>{
     )
 }
 
-export default EditAudioModal
+export default AddAudioModal

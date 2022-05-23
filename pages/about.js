@@ -138,8 +138,8 @@ const About = ({ UserData, base}) => {
                       <p className="">{user.informations[l].firstname} {user.informations[l].lastname}</p>
                     </div>
                     <div className="px-3 flex justify-center flex-col items-center text-gray-500 font-thin text-xs rounded-lg text-center">
-                      {/* <p>{user.informations[l].title}</p> */}
-                      <p className="transition-all duration-300 ease-in-out font-bold text-gray-500 pt-1 hover:text-gray-400"  
+                      <p className="py-1">{user.informations[l].title}</p>
+                      <p className="transition-all duration-300 ease-in-out font-bold text-gray-500 hover:text-gray-400"  
                         onClick={() => {setShowTeacher(true); setCurrentTeacher(user); setScrollStop(true);}}>
                         {about.readmore}
                       </p>
