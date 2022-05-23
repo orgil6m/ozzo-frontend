@@ -15,21 +15,6 @@ const ImageSlider = () => {
     const t = SlideImagesText[`${l}`]
     const slideImages = [
     {
-        bgImage:`${image1.src}`,
-        url:"../services/store",
-        class1: "",
-        class2: "",
-        class3: "border-white text-white hover:bg-gray-500/10",
-        class4: "text-gray-400",
-        class5: '',
-        text0: `${t.text0.slide1}`,
-        text1: `${t.text1.slide1}`,
-        text2: `${t.text2.slide1}`,
-        text3: `${t.text3.slide1}`,
-        text4: `${t.text4.slide1}`,
-        text5: `${t.text5}`,
-    },
-    {
         bgImage:`${image2.src}`,
         url:"../services/academy",
         class1: "bg-gradient-to-l from-transparent lg:to-black/20 to-black/90 items-end" ,
@@ -57,6 +42,21 @@ const ImageSlider = () => {
         text2: `${t.text2.slide3}`,
         text3: `${t.text3.slide3}`,
         text4: `${t.text4.slide3}`,
+        text5: `${t.text5}`,
+    },
+    {
+        bgImage:`${image1.src}`,
+        url:"../services/store",
+        class1: "",
+        class2: "",
+        class3: "border-white text-white hover:bg-gray-500/10",
+        class4: "text-gray-400",
+        class5: '',
+        text0: `${t.text0.slide1}`,
+        text1: `${t.text1.slide1}`,
+        text2: `${t.text2.slide1}`,
+        text3: `${t.text3.slide1}`,
+        text4: `${t.text4.slide1}`,
         text5: `${t.text5}`,
     },
 ];
