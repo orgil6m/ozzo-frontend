@@ -1,14 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from 'next/router'
 import React, {useContext, useEffect, useState} from 'react'
-import moment from 'moment';
-import { motion } from 'framer-motion';
 import Head from 'next/head';
-import { NavbarLocale } from '../locales/Navbar';
-import {DataContext} from "../store/GlobalState"
-import Image from 'next/image';
-import Loading from "../components/Loading"
-import {getUsers} from "../Datas/Users"
+import { NavbarLocale } from '../../locales/Navbar';
+import {DataContext} from "../../store/GlobalState"
+import Loading from "../../components/Loading"
+import {getUsers} from "../../Datas/Users"
  
 
 const Admin = () => {
@@ -177,14 +174,15 @@ const Admin = () => {
   return(
     <div className='pt-20 cursor-default'>
       <Head>
-        <title> {t.ozzo}</title>
+        <title> Хэрэглэгчид |{t.ozzo}</title>
       </Head>
       <div className='w-full lg:px-32 md:px-20 lg:py-10 p-5  '>
-        <div className='md:px-10 px-5 md:m-5 m-2 my-5 rounded-sm text-neutral-500 font-light text-sm flex flex-col items-end'>
-            <p>
-              Админ удирдлагын хэсэгт тавтай морил! <span className='font-bold'>{auth.user.informations[l].firstname} {auth.user.informations[l].lastname} </span>
-            </p>
+        <div className="lg:mb-10 mb-5 flex cursor-default">
+          <p className="transition-all duration-300 ease-in-out text-sm text-black/50 pr-2 hover:text-black" onClick={() => router.push("/admin")}> Админ </p>
+          <p className="text-sm text-black/50 pr-2 "> / </p>
+          <p className="transition-all duration-300 ease-in-out text-sm text-black"> Хэрэглэгчид </p>
         </div>
+       
         <div className='overflow-scroll w-full'>
         <table className="w-full text-sm text-left text-gray-500 my-10 ">
           <thead className="text-xs text-gray-800 uppercase bg-gray-100">

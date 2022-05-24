@@ -295,7 +295,6 @@ const Profile = ({api}) => {
         };
        setBody(JSON.stringify(raw))
     }
-    console.log(web)
     return(
     <div className='pt-20 cursor-default'>
         <Head>

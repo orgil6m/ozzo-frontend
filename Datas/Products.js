@@ -10,8 +10,15 @@ const getUkuleles = async () => {
     const ukuleles = jsonData.data.filter((e) => e.type.includes("ukulele"))
     return ukuleles
 }
+const getProducts = async () => {
+  const data = await fetch(`${process.env.API_URL}/api/ozzo/products`)
+  const jsonData = await data.json()
+  return jsonData.data
+}
+
 module.exports = {
   getGuitars,
-  getUkuleles
+  getUkuleles,
+  getProducts
 }
  

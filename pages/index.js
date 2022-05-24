@@ -17,7 +17,7 @@ import { NavbarLocale } from '../locales/Navbar';
 function Home() {
   const router = useRouter();
   const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
-  const t = NavbarLocale[`${l}`]
+  const t = NavbarLocale[l]
 
   return (
    <div className="cursor-default">

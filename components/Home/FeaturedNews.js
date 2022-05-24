@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {getNews} from "../../Datas/news"
 import { useRouter } from 'next/router';
 
@@ -6,34 +6,14 @@ import { FeaturedNewsLocale } from '../../locales/FeaturedNews';
 
 const FeaturedNews = () =>{
     const router = useRouter()
+    const [newsData, setNewsData] = useState("")
+    useEffect(() => {
+        getNews().then((res) => setNewsData(res.slice(0, 3)));
+
+    }, [])
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     const t = FeaturedNewsLocale[l];
-    const FeaturedNewsData = [
-    {
-        id : "1",
-        cover: "https://res.cloudinary.com/ozzo-web/image/upload/v1651213961/News/cover1.jpg",
-        path : "DaavkaTunes-X-ArdArt",
-        date: ' 2022-04-01',
-        title : t.id[0].title,
-        text : t.id[0].text.slice(0, 100),
-    },
-    {
-        id: "2",
-        cover:"https://res.cloudinary.com/ozzo-web/image/upload/v1651067896/News/cover2.jpg",
-        path : "DaavkaTunes-Movie-Night",
-        date: ' 2022-03-01',
-        title : t.id[1].title,
-        text : t.id[1].text.slice(0, 100),
-    },
-    {
-        id: "3",
-        cover:"https://res.cloudinary.com/ozzo-web/image/upload/v1651067898/News/cover3.jpg",
-        path : 'DT-Acoustic-Concert',
-        date: ' 2021-10-10',
-        title : t.id[2].title,
-        text : t.id[2].text.slice(0, 100),
-    },
-];
+    const FeaturedNewsData = newsData
     return (
     <div className='w-full py-10 cursor-default'>
         <div className='transition-all duration-500 ease-in-out lg:w-full font-semibold md:text-2xl text-lg flex items-center text-gray-800 mb-10'> 
@@ -46,16 +26,17 @@ const FeaturedNews = () =>{
                 </svg>
             </div>
         </div>
-        <div className='grid lg:grid-cols-3 gap-10 md:grid-cols-2 '>
-            {FeaturedNewsData.map((FeaturedNewsData, index) => (
+        <div className='grid lg:grid-cols-3 gap-10 md:grid-cols-2'>
+            {FeaturedNewsData ?
+            FeaturedNewsData.map((FeaturedNewsData, index) => (
             <div key={index}>
-                <div className='transition-all duration-300 ease-in-out hover:opacity-90' onClick={() => { router.push(`/news/${FeaturedNewsData.path}`)}}>
+                <div className='transition-all duration-300 ease-in-out hover:opacity-90' onClick={() => { router.push(`/news/${FeaturedNewsData._id}`)}}>
                     <div className='rounded-md w-full aspect-w-16 aspect-h-9 bg-cover bg-center' style={{'backgroundImage': `url(${FeaturedNewsData.cover}`}}  >                    
                     </div>
                     <div className='flex w-full h-8 items-center my-3'>
-                        <h2 className='text-gray-800 font-bold uppercase text-lg '>{FeaturedNewsData.title}</h2>
+                        <h2 className='text-gray-800 font-bold uppercase text-lg '>{FeaturedNewsData.content[l].title}</h2>
                     </div>
-                    <p className='text-gray-800/80 text-sm'>{FeaturedNewsData.text.slice(0, 75)}... </p>
+                    <p className='text-gray-800/80 text-sm'>{FeaturedNewsData.content[l].text.slice(0, 75)}... </p>
                     <div className='pt-2 font-thin flex text-sm pb-1 items-center text-gray-800/50'>
                         <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -64,7 +45,9 @@ const FeaturedNews = () =>{
                     </div>
                 </div>
             </div>
-          ))} 
+          )) 
+        :
+        <></>} 
         </div>
         <div className='md:hidden flex transition-all duration-1000 ease-in-out  w-full mt-5 font-thin text-base items-center justify-end ' onClick={() => { router.push('/news')}}>
                 {t.more}

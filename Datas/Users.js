@@ -41,6 +41,7 @@ const getTeachers = async () => {
     return jsonData.data
 }
 
+
 module.exports = {
   getUsers,
   getUser,

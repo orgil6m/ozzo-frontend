@@ -94,27 +94,27 @@ const AdminUser = ({userData, api}) => {
     {
       title : "Админы Эрх",
       initialState : isAdmin,
-      setInitialStat : setIsAdmin,
+      setInitialState : setIsAdmin,
     },
     {
       title : "Багшийн эрх",
       initialState : isTeacher,
-      setInitialStat : setIsTeacher,
+      setInitialState : setIsTeacher,
     },
     {
       title : "Артистын эрх",
       initialState : isArtist,
-      setInitialStat : setIsArtist,
+      setInitialState : setIsArtist,
     },
     {
       title : "Cервисийн эрх",
       initialState : isService,
-      setInitialStat : setIsService,
+      setInitialState : setIsService,
     },
     {
       title : "Лабель эрх",
       initialState : isLabel,
-      setInitialStat : setIsLabel,
+      setInitialState : setIsLabel,
     }
   ]
 
@@ -190,14 +190,20 @@ const AdminUser = ({userData, api}) => {
       };
       setBody(JSON.stringify(raw))
   }
-  console.log(isTeacher)
   return (
      <div className='pt-20 cursor-default'>
         <Head>
-            <title> {t.ozzo}</title>
+            <title> {userData.username} | {t.ozzo}</title>
         </Head>
 
-        <div className='w-full lg:px-32 md:px-20 p-5 font-semibold '>
+        <div className='w-full lg:px-32 md:px-20 p-5  '>
+          <div className="lg:mb-10 mb-5 flex cursor-default md:mt-5">
+            <p className="transition-all duration-300 ease-in-out text-sm text-black/50 pr-2 hover:text-black" onClick={() => router.push("/admin")}> Админ </p>
+            <p className="text-sm text-black/50 pr-2 "> / </p>
+            <p className="transition-all duration-300 ease-in-out text-sm pr-2 text-black/50 hover:text-black"  onClick={() => router.push("/admin/users")}> Хэрэглэгчид </p>
+            <p className="text-sm text-black/50 pr-2 "> / </p>
+            <p className="transition-all duration-300 ease-in-out text-sm text-black"> {userData.username} </p>
+          </div>
             <div className='lg:w-full font-semibold text-xl flex items-center text-gray-800 mt-10'> 
                 <div className='md:h-10 h-8 w-1 bg-red-500 mr-5'></div>
                 <p className='uppercase'>Хэрэглэгчийн Мэдээлэл Засах</p>
@@ -264,7 +270,7 @@ const AdminUser = ({userData, api}) => {
                     </p>
                     <Switch
                         checked={row.initialState}
-                        onChange={row.setInitialStat}
+                        onChange={row.setInitialState}
                         className={`${row.initialState ? 'bg-sky-500' : 'bg-gray-500'}
                           relative inline-flex h-8 w-14 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 scale-75`}
                       >
@@ -276,8 +282,6 @@ const AdminUser = ({userData, api}) => {
                     </Switch>
                   </div>
                 ))}
-               
-               
               </div>
               </div>
             </form>

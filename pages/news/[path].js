@@ -40,7 +40,7 @@ const News = ({ news, moreNews }) => {
   return(
     <div className='pt-20 cursor-default'>
       <Head>
-        <title>{news.langs[`${l}`].title}  | {t.ozzo}</title>
+        <title>{news.content[l].title}  | {t.ozzo}</title>
       </Head>
 
       <div className='lg:px-32 md:px-20 lg:pt-10 pt-5 px-5 cursor-default'>
@@ -49,11 +49,11 @@ const News = ({ news, moreNews }) => {
             <p className="text-sm text-black/50 pr-2 "> / </p>
             <p className="transition-all duration-300 ease-in-out text-sm text-black/50 hover:text-black pr-2"  onClick={() => router.push("/news")}> {t.news} </p>
             <p className="text-sm text-black/50 pr-2 "> / </p>
-            <p className="transition-all duration-300 ease-in-out text-sm text-black"> {news.langs[l].title} </p>
+            <p className="transition-all duration-300 ease-in-out text-sm text-black"> {news.content[l].title} </p>
         </div>
         <div className='w-full md:text-2xl text-lg uppercase font-semibold text-gray-800 flex items-center justify-start '>
            <div className='transition-all duration-500 ease-in-out md:h-10 h-8 w-1 bg-red-500 mr-5'></div>
-            <p>{news.langs[l].title}</p>
+            <p>{news.content[l].title}</p>
         </div>
         <div className='opacity-50 text-xs h-12 flex items-center'>
           <div className='flex h-full items-center mr-5'>
@@ -76,7 +76,7 @@ const News = ({ news, moreNews }) => {
           <div className='transition-all duration-500 ease-in-out aspect-w-16 aspect-h-9 bg-cover bg-center rounded-md mt-5' 
           style={{'backgroundImage': `url(${news.cover}`}}> </div>
           <article className='mb-10'>
-            <p className='text-justify text-sm pt-5'> {news.langs[l].text}</p>
+            <p className='text-justify text-sm pt-5'> {news.content[l].text}</p>
           </article>
         </div>
         <div className='md:hidden w-full h-px bg-gray-800 my-5'>
@@ -95,7 +95,7 @@ const News = ({ news, moreNews }) => {
               </div> 
                  <div className='w-full flex rounded-md items-start flex-col p-2'>
                    <div className='text-black flex flex-col '>
-                    <p>{moreNews.langs[l].title}</p>
+                    <p>{moreNews.content[l].title}</p>
                   </div>
                   <div className='text-black/80 text-xs italic flex items-center my-2'>
                     <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

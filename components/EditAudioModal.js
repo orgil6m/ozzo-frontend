@@ -87,7 +87,6 @@ const EditAudioModal = ({currentAudio,  setEditAudioModal, setScrollStop , api})
         setAudios([
              audios.splice(currentAudio.index, 1)
         ])
-        console.log(audios)
         setLoading(true)
         const raw = { 
             "_id" : auth.user._id,

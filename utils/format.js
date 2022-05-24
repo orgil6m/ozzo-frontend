@@ -8,3 +8,21 @@ export const secondFormat = (given_seconds)=>{
     let timeString = minutes.toString().padStart(1, '0') + ':' + seconds.toString().padStart(2, '0');
     return timeString
 }
+
+
+
+export const getRandomColor = () => {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+export const getFirstLetters = (str) => {
+    const firstLetters = str
+        .split(' ')
+        .map(word => word[0])
+        .join('.');
+    return firstLetters;
+  }
