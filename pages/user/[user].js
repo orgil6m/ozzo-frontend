@@ -139,7 +139,7 @@ const AdminUser = ({userData, api}) => {
         setIsLabel(userData &&  userData.label)
       }
       
-  }, [])
+  }, [userData])
 
   if(!auth.user || auth.user === undefined){
       return(
