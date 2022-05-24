@@ -22,6 +22,7 @@ export async function getStaticProps({ params }) {
   const moreNewsData = news.filter((p) => p && p._id !== path )
   
   moreNewsData.reverse();
+  console.log(moreNewsData)
   const moreNews = moreNewsData.slice(0, 2)
   return {
     props: { news: current_news, moreNews }
@@ -91,7 +92,7 @@ const News = ({ news, moreNews }) => {
           {moreNews.map((moreNews, index) => (
             <div key={index} className=' transition-all duration-300 ease-in-out md:w-2/3 mt-5 border border-gray-100 overflow-hidden rounded-lg hover:border-gray-300 group'>
               <div className='transition-all duration-500 ease-in-out aspect-w-16 aspect-h-9 bg-cover bg-center group-hover:opacity-90 ' style={{'backgroundImage': `url(${moreNews.cover}`}} 
-              onClick={() => { router.push(`/news/${moreNews.path}`)}} > 
+              onClick={() => { router.push(`/news/${moreNews._id}`)}} > 
               </div> 
                  <div className='w-full flex rounded-md items-start flex-col p-2'>
                    <div className='text-black flex flex-col '>
