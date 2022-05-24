@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useContext, useEffect, useState} from 'react'
 import {DataContext} from "../../store/GlobalState"
 import Head from 'next/head'
