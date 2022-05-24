@@ -9,17 +9,6 @@ import { NavbarLocale } from '../../locales/Navbar';
 import Loading from '../../components/Loading';
 import PasswordVerify from '../../components/PasswordVerify';
 
-// export async function getStaticPaths() {
-//   const response = await getUsers();
-//   const paths = response.map(row => ({
-//     params: { user: row._id}
-//   }));
-//   return {
-//     paths,
-//     fallback: true
-//   };
-// }
-
 export async function getServerSideProps({ params }) {
   const { user } = params;
   const users = await getUsers();

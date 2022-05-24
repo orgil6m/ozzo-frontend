@@ -8,18 +8,7 @@ import label_cover from "../../Assets/LABEL/label_cover.jpg"
 import { useState } from 'react';
 import AudioPlayer from "../../components/AudioPlayer"
 
-export async function getStaticPaths() {
-  const response = await getArtists();
-  const paths = response.map(artist => ({
-    params: { artist: artist && artist.artistName || ''}
-  }));
-  return {
-    paths,
-    fallback: true
-  };
-}
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const { artist } = params;
   const artists = await getArtists();
   const current_artist = artists.find((p) => p && p.artistName === artist || false)
