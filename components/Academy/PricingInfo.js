@@ -36,10 +36,16 @@ const Pricing = () => {
         </div>
       ))}
       </div>
-         <div className='w-full flex justify-center'>
-          <p className='uppercase font-light text-lg mb-10'>
-            {tab === 0 ? pricingInfo.total : tab === 1 ? pricingInfo.total_season : tab ===2 ? pricingInfo.total_half : pricingInfo.total_annual}
+         <div className='w-full flex justify-center items-center mb-10'>
+            <p className='uppercase text-lg font-light'>
+              {pricingInfo.total}
+            </p>
+          <p className='uppercase   rounded-full mx-1.5 text-xl font-bold'>
+            {tab === 0 ?  pricingInfo.hours_month : tab === 1 ?  pricingInfo.hours_season : tab === 2 ?  pricingInfo.hours_half :  pricingInfo.hours_annual}
           </p>
+          <p className='uppercase text-lg font-light'>
+              {pricingInfo.total_text}
+            </p>
         </div>
       <div className='lg:w-full text-gray-800 h-full grid lg:grid-cols-3 grid-cols-2 gap-5'> 
         {pricings.types.map((pricing, index) => (

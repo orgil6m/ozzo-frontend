@@ -6,10 +6,12 @@ const PricingLocale =[
         seasonally : "Улирлаар",
         semiannualy : "Хагас жилээр",
         annually : "Жилээр",
-        total : "Нийт 8 цагийн хичээл",
-        total_season : "Нийт 24 цагийн хичээл",
-        total_half : "Нийт 48 цагийн хичээл",
-        total_annual : "Нийт 96 цагийн хичээл",
+        total : "Нийт",
+        hours_month : "8",
+        hours_season : "24",
+        hours_half : "48",
+        hours_annual : "96",
+        total_text : "цагийн хичээл",
     },
     {
         title :"Pricing Information",
@@ -17,7 +19,13 @@ const PricingLocale =[
         monthly : "Monthly",
         seasonally : "Seasonally",
         semiannualy : "Semi-annually",
-        annually : "Annually"
+        annually : "Annually",
+        total : "Total :",
+        hours_month : "8",
+        hours_season : "24",
+        hours_half : "48",
+        hours_annual : "96",
+        total_text : "Hours course",
     },
     {
         title : "定价信息",
@@ -26,6 +34,12 @@ const PricingLocale =[
         seasonally : "季节性",
         semiannualy : "半年度",
         annually : "每年",
+        total : "全部的 :",
+        hours_month : "8",
+        hours_season : "24",
+        hours_half : "48",
+        hours_annual : "96",
+        total_text : "小时课程",
     }
 ]
 
@@ -41,7 +55,6 @@ const Pricings = [
                 price_annual : "1,800,000",
                 text1 : "Ганцаарчилсан сургалт суралцах өдөр цагаа манай төвд байгаа сул цагуудаас сонгон суралцах боломжтой.",
                 text2 : "Долоо хоногт 2 өдөр танхимаар хичээллэнэ. Нэг хичээл 60 минут үргэлжилнэ.",
-
             },
             {
                 type : "Групп Сургалт",
