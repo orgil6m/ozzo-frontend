@@ -4,18 +4,8 @@ import Head from 'next/head';
 
 import { NavbarLocale } from '../../locales/Navbar';
 
-export async function getStaticPaths() {
-  const response = await getNews();
-  const paths = response.map((news) => ({
-    params: { path: news && news._id }
-  }));
-  return {
-    paths,
-    fallback: true
-  };
-}
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const { path } = params;
   const news = await getNews();
   const current_news = news.find((p) => p && p._id === path)

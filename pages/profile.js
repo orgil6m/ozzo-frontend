@@ -365,7 +365,7 @@ const Profile = ({api}) => {
                         <div key={index}>
                             <label className='font-base'>{profile.title}</label>
                             <input 
-                            className={`transition-all duration-300 ease-in-out my-2 w-full outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-red-300 font-light placeholder:text-black text-sm disabled:border-gray-100 `}   
+                            className={`transition-all duration-300 ease-in-out my-2 w-full outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-red-300 font-normal placeholder:text-black text-sm disabled:border-gray-100 `}   
                             id={profile.title}
                             name={profile.title}
                             type={profile.type && profile.type}
@@ -381,7 +381,7 @@ const Profile = ({api}) => {
                     <div className='w-full my-1'>
                         <label className='font-base'>Нууц үг</label>
                         <div className='relative flex'>
-                            <input className='transition-all duration-300 ease-in-out w-full outline-none border text-sm border-gray-200 rounded-md h-10 px-2 focus:border-sky-500 font-light ' 
+                            <input className='transition-all duration-300 ease-in-out w-full outline-none border text-sm border-gray-200 rounded-md h-10 px-2 focus:border-sky-500 font-normal ' 
                             id="password"
                             name="password"
                             type={passwordShow ? "text" : "password"}
@@ -418,7 +418,7 @@ const Profile = ({api}) => {
                         <div key={index}>
                             <label className='font-base'>{social.icon} {social.title}</label>
                             <input 
-                                className='transition-all duration-300 ease-in-out my-2  w-full outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-red-300 font-light text-sm placeholder:text-black'   
+                                className='transition-all duration-300 ease-in-out my-2  w-full outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-red-300 font-normal text-sm placeholder:text-black'   
                                 id={social.title}
                                 name={social.title}
                                 type="text"
@@ -459,7 +459,7 @@ const Profile = ({api}) => {
                                     <label>
                                         # {index+1}
                                     </label>
-                                    <input className='transition-all w-full duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-light text-sm placeholder:text-black z-0'   
+                                    <input className='transition-all w-full duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-normal text-sm placeholder:text-black z-0'   
                                         id={skill}
                                         name={skills}
                                         type="text"
@@ -507,7 +507,7 @@ const Profile = ({api}) => {
                                         <label>
                                             Сургууль
                                         </label>
-                                        <input className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-light text-sm placeholder:text-black'   
+                                        <input className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-normal text-sm placeholder:text-black'   
                                             id="school"
                                             name="school"
                                             type="text"
@@ -517,7 +517,7 @@ const Profile = ({api}) => {
                                         <label>
                                             Зэрэг 
                                         </label>
-                                            <input className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-light text-sm placeholder:text-black'   
+                                            <input className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-normal text-sm placeholder:text-black'   
                                                 id="degree"
                                                 name="degree"
                                                 type="text"
@@ -527,7 +527,7 @@ const Profile = ({api}) => {
                                         <label>
                                             Он (20**-20**)
                                         </label>
-                                            <input className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-light text-sm placeholder:text-black'   
+                                            <input className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-normal text-sm placeholder:text-black'   
                                                 id="schoolYears"
                                                 name="schoolYears"
                                                 type="text"
@@ -575,7 +575,7 @@ const Profile = ({api}) => {
                                                 Хаана
                                             </label>
                                             <input 
-                                                className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-light text-sm placeholder:text-black'   
+                                                className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-normal text-sm placeholder:text-black'   
                                                 id="exp"
                                                 name="exp"
                                                 type="text"
@@ -586,7 +586,7 @@ const Profile = ({api}) => {
                                             Хийсэн ажил
                                             </label>
                                             <input 
-                                                className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-light text-sm placeholder:text-black'   
+                                                className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-normal text-sm placeholder:text-black'   
                                                 id="work"
                                                 name="work"
                                                 type="text"
@@ -598,7 +598,7 @@ const Profile = ({api}) => {
                                                 Он (20**-20**)
                                             </label>
                                             <input 
-                                                className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-light text-sm placeholder:text-black'   
+                                                className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-normal text-sm placeholder:text-black'   
                                                 id="years"
                                                 name="year"
                                                 type="text"

@@ -1,9 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 
 import React, { useState, useContext, useEffect }  from 'react'
 import { useRouter } from 'next/router';
 import { DataContext } from '../store/GlobalState';
-import { route } from 'next/dist/server/router';
+import Loading from '../components/Loading';
 
 export async function getServerSideProps() {
   const base = process.env.BASE_URL
@@ -21,6 +20,7 @@ const Login = ({api}) => {
     const [errmessage, setErrmessage] = useState("");
     const {auth, notify} = state
 
+    
     useEffect(() => {
         const user = JSON.parse(window.localStorage.getItem("user"))
         if(user){
@@ -29,7 +29,14 @@ const Login = ({api}) => {
         else {
             return router.push("/login")
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+    if(auth.user ){
+        return(
+          <Loading />
+        )
+      }
+  
     
     const login = async (e) => {
         try {
@@ -77,7 +84,7 @@ const Login = ({api}) => {
         <div className='w-screen h-screen absolute  flex justify-center items-center'>
             <div className='lg:w-1/2 md:w-2/3 w-11/12 py-20'>
                 <div className='w-full flex flex-col items-center py-5'>
-                    <p className='uppercase font-light text-xl'>
+                    <p className='uppercase font-normal text-xl'>
                         Хэрэглэгч нэвтрэх
                     </p>
                     <div className='w-10 h-1 mt-3 bg-red-500'>
@@ -89,7 +96,7 @@ const Login = ({api}) => {
                     <label>Нэвтрэх нэр</label>
                     <input 
                         className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-red-300
-                        font-light ' 
+                        font-normal ' 
                         id="username-address"
                         name="username"
                         type="text"
@@ -102,7 +109,7 @@ const Login = ({api}) => {
                         placeholder='Нэвтрэх нэрээ оруулна уу'/>
                     <label>Нууц үг</label>
                     <input 
-                        className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-red-300 font-light'   
+                        className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-red-300 font-normal'   
                         id="password"
                         name="password"
                         type="password"

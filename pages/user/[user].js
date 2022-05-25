@@ -286,7 +286,7 @@ const AdminUser = ({userData, api}) => {
                       <div key={index}>
                           <label className='font-base'>{profile.title}</label>
                           <input 
-                          className={`transition-all duration-300 ease-in-out my-2 w-full outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-red-300 font-light placeholder:text-black text-sm disabled:border-gray-100 `}   
+                          className={`transition-all duration-300 ease-in-out my-2 w-full outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-red-300 font-normal placeholder:text-black text-sm disabled:border-gray-100 `}   
                           id={profile.title}
                           name={profile.title}
                           type={profile.type && profile.type}
@@ -299,7 +299,7 @@ const AdminUser = ({userData, api}) => {
                   ))}
                     <label className='font-base'>Нууц үг</label>
                     <div className='relative flex '>
-                      <input className='transition-all duration-300 ease-in-out w-full outline-none border text-sm border-gray-200 rounded-md h-10 px-2 focus:border-sky-500 font-light ' 
+                      <input className='transition-all duration-300 ease-in-out w-full outline-none border text-sm border-gray-200 rounded-md h-10 px-2 focus:border-sky-500 font-normal ' 
                         id="password"
                         name="password"
                         type={passwordshow ? "text" : "password"}

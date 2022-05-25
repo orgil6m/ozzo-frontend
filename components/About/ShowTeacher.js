@@ -135,7 +135,7 @@ const ShowTeacher = ({profile,  setShowTeacher, setScrollStop})=>{
                       {profile.informations[l].skills.skill.map((skills, index) => (
                         <div key={index}>
                           <div className='m-1'>
-                            <p className='font-light text-gray-700 text-xs'><span className='text-emerald-500 font-medium'># </span>{skills}</p>
+                            <p className='font-normal text-gray-700 text-xs'><span className='text-emerald-500 font-medium'># </span>{skills}</p>
                           </div>
                         </div>
                       ))}
@@ -147,7 +147,7 @@ const ShowTeacher = ({profile,  setShowTeacher, setScrollStop})=>{
                   <div className='mt-10 flex text-lg text-gray-700 font-medium'>
                     <p className='mr-2'>{profile.informations[l].firstname} {profile.informations[l].lastname}</p> 
                   </div>
-                   <div className='flex text-sm text-gray-700 font-light'>
+                   <div className='flex text-sm text-gray-700 font-normal'>
                     <p className='mr-2'>{profile.informations[l].title}</p> 
                   </div>
                   <div className='w-full h-0.5 bg-teal-500 my-2 scale-y-50 '>
@@ -160,13 +160,13 @@ const ShowTeacher = ({profile,  setShowTeacher, setScrollStop})=>{
                        {profile.informations[l].education.schools.map((school, index) =>(
                           <div key={index}>
                             <div className='my-3'>
-                                <p className='text-gray-500 font-light text-xs'>{school.degree ? school.degree+" | " : ""} {school.years ? school.years : ""}  </p>
+                                <p className='text-gray-500 font-normal text-xs'>{school.degree ? school.degree+" | " : ""} {school.years ? school.years : ""}  </p>
                               <p className='text-gray-800 text-sm'>{school.name && school.name}</p>
                             </div>
                           </div>
                        ))}
                     </div>
-                  </div> : <div className='text-gray-700 uppercase font-light text-sm mt-5 mr-5'>Боловсрол оруулаагүй</div>}
+                  </div> : <div className='text-gray-700 uppercase font-normal text-sm mt-5 mr-5'>Боловсрол оруулаагүй</div>}
                   {profile.informations[l].experience  ? 
                   <div className='w-full text-gray-700 mt-5 mb-10 mr-5'>
                     <p className='uppercase font-bold'>{profile.informations[l].experience.title}</p>
@@ -174,13 +174,13 @@ const ShowTeacher = ({profile,  setShowTeacher, setScrollStop})=>{
                        {profile.informations[l].experience.works.map((school, index) =>(
                           <div key={index}>
                             <div className='my-3'>
-                              <p className='text-gray-500 font-light text-xs '>{school.at && school.at+" | "}  {school.years && school.years}</p>
+                              <p className='text-gray-500 font-normal text-xs '>{school.at && school.at+" | "}  {school.years && school.years}</p>
                               <p className='text-gray-800 text-sm'>{school.name}</p>
                             </div>
                           </div>
                        ))}
                     </div>
-                  </div> : <div className='text-gray-700 uppercase font-light text-sm mt-5 mr-5'>Туршлага оруулаагүй</div> }
+                  </div> : <div className='text-gray-700 uppercase font-normal text-sm mt-5 mr-5'>Туршлага оруулаагүй</div> }
 
                 </div>
               </div>
