@@ -1,9 +1,24 @@
 import "../styles/globals.css";
 import Layout from "../components/Layout";
 import React, { useEffect } from "react";
-
+import Router from "next/router";
 import {DataProvider} from "../store/GlobalState"
 import { AnimatePresence, motion } from "framer-motion";
+import Loading from "../components/Loading"
+import Nprogress from "nprogress"
+import "nprogress/nprogress.css"
+
+Router.onRouteChangeStart = (url) => {
+  Nprogress.start()
+}
+
+Router.onRouteChangeComplete = (url) => {
+  Nprogress.done()
+}
+
+Router.onRouteChangeError = () => {
+  Nprogress.done()
+}
 
 function MyApp({ Component, pageProps,router }) {
   return (

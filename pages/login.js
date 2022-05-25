@@ -3,13 +3,14 @@ import React, { useState, useContext, useEffect }  from 'react'
 import { useRouter } from 'next/router';
 import { DataContext } from '../store/GlobalState';
 import Loading from '../components/Loading';
+import Head from 'next/head';
 
 export async function getServerSideProps() {
-  const base = process.env.BASE_URL
-  const api = process.env.API_URL
-  return {
-    props: {base, api},
-  }
+    const base = process.env.BASE_URL
+    const api = process.env.API_URL
+    return {
+        props: {base, api},
+    }
 }
 
 const Login = ({api}) => {
@@ -19,7 +20,6 @@ const Login = ({api}) => {
     const [password, setPassword] = useState("");
     const [errmessage, setErrmessage] = useState("");
     const {auth, notify} = state
-
     
     useEffect(() => {
         const user = JSON.parse(window.localStorage.getItem("user"))
@@ -82,6 +82,9 @@ const Login = ({api}) => {
 
     return (
         <div className='w-screen h-screen absolute  flex justify-center items-center'>
+        <Head>
+            <title>Хэрэглэгч Нэвтрэх</title>
+        </Head>
             <div className='lg:w-1/2 md:w-2/3 w-11/12 py-20'>
                 <div className='w-full flex flex-col items-center py-5'>
                     <p className='uppercase font-normal text-xl'>

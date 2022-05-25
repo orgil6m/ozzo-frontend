@@ -18,7 +18,7 @@ const ActivitesLocale = [
                 color : "bg-sky-500/10",
             },
              {
-                title: "Хөгжмийн Лабель",
+                title: "Артист лабель",
                 icon : <LabelIcon />,
                 icon1: <MicIcon1 />,
                 url : "label",

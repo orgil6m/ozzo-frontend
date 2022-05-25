@@ -174,7 +174,7 @@ const Admin = () => {
   return(
     <div className='pt-20 cursor-default'>
       <Head>
-        <title> Хэрэглэгчид |{t.ozzo}</title>
+        <title> Хэрэглэгчид | {t.ozzo}</title>
       </Head>
       <div className='w-full lg:px-32 md:px-20 lg:py-10 p-5  '>
         <div className="lg:mb-10 mb-5 flex cursor-default">

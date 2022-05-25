@@ -56,7 +56,7 @@ const PhoneNumbers = [
                 number : "+976 86870330",
             },
             {
-                title : "Хөгжмийн лабель",
+                title : "Артист лабель",
                 number :"+976 77660330", 
             },
             {
@@ -188,7 +188,7 @@ const Emails = [
             email : "rental@ozzo.mn",
         },
         {
-            title : "Хөгжмийн лабель",
+            title : "Артист лабель",
             email :"label@ozzo.mn", 
         },
         {
@@ -299,7 +299,7 @@ const SocialLinks = [
             url : "https://www.facebook.com/ozzomusiccenter/",
         },
         {
-            title : "Хөгжмийн лабель",
+            title : "Артист лабель",
             url :"lhttps://www.facebook.com/ozzomusiccenter/", 
         },
         {
@@ -329,7 +329,7 @@ const SocialLinks = [
              url : "https://www.instagram.com/ozzo_music_center/",
         },
         {
-            title : "Хөгжмийн лабель",
+            title : "Артист лабель",
             url : "https://www.instagram.com/ozzo_music_center/",
         },
         {

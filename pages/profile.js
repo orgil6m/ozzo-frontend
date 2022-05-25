@@ -8,10 +8,9 @@ import PasswordVerify from '../components/PasswordVerify';
 import Loading from '../components/Loading';
 
 export async function getServerSideProps() {
-  const base = process.env.BASE_URL
   const api = process.env.API_URL
   return {
-    props: {base, api},
+    props: {api},
   }
 }
 
@@ -66,7 +65,7 @@ const Profile = ({api}) => {
             setYoutube(user && user.youtube)
             setEmail(user && user.email)
             setWeb(user.web !== undefined ? user.web : "www.ozzo.mn")
-            }
+        }
     }, [])
 
     useEffect(() => {
@@ -78,6 +77,10 @@ const Profile = ({api}) => {
     }
     })
 
+    useEffect(()=> {
+        // location.reload()
+        console.log("hi")
+    }, [router.locale === 'cn'])
     if(!auth.user || auth.user === undefined){
       return(
         <Loading />

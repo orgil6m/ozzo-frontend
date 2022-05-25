@@ -24,7 +24,9 @@ export default function Example() {
               <Menu.Item>
                 {({ active }) => (
                   <button className={`${ active ? 'bg-gray-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
-                  onClick={() => { router.push({ pathname, query }, asPath, { locale: t[1] })}} >
+                  onClick={() => { 
+                    router.push({ pathname, query }, asPath,  { locale: t[1] })
+                    }} >
                     {active ? (  <TranlationIcon className="w-5 h-5 mr-2" aria-hidden="true" />): (
                     <TranlationIcon className="w-5 h-5 mr-2" aria-hidden="true" /> )}
                     <p className='capitalize'>{t[1]}</p>
@@ -36,7 +38,8 @@ export default function Example() {
               <Menu.Item>
                 {({ active }) => (
                   <button className={`${ active ? 'bg-gray-100 text-black' : 'text-gray-900' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
-                   onClick={() => { router.push({ pathname, query }, asPath, { locale: t[2] })}} >
+                   onClick={() => { 
+                     router.push({ pathname, query }, asPath, { locale: t[2] }) }} >
                     {active ? ( <TranlationIcon/> ) : ( 
                     <TranlationIcon /> )}
                       <p className='capitalize'>{t[2]}</p>

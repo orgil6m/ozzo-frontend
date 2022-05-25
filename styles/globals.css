@@ -145,9 +145,8 @@ input[type="range"]:focus::-ms-fill-upper {
   background: #3d75e3;
 }
 
-.style3dFlip:hover {
-  /* transform-style: preserve-3d; */
-  /* transform: rotate3d(180deg); */
-  transform: rotateY(180deg);
-  background-color: white;
+#nprogress .bar {
+  background: #d64635 !important;
+
+  height: 2px !important;
 }

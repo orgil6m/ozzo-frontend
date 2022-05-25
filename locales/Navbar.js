@@ -25,7 +25,7 @@ const NavbarLocale = [
         color :  "bg-sky-500/10"
       },
       {
-        title : "Хөгжмийн Лабель",
+        title : "Артист лабель",
         url : "/services/label",
         icon :  <LabelIcon />,
          color :  "bg-emerald-500/10"
