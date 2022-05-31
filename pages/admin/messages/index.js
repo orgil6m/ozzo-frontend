@@ -19,7 +19,6 @@ moment.locale('mn')
 
 export async function getServerSideProps(context){
     const query = context.query.message
-
     const data = await getMessages()
     if(query) {
         const selectedMessage = data[query && query]

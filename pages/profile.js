@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useRouter } from 'next/router'
+import { useRouter, Router } from 'next/router'
 import React, {useContext, useEffect, useState, useRef} from 'react'
 import Head from 'next/head';
 import { NavbarLocale } from '../locales/Navbar';
@@ -18,6 +18,7 @@ const Profile = ({api}) => {
     const {state, dispatch} = useContext(DataContext)
     const {auth} = state
     const router = useRouter()
+    // console.log(router)
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     const t = NavbarLocale[l]
     const [tabIndex, setTabIndex] = useState(0)
@@ -77,10 +78,6 @@ const Profile = ({api}) => {
     }
     })
 
-    useEffect(()=> {
-        // location.reload()
-        console.log("hi")
-    }, [router.locale === 'cn'])
     if(!auth.user || auth.user === undefined){
       return(
         <Loading />

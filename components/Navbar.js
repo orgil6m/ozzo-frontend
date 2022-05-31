@@ -15,6 +15,7 @@ const Navbar = () => {
   const {state, dispatch} = useContext(DataContext)
   const {auth, notify} = state
   const [user, setUser] = useState({})
+  const [showSettings, setShowSettings] = useState(false)
   const router = useRouter()
   const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
   const t = NavbarLocale[l]
@@ -75,7 +76,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className='items-center flex-wrap p-3 w-full bg-white text-sm lg:flex hidden fixed top-0 shadow-sm z-30' >
+      <nav className='items-center flex-wrap p-3 w-full bg-white  text-sm lg:flex hidden fixed top-0 shadow-sm z-30' >
         <Link href='/'>
           <a className='inline-flex items-center p-2 mr-4 '>
             <div className="h-10 w-24 relative ml-2"> 
@@ -113,8 +114,36 @@ const Navbar = () => {
         }
         <div className="absolute top-6 right-10 flex items-center">
              {Object.keys(auth).length === 0  ?
-            <div>
+            <div className="flex items-center relative">
                <LocaleDropdown  />
+               <div className="transition-all duration-300 ease-in-out ml-4 rounded-full flex justify-center items-center bg-gray-50 hover:bg-gray-100" 
+               onClick={()=> setShowSettings(!showSettings)}>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 m-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                  </svg>
+                </div>
+              {showSettings ? 
+              <div>
+                <div className="fixed inset-0 w-screen h-screen z-30" onClick={()=> setShowSettings(!showSettings)}> 
+                </div>
+                <div className="absolute top-14 bg-white/20 backdrop-blur-sm rounded-md pl-6 pr-8 py-3 w-40 right-0 z-40 shadow-lg border 
+                border-gray-100/50 text-gray-400">
+                  <div className="flex items-center justify-center" onClick={()=> {router.push("/login"), setShowSettings(false)}}>
+                    <div className="rounded-lg bg-blue-500/10 text-blue-500 mr-2">
+                      <svg  className="h-5 w-5 m-2 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                      </svg>
+                    </div>
+                    <span className="font-medium">
+                    Нэвтрэх
+                    </span>
+                  </div>
+                </div>
+              </div>
+              :
+              <>
+              </>
+              }
             </div>
              :
              <> <LocaleDropdown  />
@@ -131,7 +160,6 @@ const Navbar = () => {
         </div>
 
       </div>
-        
       </nav>
     </>
   )

@@ -59,7 +59,10 @@ const About = ({ UserData, base}) => {
       </div>
       <div className="lg:flex">
         <div className="lg:w-1/2 h-96">
-          <div className="lg:w-11/12 h-full bg-center bg-cover bg-sky-500 rounded-lg " style={{'backgroundImage': `url(${certificate.src}`}}></div>
+          <div className="lg:w-11/12 h-full rounded-lg overflow-hidden" >
+            <div className="w-full h-full bg-center bg-cover " style={{'backgroundImage': `url(${certificate.src}`}}>
+            </div>
+          </div>
         </div>
         <div className="lg:w-1/2 text-justify lg:pt-0 pt-5 text font-light text-sm text-gray-800">
           {about.text1}
@@ -83,7 +86,7 @@ const About = ({ UserData, base}) => {
               {about.quote1}
             </div>
           </div>
-          <div className="transition-all duration-500 ease-in-out h-40 w-full  border border-gray-100 hover:border-gray-300 rounded-lg">
+          <div className="transition-all duration-500 ease-in-out h-40 w-full border border-gray-100 hover:border-gray-300 rounded-lg">
             <div className="w-full flex justify-end -mt-2">
               <svg className="h-8 w-8 drop-shadow-md" viewBox="0 0 20 20" fill="#d64635">
                 <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
@@ -93,7 +96,7 @@ const About = ({ UserData, base}) => {
               {about.quote2}
             </div>
           </div> 
-          <div className="transition-all duration-500 ease-in-out h-40 w-full  border border-gray-100 hover:border-gray-300  rounded-lg">
+          <div className="transition-all duration-500 ease-in-out h-40 w-full border border-gray-100 hover:border-gray-300  rounded-lg">
             <div className="w-full flex justify-end -mt-2">
               <svg className="h-8 w-8  drop-shadow-md" viewBox="0 0 20 20" fill="rgb(14 165 233)">
                 <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />

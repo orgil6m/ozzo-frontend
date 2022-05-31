@@ -132,7 +132,7 @@ const Sidebar = () => {
                 </div>
             </div>
             
-            <div  onClick={() => setShowSidebar(!showSidebar)} className={`top-0 right-0 w-screen text-white fixed h-screen  bg-black ease-in-out duration-300 ${ showSidebar ? "opacity-50 z-20 " : "hidden z-0 " }`}>
+            <div onClick={() => setShowSidebar(!showSidebar)} className={`top-0 right-0 w-screen text-white fixed h-screen  bg-black ease-in-out duration-300 ${ showSidebar ? "opacity-50 z-20 " : "hidden z-0 " }`}>
             </div>
             <div className={`top-0 right-0 w-10/12 bg-white p-5 text-black fixed h-full z-40 flex flex-col justify-start ease-in-out duration-300 shadow-2xl ${ showSidebar ? "translate-x-0 " : "translate-x-full" }`} >
                 <svg  onClick={() => setShowSidebar(!showSidebar)} className={`lg:hidden h-6 w-6 z-50 flex items-center absolute right-10 top-6 cursor-pointer ease-in-out duration-300 ${showSidebar ? "flex" : "hidden"}` } fill="none" viewBox="0 0 24 24" stroke="black" strokeWidth={2}>

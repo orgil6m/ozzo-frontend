@@ -43,11 +43,11 @@ const News = ({ NewsData, base }) => {
                     <div className='flex w-full h-8 items-center mb-3 '>
                         <h2 className='text-gray-800 font-bold uppercase text-lg '>{news.content[l].title}</h2>
                     </div>
-                    <p className='text-gray-800/80 text-sm'>{news.content[0].text.slice(0, 75)}... </p>
+                    <p className='text-gray-800/80 text-sm'>{news.content[l].text.slice(0, 75)}... </p>
                     <div className='pt-2 font-thin flex text-sm pb-1 items-center text-gray-800/50'>
-                        <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
+                    <svg className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
                         <p className='font-light italic'>{news.date}</p>
                     </div>
                 </div>

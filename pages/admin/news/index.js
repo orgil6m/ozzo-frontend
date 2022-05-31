@@ -2,6 +2,8 @@ import React from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router' 
 
+
+
 const News = () => {
     const router = useRouter()
     return (

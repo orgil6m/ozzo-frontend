@@ -21,11 +21,14 @@ function Home() {
 
   return (
    <div className="cursor-default">
+     
       <Head>
         <title>{t.home}  | {t.ozzo}</title>
       </Head>
       <ImageSlider />
       <div className='lg:px-32 md:px-20 lg:py-10 p-5 '>
+
+     
         <FeaturedActivities />
         <FeaturedServices />
         <FeaturedMission />

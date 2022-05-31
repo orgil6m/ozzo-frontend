@@ -23,6 +23,7 @@ Router.onRouteChangeError = () => {
 function MyApp({ Component, pageProps,router }) {
   return (
     <DataProvider>
+      {/* <Provider session={pageProps.session}> */}
       <Layout>
         
         <motion.div key={router.route} initial="pageInitial" animate="pageAnimate" variants={{
@@ -36,6 +37,7 @@ function MyApp({ Component, pageProps,router }) {
           <Component {...pageProps} />
           </motion.div>
       </Layout>
+      {/* </Provider> */}
     </DataProvider>
   );
 }

@@ -185,7 +185,7 @@ const Admin = () => {
        
         <div className='overflow-scroll w-full'>
         <table className="w-full text-sm text-left text-gray-500 my-10 ">
-          <thead className="text-xs text-gray-800 uppercase bg-gray-100">
+          <thead className="text-xs text-gray-800 uppercase bg-gray-100 ">
             <tr>
                 <th scope="col" className="px-6 py-3">
                   Зураг
@@ -218,7 +218,7 @@ const Admin = () => {
                 </th>
             </tr>
           </thead>
-          <thead className="text-xs text-gray-800 uppercase border-b">
+          <thead className="text-xs text-gray-800 uppercase border-b ">
             <tr>
               <th scope="col" className="px-6 py-3">
                 Хайх
