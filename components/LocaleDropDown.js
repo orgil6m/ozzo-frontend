@@ -19,11 +19,11 @@ export default function Example() {
           </Menu.Button>
         </div>
         <Transition as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95" >
-          <Menu.Items className="absolute left-0 w-24 mt-2 top-12 bg-white/20 divide-y border border-gray-100/50 divide-gray-100/30 backdrop-blur-md shadow-lg rounded-md  focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+          <Menu.Items className="absolute left-0 w-24 mt-2 top-12 bg-white divide-y border border-gray-100/50 divide-gray-100/30 backdrop-blur-md shadow-lg rounded-md  focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
             <div className="px-1 py-1 ">        
               <Menu.Item>
                 {({ active }) => (
-                  <button className={`${ active ? 'bg-red-500/10 text-red-500' : 'text-gray-400' }  group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
+                  <button className={`${ active ? 'bg-red-500/10 text-red-500' : 'text-gray-600' }  group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
                   onClick={() => { 
                     router.push({ pathname, query }, asPath,  { locale: t[1] })
                     }} >
@@ -37,7 +37,7 @@ export default function Example() {
                <div className="px-1 py-1 ">
               <Menu.Item>
                 {({ active }) => (
-                  <button className={`${ active ? 'bg-red-500/10 text-red-500' : 'text-gray-400' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
+                  <button className={`${ active ? 'bg-red-500/10 text-red-500' : 'text-gray-600' } group flex rounded-md items-center w-full px-2 py-2 text-sm`} 
                    onClick={() => { 
                      router.push({ pathname, query }, asPath, { locale: t[2] }) }} >
                     {active ? ( <TranlationIcon/> ) : ( 

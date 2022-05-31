@@ -27,7 +27,7 @@ export default function Example() {
           leaveTo="transform opacity-0 scale-95" 
         >
 
-          <Menu.Items className="absolute -bottom-20 left-0 w-full flex h-20 items-center justify-around mt-2 bg-white/20 backdrop-blur-lg border border-gray-100/20 rounded-md shadow-lg  focus:outline-none ">
+          <Menu.Items className="absolute -bottom-20 left-0 w-full flex h-20 items-center justify-around mt-2 bg-white backdrop-blur-lg border border-gray-100/20 rounded-b-md shadow-lg focus:outline-none ">
 
             {t.service.map((service, index) => (
               <div key={index}>
