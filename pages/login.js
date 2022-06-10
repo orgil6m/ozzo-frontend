@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { DataContext } from '../store/GlobalState';
 import Loading from '../components/Loading';
 import Head from 'next/head';
+import { LoginLocale } from '../locales/Login';
 
 export async function getServerSideProps() {
     const base = process.env.BASE_URL
@@ -15,12 +16,13 @@ export async function getServerSideProps() {
 
 const Login = ({api}) => {
     const router = useRouter()
+    const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     const {state, dispatch} = useContext(DataContext)
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errmessage, setErrmessage] = useState("");
     const {auth, notify} = state
-    
+    const Login = LoginLocale[l]
     useEffect(() => {
         const user = JSON.parse(window.localStorage.getItem("user"))
         if(user){
@@ -83,12 +85,12 @@ const Login = ({api}) => {
     return (
         <div className='w-screen h-screen absolute  flex justify-center items-center'>
         <Head>
-            <title>Хэрэглэгч Нэвтрэх</title>
+            <title>{Login.title}</title>
         </Head>
             <div className='lg:w-1/2 md:w-2/3 w-11/12 py-20'>
                 <div className='w-full flex flex-col items-center py-5'>
                     <p className='uppercase font-normal text-xl'>
-                        Хэрэглэгч нэвтрэх
+                        {Login.title}
                     </p>
                     <div className='w-10 h-1 mt-3 bg-red-500'>
 
@@ -96,7 +98,7 @@ const Login = ({api}) => {
                 </div>
                 <form method='POST' onSubmit={login}>
                 <div className='w-full flex flex-col lg:px-32 md:px-20 p-5'>
-                    <label>Нэвтрэх нэр</label>
+                    <label>{Login.username}</label>
                     <input 
                         className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-red-300
                         font-normal ' 
@@ -109,8 +111,9 @@ const Login = ({api}) => {
                         }}
                         required
                         autoComplete="off"
-                        placeholder='Нэвтрэх нэрээ оруулна уу'/>
-                    <label>Нууц үг</label>
+                        placeholder={Login.text1}
+                        />
+                    <label>{Login.password}</label>
                     <input 
                         className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-red-300 font-normal'   
                         id="password"
@@ -120,7 +123,7 @@ const Login = ({api}) => {
                         onChange={(e) => setPassword(e.target.value)}
                         autoComplete="current-password"
                         required
-                        placeholder='Нууц үгээ оруулна уу'
+                        placeholder={Login.text2}
                     />
                      <p className='text-red-500/80 text-sm text-justify'>{errmessage}</p>
                     <button 
@@ -128,7 +131,7 @@ const Login = ({api}) => {
                         onClick={()=> {login()
                         setErrmessage()}}
                     >
-                        Нэвтрэх
+                        {Login.login}
                     </button>
                    
                 </div>

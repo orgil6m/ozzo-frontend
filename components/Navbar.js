@@ -10,6 +10,7 @@ import OzzoLogo from '../Assets/LOGO_ozzo.png'
 import { useState, useContext, useEffect } from 'react'
 import { DataContext } from "../store/GlobalState";
 import {NavbarLocale } from '../locales/Navbar';
+import { Buttons } from "../locales/Profile"
 
 const Navbar = () => {
   const {state, dispatch} = useContext(DataContext)
@@ -19,6 +20,7 @@ const Navbar = () => {
   const router = useRouter()
   const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
   const t = NavbarLocale[l]
+  const Button = Buttons[l]
   const logout = () => {
     console.log("Logget Out!!!!!!!");
     window.localStorage.removeItem("token");
@@ -34,7 +36,7 @@ const Navbar = () => {
         {auth.user.admin === true ?
           <Link href='/admin' >
             <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/admin" ? "border-red-500  text-black " : "border-transparent"}`}>
-              Админ
+              {Button.admin}
             </a>
           </Link>
           :
@@ -42,7 +44,7 @@ const Navbar = () => {
         {auth.user.artist === true || auth.user.admin === true  ?
           <Link href='/artist'>
             <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/artist" ? "border-red-500  text-black " : "border-transparent"}`}>
-               Артист
+               {Button.artist}
             </a>
           </Link>
         :
@@ -50,7 +52,7 @@ const Navbar = () => {
       {auth.user.teacher === true  || auth.user.admin === true   ?
         <Link href='/teacher'>
           <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/teacher" ? "border-red-500  text-black " : "border-transparent"}`}>
-              Багш
+              {Button.teacher}
           </a>
         </Link>
         :
@@ -59,7 +61,7 @@ const Navbar = () => {
         {auth.user.service === true  || auth.user.admin === true  ?
         <Link href='/service'>
           <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/service" ? "border-red-500  text-black " : "border-transparent"}`}>
-              Сервис
+              {Button.service}
           </a>
         </Link>
         :
@@ -67,7 +69,7 @@ const Navbar = () => {
 
         <Link href='/profile'>
           <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/profile" ? "border-red-500  text-black " : "border-transparent"}`}>
-            Профайл
+            {Button.profile}
           </a>
         </Link>
       </>
@@ -135,7 +137,7 @@ const Navbar = () => {
                       </svg>
                     </div>
                     <p className="font-medium mr-4">
-                    Нэвтрэх
+                    {Button.login}
                     </p>
                   </div>
                 </div>
@@ -152,7 +154,7 @@ const Navbar = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
               </svg>
               <p className="">
-              Гарах
+              {Button.logout}
               </p>
             </div>
             </>
