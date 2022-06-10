@@ -1,6 +1,6 @@
 const ProfileLocale = [
     {
-        username : "Харагдах нэр",
+        username : "Нэвтрэх нэр",
         firstname : "Өөрийн нэр",
         lastname : "Овог",
         description : "Тодорхойлолт",

@@ -19,7 +19,6 @@ const Profile = ({api}) => {
     const {state, dispatch} = useContext(DataContext)
     const {auth} = state
     const router = useRouter()
-    // console.log(router)
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     const t = NavbarLocale[l]
     const Profile = Buttons[l]
@@ -176,7 +175,6 @@ const Profile = ({api}) => {
         else if(action === "web") setWeb(field)
     }
     const addFieldSkills = () =>{
-        console.log(skills)
         setSkills([...skills, ''])
     }
     const addFieldSchools = () =>{

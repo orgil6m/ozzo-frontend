@@ -19,8 +19,6 @@ const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api, 
       if(password === auth.user.password) {
         setErr()
         setLoading(true)
-        console.log(`"${method}"`)
-        console.log(body)
         try {
             const response = await fetch(`${api}/api/ozzo/users`, {
                 method: `${method}`,
@@ -29,10 +27,8 @@ const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api, 
                 },
                 body: body,
             });
-            console.log(response.status)
             const resJson = await response.json();
             if(response.status == 200){
-              console.log(action)
               if(action === "routerBack") router.back()
               setScrollStop(false)
               setPasswordVerifyModal(false)

@@ -39,6 +39,7 @@ const AdminUser = ({userData, api}) => {
   const [profilephoto, setProfilePhoto] = useState()
   const [number, setNumber] = useState()
   const [password, setPassword] = useState()
+  const [priority, setPriority] = useState(0)
   const [body, setBody] = useState()
 
   const [isAdmin, setIsAdmin] = useState(false)
@@ -50,7 +51,7 @@ const AdminUser = ({userData, api}) => {
 
   const profileInfos = [
       {
-        title : "Харагдах нэр",
+        title : "Нэвтрэх нэр",
         val : username,
         action : 'username',
         disabled : true
@@ -116,12 +117,13 @@ const AdminUser = ({userData, api}) => {
       else {
         setInformations( userData && userData.informations)
         setUsername(userData &&  userData.username)
-        userData.informations && setLastname(  userData.informations[l].lastname)
         setProfilePhoto(userData &&  userData.profilephoto)
+        userData.informations && setLastname(  userData.informations[l].lastname)
         userData.informations &&  setFirstname(  userData.informations[l].firstname)
         userData.informations && setTitle(  userData.informations[l].title)
         setNumber(userData &&  userData.number)
         setPassword(userData &&  userData.password)
+        setPriority(userData.priority && userData.priority)
         setIsAdmin(userData &&  userData.admin)
         setIsArtist(userData &&  userData.artist)
         setIsTeacher(userData &&  userData.teacher)
@@ -159,6 +161,10 @@ const AdminUser = ({userData, api}) => {
       else if(action === "title") setTitle(field)
   }
   const UpdateUser = async (id) => {
+      if(username.length === 0 || !username) return  dispatch({type:'NOTIFY',payload:{error: "Hэвтрэх нэр шаардлагатай!"}})
+      if(password.length === 0 || !password) return  dispatch({type:'NOTIFY',payload:{error: "Нууц үг шаардлагатай!"}})
+      if(priority > 9) return  dispatch({type:'NOTIFY',payload:{error: "Эрэмбэ буруу!"}})
+     
       setPasswordVerifyModal(true)
       const updatedField = [...informations]
       updatedField[l].lastname = lastname
@@ -172,6 +178,7 @@ const AdminUser = ({userData, api}) => {
           username,
           number, 
           password,
+          priority,
           informations,
           teacher:isTeacher,
           admin:isAdmin,
@@ -188,7 +195,6 @@ const AdminUser = ({userData, api}) => {
       "_id" : id
     }
     setBody(JSON.stringify(raw))
-    console.log(passwordVerifyModal)
   }
   return (
      <div className='pt-20 cursor-default'>
@@ -302,19 +308,18 @@ const AdminUser = ({userData, api}) => {
                           name={profile.title}
                           type={profile.type && profile.type}
                           value={profile.val || ""}
-                          onChange={(e) => setProfileInfos(e.target.value , profile.action)}
+                          onChange={(e) => setProfileInfos(e.target.value, profile.action)}
                           disabled={l != "0" ? profile.disabled : ""}
                           />
-                          
                       </div>
                   ))}
-                    <label className='font-base'>Нууц үг</label>
-                    <div className='relative flex '>
+                  <label className='font-base'>Нууц үг</label>
+                  <div className='relative flex '>
                       <input className='transition-all duration-300 ease-in-out w-full outline-none border text-sm border-gray-200 rounded-md h-10 px-2 focus:border-sky-500 font-normal ' 
                         id="password"
                         name="password"
                         type={passwordshow ? "text" : "password"}
-                        value={password}
+                        value={password || ""}
                         onChange={(e) => {
                             setPassword(e.target.value)
                         }}
@@ -335,7 +340,18 @@ const AdminUser = ({userData, api}) => {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
                       </svg>
                       }
-                    </div>
+                  </div>
+                  <label className='font-base'>Эрэмбэ</label>
+                  <input 
+                    className={`transition-all duration-300 ease-in-out my-2 w-full outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-red-300 font-normal placeholder:text-black text-sm disabled:border-gray-100 `}   
+                    id="priority"
+                    name="priority"
+                    type="number"
+                    value={priority || ""}
+                    onChange={(e) => setPriority(e.target.value)}
+                    min="1"
+                    max="9"
+                  />
                 </div>
                 
                 {loading ? 

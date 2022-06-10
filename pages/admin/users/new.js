@@ -35,6 +35,7 @@ const NewUser = ({api}) => {
   const [profilephoto, setProfilePhoto] = useState()
   const [number, setNumber] = useState("")
   const [password, setPassword] = useState("")
+  const [priority, setPriority] = useState()
   const [body, setBody] = useState("")
 
   const [isAdmin, setIsAdmin] = useState(false)
@@ -45,7 +46,7 @@ const NewUser = ({api}) => {
 
   const profileInfos = [
       {
-        title : "Харагдах нэр",
+        title : "Нэвтрэх нэр",
         val : username,
         action : 'username',
         disabled : true
@@ -147,12 +148,17 @@ const NewUser = ({api}) => {
           number, 
           password,
           informations,
+          priority,
           teacher:isTeacher,
           admin:isAdmin,
           service:isService,
           artist:isArtist,
           label :isLabel,
       };
+      if(username.length === 0 || !username) return  dispatch({type:'NOTIFY',payload:{error: "Hэвтрэх нэр шаардлагатай!"}})
+      if(password.length === 0 || !password) return  dispatch({type:'NOTIFY',payload:{error: "Нууц үг шаардлагатай!"}})
+      if(!priority) return  dispatch({type:'NOTIFY',payload:{error: "Эрэмбэ шаардлагатай!"}})
+      if(priority > 9) return  dispatch({type:'NOTIFY',payload:{error: "Эрэмбэ буруу!"}})
       try {
         const response = await fetch(`${api}/api/ozzo/users`, {
             method: "POST",
@@ -353,6 +359,17 @@ const NewUser = ({api}) => {
                       </svg>
                       }
                     </div>
+                    <label className='font-base'>Эрэмбэ</label>
+                    <input 
+                      className={`transition-all duration-300 ease-in-out my-2 w-full outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-red-300 font-normal placeholder:text-black text-sm disabled:border-gray-100 `}   
+                      id="priority"
+                      name="priority"
+                      type="number"
+                      value={priority || ""}
+                      onChange={(e) => setPriority(e.target.value)}
+                      min="1"
+                      max="9"
+                    />
                 </div>
                 
                 {loading ? 
@@ -367,6 +384,10 @@ const NewUser = ({api}) => {
                     Бүртгэх
                   </button>
                   }
+                   <button className=' bg-red-500 h-10 rounded-md mb-5 text-white transition-all duration-300 ease-in-out hover:opacity-80'
+                   onClick={()=>router.back()} type="button">
+                    Буцах
+                  </button>
               </div>
             </form>
         </div>
