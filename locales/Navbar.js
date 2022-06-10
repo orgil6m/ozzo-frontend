@@ -6,7 +6,7 @@ const NavbarLocale = [
     services: 'Үйлчилгээ',
     contact : 'Холбоо Барих',
     news : 'Мэдээлэл',
-
+    login : "Нэвтрэх",
     recent : "Сүүлд нэмэгдсэн",
     more : "Бүгдийг үзэх",
     learnmore: "Дэлгэрэнгүй",
@@ -57,7 +57,7 @@ const NavbarLocale = [
     services: 'Services',
     contact : 'Contact',
     news : 'News',
-
+    login : "Sign In",
     artists: "Artists",
     recent : "Recent news",
     more : "See all",
@@ -113,6 +113,7 @@ const NavbarLocale = [
     more : "查看全部",
     learnmore: "了解更多",
     artists: "艺术家",
+    login : "符号",
     service : [
       {
         title: "音乐学院",

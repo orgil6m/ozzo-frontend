@@ -14,8 +14,7 @@ const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api, 
     const [password, setPassword ] = useState("")
     const [loading, setLoading] = useState(false)
 
-    const passwordVerify =  async (e) => {
-      e.preventDefault()
+    const passwordVerify =  async () => {
       if(password === auth.user.password) {
         setErr()
         setLoading(true)

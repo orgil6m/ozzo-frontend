@@ -122,7 +122,7 @@ const About = ({ UserData, base}) => {
           <p className='mr-5 uppercase lg:text-2xl text-base'>{teachers.title}</p>
         </div>
         <p className="text-gray-800 mb-10 text-justify">{teachers.text}</p>
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-5 ">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5 ">
               {UserData.map((user, index) => (
                 <div key={index} onClick={() => {setShowTeacher(true); setCurrentTeacher(user); setScrollStop(true)}}>
                   {user.profilephoto ? 

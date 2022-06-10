@@ -188,6 +188,15 @@ const Sidebar = () => {
                             {t.contact}
                         </a>
                     </Link>
+
+                    <div className='w-full h-px bg-gray-200 ml-2'></div>
+                    <Link href='/login'>
+                        <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 flex pt-2 border-l-2 text-base items-center hover:text-black hover:border-red-500 ${router.pathname == "/contact" ? "border-red-500  text-black " : "border-white"}`}>
+                           
+                            {t.login}
+
+                        </a>
+                    </Link>
                 </div>
                 :
                 <LoggedUser />
