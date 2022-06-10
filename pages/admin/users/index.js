@@ -2,10 +2,10 @@
 import { useRouter } from 'next/router'
 import React, {useContext, useEffect, useState} from 'react'
 import Head from 'next/head';
-import { NavbarLocale } from '../../locales/Navbar';
-import {DataContext} from "../../store/GlobalState"
-import Loading from "../../components/Loading"
-import {getUsers} from "../../Datas/Users"
+import { NavbarLocale } from '../../../locales/Navbar';
+import {DataContext} from "../../../store/GlobalState"
+import Loading from "../../../components/Loading"
+import {getUsers} from "../../../Datas/Users"
  
 
 const Admin = () => {
@@ -182,7 +182,16 @@ const Admin = () => {
           <p className="text-sm text-black/50 pr-2 "> / </p>
           <p className="transition-all duration-300 ease-in-out text-sm text-black"> Хэрэглэгчид </p>
         </div>
-       
+        <div className='md:mt-0 mt-10 flex' onClick={()=> router.push("/admin/users/new")}>
+          <div className="transition-all duration-300 ease-in-out hover:text-white hover:bg-green-500 flex items-center px-5 upper bg-green-100 py-2 rounded-md  text-green-500 font-medium ">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+        </svg>
+            <p className="">
+            Бүртгэх
+            </p>
+          </div>
+        </div>
         <div className='overflow-scroll w-full'>
         <table className="w-full text-sm text-left text-gray-500 my-10 ">
           <thead className="text-xs text-gray-800 uppercase bg-gray-100 ">
@@ -320,17 +329,17 @@ const Admin = () => {
                 }
                 <td scope="row" className='px-6 py-3'>
                   <p className='hover:underline' onClick={()=> router.push("/user/"+row._id)}>
-                  {row.informations[l].firstname}
+                  {row.informations && row.informations[l].firstname}
                   </p>
                 </td>
                 <td  scope="row" className='px-6 py-3'>
                   <p className='truncate hover:underline' onClick={()=> router.push("/user/"+row._id)}>
-                    {row.username}
+                    {row.username && row.username}
                   </p>
                 </td>
                 <td  scope="row" className='px-6 py-3'>
-                  <a href={`tel:${row.number}`} className='transition-all duration-300 ease-in-out underline text-gray-700 font-bold hover:text-gray-500'>
-                    {row.number}
+                  <a href={`tel:${row.number &&  row.number}`} className='transition-all duration-300 ease-in-out underline text-gray-700 font-bold hover:text-gray-500'>
+                    {row.number && row.number}
                   </a>
                 </td>
                 <td  scope="row" className='px-6 py-3'>

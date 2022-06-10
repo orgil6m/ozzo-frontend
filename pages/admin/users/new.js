@@ -1,25 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useRef, useEffect, useContext} from 'react'
 import { Switch } from '@headlessui/react';
-import {DataContext} from "../../store/GlobalState"
-import { getUsersID, getUser, getUsers } from '../../Datas/Users';
+import {DataContext} from "../../../store/GlobalState"
+import { getUsersID, getUser, getUsers } from '../../../Datas/Users';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { NavbarLocale } from '../../locales/Navbar';
-import Loading from '../../components/Loading';
-import PasswordVerify from '../../components/PasswordVerify';
+import { NavbarLocale } from '../../../locales/Navbar';
+import Loading from '../../../components/Loading';
+import PasswordVerify from '../../../components/PasswordVerify';
 
-export async function getServerSideProps({ params }) {
-  const { user } = params;
-  const users = await getUsers();
-  const current_user = users.find((p) => p._id === user)
+
+export async function getServerSideProps() {
   const api = process.env.API_URL;
   return {
-    props: { userData: current_user, api }
+    props: { api }
   };
 }
 
-const AdminUser = ({userData, api}) => {
+const NewUser = ({api}) => {
   const {state, dispatch} = useContext(DataContext)
   const {auth} = state
   const router = useRouter()
@@ -34,12 +32,12 @@ const AdminUser = ({userData, api}) => {
   const [informations, setInformations] = useState([{},{},{}])
   const [loading, setLoading] = useState(false)
   const [passwordshow, setPasswordShow] = useState(false)
-  const [passwordVerifyModal, setPasswordVerifyModal] = useState(false)
+  const [passwordVerifyMdoal, setPasswordVerifyModal] = useState(false)
   const [scrollStop, setScrollStop] = useState(false)
   const [profilephoto, setProfilePhoto] = useState()
-  const [number, setNumber] = useState()
-  const [password, setPassword] = useState()
-  const [body, setBody] = useState()
+  const [number, setNumber] = useState("")
+  const [password, setPassword] = useState("")
+  const [body, setBody] = useState("")
 
   const [isAdmin, setIsAdmin] = useState(false)
   const [isTeacher, setIsTeacher] = useState(false)
@@ -106,30 +104,11 @@ const AdminUser = ({userData, api}) => {
       setInitialState : setIsLabel,
     }
   ]
-
   useEffect(() => {
-      const user = window.localStorage.getItem("user")
-      if(!user || user === undefined ){
-          return router.push('/login')
-      } 
-      else {
-        setInformations( userData && userData.informations)
-        setUsername(userData &&  userData.username)
-        setLastname(userData &&  userData.informations[l].lastname)
-        setProfilePhoto(userData &&  userData.profilephoto)
-        setFirstname(userData &&  userData.informations[l].firstname)
-        setTitle(userData &&  userData.informations[l].title)
-        setNumber(userData &&  userData.number)
-        setPassword(userData &&  userData.password)
-        setIsAdmin(userData &&  userData.admin)
-        setIsArtist(userData &&  userData.artist)
-        setIsTeacher(userData &&  userData.teacher)
-        setIsService(userData &&  userData.service)
-        setIsLabel(userData &&  userData.label)
-      }
-      
-  }, [userData])
-
+    const user = JSON.parse(window.localStorage.getItem("user"))
+    if(!user) return router.push('/login')
+  
+}, [])
   if(!auth.user || auth.user === undefined){
       return(
         <Loading />
@@ -155,17 +134,16 @@ const AdminUser = ({userData, api}) => {
       if(action === "username") setUsername(field)
       else if(action === "firstname") setFirstname(field)
       else if(action === "lastname") setLastname(field)
+      else if(action === "number") setNumber(field)
       else if(action === "title") setTitle(field)
   }
-  const UpdateUser = async (id) => {
-      setPasswordVerifyModal(true)
+  const insertUser = async () => {
       const updatedField = [...informations]
       updatedField[l].lastname = lastname
       updatedField[l].firstname = firstname
       updatedField[l].title = title
       setInformations(updatedField)
       const raw = { 
-          "_id" : id,
           profilephoto,
           username,
           number, 
@@ -177,12 +155,61 @@ const AdminUser = ({userData, api}) => {
           artist:isArtist,
           label :isLabel,
       };
-      setBody(JSON.stringify(raw))
+      try {
+        const response = await fetch(`${api}/api/ozzo/users`, {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify(raw),
+        });
+        const resJson = await response.json();
+      if(response.status == 200){
+        setScrollStop(false)
+        setPasswordVerifyModal(false)
+        setLoading(false)
+        dispatch({type:'NOTIFY', payload:{success: "Амжилттай Бүртэгдлээ"}})
+        if(type !=="admin" ){
+        dispatch({type:'AUTH', payload:{
+            ...auth,
+            user: resJson.user,
+        }})
+        window.localStorage.setItem("user", JSON.stringify(resJson.user));
+      }
+    }
+    }
+    catch (err) {}
+      
+  }
+  const uploadProfilePhoto = (photo) => {
+    if (photo && photo.size >= 2097152  ){
+        dispatch({type:'NOTIFY',payload:{error: "Файлын хэмжээ хэтэрсэн!"}})
+        return
+    }
+    if(!photo || photo=== undefined) {
+        dispatch({type:'NOTIFY',payload:{error: "Ковер оруулна уу!"}})
+        return
+    }
+    dispatch({type:'NOTIFY',payload:{loading: true}})
+    const data = new FormData()
+    data.append("file", photo)
+    data.append("upload_preset", "adminCoverUpload")
+    data.append("cloud_name", "ozzo-web")
+    fetch("https://api.cloudinary.com/v1_1/ozzo-web/image/upload",{
+        method:"post",
+        body: data
+    })
+    .then(resp => resp.json())
+    .then(data => {
+        dispatch({type:'NOTIFY',payload:{success: "Амжилттай!"}})
+        setProfilePhoto(data.secure_url)
+    })
+    .catch(err => console.log(err))
   }
   return (
      <div className='pt-20 cursor-default'>
         <Head>
-            <title> {userData.username} | {t.ozzo}</title>
+            <title>  {t.ozzo}</title>
         </Head>
 
         <div className='w-full lg:px-32 md:px-20 p-5  '>
@@ -191,11 +218,11 @@ const AdminUser = ({userData, api}) => {
             <p className="text-sm text-black/50 pr-2 "> / </p>
             <p className="transition-all duration-300 ease-in-out text-sm pr-2 text-black/50 hover:text-black"  onClick={() => router.push("/admin/users")}> Хэрэглэгчид </p>
             <p className="text-sm text-black/50 pr-2 "> / </p>
-            <p className="transition-all duration-300 ease-in-out text-sm text-black"> {userData.username} </p>
+            <p className="transition-all duration-300 ease-in-out text-sm text-black">Шинээр Бүртгэх </p>
           </div>
             <div className='lg:w-full font-semibold text-xl flex items-center text-gray-800 mt-10'> 
                 <div className='md:h-10 h-8 w-1 bg-red-500 mr-5'></div>
-                <p className='uppercase'>Хэрэглэгчийн Мэдээлэл Засах</p>
+                <p className='uppercase'>Хэрэглэгчийн Мэдээлэл Оруулах</p>
             </div>
         </div> 
         <div className="w-full grid md:grid-cols-2 mb-20">
@@ -298,7 +325,7 @@ const AdminUser = ({userData, api}) => {
                       </div>
                   ))}
                     <label className='font-base'>Нууц үг</label>
-                    <div className='relative flex '>
+                    <div className='relative flex my-2'>
                       <input className='transition-all duration-300 ease-in-out w-full outline-none border text-sm border-gray-200 rounded-md h-10 px-2 focus:border-sky-500 font-normal ' 
                         id="password"
                         name="password"
@@ -308,7 +335,7 @@ const AdminUser = ({userData, api}) => {
                             setPassword(e.target.value)
                         }}
                         autoComplete="off"
-                        placeholder='Нууц үгээ оруулна уу'
+                        placeholder='Нууц үг оруулна уу'
                       />
                       {passwordshow ?
                       <svg className="h-4 w-4 absolute right-3 top-3 text-gray-500 hover:text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
@@ -335,21 +362,16 @@ const AdminUser = ({userData, api}) => {
                   </div>
                   :
                   <button className=' bg-sky-500 h-10 rounded-md my-5 text-white transition-all duration-300 ease-in-out hover:opacity-80'
-                   onClick={()=>UpdateUser(userData._id)} type="button">
-                      Хадгалах
+                   onClick={()=>insertUser()} type="button">
+                    Бүртгэх
                   </button>
                   }
               </div>
             </form>
         </div>
-        {passwordVerifyModal ?
-          <PasswordVerify body={body} setPasswordVerifyModal={setPasswordVerifyModal} setScrollStop={setScrollStop} api={api} type={"admin"}/>
-          :
-          <>
-        </>
-      }
+       
     </div>
   )
 }
 
-export default AdminUser
+export default NewUser
