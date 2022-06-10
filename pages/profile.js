@@ -3,6 +3,7 @@ import { useRouter, Router } from 'next/router'
 import React, {useContext, useEffect, useState, useRef} from 'react'
 import Head from 'next/head';
 import { NavbarLocale } from '../locales/Navbar';
+import { ProfileLocale, Buttons } from '../locales/Profile';
 import {DataContext} from "../store/GlobalState"
 import PasswordVerify from '../components/PasswordVerify';
 import Loading from '../components/Loading';
@@ -21,6 +22,7 @@ const Profile = ({api}) => {
     // console.log(router)
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     const t = NavbarLocale[l]
+    const Profile = Buttons[l]
     const [tabIndex, setTabIndex] = useState(0)
     const [skills, setSkills] = useState([])
     const [schools, setSchools] = useState([])
@@ -51,15 +53,15 @@ const Profile = ({api}) => {
         } 
         else {
             setInformations(user && user.informations)
-            setSkills(user.informations[l].skills && user.informations[l].skills.skill)
-            setSchools(user.informations[l].education && user.informations[l].education.schools)
-            setExp(user.informations[l].experience && user.informations[l].experience.works)
+            user.informations[l].skills && setSkills(user.informations[l].skills.skill)
+            user.informations[l].education && setSchools(user.informations[l].education.schools)
+            user.informations[l].experience && setExp(user.informations[l].experience.works)
             setUsername(user && user.username)
-            setLastname(user.informations && user.informations[l].lastname)
+            user.informations && setLastname(user.informations[l].lastname)
             setProfilePhoto(user && user.profilephoto)
             setPassword(user && user.password)
-            setFirstname(user.informations && user.informations[l].firstname)
-            setTitle(user.informations && user.informations[l].title)
+            user.informations && setFirstname( user.informations[l].firstname)
+            user.informations && setTitle(user.informations[l].title)
             setLinkedin(user && user.linkedin)
             setFacebook(user && user.facebook)
             setInstagram(user && user.instagram)
@@ -86,28 +88,28 @@ const Profile = ({api}) => {
 
     const profileInfos = [
       {
-        title : "Харагдах нэр",
+        title : ProfileLocale[l].username,
         val : username,
         action : 'username',
         disabled : true,
         type : "text",
     },
       {
-        title : "Овог",
+        title : ProfileLocale[l].lastname,
         val : lastname,
         action : "lastname",
         class : "disabled",
         type : "text",
       },
       {
-        title : "Өөрийн нэр",
+        title : ProfileLocale[l].firstname,
         val : firstname,
         action : "firstname",
         class : "disabled",
         type : "text",
       },
       {
-        title: "Тодорхойлолт",
+        title: ProfileLocale[l].description,
         val : title,
         action : "title",
         class : "disabled",
@@ -117,45 +119,45 @@ const Profile = ({api}) => {
     ]
     const socials = [
       {
-        title : "Linkedin Хаяг",
+        title : Profile.linkedin,
         val : linkedin,
         action : "linkedin"
       },
       {
-        title : "Facebook Хаяг",
+        title : Profile.facebook,
         val : facebook,
         action :"facebook"
       },
       {
-        title : "Instagram Хаяг",
+        title : Profile.instagram,
         val : instagram,
          action :"instagram"
       },
       {
-        title : "YouTube Хаяг",
+        title : Profile.youtube,
         val : youtube,
         action :"youtube"
       },
       {
-        title : "Email Хаяг",
+        title : Profile.email,
         val : email,
         action :"email"
       },
       {
-        title : "Web Хаяг",
+        title : Profile.web,
         val : web,
         action :"web",
       },
     ]
     const tabs = [ 
         {
-            title: "Чадварууд",
+            title: Profile.skills,
         },
         {
-            title: `Боловсрол`,
+            title: Profile.education,
         },
         {
-            title: `Туршлага`,
+            title: Profile.exp,
         }
     ]
 
@@ -174,6 +176,7 @@ const Profile = ({api}) => {
         else if(action === "web") setWeb(field)
     }
     const addFieldSkills = () =>{
+        console.log(skills)
         setSkills([...skills, ''])
     }
     const addFieldSchools = () =>{
@@ -304,7 +307,7 @@ const Profile = ({api}) => {
         <div className='w-full lg:px-32 md:px-20 p-5 font-semibold '>
             <div className='lg:w-full font-semibold text-xl flex items-center text-gray-800 mt-10'> 
                 <div className='md:h-10 h-8 w-1 bg-red-500 mr-5'></div>
-                <p className='uppercase'>Хэрэглэгчийн Мэдээлэл Засах</p>
+                <p className='uppercase'>{Profile.title}</p>
             </div>
         </div> 
         <div className="w-full grid md:grid-cols-2 gap-10">
@@ -357,7 +360,7 @@ const Profile = ({api}) => {
                     </div>
                     }
                     <div className='flex items-center'>
-                        <p className='font-semibold uppercase my-5 text-lg'>Профайл</p>
+                        <p className='font-semibold uppercase my-5 text-lg'>{Profile.profile}</p>
                         <div className='h-2 w-2 scale-75 rounded-full bg-red-500 ml-2'></div>
                     </div>
                     <div className='w-full my-1'>
@@ -379,7 +382,7 @@ const Profile = ({api}) => {
                     ))}
                     </div>
                     <div className='w-full my-1'>
-                        <label className='font-base'>Нууц үг</label>
+                        <label className='font-base'>{Profile.password}</label>
                         <div className='relative flex'>
                             <input className='transition-all duration-300 ease-in-out w-full outline-none border text-sm border-gray-200 rounded-md h-10 px-2 focus:border-sky-500 font-normal ' 
                             id="password"
@@ -410,7 +413,7 @@ const Profile = ({api}) => {
                         </div>
                     </div>
                     <div className='flex items-center'>
-                    <p className='font-semibold uppercase my-5 text-lg'>Сошиал хаягууд</p>
+                    <p className='font-semibold uppercase my-5 text-lg'>{Profile.socials}</p>
                     <div className='h-2 w-2 scale-75 rounded-full bg-red-500 ml-2'></div>
                     </div>
                     <div className='w-full my-1'>
@@ -443,7 +446,7 @@ const Profile = ({api}) => {
                     {tabIndex === 0 ?
                     <div>
                         <div className='flex items-center mt-10'>
-                            <p className='font-semibold uppercase text-lg'>Чадварууд</p>
+                            <p className='font-semibold uppercase text-lg'>{Profile.skills}</p>
                             <div className='h-2 w-2 scale-75 rounded-full bg-sky-500 ml-2'></div>
                         </div>
                         <div className='my-10 w-full z-0'>
@@ -470,7 +473,7 @@ const Profile = ({api}) => {
                                 ))}
                                 <div className='w-full grid grid-cols-2 gap-5'>
                                     <button className=' bg-sky-500 h-10 rounded-md text-white transition-all duration-300 ease-in-out hover:opacity-80' onClick={()=>addFieldSkills()} type="button">
-                                        Нэмэх
+                                        {Profile.add}
                                     </button>
                                     {loading ? 
                                     <div className="bg-emerald-100 h-10 rounded-md  transition-all duration-300 ease-in-out  flex justify-center items-center">
@@ -481,7 +484,7 @@ const Profile = ({api}) => {
                                     :
                                     <button className=' bg-emerald-500 h-10 rounded-md text-white transition-all duration-300 ease-in-out hover:opacity-80' 
                                     onClick={()=> UpdateUser(auth.user._id)} type="button">
-                                        Хадгалах
+                                        {Profile.save}
                                     </button>
                                     }
                                 </div>
@@ -491,7 +494,7 @@ const Profile = ({api}) => {
                     : tabIndex === 1 ?
                     <div>
                         <div className='flex items-center mt-10'>
-                            <p className='font-semibold uppercase text-lg'>Боловсрол</p>
+                            <p className='font-semibold uppercase text-lg'>{Profile.education}</p>
                             <div className='h-2 w-2 scale-75 rounded-full bg-sky-500 ml-2'></div>
                         </div>
                         <div className='my-10'>
@@ -505,7 +508,7 @@ const Profile = ({api}) => {
                                             </svg>
                                         </button>   
                                         <label>
-                                            Сургууль
+                                            {Profile.school}
                                         </label>
                                         <input className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-normal text-sm placeholder:text-black'   
                                             id="school"
@@ -515,7 +518,7 @@ const Profile = ({api}) => {
                                             onChange={(e)=> updateSchoolName(index, e.target.value)}  
                                             />
                                         <label>
-                                            Зэрэг 
+                                            {Profile.degree} 
                                         </label>
                                             <input className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-normal text-sm placeholder:text-black'   
                                                 id="degree"
@@ -525,7 +528,7 @@ const Profile = ({api}) => {
                                                 onChange={(e)=> updateSchoolDegree(index, e.target.value)}  
                                             />
                                         <label>
-                                            Он (20**-20**)
+                                            {Profile.years} (20**-20**)
                                         </label>
                                             <input className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-normal text-sm placeholder:text-black'   
                                                 id="schoolYears"
@@ -539,7 +542,7 @@ const Profile = ({api}) => {
                                 ))}
                                 <div className='w-full grid grid-cols-2 gap-5'>
                                     <button className=' bg-sky-500 h-10 px-8 rounded-md text-white transition-all duration-300 ease-in-out hover:opacity-80' onClick={()=>addFieldSchools()} type="button">
-                                        Нэмэх
+                                        {Profile.add}
                                     </button>
                                     {loading ? 
                                     <div className="bg-emerald-100 h-10 rounded-md  transition-all duration-300 ease-in-out  flex justify-center items-center">
@@ -549,7 +552,7 @@ const Profile = ({api}) => {
                                     </div>
                                     :
                                     <button className=' bg-emerald-500 h-10 rounded-md text-white transition-all duration-300 ease-in-out hover:opacity-80' onClick={()=>UpdateUser(auth.user._id)} type="button">
-                                        Хадгалах
+                                        {Profile.save}
                                     </button>
                                     }
                                 </div>
@@ -558,7 +561,7 @@ const Profile = ({api}) => {
                     :
                     <div >
                         <div className='flex items-center mt-10'>
-                            <p className='font-semibold uppercase text-lg'>Ажлын Туршлага</p>
+                            <p className='font-semibold uppercase text-lg'>{Profile.exp}</p>
                             <div className='h-2 w-2 scale-75 rounded-full bg-sky-500 ml-2'></div>
                         </div>
                         <div className='my-10'>
@@ -572,7 +575,7 @@ const Profile = ({api}) => {
                                             </svg>
                                         </button>
                                             <label>
-                                                Хаана
+                                                {Profile.at}
                                             </label>
                                             <input 
                                                 className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-normal text-sm placeholder:text-black'   
@@ -583,7 +586,7 @@ const Profile = ({api}) => {
                                                 onChange={(e)=> updateExpAt(index, e.target.value)}  
                                             />  
                                             <label>
-                                            Хийсэн ажил
+                                                {Profile.work}
                                             </label>
                                             <input 
                                                 className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-normal text-sm placeholder:text-black'   
@@ -595,7 +598,7 @@ const Profile = ({api}) => {
                                             />
 
                                             <label>
-                                                Он (20**-20**)
+                                                {Profile.years} (20**-20**)
                                             </label>
                                             <input 
                                                 className='transition-all duration-300 ease-in-out my-2 outline-none border border-gray-200 rounded-md h-10 px-2 focus:border-sky-300 font-normal text-sm placeholder:text-black'   
@@ -610,7 +613,7 @@ const Profile = ({api}) => {
                                 ))}
                                 <div className='w-full grid grid-cols-2 gap-5'>
                                     <button className=' bg-sky-500 h-10 px-8 rounded-md text-white transition-all duration-300 ease-in-out hover:opacity-80' onClick={()=>addFieldExp()} type="button">
-                                        Нэмэх
+                                        {Profile.add}
                                     </button>
                                     {loading ? 
                                     <div className="bg-emerald-100 h-10 rounded-md  transition-all duration-300 ease-in-out  flex justify-center items-center">
@@ -620,7 +623,7 @@ const Profile = ({api}) => {
                                     </div>
                                     :
                                     <button className=' bg-emerald-500 h-10 rounded-md text-white transition-all duration-300 ease-in-out hover:opacity-80' onClick={()=>UpdateUser(auth.user._id)} type="button">
-                                        Хадгалах
+                                        {Profile.save}
                                     </button>
                                     }
                                 </div>

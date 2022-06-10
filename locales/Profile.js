@@ -1,0 +1,96 @@
+const ProfileLocale = [
+    {
+        username : "Харагдах нэр",
+        firstname : "Өөрийн нэр",
+        lastname : "Овог",
+        description : "Тодорхойлолт",
+    },
+    {
+        username : "Username",
+        firstname : "Firstname",
+        lastname : "Lastname",
+        description : "Description",
+
+    },
+    {
+        username : "Username",
+        firstname : "Firstname",
+        lastname : "Lastname",
+        description : "Description",
+    }
+]
+ const Buttons = [
+      {
+        title: "Хэрэглэгчийн Мэдээлэл Засах",
+        profile : "Профайл",
+        password :"Нууц үг",
+        socials : "Сошиал хаягууд",
+        linkedin : "Linkedin Хаяг",
+        facebook : "Facebook Хаяг",
+        instagram : "Instagram Хаяг",
+        youtube : "YouTube Хаяг",
+        email : "Email Хаяг",
+        web : "Web Хаяг",
+        skills: "Чадварууд",
+        education: `Боловсрол`,
+        exp: `Туршлага`,
+        school : "Сургууль",
+        degree: "Зэрэг",
+        years :"Он",
+        add :"Нэмэх",
+        save :"Хадгалах",
+        at : "Хаана",
+        work :"Хийсэн ажил",
+      },
+      {
+        title: "Edit Profile",
+        profile : "Profile",
+        password :"Password",
+        socials : "Social Links",
+        linkedin : "Linkedin",
+        facebook : "Facebook",
+        instagram : "Instagram",
+        youtube : "YouTube",
+        email : "Email",
+        web : "Web",
+        skills: "Skills",
+        education: `Education`,
+        exp: `Experiences`,
+        school : "School",
+        degree: "Degree",
+        years :"Years",
+        add :"Add",
+        save :"Save",
+        at : "Where",
+        work :"Work",
+      },
+      {
+        title: "Edit Profile",
+        profile : "Profile",
+        password :"Password",
+        socials : "Social Links",
+        linkedin : "Linkedin",
+        facebook : "Facebook",
+        instagram : "Instagram",
+        youtube : "YouTube",
+        email : "Email",
+        web : "Web",
+        skills: "Skills",
+        education: `Education`,
+        exp: `Experiences`,
+        school : "School",
+        degree: "Degree",
+        years :"Years",
+        add :"Add",
+        save :"Save",
+        at : "Where",
+        work :"Work",
+      },
+    ]
+
+
+module.exports = {
+    ProfileLocale, 
+    Buttons
+}
+ 

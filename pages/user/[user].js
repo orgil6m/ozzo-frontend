@@ -116,10 +116,10 @@ const AdminUser = ({userData, api}) => {
       else {
         setInformations( userData && userData.informations)
         setUsername(userData &&  userData.username)
-        setLastname(userData.informations &&  userData.informations[l].lastname)
+        userData.informations && setLastname(  userData.informations[l].lastname)
         setProfilePhoto(userData &&  userData.profilephoto)
-        setFirstname(userData.informations &&  userData.informations[l].firstname)
-        setTitle(userData.informations &&  userData.informations[l].title)
+        userData.informations &&  setFirstname(  userData.informations[l].firstname)
+        userData.informations && setTitle(  userData.informations[l].title)
         setNumber(userData &&  userData.number)
         setPassword(userData &&  userData.password)
         setIsAdmin(userData &&  userData.admin)
