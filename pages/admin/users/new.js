@@ -7,8 +7,6 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { NavbarLocale } from '../../../locales/Navbar';
 import Loading from '../../../components/Loading';
-import PasswordVerify from '../../../components/PasswordVerify';
-
 
 export async function getServerSideProps() {
   const api = process.env.API_URL;
@@ -169,12 +167,14 @@ const NewUser = ({api}) => {
         setPasswordVerifyModal(false)
         setLoading(false)
         dispatch({type:'NOTIFY', payload:{success: "Амжилттай Бүртэгдлээ"}})
+        router.push("/admin/users")
         if(type !=="admin" ){
         dispatch({type:'AUTH', payload:{
             ...auth,
             user: resJson.user,
         }})
         window.localStorage.setItem("user", JSON.stringify(resJson.user));
+       
       }
     }
     }
@@ -206,7 +206,7 @@ const NewUser = ({api}) => {
     })
     .catch(err => console.log(err))
   }
-  
+
   return (
      <div className='pt-20 cursor-default'>
         <Head>

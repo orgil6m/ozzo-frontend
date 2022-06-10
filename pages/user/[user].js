@@ -46,6 +46,7 @@ const AdminUser = ({userData, api}) => {
   const [isService, setIsService] = useState(false)
   const [isArtist, setIsArtist] = useState(false)
   const [isLabel, setIsLabel] = useState(false)
+  const [method, setMethod] = useState("")
 
   const profileInfos = [
       {
@@ -164,6 +165,7 @@ const AdminUser = ({userData, api}) => {
       updatedField[l].firstname = firstname
       updatedField[l].title = title
       setInformations(updatedField)
+      setMethod("PUT")
       const raw = { 
           "_id" : id,
           profilephoto,
@@ -181,7 +183,12 @@ const AdminUser = ({userData, api}) => {
   }
   const deleteUser = async (id) => {
     setPasswordVerifyModal(true)
-    setBody(id)
+    setMethod("DELETE")
+    const raw = { 
+      "_id" : id
+    }
+    setBody(JSON.stringify(raw))
+    console.log(passwordVerifyModal)
   }
   return (
      <div className='pt-20 cursor-default'>
@@ -343,23 +350,16 @@ const AdminUser = ({userData, api}) => {
                       Хадгалах
                   </button>
                 }
-                {loading ? 
-                  <div className="bg-sky-100 h-10 rounded-md my-5 transition-all duration-300 ease-in-out  flex justify-center items-center">
-                      <div className="w-5 h-5 border-2 border-gray-200 rounded-full animate-spin" role="status" 
-                      style={{"borderColor": 'rgb(16 185 129) transparent rgb(16 185 129) transparent'}}>
-                      </div>
-                  </div>
-                  :
-                  <button className=' bg-red-500 h-10 rounded-md my-5 text-white transition-all duration-300 ease-in-out hover:opacity-80'
+                  <button className=' bg-red-500 h-10 rounded-md mb-5 text-white transition-all duration-300 ease-in-out hover:opacity-80'
                    onClick={()=> deleteUser(userData._id)} type="button">
                       Устгах
                   </button>
-                }
               </div>
             </form>
         </div>
         {passwordVerifyModal ?
-          <PasswordVerify body={body} setPasswordVerifyModal={setPasswordVerifyModal} setScrollStop={setScrollStop} api={api} type={"admin"} method={"PUT"}/>
+          <PasswordVerify body={body} setPasswordVerifyModal={setPasswordVerifyModal} setScrollStop={setScrollStop} api={api} type={"admin"} method={method} 
+          action={"routerBack"}/>
           :
           <>
         </>

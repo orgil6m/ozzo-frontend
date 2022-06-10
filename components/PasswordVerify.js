@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState, useRef, useEffect, useContext } from 'react';
 import {DataContext} from "../store/GlobalState"
 
-const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api, type, method})=>{
+const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api, type, method, action})=>{
 
     const {state, dispatch} = useContext(DataContext)
     const {auth} = state
@@ -19,28 +19,34 @@ const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api, 
       if(password === auth.user.password) {
         setErr()
         setLoading(true)
+        console.log(`"${method}"`)
+        console.log(body)
         try {
             const response = await fetch(`${api}/api/ozzo/users`, {
-                method: method,
+                method: `${method}`,
                 headers: {
                 "Content-Type": "application/json",
                 },
                 body: body,
             });
+            console.log(response.status)
             const resJson = await response.json();
-        if(response.status == 200){
-            setScrollStop(false)
-            setPasswordVerifyModal(false)
-            setLoading(false)
-            dispatch({type:'NOTIFY', payload:{success: resJson.message}})
-            if(type !=="admin" ){
-            dispatch({type:'AUTH', payload:{
-                ...auth,
-                user: resJson.user,
-            }})
-            window.localStorage.setItem("user", JSON.stringify(resJson.user));
-          }
-        }
+            if(response.status == 200){
+              console.log(action)
+              if(action === "routerBack") router.back()
+              setScrollStop(false)
+              setPasswordVerifyModal(false)
+              setLoading(false)
+              dispatch({type:'NOTIFY', payload:{success: resJson.message}})
+              if(type !=="admin" ){
+              dispatch({type:'AUTH', payload:{
+                  ...auth,
+                  user: resJson.user,
+              }})
+              window.localStorage.setItem("user", JSON.stringify(resJson.user));
+              
+            }
+            }
         }
         catch (err) {}
       } else{
