@@ -179,6 +179,10 @@ const AdminUser = ({userData, api}) => {
       };
       setBody(JSON.stringify(raw))
   }
+  const deleteUser = async (id) => {
+    setPasswordVerifyModal(true)
+    setBody(id)
+  }
   return (
      <div className='pt-20 cursor-default'>
         <Head>
@@ -338,12 +342,24 @@ const AdminUser = ({userData, api}) => {
                    onClick={()=>UpdateUser(userData._id)} type="button">
                       Хадгалах
                   </button>
-                  }
+                }
+                {loading ? 
+                  <div className="bg-sky-100 h-10 rounded-md my-5 transition-all duration-300 ease-in-out  flex justify-center items-center">
+                      <div className="w-5 h-5 border-2 border-gray-200 rounded-full animate-spin" role="status" 
+                      style={{"borderColor": 'rgb(16 185 129) transparent rgb(16 185 129) transparent'}}>
+                      </div>
+                  </div>
+                  :
+                  <button className=' bg-red-500 h-10 rounded-md my-5 text-white transition-all duration-300 ease-in-out hover:opacity-80'
+                   onClick={()=> deleteUser(userData._id)} type="button">
+                      Устгах
+                  </button>
+                }
               </div>
             </form>
         </div>
         {passwordVerifyModal ?
-          <PasswordVerify body={body} setPasswordVerifyModal={setPasswordVerifyModal} setScrollStop={setScrollStop} api={api} type={"admin"}/>
+          <PasswordVerify body={body} setPasswordVerifyModal={setPasswordVerifyModal} setScrollStop={setScrollStop} api={api} type={"admin"} method={"PUT"}/>
           :
           <>
         </>

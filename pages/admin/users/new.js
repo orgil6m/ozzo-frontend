@@ -206,6 +206,7 @@ const NewUser = ({api}) => {
     })
     .catch(err => console.log(err))
   }
+  
   return (
      <div className='pt-20 cursor-default'>
         <Head>

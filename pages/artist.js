@@ -271,7 +271,7 @@ const Admin = ({ api }) => {
     <></>
     }
      {passwordVerifyMdoal ?
-      <PasswordVerify body={body} setPasswordVerifyModal={setPasswordVerifyModal} setScrollStop={setScrollStop} api={api}/>
+      <PasswordVerify body={body} setPasswordVerifyModal={setPasswordVerifyModal} setScrollStop={setScrollStop} api={api} method={"PUT"}/>
       :
       <>
       </>

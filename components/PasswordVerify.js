@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState, useRef, useEffect, useContext } from 'react';
 import {DataContext} from "../store/GlobalState"
 
-const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api, type})=>{
+const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api, type, method})=>{
 
     const {state, dispatch} = useContext(DataContext)
     const {auth} = state
@@ -21,7 +21,7 @@ const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api, 
         setLoading(true)
         try {
             const response = await fetch(`${api}/api/ozzo/users`, {
-                method: "PUT",
+                method: method,
                 headers: {
                 "Content-Type": "application/json",
                 },
