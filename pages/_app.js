@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Loading from "../components/Loading"
 import Nprogress from "nprogress"
 import "nprogress/nprogress.css"
+import { ChakraProvider } from "@chakra-ui/react";
 
 Router.onRouteChangeStart = (url) => {
   Nprogress.start()
@@ -22,6 +23,7 @@ Router.onRouteChangeError = () => {
 
 function MyApp({ Component, pageProps,router }) {
   return (
+
     <DataProvider>
       {/* <Provider session={pageProps.session}> */}
       <Layout>
@@ -39,6 +41,7 @@ function MyApp({ Component, pageProps,router }) {
       </Layout>
       {/* </Provider> */}
     </DataProvider>
+
   );
 }
 
