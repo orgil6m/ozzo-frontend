@@ -7,6 +7,7 @@ import LocaleDropDown from './LocaleDropDown'
 import { DataContext } from '../store/GlobalState';
 import { NavbarLocale} from '../locales/Navbar';
 import { Buttons } from "../locales/Profile"
+import { Messages } from '../locales/DispatchMessages';
 
 const Sidebar = () => {
     const {state, dispatch} = useContext(DataContext)
@@ -15,7 +16,7 @@ const Sidebar = () => {
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     const t = NavbarLocale[l]
     const Button = Buttons[l]
-
+    const message = Messages[l]
     const [showSidebar, setShowSidebar] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -24,7 +25,7 @@ const Sidebar = () => {
         window.localStorage.removeItem("token");
         window.localStorage.removeItem("tokenExpTime");
         window.localStorage.removeItem("user");
-        dispatch({type:'NOTIFY',payload:{success: "Амжилттай гарлаа!"}})
+        dispatch({type:'NOTIFY',payload:{success: message.logout_successfully}})
         dispatch({type:'AUTH', payload:{}})
         router.push('/')
     }
@@ -46,7 +47,7 @@ const Sidebar = () => {
                 </>
                 :
                 <></>}
-                {auth.user.teacher === true ||auth.user.admin === true ?
+                {auth.user.teacher === true ?
                 <>
                     <Link href='/teacher' >
                         <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-base hover:text-black hover:border-red-500 flex items-center ${router.pathname == "/teacher" ? "border-red-500  text-black " : "border-white"}`}>
@@ -62,7 +63,7 @@ const Sidebar = () => {
                 </>
                 :
                 <></>}
-                {auth.user.artist === true||auth.user.admin === true ?
+                {auth.user.artist === true ?
                 <>
                     <Link href='/artist' >
                         <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-base hover:text-black hover:border-red-500 flex items-center ${router.pathname == "/artist" ? "border-red-500  text-black " : "border-white"}`}>
@@ -76,7 +77,7 @@ const Sidebar = () => {
                 </>
                 :
                 <></>}
-                {auth.user.service ===  true ||auth.user.admin === true ?
+                {auth.user.service ===  true  ?
                 <>
                 <Link href='/service' >
                     <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-base hover:text-black hover:border-red-500 flex items-center ${router.pathname == "/service" ? "border-red-500  text-black " : "border-white"}`}>

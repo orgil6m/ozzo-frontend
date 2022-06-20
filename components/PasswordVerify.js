@@ -3,12 +3,15 @@ import { useRouter } from 'next/router';
 import { motion } from "framer-motion";
 import { useState, useRef, useEffect, useContext } from 'react';
 import {DataContext} from "../store/GlobalState"
+import {Messages} from "../locales/DispatchMessages"
+
 
 const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api, type, method, action})=>{
-
+    const router = useRouter()
+    const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     const {state, dispatch} = useContext(DataContext)
+    const message = Messages[l]
     const {auth} = state
-    const router = useRouter();
     const [passwordshow, setPasswordShow] = useState(false)
     const [err, setErr] = useState("")
     const [password, setPassword ] = useState("")
@@ -20,10 +23,11 @@ const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api, 
         setErr()
         setLoading(true)
         try {
-            const response = await fetch(`${api}/api/ozzo/users`, {
+            const response = await fetch(`${api}/api/ozzo/updateUser`, {
                 method: `${method}`,
                 headers: {
-                "Content-Type": "application/json",
+                  authorization: window.localStorage.getItem('token'),
+                  "Content-Type": "application/json",
                 },
                 body: body,
             });
@@ -33,7 +37,7 @@ const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api, 
               setScrollStop(false)
               setPasswordVerifyModal(false)
               setLoading(false)
-              dispatch({type:'NOTIFY', payload:{success: resJson.message}})
+              dispatch({type:'NOTIFY', payload:{success: message.edited_successfully}})
               if(type !=="admin" ){
               dispatch({type:'AUTH', payload:{
                   ...auth,

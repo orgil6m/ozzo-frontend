@@ -89,6 +89,20 @@ const Admin = () => {
           setFoundUsers(usersData)
         }
       }
+      else if(type === 'director'){
+        if(e !=  ''){
+          const result = foundUsers.filter(row => {
+            if(e == 'true' && row.director === true) {
+              return row.director 
+            } else if(e == 'false' && (row.director == undefined || row.director == "")){
+              return row
+            } 
+        })
+        setFoundUsers(result)
+        } else{
+          setFoundUsers(usersData)
+        }
+      }
      
       else if(type === 'admin'){
         if(e !=  ''){
@@ -211,6 +225,9 @@ const Admin = () => {
                   Утас
                 </th>
                 <th scope="col" className="px-6 py-3">
+                  Захирал
+                </th>
+                <th scope="col" className="px-6 py-3">
                   Админ
                 </th>
                 <th scope="col" className="px-6 py-3">
@@ -240,6 +257,19 @@ const Admin = () => {
               </th>
               <th scope="col" className="px-2 py-3">
                 <input className='transition-all duration-300 ease-in-out outline-none pl-4 py-2 rounded-sm border border-gray-100 focus:border-gray-300' placeholder='Хайх Утга...' onChange={(e)=> filter(e.target.value, "number")} />
+              </th>
+              <th scope="col" className="px-2 py-3">
+                <select className='py-2 outline-none px-4' onChange={(e)=> filter(e.target.value, "director")}>
+                  <option value={""}>
+                    Шүүх
+                  </option>
+                  <option value={"true"}>
+                    Тийм
+                  </option>
+                  <option value={false}>
+                    Үгүй
+                  </option>
+                </select>
               </th>
               <th scope="col" className="px-2 py-3">
                 <select className='py-2 outline-none px-4' onChange={(e)=> filter(e.target.value, "admin")}>
@@ -316,7 +346,7 @@ const Admin = () => {
                 <td scope="row" className="w-20 font-medium text-gray-900 " >
                   <div className='h-20 w-20 bg-cover bg-center m-2 rounded-sm' 
                   style={{'backgroundImage': `url(${row.profilephoto && row.profilephoto || row.artistPhoto}`}}
-                  onClick={()=> router.push("/user/"+row._id)}
+                  onClick={()=> router.push("/admin/user/"+row._id)}
                   >
                   </div>
                 </td>
@@ -331,12 +361,12 @@ const Admin = () => {
                 </td>
                 }
                 <td scope="row" className='px-6 py-3'>
-                  <p className='hover:underline' onClick={()=> router.push("/user/"+row._id)}>
+                  <p className='hover:underline' onClick={()=> router.push("/admin/user/"+row._id)}>
                   {row.informations && row.informations[l].firstname}
                   </p>
                 </td>
                 <td  scope="row" className='px-6 py-3'>
-                  <p className='truncate hover:underline' onClick={()=> router.push("/user/"+row._id)}>
+                  <p className='truncate hover:underline' onClick={()=> router.push("/admin/user/"+row._id)}>
                     {row.username && row.username}
                   </p>
                 </td>
@@ -344,6 +374,19 @@ const Admin = () => {
                   <a href={`tel:${row.number &&  row.number}`} className='transition-all duration-300 ease-in-out underline text-gray-700 font-bold hover:text-gray-500'>
                     {row.number && row.number}
                   </a>
+                </td>
+                <td  scope="row" className='px-6 py-3'>
+                  {row.director ?
+                  <div className='flex justify-center items-center text-green-500'>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  :
+                  <div className='flex justify-center items-center text-red-500'>
+                  -
+                  </div>
+                  }
                 </td>
                 <td  scope="row" className='px-6 py-3'>
                   {row.admin ?

@@ -7,10 +7,9 @@ import Head from 'next/head';
 import { LoginLocale } from '../locales/Login';
 
 export async function getServerSideProps() {
-    const base = process.env.BASE_URL
     const api = process.env.API_URL
     return {
-        props: {base, api},
+        props: {api},
     }
 }
 

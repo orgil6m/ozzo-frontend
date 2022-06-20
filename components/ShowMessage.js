@@ -28,7 +28,7 @@ const showMessage = ({message,  setShowMessage, })=>{
               <div className='p-5  rounded-md pb-10'>
                     <div className='w-full flex justify-between'>
                         <span className='text-xs text-gray-500'>
-                            {message.createdTime}
+                            {message && message.createdTime}
                         </span>
                         <div className='flex'>
                             <svg xmlns="http://www.w3.org/2000/svg" className="mr-2 transition-all duration-100 ease-in-out h-4 w-4 hover:text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -42,18 +42,18 @@ const showMessage = ({message,  setShowMessage, })=>{
                     </div>
                   
                     <div className='flex items-center mt-5'>
-                        <div className='rounded-full text-white flex h-10 w-10 justify-center items-center' style={{backgroundColor: message.avatarColor}}>
+                        <div className='rounded-full text-white flex h-10 w-10 justify-center items-center' style={{backgroundColor: message &&  message.avatarColor}}>
                             <span className='m-2'>
-                            {message.username.slice(0, 1)}
+                            {message && message.username.slice(0, 1)}
                             </span>
                         </div>
                         <span className='mx-3 flex flex-col items-start justify-center font-medium'>
-                            {message.username} 
-                            <a className='text-xs text-gray-500 flex items-center hover:underline font-light' href={`mailto:${message.email}`}>
+                            {message && message.username} 
+                            <a className='text-xs text-gray-500 flex items-center hover:underline font-light' href={`mailto:${message && message.email}`}>
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                                 </svg>
-                                {message.email}
+                                {message && message.email}
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                                 </svg>
@@ -64,7 +64,7 @@ const showMessage = ({message,  setShowMessage, })=>{
                     <hr className='my-3' />
                     <div >
                         <p className='indent-4 text-justify'>
-                            {message.message}
+                            {message && message.message}
                         </p> 
                     </div>
                 </div>

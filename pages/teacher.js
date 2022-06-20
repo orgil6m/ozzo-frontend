@@ -9,15 +9,7 @@ import {DataContext} from "../store/GlobalState"
 import Loading from '../components/Loading';
 
 
-export async function getServerSideProps() {
-  const base = process.env.BASE_URL
-  return {
-    props: {base},
-  }
-}
-
-
-const Admin = ({base}) => {
+const Admin = () => {
   
     const {state, dispatch} = useContext(DataContext)
     const {auth} = state

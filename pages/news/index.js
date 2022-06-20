@@ -8,14 +8,13 @@ import { NavbarLocale} from '../../locales/Navbar';
 
 export async function getServerSideProps() {
   const NewsData = await getNews();
-  const base = process.env.BASE_URL;
   NewsData.reverse();
   return {
-    props: {NewsData, base},
+    props: {NewsData},
   }
 }
 
-const News = ({ NewsData, base }) => {
+const News = ({ NewsData }) => {
     const router = useRouter(); 
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     const t = NavbarLocale[`${l}`]

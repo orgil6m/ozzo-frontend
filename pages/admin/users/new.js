@@ -2,27 +2,21 @@
 import React, {useState, useRef, useEffect, useContext} from 'react'
 import { Switch } from '@headlessui/react';
 import {DataContext} from "../../../store/GlobalState"
-import { getUsersID, getUser, getUsers } from '../../../Datas/Users';
+import { insertUser } from '../../../Datas/Users';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { NavbarLocale } from '../../../locales/Navbar';
 import Loading from '../../../components/Loading';
+import { Messages } from '../../../locales/DispatchMessages';
 
-export async function getServerSideProps() {
-  const api = process.env.API_URL;
-  return {
-    props: { api }
-  };
-}
-
-const NewUser = ({api}) => {
+const NewUser = () => {
   const {state, dispatch} = useContext(DataContext)
   const {auth} = state
   const router = useRouter()
   const fileRef = useRef()
   const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
   const t = NavbarLocale[l]
-  // const[ userData, setUserData] = useState()
+  const message = Messages[l]
   const [username, setUsername] = useState("")
   const [firstname, setFirstname] = useState("")
   const [lastname, setLastname] = useState("")
@@ -36,7 +30,6 @@ const NewUser = ({api}) => {
   const [number, setNumber] = useState("")
   const [password, setPassword] = useState("")
   const [priority, setPriority] = useState()
-  const [body, setBody] = useState("")
 
   const [isAdmin, setIsAdmin] = useState(false)
   const [isTeacher, setIsTeacher] = useState(false)
@@ -136,7 +129,7 @@ const NewUser = ({api}) => {
       else if(action === "number") setNumber(field)
       else if(action === "title") setTitle(field)
   }
-  const insertUser = async () => {
+  const insertNewUser = async () => {
       const updatedField = [...informations]
       updatedField[l].lastname = lastname
       updatedField[l].firstname = firstname
@@ -155,24 +148,18 @@ const NewUser = ({api}) => {
           artist:isArtist,
           label :isLabel,
       };
-      if(username.length === 0 || !username) return  dispatch({type:'NOTIFY',payload:{error: "Hэвтрэх нэр шаардлагатай!"}})
-      if(password.length === 0 || !password) return  dispatch({type:'NOTIFY',payload:{error: "Нууц үг шаардлагатай!"}})
-      if(!priority) return  dispatch({type:'NOTIFY',payload:{error: "Эрэмбэ шаардлагатай!"}})
-      if(priority > 9) return  dispatch({type:'NOTIFY',payload:{error: "Эрэмбэ буруу!"}})
+      if(username.length === 0 || !username) return  dispatch({type:'NOTIFY',payload:{error: message.usernameRequired_error}})
+      if(password.length === 0 || !password) return  dispatch({type:'NOTIFY',payload:{error: message.passwordRequired_error}})
+      if(!priority) return  dispatch({type:'NOTIFY',payload:{error: message.priorityRequired_error}})
+      if(priority > 9) return  dispatch({type:'NOTIFY',payload:{error: message.priority_error}})
       try {
-        const response = await fetch(`${api}/api/ozzo/users`, {
-            method: "POST",
-            headers: {
-            "Content-Type": "application/json",
-            },
-            body: JSON.stringify(raw),
-        });
+        const response = await insertUser(JSON.stringify(raw))
         const resJson = await response.json();
       if(response.status == 200){
         setScrollStop(false)
         setPasswordVerifyModal(false)
         setLoading(false)
-        dispatch({type:'NOTIFY', payload:{success: "Амжилттай Бүртэгдлээ"}})
+        dispatch({type:'NOTIFY', payload:{success: message.inserted_successfully}})
         router.push("/admin/users")
         if(type !=="admin" ){
         dispatch({type:'AUTH', payload:{
@@ -189,11 +176,11 @@ const NewUser = ({api}) => {
   }
   const uploadProfilePhoto = (photo) => {
     if (photo && photo.size >= 2097152  ){
-        dispatch({type:'NOTIFY',payload:{error: "Файлын хэмжээ хэтэрсэн!"}})
+        dispatch({type:'NOTIFY',payload:{error: message.fileSize_error}})
         return
     }
     if(!photo || photo=== undefined) {
-        dispatch({type:'NOTIFY',payload:{error: "Ковер оруулна уу!"}})
+        dispatch({type:'NOTIFY',payload:{error: message.coverPhoto_error}})
         return
     }
     dispatch({type:'NOTIFY',payload:{loading: true}})
@@ -207,7 +194,7 @@ const NewUser = ({api}) => {
     })
     .then(resp => resp.json())
     .then(data => {
-        dispatch({type:'NOTIFY',payload:{success: "Амжилттай!"}})
+        dispatch({type:'NOTIFY',payload:{success: message.success}})
         setProfilePhoto(data.secure_url)
     })
     .catch(err => console.log(err))
@@ -380,7 +367,7 @@ const NewUser = ({api}) => {
                   </div>
                   :
                   <button className=' bg-sky-500 h-10 rounded-md my-5 text-white transition-all duration-300 ease-in-out hover:opacity-80'
-                   onClick={()=>insertUser()} type="button">
+                   onClick={()=>insertNewUser()} type="button">
                     Бүртгэх
                   </button>
                   }

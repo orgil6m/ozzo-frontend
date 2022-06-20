@@ -1,6 +1,6 @@
 const TimeLineLocale =[
     {
-        title: "Он цагийн түүхэн товчоон",
+        title: "Түүхэн замнал",
        text : "онд Бид :",
             years :[
             {

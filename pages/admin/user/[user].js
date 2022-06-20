@@ -1,32 +1,31 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useRef, useEffect, useContext} from 'react'
 import { Switch } from '@headlessui/react';
-import {DataContext} from "../../store/GlobalState"
-import { getUsersID, getUser, getUsers } from '../../Datas/Users';
+import {DataContext} from "../../../store/GlobalState"
+import {  getUser } from '../../../Datas/Users';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { NavbarLocale } from '../../locales/Navbar';
-import Loading from '../../components/Loading';
-import PasswordVerify from '../../components/PasswordVerify';
+import { NavbarLocale } from '../../../locales/Navbar';
+import Loading from '../../../components/Loading';
+import PasswordVerify from '../../../components/PasswordVerify';
+import { Messages } from '../../../locales/DispatchMessages';
 
 export async function getServerSideProps({ params }) {
   const { user } = params;
-  const users = await getUsers();
-  const current_user = users.find((p) => p._id === user)
   const api = process.env.API_URL;
   return {
-    props: { userData: current_user, api }
+    props: { userID :user , api }
   };
 }
 
-const AdminUser = ({userData, api}) => {
+const AdminUser = ({userID, api}) => {
   const {state, dispatch} = useContext(DataContext)
   const {auth} = state
   const router = useRouter()
   const fileRef = useRef()
   const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
   const t = NavbarLocale[l]
-  // const[ userData, setUserData] = useState()
+  const message = Messages[l]
   const [username, setUsername] = useState("")
   const [firstname, setFirstname] = useState("")
   const [lastname, setLastname] = useState("")
@@ -41,12 +40,13 @@ const AdminUser = ({userData, api}) => {
   const [password, setPassword] = useState()
   const [priority, setPriority] = useState(0)
   const [body, setBody] = useState()
-
+  const [userData, setUserData] = useState()
   const [isAdmin, setIsAdmin] = useState(false)
   const [isTeacher, setIsTeacher] = useState(false)
   const [isService, setIsService] = useState(false)
   const [isArtist, setIsArtist] = useState(false)
   const [isLabel, setIsLabel] = useState(false)
+  const [isDirector, setIsDirector] = useState(false)
   const [method, setMethod] = useState("")
 
   const profileInfos = [
@@ -78,15 +78,22 @@ const AdminUser = ({userData, api}) => {
         title: "Холбогдох дугаар",
         val : number,
         action : "number",
-        class : "disabled"
+        class : "disabled",
+        type :"number"
       },
   ]
   const roles = [
     {
-      title : "Админы Эрх",
+      title : "Захирлын эрх",
+      initialState : isDirector,
+      setInitialState : setIsDirector,
+    },
+    {
+      title : "Админы эрх",
       initialState : isAdmin,
       setInitialState : setIsAdmin,
     },
+    
     {
       title : "Багшийн эрх",
       initialState : isTeacher,
@@ -106,9 +113,14 @@ const AdminUser = ({userData, api}) => {
       title : "Лабель эрх",
       initialState : isLabel,
       setInitialState : setIsLabel,
-    }
+    },
+    
   ]
-
+  useEffect(()  =>  {
+    getUser(userID).then(response =>response.json()).then(result => {
+      setUserData(result.data)
+    })
+    }, [])
   useEffect(() => {
       const user = window.localStorage.getItem("user")
       if(!user || user === undefined ){
@@ -118,26 +130,27 @@ const AdminUser = ({userData, api}) => {
         setInformations( userData && userData.informations)
         setUsername(userData &&  userData.username)
         setProfilePhoto(userData &&  userData.profilephoto)
-        userData.informations && setLastname(  userData.informations[l].lastname)
-        userData.informations &&  setFirstname(  userData.informations[l].firstname)
-        userData.informations && setTitle(  userData.informations[l].title)
+        userData && userData.informations && setLastname(  userData.informations[l].lastname)
+        userData &&  userData.informations &&  setFirstname(  userData.informations[l].firstname)
+        userData &&  userData.informations && setTitle(  userData.informations[l].title)
         setNumber(userData &&  userData.number)
         setPassword(userData &&  userData.password)
-        setPriority(userData.priority && userData.priority)
+        setPriority(userData &&  userData.priority && userData.priority)
         setIsAdmin(userData &&  userData.admin)
         setIsArtist(userData &&  userData.artist)
         setIsTeacher(userData &&  userData.teacher)
         setIsService(userData &&  userData.service)
         setIsLabel(userData &&  userData.label)
+        setIsDirector(userData && userData.director)
       }
-      
   }, [userData])
+
 
   if(!auth.user || auth.user === undefined){
       return(
         <Loading />
       )
-    }
+  }
   if(auth.user.admin !== true ){
       return (
         <div className='fixed inset-0 flex justify-center items-center flex-col'>
@@ -152,19 +165,19 @@ const AdminUser = ({userData, api}) => {
           </button>
         </div>
       )
-    }
+  }
 
   const setProfileInfos = (field, action) =>{
       if(action === "username") setUsername(field)
       else if(action === "firstname") setFirstname(field)
       else if(action === "lastname") setLastname(field)
       else if(action === "title") setTitle(field)
+      else if(action === "number") setNumber(field)
   }
-  const UpdateUser = async (id) => {
-      if(username.length === 0 || !username) return  dispatch({type:'NOTIFY',payload:{error: "Hэвтрэх нэр шаардлагатай!"}})
-      if(password.length === 0 || !password) return  dispatch({type:'NOTIFY',payload:{error: "Нууц үг шаардлагатай!"}})
-      if(priority > 9) return  dispatch({type:'NOTIFY',payload:{error: "Эрэмбэ буруу!"}})
-     
+  const updateUser = async (id) => {
+      if(username.length === 0 || !username) return  dispatch({type:'NOTIFY',payload:{error: message.usernameRequired_error}})
+      if(password.length === 0 || !password) return  dispatch({type:'NOTIFY',payload:{error: message.passwordRequired_error }})
+      if(priority > 9) return  dispatch({type:'NOTIFY',payload:{error: message.priority_error }})
       setPasswordVerifyModal(true)
       const updatedField = [...informations]
       updatedField[l].lastname = lastname
@@ -182,6 +195,7 @@ const AdminUser = ({userData, api}) => {
           informations,
           teacher:isTeacher,
           admin:isAdmin,
+          director :isDirector,
           service:isService,
           artist:isArtist,
           label :isLabel,
@@ -196,10 +210,11 @@ const AdminUser = ({userData, api}) => {
     }
     setBody(JSON.stringify(raw))
   }
+
   return (
      <div className='pt-20 cursor-default'>
         <Head>
-            <title> {userData.username} | {t.ozzo}</title>
+            <title> {userData && userData.username} | {t.ozzo}</title>
         </Head>
 
         <div className='w-full lg:px-32 md:px-20 p-5  '>
@@ -208,7 +223,7 @@ const AdminUser = ({userData, api}) => {
             <p className="text-sm text-black/50 pr-2 "> / </p>
             <p className="transition-all duration-300 ease-in-out text-sm pr-2 text-black/50 hover:text-black"  onClick={() => router.push("/admin/users")}> Хэрэглэгчид </p>
             <p className="text-sm text-black/50 pr-2 "> / </p>
-            <p className="transition-all duration-300 ease-in-out text-sm text-black"> {userData.username} </p>
+            <p className="transition-all duration-300 ease-in-out text-sm text-black"> {userData && userData.username} </p>
           </div>
             <div className='lg:w-full font-semibold text-xl flex items-center text-gray-800 mt-10'> 
                 <div className='md:h-10 h-8 w-1 bg-red-500 mr-5'></div>
@@ -362,7 +377,7 @@ const AdminUser = ({userData, api}) => {
                   </div>
                   :
                   <button className=' bg-sky-500 h-10 rounded-md my-5 text-white transition-all duration-300 ease-in-out hover:opacity-80'
-                   onClick={()=>UpdateUser(userData._id)} type="button">
+                   onClick={()=>updateUser(userData._id)} type="button">
                       Хадгалах
                   </button>
                 }

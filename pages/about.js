@@ -6,35 +6,46 @@ import certificate from "../Assets/certificate.jpg"
 
 import { NavbarLocale } from '../locales/Navbar';
 import { AboutLocale } from "../locales/About";
-import { Teacherslocale } from '../locales/Teachers';
+import { EmployeesLocale } from '../locales/Employees';
 
 import TimeLine from "../components/About/TimeLine";
 import Partners from "../components/Partners"
 import Contact from "../components/Contact"
-import {getTeachers} from "../Datas/Users";
+import {getTeachers, getDirectors, getCrew} from "../Datas/Users";
 
 import signature from "../Assets/signature.png"
 import { useState , useEffect} from "react";
 import ShowTeacher from "../components/About/ShowTeacher";
 
 export async function getServerSideProps() {
-  const UserData = await getTeachers();
+  const TeachersData = await getTeachers();
+  const DirectorsData = await getDirectors()
+  const CrewData = await getCrew()
   const base = process.env.BASE_URL
   return {
-    props: {UserData, base},
+    props: {DirectorsData ,TeachersData, CrewData, base},
   }
 }
 
-const About = ({ UserData, base}) => {
+const About = ({ DirectorsData, TeachersData, CrewData, base}) => {
   const router = useRouter();
+  const paramuser = router.query.user && router.query.user.toLocaleLowerCase() 
+  const user = (DirectorsData.find(e => e.username.toLowerCase() == paramuser) || DirectorsData.find(e => e.username.toLowerCase() == paramuser) ) 
+              || (TeachersData.find(e => e.username.toLowerCase() == paramuser) || TeachersData.find(e => e.username.toLowerCase() == paramuser) ) || (CrewData.find(e => e.username.toLowerCase() == paramuser) || CrewData.find(e => e.username.toLowerCase() == paramuser) )
   const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
   const t = NavbarLocale[l]
   const about = AboutLocale[l]
-  const teachers  = Teacherslocale[l]
+  const employees  = EmployeesLocale[l]
   const [showTeacher, setShowTeacher] = useState(false)
   const [currentTeacher, setCurrentTeacher] = useState({})
   const [scrollStop, setScrollStop] = useState(false)
-
+  useEffect(()=> {
+    if(user) {
+      setCurrentTeacher(user)
+      setShowTeacher(true)
+      setScrollStop(true)
+    }
+  }, [])
   useEffect(() => {
     if (scrollStop) {
       document.body.style.overflow = "hidden";
@@ -117,16 +128,16 @@ const About = ({ UserData, base}) => {
         </div>
       </div>
       <div className="w-full flex flex-col pt-20 text-gray-200">
-        <div className='lg:w-full font-semibold  flex items-center text-gray-800 mb-10'> 
+      <div className='lg:w-full font-semibold  flex items-center text-gray-800 mb-10'> 
           <div className='md:h-10 h-8 w-1 bg-teal-500 mr-5'></div>
-          <p className='mr-5 uppercase lg:text-2xl text-base'>{teachers.title}</p>
+          <p className='mr-5 uppercase lg:text-2xl text-base'>{employees.directorTitle}</p>
         </div>
-        <p className="text-gray-800 mb-10 text-justify">{teachers.text}</p>
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5 ">
-              {UserData.map((user, index) => (
+        {employees.directorText && <p className="text-gray-800 mb-10 text-justify">{employees.directorText}</p>}
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5 mb-10 ">
+              {DirectorsData.map((user, index) => (
                 <div key={index} onClick={() => {setShowTeacher(true); setCurrentTeacher(user); setScrollStop(true)}}>
                   {user.profilephoto ? 
-                  <div className="transition-all duration-500 ease-in-out rounded-lg hover:-translate-y-2 w-full aspect-1 bg-cover bg-neutral-200 bg-center"
+                  <div className="transition-all duration-500 ease-in-out rounded-lg hover:-translate-y-2 scale-[90%] w-full aspect-1 bg-cover bg-neutral-200 bg-center"
                   style={{'backgroundImage': `url(${user.profilephoto}`}}>
                   </div>
                   :
@@ -137,12 +148,82 @@ const About = ({ UserData, base}) => {
                     </div>
                   }
                   <div className="w-full flex flex-col items-center p-5 text-gray-600">
-                    <div className="flex font-bold text-center">
+                    <div className="flex font-bold text-center text-sm">
                       <p className="">{user.informations[l].firstname} {user.informations[l].lastname}</p>
                     </div>
                     <div className="px-3 flex justify-center flex-col items-center text-gray-500 font-thin text-xs rounded-lg text-center">
                       <p className="py-1">{user.informations[l].title}</p>
-                      <p className="transition-all duration-300 ease-in-out font-bold text-gray-500 hover:text-gray-400"  
+                      <p className="transition-all duration-300 ease-in-out text-xs font-bold text-gray-500 hover:text-gray-400"  
+                        onClick={() => {setShowTeacher(true); setCurrentTeacher(user); setScrollStop(true);}}>
+                        {about.readmore}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+        </div>
+
+        <div className='lg:w-full font-semibold  flex items-center text-gray-800 my-10'> 
+          <div className='md:h-10 h-8 w-1 bg-sky-500 mr-5'></div>
+          <p className='mr-5 uppercase lg:text-2xl text-base'>{employees.teacherTitle}</p>
+        </div>
+        {employees.teacherText && <p className="text-gray-800 mb-10 text-justify">{employees.teacherText}</p>}
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5 mb-10">
+              {TeachersData.map((user, index) => (
+                <div key={index} onClick={() => {setShowTeacher(true); setCurrentTeacher(user); setScrollStop(true)}}>
+                  {user.profilephoto ? 
+                  <div className="transition-all duration-500 ease-in-out rounded-lg hover:-translate-y-2 scale-[90%] w-full aspect-1 bg-cover bg-neutral-200 bg-center"
+                  style={{'backgroundImage': `url(${user.profilephoto}`}}>
+                  </div>
+                  :
+                   <div className='transition-all duration-500 ease-in-out rounded-md hover:-translate-y-2 w-full aspect-1 bg-cover bg-neutral-200 bg-center flex items-center justify-center'>
+                      <svg className="h-40 w-40 text-white" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  }
+                  <div className="w-full flex flex-col items-center p-5 text-gray-600">
+                    <div className="flex font-bold text-center text-sm">
+                      <p className="">{user.informations[l].firstname} {user.informations[l].lastname}</p>
+                    </div>
+                    <div className="px-3 flex justify-center flex-col items-center text-gray-500 font-thin text-xs rounded-lg text-center">
+                      <p className="py-1">{user.informations[l].title}</p>
+                      <p className="transition-all duration-300 ease-in-out text-xs font-bold text-gray-500 hover:text-gray-400"  
+                        onClick={() => {setShowTeacher(true); setCurrentTeacher(user); setScrollStop(true);}}>
+                        {about.readmore}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+        </div>
+
+        <div className='lg:w-full font-semibold  flex items-center text-gray-800 my-10'> 
+          <div className='md:h-10 h-8 w-1 bg-indigo-400 mr-5'></div>
+          <p className='mr-5 uppercase lg:text-2xl text-base'>{employees.crewTitle}</p>
+        </div>
+        {employees.crewText && <p className="text-gray-800 mb-10 text-justify">{employees.crewText}</p>}
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5 mb-10">
+              {CrewData.map((user, index) => (
+                <div key={index} onClick={() => {setShowTeacher(true); setCurrentTeacher(user); setScrollStop(true)}}>
+                  {user.profilephoto ? 
+                  <div className="transition-all duration-500 ease-in-out rounded-lg hover:-translate-y-2 scale-[90%] w-full aspect-1 bg-cover bg-neutral-200 bg-center"
+                  style={{'backgroundImage': `url(${user.profilephoto}`}}>
+                  </div>
+                  :
+                   <div className='transition-all scale-[90%] duration-500 ease-in-out rounded-md hover:-translate-y-2 w-full aspect-1 bg-cover bg-neutral-200 bg-center flex items-center justify-center'>
+                      <svg className="h-40 w-40 text-white" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  }
+                  <div className="w-full flex flex-col items-center p-5 text-gray-600">
+                    <div className="flex font-bold text-center text-sm">
+                      <p className="">{user.informations[l].firstname} {user.informations[l].lastname}</p>
+                    </div>
+                    <div className="px-3 flex justify-center flex-col items-center text-gray-500 font-thin text-xs rounded-lg text-center">
+                      <p className="py-1">{user.informations[l].title}</p>
+                      <p className="transition-all duration-300 ease-in-out text-xs font-bold text-gray-500 hover:text-gray-400"  
                         onClick={() => {setShowTeacher(true); setCurrentTeacher(user); setScrollStop(true);}}>
                         {about.readmore}
                       </p>

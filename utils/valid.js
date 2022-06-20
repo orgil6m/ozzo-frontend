@@ -1,3 +1,5 @@
+import { useRouter } from "next/router";
+
 export const validMessageFields = (username, email, message) => {
     if(!username || !email || !message)
     return "Та талбаруудыг бүрэн бөглөнө үү!";

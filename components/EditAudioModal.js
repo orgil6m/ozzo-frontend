@@ -4,11 +4,15 @@ import { useRouter } from 'next/router';
 import { motion } from "framer-motion";
 import { useState, useRef, useEffect, useContext } from 'react';
 import {DataContext} from "../store/GlobalState"
+import { Messages } from '../locales/DispatchMessages';
 
 const EditAudioModal = ({currentAudio,  setEditAudioModal, setScrollStop , api})=>{
+    
     const {state, dispatch} = useContext(DataContext)
     const {auth} = state
-    const router = useRouter();
+    const router = useRouter()
+    const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
+    const message = Messages[l]
     const fileRef = useRef()
     const [coverUploaded, setCoverUploaded] = useState()
     const [audios, setAudios] = useState()
@@ -73,7 +77,7 @@ const EditAudioModal = ({currentAudio,  setEditAudioModal, setScrollStop , api})
                     ...auth,
                     user: resJson.user,
                 }})
-                dispatch({type:'NOTIFY',payload:{success: "Амжилттай засагдлаа"}})
+                dispatch({type:'NOTIFY',payload:{success: message.edited_successfully}})
                 window.localStorage.setItem("user", JSON.stringify(resJson.user));
                 setScrollStop(false)
                 setEditAudioModal(false)

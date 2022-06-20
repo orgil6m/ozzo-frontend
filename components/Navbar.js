@@ -11,6 +11,7 @@ import { useState, useContext, useEffect } from 'react'
 import { DataContext } from "../store/GlobalState";
 import {NavbarLocale } from '../locales/Navbar';
 import { Buttons } from "../locales/Profile"
+import { Messages } from "../locales/DispatchMessages";
 
 const Navbar = () => {
   const {state, dispatch} = useContext(DataContext)
@@ -21,12 +22,14 @@ const Navbar = () => {
   const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
   const t = NavbarLocale[l]
   const Button = Buttons[l]
+  const message = Messages[l]
+
   const logout = () => {
     console.log("Logget Out!!!!!!!");
     window.localStorage.removeItem("token");
     window.localStorage.removeItem("tokenExpTime");
     window.localStorage.removeItem("user");
-    dispatch({type:'NOTIFY',payload:{success: "Амжилттай гарлаа!"}})
+    dispatch({type:'NOTIFY',payload:{success: message.logout_successfully}})
     dispatch({type:'AUTH', payload:{}})
     router.push('/')
   }
@@ -41,7 +44,7 @@ const Navbar = () => {
           </Link>
           :
         <></>}
-        {auth.user.artist === true || auth.user.admin === true  ?
+        {auth.user.artist === true ?
           <Link href='/artist'>
             <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/artist" ? "border-red-500  text-black " : "border-transparent"}`}>
                {Button.artist}
@@ -49,7 +52,7 @@ const Navbar = () => {
           </Link>
         :
         <></>}
-      {auth.user.teacher === true  || auth.user.admin === true   ?
+      {auth.user.teacher === true   ?
         <Link href='/teacher'>
           <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/teacher" ? "border-red-500  text-black " : "border-transparent"}`}>
               {Button.teacher}
@@ -58,7 +61,7 @@ const Navbar = () => {
         :
         <></>}
 
-        {auth.user.service === true  || auth.user.admin === true  ?
+        {auth.user.service === true ?
         <Link href='/service'>
           <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/service" ? "border-red-500  text-black " : "border-transparent"}`}>
               {Button.service}

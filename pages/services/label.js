@@ -14,13 +14,12 @@ import MusicPlayer from '../../components/MusicPlayer';
 
 export async function getServerSideProps() {               
   const ArtistData = await getArtists();
-  const base = process.env.BASE_URL
   return {
-    props: {ArtistData, base},
+    props: {ArtistData},
   }
 }
 
-function Label({ArtistData, base}) {
+function Label({ArtistData}) {
   const router = useRouter();
   const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
   const t = NavbarLocale[l]

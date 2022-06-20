@@ -1,8 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from 'next/router'
 import React, {useContext, useEffect, useState, useRef} from 'react'
-import moment from 'moment';
-import { motion } from 'framer-motion';
 import Head from 'next/head';
 import { NavbarLocale } from '../locales/Navbar';
 import {DataContext} from "../store/GlobalState"
@@ -10,6 +8,7 @@ import EditAudioModal from "../components/EditAudioModal"
 import AddAudioModal from "../components/AddAudioModal"
 import PasswordVerify from '../components/PasswordVerify';
 import Loading from '../components/Loading';
+import { Messages } from '../locales/DispatchMessages';
 
 export async function getServerSideProps() {
   const api = process.env.API_URL
@@ -25,6 +24,7 @@ const Admin = ({ api }) => {
   const router = useRouter()
   const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
   const t = NavbarLocale[l]
+  const message = Messages[l]
   const [coverUploaded, setCoverUploaded ] = useState(false)
   const [artistPhoto, setArtistPhoto] = useState()
   const [artistName, setArtistName] = useState()
@@ -80,11 +80,11 @@ const Admin = ({ api }) => {
     }
     const uploadArtistPhoto = (photo) => {
         if (photo && photo.size >= 2097152  ){
-            dispatch({type:'NOTIFY',payload:{error: "Файлын хэмжээ хэтэрсэн!"}})
+            dispatch({type:'NOTIFY',payload:{error: message.fileSize_error}})
             return
         }
         if(!photo || photo=== undefined) {
-            dispatch({type:'NOTIFY',payload:{error: "Ковер оруулна уу!"}})
+            dispatch({type:'NOTIFY',payload:{error: message.coverPhoto_error}})
             return
         }
         dispatch({type:'NOTIFY',payload:{loading: true}})
@@ -99,7 +99,7 @@ const Admin = ({ api }) => {
         .then(resp => resp.json())
         .then(data => {
             setCoverUploaded(true)
-            dispatch({type:'NOTIFY',payload:{success: "Амжилттай!"}})
+            dispatch({type:'NOTIFY',payload:{success: message.success}})
             setArtistPhoto(data.secure_url)
         })
         .catch(err => console.log(err))

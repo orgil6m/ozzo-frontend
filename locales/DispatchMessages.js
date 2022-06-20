@@ -1,0 +1,48 @@
+const Messages =[
+    {
+       success : "Амжилттай",
+       error : "Алдаа гарлаа",
+       inserted_successfully : "Амжилттай нэмэгдлээ",
+       edited_successfully : "Амжилттай засагдлаа",
+       logout_successfully :  "Амжилттай гарлаа",
+       fileSize_error : "Файлын хэмжээ хэтэрсэн",
+       coverPhoto_error : "Ковер оруулна уу",
+       photoChange_error : "Зураг солих боломжгүй",
+       usernameRequired_error : "Hэвтрэх нэр шаардлагатай!",
+       passwordRequired_error : "Нууц үг шаардлагатай!",
+       priorityRequired_error  : "Эрэмбэ шаардлагатай!",
+       priority_error  : "Эрэмбэ буруу",
+    },
+    {
+        success : "Success",
+        error : "Error",
+        inserted_successfully : "Inserted successfully",
+        edited_successfully : "Changed successfully",
+        logout_successfully :  "Signed Out successfully",
+        fileSize_error : "File size limit exceeded",
+        coverPhoto_error : "Please upload a cover",
+        photoChange_error : "Error",
+        usernameRequired_error : "Username required!",
+        passwordRequired_error : "Password required!",
+        priorityRequired_error  : "Priority required!",
+        priority_error  : "Priority must have between 0-9",
+    },
+    {
+        success : "成功",
+        error : "错误",
+        inserted_successfully : "插入成功",
+        edited_successfully : "修改成功",
+        logout_successfully :  "注销成功",
+        fileSize_error : "超出文件大小限制",
+        coverPhoto_error : "请上传封面",
+        photoChange_error : "错误",
+        usernameRequired_error : "需要用户名",
+        passwordRequired_error : "需要密码!",
+        priorityRequired_error  : "需要优先级!",
+        priority_error  : "优先级必须在 0-9 之间",
+    },
+]
+
+module.exports = {
+    Messages,
+}

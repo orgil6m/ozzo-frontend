@@ -5,11 +5,14 @@ import { motion } from "framer-motion";
 import { useState, useRef, useEffect, useContext } from 'react';
 import {DataContext} from "../store/GlobalState"
 import {secondFormat} from "../utils/format" 
+import { Messages } from '../locales/DispatchMessages';
 
 const AddAudioModal = ({setAddAudioModal, setScrollStop , api})=>{
     const {state, dispatch} = useContext(DataContext)
     const {auth} = state
-    const router = useRouter();
+    const router = useRouter()
+    const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
+    const message =Messages[l]
     const fileRef = useRef()
     const [coverUploaded, setCoverUploaded] = useState()
     
@@ -83,7 +86,7 @@ const AddAudioModal = ({setAddAudioModal, setScrollStop , api})=>{
                     user: resJson.user,
                 }})
                 window.localStorage.setItem("user", JSON.stringify(resJson.user));
-                dispatch({type:'NOTIFY',payload:{success: "Амжилттай нэмэгдлээ"}})
+                dispatch({type:'NOTIFY',payload:{success: message.inserted_successfully}})
                 setScrollStop(false)
                 setAddAudioModal(false)
             } else{

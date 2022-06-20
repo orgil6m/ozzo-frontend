@@ -1,22 +1,20 @@
 import React from 'react'
 import { useRouter } from 'next/router';
 import store_cover from "../../Assets/STORE/store_cover.jpg"
-import { getGuitars, getUkuleles} from '../../Datas/Products';
+import { getProducts} from '../../Datas/Products';
 
 import { NavbarLocale } from '../../locales/Navbar';
 import { StoreLocale } from '../../locales/Store';
 
-import enya from "../../Assets/logo_enya.png"
 import cover2 from "../../Assets/STORE/nexg3.png" 
-import cover3 from "../../Assets/STORE/fenge.jpeg" 
 import cover4 from "../../Assets/STORE/cover4.jpeg" 
 import Head from "next/head";
 
 
 export async function getServerSideProps() {
-  const GuitarsData = await getGuitars();
-  const UkulelesData = await getUkuleles();
-  const base = process.env.BASE_URL
+  const Products = await getProducts();
+  const GuitarsData = Products.filter((e) => e.type.includes("guitar"))
+  const UkulelesData = Products.filter((e) => e.type.includes("ukulele"))
   return {
     props: {GuitarsData, UkulelesData},
   }

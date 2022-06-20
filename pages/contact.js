@@ -9,22 +9,17 @@ import { validMessageFields } from "../utils/valid";
 import {DataContext} from "../store/GlobalState"
 import moment from "moment";
 import { getRandomColor } from "../utils/format";
+import {postMessage} from "../Datas/Messages"
+import { Messages } from "../locales/DispatchMessages";
 
-export async function getServerSideProps() {
-  const base = process.env.BASE_URL
-  const api = process.env.API_URL
-  return {
-    props: {base, api},
-  }
-}
-
-const Contact = ({api}) => {
+const Contact = () => {
 
   const {state, dispatch} = useContext(DataContext)
   const {auth} = state
   const router = useRouter();
   const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
   const t = NavbarLocale[l]
+  const m = Messages[l]
   const contact = ContactLocale[l]
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
@@ -32,7 +27,7 @@ const Contact = ({api}) => {
   const [loading, setLoading] = useState("")
   const [body, setBody] = useState({username : "", email : "" ,message : ""})
 
-  const postMessage = async () => {
+  const postNewMessage = async () => {
     setLoading(true)
     const errorMessage = validMessageFields(username, email, message)
     if (errorMessage) {
@@ -44,17 +39,11 @@ const Contact = ({api}) => {
     const avatarColor = getRandomColor()
     const body = {username, email, message, createdTime, avatarColor, unread : true}
     try {
-      const response = await fetch(`${api}/api/ozzo/message`, {
-          method: "POST",
-          headers: {
-          "Content-Type": "application/json",
-          },
-          body: JSON.stringify(body)
-      });
+      const response = await postMessage(JSON.stringify(body))
       const resJson = await response.json();
       if(response.status == 200){
           setLoading(false)
-          dispatch({type:'NOTIFY', payload:{success: resJson.message}})
+          dispatch({type:'NOTIFY', payload:{success: m.success}})
           setUsername("")
           setEmail("")
           setMessage("")
@@ -66,7 +55,7 @@ const Contact = ({api}) => {
           window.localStorage.setItem("user", JSON.stringify(resJson.user));
         }
       } else{
-        dispatch({type:'NOTIFY',payload:{error: "Алдаа гарлаа"}})
+        dispatch({type:'NOTIFY',payload:{error: m.error}})
         setLoading(false)
       }
     }
@@ -79,7 +68,7 @@ const Contact = ({api}) => {
       <Head>
         <title>{t.contact}  | {t.ozzo}</title>
       </Head>
-      <MapGoogle />
+      {/* <MapGoogle /> */}
       <div className='lg:px-32 md:px-20 lg:mt-10 p-5' >
         <div className="lg:mb-10 mb-5 flex cursor-default">
           <p className="transition-all duration-300 ease-in-out text-sm text-black/50 pr-2 hover:text-black" onClick={() => router.push("/")}> {t.home} </p>
@@ -196,7 +185,7 @@ const Contact = ({api}) => {
             </div>
             <div className="lg:mb-0 mb-20">
               <textarea className="transition-all duration-300 ease-in-out resize-none h-40 mr-5 appearance-none block w-full text-gray-700 border focus:border-indigo-400 rounded-md py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder={placeholder[l].message} value={message} onChange={(e)=> setMessage(e.target.value)}  />
-              <button className="transition-all duration-300 ease-in-out rounded-md bg-indigo-400 text-white w-40 px-4 py-2 font-semibold hover:bg-indigo-500 active:scale-95" onClick={()=> postMessage()}> {loading ? 
+              <button className="transition-all duration-300 ease-in-out rounded-md bg-indigo-400 text-white w-40 px-4 py-2 font-semibold hover:bg-indigo-500 active:scale-95" onClick={()=> postNewMessage()}> {loading ? 
                 <div className=" h-6 rounded-md  transition-all duration-300 ease-in-out  flex justify-center items-center">
             <div className="w-5 h-5 border-2 rounded-full animate-spin" role="status" 
             style={{"borderColor": 'white transparent white transparent'}}>
@@ -213,10 +202,6 @@ const Contact = ({api}) => {
     </div>)
 }
 
-const LocationModal = ({open, info}) => {
-  return <div hidden={!open}>
-    {info}
-  </div>
-}
+
 
 export default Contact;

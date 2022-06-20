@@ -7,6 +7,7 @@ import { ProfileLocale, Buttons } from '../locales/Profile';
 import {DataContext} from "../store/GlobalState"
 import PasswordVerify from '../components/PasswordVerify';
 import Loading from '../components/Loading';
+import { Messages } from '../locales/DispatchMessages';
 
 export async function getServerSideProps() {
   const api = process.env.API_URL
@@ -21,6 +22,7 @@ const Profile = ({api}) => {
     const router = useRouter()
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
     const t = NavbarLocale[l]
+    const message  = Messages[l]
     const Profile = Buttons[l]
     const [tabIndex, setTabIndex] = useState(0)
     const [skills, setSkills] = useState([])
@@ -46,6 +48,10 @@ const Profile = ({api}) => {
     const [body, setBody] = useState()
     const [passwordShow, setPasswordShow] = useState(false)
     useEffect(() => {
+        getData()
+    }, [router.locale])
+
+    const getData = () =>{
         const user = JSON.parse(window.localStorage.getItem("user"))
         if(!user || user === undefined ){
             return router.push('/login')
@@ -68,7 +74,7 @@ const Profile = ({api}) => {
             setEmail(user && user.email)
             setWeb(user.web !== undefined ? user.web : "www.ozzo.mn")
         }
-    }, [])
+    }
 
     useEffect(() => {
     if (scrollStop) {
@@ -159,7 +165,6 @@ const Profile = ({api}) => {
             title: Profile.exp,
         }
     ]
-
     const setProfileInfos = (field, action) =>{
         if(action === "username") setUsername(field)
         else if(action === "firstname") setFirstname(field)
@@ -247,11 +252,11 @@ const Profile = ({api}) => {
 
     const uploadProfilePhoto = (photo) => {
       if (photo && photo.size >= 2097152  ){
-          dispatch({type:'NOTIFY',payload:{error: "Файлын хэмжээ хэтэрсэн!"}})
+          dispatch({type:'NOTIFY',payload:{error: message.fileSize_error}})
           return
       }
       if(!photo || photo=== undefined) {
-          dispatch({type:'NOTIFY',payload:{error: "Ковер оруулна уу!"}})
+          dispatch({type:'NOTIFY',payload:{error: message.coverPhoto_error}})
           return
       }
       dispatch({type:'NOTIFY',payload:{loading: true}})
@@ -265,7 +270,7 @@ const Profile = ({api}) => {
       })
       .then(resp => resp.json())
       .then(data => {
-          dispatch({type:'NOTIFY',payload:{success: "Амжилттай!"}})
+          dispatch({type:'NOTIFY',payload:{success: message.success}})
           setProfilePhoto(data.secure_url)
       })
       .catch(err => console.log(err))
@@ -315,7 +320,7 @@ const Profile = ({api}) => {
                     <div className='transition-all duration-300 ease-in-out aspect-1 overflow-hidden w-full bg-cover bg-center rounded-lg mb-10 mt-5  '>
                         <div className='relative w-full h-full bg-cover bg-center rounded-lg' style={{'backgroundImage': `url(${profilephoto}`}}>
                             <div className='transition-all duration-300 ease-in-out absolute top-5 right-5 rounded-full bg-white/20 text-white hover:bg-white/50' 
-                            onClick={()=>   dispatch({type:'NOTIFY',payload:{error: "Зураг солих боломжгүй !"}}) }>
+                            onClick={()=>   dispatch({type:'NOTIFY',payload:{error: message.photoChange_error}}) }>
                             <svg className="h-4 w-4 m-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                             </svg>
