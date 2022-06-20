@@ -68,7 +68,7 @@ const Contact = () => {
       <Head>
         <title>{t.contact}  | {t.ozzo}</title>
       </Head>
-      {/* <MapGoogle /> */}
+      <MapGoogle />
       <div className='lg:px-32 md:px-20 lg:mt-10 p-5' >
         <div className="lg:mb-10 mb-5 flex cursor-default">
           <p className="transition-all duration-300 ease-in-out text-sm text-black/50 pr-2 hover:text-black" onClick={() => router.push("/")}> {t.home} </p>
