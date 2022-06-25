@@ -131,7 +131,7 @@ const Admin = ({ api }) => {
     return(
     <div className='pt-20 cursor-default w '>
       <Head>
-        <title> {t.ozzo}</title>
+        <title> Артист | {t.ozzo}</title>
       </Head>
       <div className='w-full lg:px-32 md:px-20 p-5 font-semibold '>
         <div className='lg:w-full font-semibold text-xl flex items-center text-gray-800 mt-10'> 

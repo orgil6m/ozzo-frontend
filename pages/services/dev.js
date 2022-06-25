@@ -23,8 +23,9 @@ function Dev() {
       <Head>
         <title>{t.service[5].title}</title>
       </Head>
-       <div className='w-full md:bg-fixed bg-top bg-cover lg:h-[30rem] h-[15rem]' style={{'backgroundImage': `url(${dev_cover.src}`}}>
-          
+      <div className='w-full md:bg-fixed bg-center bg-cover' style={{'backgroundImage': `url(${dev_cover.src}`}}>
+          <div className='p-32 w-full h-[30rem] flex justify-center items-center'>
+          </div>
         </div>
       <div className='lg:px-32 md:px-20 lg:mt-10 p-5' >
         {/* PATH ROUTER */}

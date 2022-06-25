@@ -9,6 +9,7 @@ import {getNews} from "../../Datas/news"
 import {getProducts} from "../../Datas/Products"
 import {PartnersLocale} from "../../locales/Partners"
 import { getMessages } from '../../Datas/Messages'
+import { getCourses } from '../../Datas/Courses'
 import CountUp from 'react-countup';
 import { NavbarLocale } from '../../locales/Navbar'
 import { getRandomColor } from '../../utils/format'
@@ -24,6 +25,7 @@ const Index = () => {
     const [artistsData, setArtistsData] = useState()
     const [messagesData, setMessagesData] = useState()
     const [productsData, setProducstData] = useState()
+    const [coursesData, setCourseData] = useState()
 
     const router = useRouter()
     const l = router.locale === 'en' ? '1' : router.locale === 'cn' ?  '2'  : '0'
@@ -47,6 +49,9 @@ const Index = () => {
         })
         getMessages().then(response => {
             setMessagesData(response)
+        })
+        getCourses().then(response => {
+            setCourseData(response)
         })
     }, [])
     useEffect(() => {
@@ -74,13 +79,20 @@ const Index = () => {
         )
     }
 
-    const adminPanels = [
+    const adminPanel = [
         {
             title : "Хэрэглэгч",
             icon : UsersIcon(),
             color : "bg-sky-100 text-sky-500",
             quantity : usersData && usersData.length,
             path : "/admin/users"
+        },
+        {
+            title: "Хөтөлбөр",
+            icon : bookIcon(),
+            color : "bg-emerald-100 text-emerald-500",
+            quantity : coursesData && coursesData.length,
+            path : "/admin/courses"
         },
         {
             title : "Мэдээ",
@@ -102,6 +114,7 @@ const Index = () => {
             color : "bg-red-100 text-red-500",
             quantity : partners.partners.length,
         },
+        
     ]
     
     return (
@@ -121,7 +134,7 @@ const Index = () => {
                 </div>
                 <div className='grid md:grid-cols-2 gap-5'>
                     <div className='grid grid-cols-2 gap-5 w-full text-black '>
-                        {adminPanels.map((row, index) => (
+                        {adminPanel.map((row, index) => (
                             <div key={index} className="transition-all duration-300 ease-in-out  flex flex-col px-5 rounded-md bg-white hover:shadow-md hover:shadow-gray-200 " onClick={()=> row.path && router.push(row.path)}>
                                <div className='flex md:flex-row flex-col items-center my-5 py-2'>
                                     <div className={`rounded-lg ${row.color}`}>
@@ -225,9 +238,9 @@ export default Index
 
 const UsersIcon = () => {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" className="m-4 h-6 w-6 " viewBox="0 0 20 20" fill="currentColor">
-            <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 m-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
        
     )
 }
@@ -258,6 +271,13 @@ const inboxIcon = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 m-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+        </svg>
+    )
+}
+const bookIcon = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 m-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
         </svg>
     )
 }

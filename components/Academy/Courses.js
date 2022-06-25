@@ -4,6 +4,7 @@ import {CoursesLocale} from "../../locales/Courses"
 import { useEffect, useState } from "react";
 import ShowCourse from "./ShowCourse"
 import { NavbarLocale } from '../../locales/Navbar';
+import { getCoursesPublic } from "../../Datas/Courses";
 
 const Courses = () => {
     const router = useRouter()
@@ -12,15 +13,19 @@ const Courses = () => {
     const [showCourses, setShowCourses] = useState(false);
     const [currentCourse, setCurrentCourse] = useState({})
     const [scrollStop, setScrollStop] = useState(false)
-  const t = NavbarLocale[l]
-  useEffect(() => {
-    if (scrollStop) {
-      document.body.style.overflow = "hidden";
-    } else{
-    document.body.style.overflow = 'unset';
-    }
-  });
-  
+    const [coursesData, setCoursesData] = useState()
+    const t = NavbarLocale[l]
+    useEffect(() => {
+      if (scrollStop) {
+        document.body.style.overflow = "hidden";
+      } else{
+      document.body.style.overflow = 'unset';
+      }
+    });
+
+    useEffect(()=> {
+      getCoursesPublic().then(response => setCoursesData(response))
+    },[])
     return (
      <div className='py-5 cursor-default mt-10 '>
     <div className=' lg:w-full font-semibold md:text-xl text-lg flex items-center text-gray-800 '> 
@@ -28,16 +33,15 @@ const Courses = () => {
         <p className='w-full uppercase'>{courses.title}</p>
       </div>
     <div className="w-full flex overflow-x-scroll overflow-y-block pt-5">
-      {courses.courses.map((course, index) => (
+      {coursesData && coursesData.map((course, index) => (
         <div key={index} className="relative transition-all duration-300 ease-in-out px-10 py-5 rounded-md border border-gray-100 m-1 mt-5 flex flex-col items-center justify-center hover:border-gray-200 hover:-translate-y-1" onClick={()=> {setShowCourses(true); setCurrentCourse(course); setScrollStop(true)}}>
-
           <svg className="h-8 w-8 absolute right-2 -top-1 drop-shadow-lg hover:shadow-lg text-red-500" viewBox="0 0 20 20" fill="currentColor">
             <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
           </svg>
           
             <div className="h-12 flex items-center">
               <p className="uppercase font-semibold text-center text-lg text-gray-600">
-                {course.title}
+                {course.course[l].title}
               </p>
             </div>
             <div className="w-56"> 

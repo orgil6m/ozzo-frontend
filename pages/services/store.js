@@ -81,7 +81,7 @@ const Store = ({GuitarsData, UkulelesData}) => {
       <Head>
         <title>{t.service[1].title}</title>
       </Head>
-      <div className='w-full bg-fixed bg-bottom bg-cover' style={{'backgroundImage': `url(${store_cover.src}`}}>
+      <div className='w-full md:bg-fixed bg-bottom bg-cover' style={{'backgroundImage': `url(${store_cover.src}`}}>
           <div className='p-32 w-full h-[30rem]'>
           </div>
       </div>
@@ -135,7 +135,7 @@ const Store = ({GuitarsData, UkulelesData}) => {
         </div>
      
       </div>
-         <div className='w-full bg-fixed bg-bottom bg-cover' style={{'backgroundImage': `url(${cover2.src}`}}>
+         <div className='w-full md:bg-fixed bg-bottom bg-cover' style={{'backgroundImage': `url(${cover2.src}`}}>
           <div className='p-32 w-full h-[30rem] flex justify-center items-center '>
           </div>
         </div>
@@ -189,7 +189,7 @@ const Store = ({GuitarsData, UkulelesData}) => {
            ))}
         </div>
       </div>
-      <div className='w-full bg-fixed bg-center bg-cover' style={{'backgroundImage': `url(${cover4.src}`}}>
+      <div className='w-full md:bg-fixed bg-center bg-cover' style={{'backgroundImage': `url(${cover4.src}`}}>
           <div className='p-32 w-full h-[30rem] flex justify-center items-center'>
           </div>
         </div>

@@ -9,7 +9,7 @@ export async function getServerSideProps({ params }) {
   const { path } = params;
   const news = await getNews();
   const current_news = news.find((p) => p && p._id === path)
-  const moreNewsData = news.filter((p) => p && p._id !== path )
+  const moreNewsData = news.filter((p) => p && p._id !== path)
   moreNewsData.reverse();
   const moreNews = moreNewsData.slice(0, 2)
   return {

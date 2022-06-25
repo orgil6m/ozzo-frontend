@@ -44,9 +44,8 @@ const PasswordVerifyModal = ({body, setPasswordVerifyModal, setScrollStop, api, 
                   user: resJson.user,
               }})
               window.localStorage.setItem("user", JSON.stringify(resJson.user));
-              
             }
-            }
+          }
         }
         catch (err) {}
       } else{

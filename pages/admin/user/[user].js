@@ -41,6 +41,7 @@ const AdminUser = ({userID, api}) => {
   const [priority, setPriority] = useState(0)
   const [body, setBody] = useState()
   const [userData, setUserData] = useState()
+  const [isActive, setIsActive] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
   const [isTeacher, setIsTeacher] = useState(false)
   const [isService, setIsService] = useState(false)
@@ -83,6 +84,11 @@ const AdminUser = ({userID, api}) => {
       },
   ]
   const roles = [
+    {
+      title : "Идэвхитэй эсэх",
+      initialState : isActive,
+      setInitialState : setIsActive,
+    },
     {
       title : "Захирлын эрх",
       initialState : isDirector,
@@ -136,6 +142,7 @@ const AdminUser = ({userID, api}) => {
         setNumber(userData &&  userData.number)
         setPassword(userData &&  userData.password)
         setPriority(userData &&  userData.priority && userData.priority)
+        setIsActive(userData && userData.active)
         setIsAdmin(userData &&  userData.admin)
         setIsArtist(userData &&  userData.artist)
         setIsTeacher(userData &&  userData.teacher)
@@ -193,6 +200,7 @@ const AdminUser = ({userID, api}) => {
           password,
           priority,
           informations,
+          active:isActive,
           teacher:isTeacher,
           admin:isAdmin,
           director :isDirector,
@@ -286,7 +294,7 @@ const AdminUser = ({userID, api}) => {
                 </div>
                 {roles.map((row, index) => (
                   <div className='flex items-center my-1 ml-5' key={index}>
-                    <p className='w-32 truncate text-sm font-medium'>
+                    <p className={`w-32 truncate text-sm font-medium `}>
                       {row.title}
                     </p>
                     <Switch
