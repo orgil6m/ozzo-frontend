@@ -88,11 +88,6 @@ const TeacherCourse = ({courseID, api}) => {
         updatedField[l].beginner = beginner
         updatedField[l].intermediate = intermediate
         updatedField[l].advanced = advanced
-        if(updatedBy.includes(auth.user.username)) {
-            setUpdatedBy(...updatedBy) 
-        } else {
-            setUpdatedBy([...updatedBy, auth.user.username]) 
-        }
         const raw = { 
             _id : id,
             img : photo,
@@ -100,7 +95,7 @@ const TeacherCourse = ({courseID, api}) => {
             price,
             individual,
             group,
-            updatedBy,
+            updatedBy : auth.user.username,
             updatedDate : moment().format("HH:mm:ss MM-DD YYYY")
         };
         try{

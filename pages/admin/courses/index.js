@@ -86,7 +86,6 @@ const Courses = () => {
             }
         }
     }
-   
      
     
   return(
@@ -141,7 +140,7 @@ const Courses = () => {
                   </th>
                   <th scope="col" className="px-6 py-3">
                       <p className='truncate'>
-                        Огноо
+                        Сүүлд зассан
                       </p>
                   </th>
               </tr>
@@ -241,11 +240,7 @@ const Courses = () => {
                     }
                   </td>
                   <td scope="row" className="w-20  text-gray-700 px-6 py-3" >
-                      {row.updatedBy && row.updatedBy.map((r, i) => (
-                        <div key={i}>
-                          <p className='capitalize'> - {r}</p>
-                        </div>
-                      ))  }
+                     {row.updatedBy}
                   </td>
                   <td scope="row" className="w-20 text-gray-700 px-6 py-3" >
                       <p className='truncate'> {row.updatedDate && moment(row.updatedDate).calendar()}</p>

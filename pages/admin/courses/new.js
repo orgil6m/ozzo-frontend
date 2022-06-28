@@ -101,6 +101,7 @@ const AdminInsertCourse = () => {
             price,
             individual,
             group,
+            insertedBy : auth.user.username
         };
         try{
             const response = await insertCourse(JSON.stringify(raw))

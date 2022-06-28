@@ -9,6 +9,7 @@ import Loading from '../../../components/Loading';
 import { Messages } from '../../../locales/DispatchMessages';
 import { getCourses, updateCourse } from '../../../Datas/Courses';
 import { CoursesLocale } from "../../../locales/Courses"
+import moment from 'moment';
 
 export async function getServerSideProps({ params }) {
   const { id } = params;
@@ -39,7 +40,7 @@ const AdminCourse = ({courseID, api}) => {
     const [beginner, setBeginner] = useState()
     const [intermediate, setIntermediate] = useState()
     const [advanced, setAdvanced] = useState()
-    
+    const [updatedBy, setUpdatedBy] = useState([])
     useEffect(()  =>  {
         getCourses().then(response => response &&  response.find((e) => e._id === courseID)).then(data => setCourseData(data)) 
     }, [])
@@ -57,6 +58,7 @@ const AdminCourse = ({courseID, api}) => {
             courseData && setIntermediate(courseData.course[l].intermediate)
             courseData && setAdvanced(courseData.course[l].advanced)
             courseData && setPrice(courseData.price)
+            courseData && courseData.updatedBy && setUpdatedBy(courseData.updatedBy)
         }
     }, [courseData, router.locale])
 
@@ -111,6 +113,7 @@ const AdminCourse = ({courseID, api}) => {
         updatedField[l].beginner = beginner
         updatedField[l].intermediate = intermediate
         updatedField[l].advanced = advanced
+        const updatedDate = moment().format("HH:mm:ss MM/DD/YYYY")
         const raw = { 
             _id : id,
             img : photo,
@@ -118,6 +121,9 @@ const AdminCourse = ({courseID, api}) => {
             price,
             individual,
             group,
+            updatedDate,
+            updatedBy : auth.user.username,
+
         };
         try{
             const response = await updateCourse(JSON.stringify(raw))
@@ -398,7 +404,7 @@ const AdminCourse = ({courseID, api}) => {
                         </div>
                         :
                         <button className=' bg-emerald-500 h-10 rounded-md text-white transition-all duration-300 ease-in-out hover:opacity-80'
-                        onClick={()=>updateCourseData(courseID)} type="button">
+                        onClick={()=> updateCourseData(courseID)} type="button">
                             Хадгалах
                         </button>
                         }
