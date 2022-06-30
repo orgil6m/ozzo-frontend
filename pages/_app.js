@@ -4,10 +4,9 @@ import React, { useEffect } from "react";
 import Router from "next/router";
 import {DataProvider} from "../store/GlobalState"
 import { AnimatePresence, motion } from "framer-motion";
-import Loading from "../components/Loading"
 import Nprogress from "nprogress"
 import "nprogress/nprogress.css"
-import { ChakraProvider } from "@chakra-ui/react";
+
 
 Router.onRouteChangeStart = (url) => {
   Nprogress.start()

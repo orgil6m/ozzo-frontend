@@ -6,8 +6,29 @@ class MyDocument extends Document
         return (
             <Html lang="en">
                 <Head>
+
                     <meta name="OZZO LLC" content="ozzo" />
                     <link rel="shortcut icon" href="/ozzo.ico" />
+                    <meta name="description" content="OZZO LLC" />
+                    <meta name="keywords" content="Ozzo,ozzo music,daavkatunes, daavka, guitar, ukulele, piano" />
+                    <meta charSet="utf-8"/>
+                    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+
+                    <meta name="twitter:description" content="OZZO LLC Official Website" />
+                    <meta name="application-name" content="OZZO LLC"/>
+
+                    <meta name="twitter:card" content="OZZO LLC" />
+                    <meta name="twitter:url" content="https://ozzo.mn"/>
+                    <meta name="twitter:title" content="OZZO LLC" />
+                    <meta name="twitter:description" content="OZZO LLC Official Website" />
+                    <meta name="twitter:image" content="/Assets/preview.jpg" />
+
+                    <meta property="og:type" content="website" />
+                    <meta property="og:title" content="OZZO LLC" />
+                    <meta property="og:description" content="OZZO LLC Official Website" />
+                    <meta property="og:url" content="https://ozzo.mn" />
+                    <meta property="og:image"content="/Assets/preview.jpg" />
+
                 </Head>
                 <body className='select-none'>
                     <Main />
