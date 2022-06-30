@@ -24,11 +24,34 @@ function Home() {
      
       <Head>
         <title>{t.home}  | {t.ozzo}</title>
+        <meta name="description" content="OZZO LLC" />
+        <meta name="keywords" content="Ozzo,ozzo music,daavkatunes, daavka, guitar, ukulele, piano" />
+        <link rel="icon" href="/Assets/preview.jpg"/>
+        <meta charSet="utf-8"/>
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+
+        <meta property="og:title" content="OZZO LLC" />
+        <meta property="og:type" content="OZZO" />
+        <meta property="og:description" content="OZZO LLC Official Website" /> 
+        <meta name="twitter:title" content="OZZO LLC" />
+        <meta name="twitter:description" content="OZZO LLC Official Website" />
+        <meta name="application-name" content="OZZO LLC"/>
+
+        <meta name="twitter:card" content="OZZO LLC" />
+        <meta name=" twitter:ur" content="https://ozzo.mn"/>
+        <meta name=" twitter:title" content="OZZO LLC" />
+        <meta name="twitter:description" content="OZZO LLC Official Website" />
+        <meta name="twitter:image" content="/Assets/preview.jpg" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="OZZO LLC" />
+        <meta property="og:description" content="OZZO LLC Official Website" />
+        <meta property="og: site name" content="OZZO LLC" />
+        <meta property="og:url" content="https://ozzo.mn" />
+        <meta property="og:image" content="/Assets/preview.jpg" />
+
       </Head>
       <ImageSlider />
       <div className='lg:px-32 md:px-20 lg:py-10 p-5 '>
-
-     
         <FeaturedActivities />
         <FeaturedServices />
         <FeaturedMission />
@@ -37,8 +60,6 @@ function Home() {
         <Partners />
       </div>     
       <Contact />
-
-    
    </div>
   );
 }
