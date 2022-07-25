@@ -137,7 +137,7 @@ const Addresses = [
         address : 
             [
                 "БЗД, 13-р Хороолол Бөхийн өргөөний зүүн талд",
-                "ХУД, 19-р хороолол АЛТАЙ ХОТХОН, 18-р байр",
+                "ХУД, 19-р хороолол, Морьтон цогцолбор",
                 "СХД, 1р хороолол САППОРО, Номинжин төв 2 давхарт",
                 "ЧД, Тэнгис Кино Театр, VICTORY CENTER 6 давхарт",
             ]
@@ -147,7 +147,7 @@ const Addresses = [
         address : 
             [
                 "Bayanzurkh district, on the east side of the Wrestling Palace",
-                "Khan Uul District, ALTAI TOWN 18th building",
+                "Khan Uul District, 19th Khoroo, Moriton Complex",
                 "Songinokhairkhan district, Sapporo, Nominjin center, 2nd floor",
                 "Chingeltei district, VICTORY CENTER, 6th floor",
             ]
@@ -157,7 +157,7 @@ const Addresses = [
         address : 
             [
                 "Bayanzurkh 区，第 13 khoroo，Buhiin Urgoo 东侧",
-                "Khan Uul 区 19 号 khoroo 阿尔泰镇 18 号楼",
+                "Khan Uul 区 19 号 khoroo “MORITON” 综合体",
                 "Songinokhairkhan 区 1st khoroo 札幌巴士站 Nominjin 中心 2 楼",
                 "Chingeltei区胜利中心6楼",
             ]

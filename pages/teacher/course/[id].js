@@ -1,12 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useRef, useEffect, useContext} from 'react'
-import { Switch } from '@headlessui/react';
 import {DataContext} from "../../../store/GlobalState"
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { NavbarLocale } from '../../../locales/Navbar';
 import Loading from '../../../components/Loading';
-import PasswordVerify from '../../../components/PasswordVerify';
 import { Messages } from '../../../locales/DispatchMessages';
 import { getCourses, updateCourse } from '../../../Datas/Courses';
 import { CoursesLocale } from "../../../locales/Courses"
@@ -14,13 +12,12 @@ import moment from 'moment';
 
 export async function getServerSideProps({ params }) {
   const { id } = params;
-  const api = process.env.API_URL;
   return {
-    props: { courseID : id , api }
+    props: { courseID : id  }
   };
 }
 
-const TeacherCourse = ({courseID, api}) => {
+const TeacherCourse = ({courseID}) => {
     const {state, dispatch} = useContext(DataContext)
     const {auth} = state
     const router = useRouter()

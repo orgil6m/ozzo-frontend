@@ -39,9 +39,9 @@ const BranchesLocale = [
                 phone: "+976 91203311",
             },
             {
-                title : "Алтай Хотхон Салбар",
+                title : "Хан-Уул Салбар",
                 cover : `${branch4.src}`,
-                location : "Хан Уул Дүүрэг, 19-р хороолол АЛТАЙ ХОТХОН, 18-р байр",
+                location : "Хан Уул Дүүрэг, 19-р хороолол, Морьтон цогцолбор",
                 manager: "Э.Хишигжаргал",
                 url : "https://daavkatunes.mn/dgl?branch=1",
                 phone : "+976 90303311",
@@ -83,7 +83,7 @@ const BranchesLocale = [
             {
                 title : "Branch 4",
                 cover : `${branch4.src}`,
-                location : "Khan Uul District, ALTAI TOWN 18th building",
+                location : "Khan Uul District, 19th Khoroo, Moriton Complex",
                 manager: "E.Khishigjargal",
                 url : "https://daavkatunes.mn/dgl?branch=1",
                 phone : "+976 90303311",
@@ -125,7 +125,7 @@ const BranchesLocale = [
             {
                 title : "分支 4",
                 cover : `${branch4.src}`,
-                location :  "Khan Uul 区 19 号 khoroo 阿尔泰镇 18 号楼",
+                location :  "Khan Uul 区 19 号 khoroo “MORITON” 综合体",
                 manager: "E.Khishigjargal",
                 url : "https://daavkatunes.mn/dgl?branch=1",
                 phone : "+976 90303311",
