@@ -7,8 +7,9 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { NavbarLocale } from '../../../locales/Navbar';
 import Loading from '../../../components/Loading';
-import PasswordVerify from '../../../components/PasswordVerify';
+import Verify from '../../../components/Verify';
 import { Messages } from '../../../locales/DispatchMessages';
+import { updateUser, deleteUser } from '../../../Datas/Users';
 
 export async function getServerSideProps({ params }) {
   const { user } = params;
@@ -33,7 +34,7 @@ const AdminUser = ({userID, api}) => {
   const [informations, setInformations] = useState([{},{},{}])
   const [loading, setLoading] = useState(false)
   const [passwordshow, setPasswordShow] = useState(false)
-  const [passwordVerifyModal, setPasswordVerifyModal] = useState(false)
+  const [VerifyModal, setVerifyModal] = useState(false)
   const [scrollStop, setScrollStop] = useState(false)
   const [profilephoto, setProfilePhoto] = useState()
   const [number, setNumber] = useState()
@@ -49,7 +50,7 @@ const AdminUser = ({userID, api}) => {
   const [isLabel, setIsLabel] = useState(false)
   const [isDirector, setIsDirector] = useState(false)
   const [method, setMethod] = useState("")
-
+  const [dataFetch, setDataFetch] = useState()
   const profileInfos = [
       {
         title : "Нэвтрэх нэр",
@@ -181,11 +182,11 @@ const AdminUser = ({userID, api}) => {
       else if(action === "title") setTitle(field)
       else if(action === "number") setNumber(field)
   }
-  const updateUser = async (id) => {
+  const updateUserData = async (id) => {
       if(username.length === 0 || !username) return  dispatch({type:'NOTIFY',payload:{error: message.usernameRequired_error}})
       if(password.length === 0 || !password) return  dispatch({type:'NOTIFY',payload:{error: message.passwordRequired_error }})
       if(priority > 9) return  dispatch({type:'NOTIFY',payload:{error: message.priority_error }})
-      setPasswordVerifyModal(true)
+      setVerifyModal(true)
       const updatedField = [...informations]
       updatedField[l].lastname = lastname
       updatedField[l].firstname = firstname
@@ -209,10 +210,13 @@ const AdminUser = ({userID, api}) => {
           label :isLabel,
       };
       setBody(JSON.stringify(raw))
+      setDataFetch(updateUser(body))
   }
-  const deleteUser = async (id) => {
-    setPasswordVerifyModal(true)
+
+  const deleteUserData = async (id) => {
+    setVerifyModal(true)
     setMethod("DELETE")
+    setDataFetch(deleteUser(body))
     const raw = { 
       "_id" : id
     }
@@ -376,7 +380,6 @@ const AdminUser = ({userID, api}) => {
                     max="9"
                   />
                 </div>
-                
                 {loading ? 
                   <div className="bg-sky-100 h-10 rounded-md my-5 transition-all duration-300 ease-in-out  flex justify-center items-center">
                       <div className="w-5 h-5 border-2 border-gray-200 rounded-full animate-spin" role="status" 
@@ -385,20 +388,25 @@ const AdminUser = ({userID, api}) => {
                   </div>
                   :
                   <button className=' bg-sky-500 h-10 rounded-md my-5 text-white transition-all duration-300 ease-in-out hover:opacity-80'
-                   onClick={()=>updateUser(userData._id)} type="button">
+                   onClick={()=>updateUserData(userData._id)} type="button">
                       Хадгалах
                   </button>
                 }
                   <button className=' bg-red-500 h-10 rounded-md mb-5 text-white transition-all duration-300 ease-in-out hover:opacity-80'
-                   onClick={()=> deleteUser(userData._id)} type="button">
+                   onClick={()=> deleteUserData(userData._id)} type="button">
                       Устгах
                   </button>
               </div>
             </form>
         </div>
-        {passwordVerifyModal ?
-          <PasswordVerify body={body} setPasswordVerifyModal={setPasswordVerifyModal} setScrollStop={setScrollStop} api={api} type={"admin"} method={method} 
-          action={"routerBack"}/>
+        {VerifyModal ?
+        <>
+          <Verify dataFetch={dataFetch} setVerifyModal={setVerifyModal} setScrollStop={setScrollStop} type={"admin"}
+          action={method === "DELETE" ? "routerBack" :""} 
+          
+         /> 
+      
+         </>
           :
           <>
         </>

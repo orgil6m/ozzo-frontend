@@ -5,18 +5,12 @@ import Head from 'next/head';
 import { NavbarLocale } from '../locales/Navbar';
 import { ProfileLocale, Buttons } from '../locales/Profile';
 import {DataContext} from "../store/GlobalState"
-import PasswordVerify from '../components/PasswordVerify';
+import Verify from '../components/Verify';
 import Loading from '../components/Loading';
 import { Messages } from '../locales/DispatchMessages';
+import { updateUser } from '../Datas/Users';
 
-export async function getServerSideProps() {
-  const api = process.env.API_URL
-  return {
-    props: {api},
-  }
-}
-
-const Profile = ({api}) => {
+const Profile = () => {
     const {state, dispatch} = useContext(DataContext)
     const {auth} = state
     const router = useRouter()
@@ -42,12 +36,11 @@ const Profile = ({api}) => {
     const [informations, setInformations] = useState([{},{},{}])
     const [password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
-    const [passwordVerifyMdoal, setPasswordVerifyModal] = useState(false)
+    const [verifyModal, setVerifyModal] = useState(false)
     const [scrollStop, setScrollStop] = useState(false)
     const [profilephoto, setProfilePhoto] = useState()
     const [body, setBody] = useState()
     const [passwordShow, setPasswordShow] = useState(false)
-
     useEffect(() => {
         getData()
     }, [router.locale])
@@ -91,7 +84,6 @@ const Profile = ({api}) => {
         <Loading />
       )
     }
-
     const profileInfos = [
       {
         title : ProfileLocale[l].username,
@@ -276,7 +268,7 @@ const Profile = ({api}) => {
       .catch(err => console.log(err))
     }
     const UpdateUser = async (id) => {
-        setPasswordVerifyModal(true)
+        setVerifyModal(true)
         const updatedField = [...informations]
         updatedField[l].lastname = lastname
         updatedField[l].firstname = firstname
@@ -286,7 +278,7 @@ const Profile = ({api}) => {
         updatedField[l].experience.works = exp
         setInformations(updatedField)
         const raw = { 
-            "_id" : auth.user._id,
+            "_id" : id,
             profilephoto,
             username,
             username,
@@ -635,8 +627,8 @@ const Profile = ({api}) => {
                     </div>
                 </form>
             </div>
-        {passwordVerifyMdoal ?
-            <PasswordVerify body={body} setPasswordVerifyModal={setPasswordVerifyModal} setScrollStop={setScrollStop} api={api} method={"PUT"}/>
+            {verifyModal ?
+            <Verify dataFetch={updateUser(body)} setVerifyModal={setVerifyModal} setScrollStop={setScrollStop}/>
             :
             <>
             </>

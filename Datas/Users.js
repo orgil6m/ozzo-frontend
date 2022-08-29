@@ -37,6 +37,29 @@ const insertUser = async (body) => {
   return response
 }
 
+const updateUser = async (body) => {
+  const response = await fetch(`${process.env.API_URL}/api/ozzo/updateUser`, {
+    method: "PUT", 
+    headers: {
+      authorization: window.localStorage.getItem('token'),
+      "Content-Type": "application/json",
+    },
+    body: body
+  });
+  return response
+}
+const deleteUser = async(body) => {
+  const response = await fetch(`${process.env.API_URL}/api/ozzo/updateUser`, {
+    method: "DELETE", 
+    headers: {
+      authorization: window.localStorage.getItem('token'),
+      "Content-Type": "application/json",
+    },
+    body: body
+  });
+  return response
+}
+
 const getArtists = async () => {
     const data = await fetch(`${process.env.API_URL}/api/ozzo/getArtists`)
     const jsonData = await data.json()
@@ -65,6 +88,8 @@ module.exports = {
   getTeachers,
   getArtists,
   getDirectors,
-  getCrew
+  getCrew,
+  updateUser,
+  deleteUser,
 }
  

@@ -42,12 +42,23 @@ const updateCourse = async (body) => {
   });
   return response
 }
-
+const deleteCourse = async (body) => {
+  const response = await fetch(`${process.env.API_URL}/api/ozzo/deleteCourse`, {
+    method: `DELETE`,
+    headers: {
+      authorization: window.localStorage.getItem('token'),
+      "Content-Type": "application/json",
+    },
+    body: body,
+  });
+  return response
+}
 
 module.exports = {
   insertCourse,
     getCourses,
     getCoursesPublic,
     updateCourse,
+    deleteCourse,
 }
  

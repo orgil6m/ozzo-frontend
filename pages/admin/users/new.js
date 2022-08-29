@@ -24,7 +24,7 @@ const NewUser = () => {
   const [informations, setInformations] = useState([{},{},{}])
   const [loading, setLoading] = useState(false)
   const [passwordshow, setPasswordShow] = useState(false)
-  const [passwordVerifyMdoal, setPasswordVerifyModal] = useState(false)
+  const [VerifyModal, setVerifyModal] = useState(false)
   const [scrollStop, setScrollStop] = useState(false)
   const [profilephoto, setProfilePhoto] = useState()
   const [number, setNumber] = useState("")
@@ -101,11 +101,13 @@ const NewUser = () => {
     if(!user) return router.push('/login')
   
 }, [])
+
   if(!auth.user || auth.user === undefined){
       return(
         <Loading />
       )
-    }
+  }
+
   if(auth.user.admin !== true ){
       return (
         <div className='fixed inset-0 flex justify-center items-center flex-col'>
@@ -120,7 +122,7 @@ const NewUser = () => {
           </button>
         </div>
       )
-    }
+  }
 
   const setProfileInfos = (field, action) =>{
       if(action === "username") setUsername(field)
@@ -157,7 +159,7 @@ const NewUser = () => {
         const resJson = await response.json();
       if(response.status == 200){
         setScrollStop(false)
-        setPasswordVerifyModal(false)
+        setVerifyModal(false)
         setLoading(false)
         dispatch({type:'NOTIFY', payload:{success: message.inserted_successfully}})
         router.push("/admin/users")

@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { NavbarLocale } from '../../../locales/Navbar';
 import Loading from '../../../components/Loading';
-import PasswordVerify from '../../../components/PasswordVerify';
+import VerifyModal from '../../../components/Verify';
 import { Messages } from '../../../locales/DispatchMessages';
 import { insertCourse } from '../../../Datas/Courses';
 import { CoursesLocale } from "../../../locales/Courses"
@@ -22,11 +22,8 @@ const AdminInsertCourse = () => {
     const c = CoursesLocale[l]
     const message  = Messages[l]
     const [loading, setLoading] = useState(false)
-    const [passwordshow, setPasswordShow] = useState(false)
-    const [passwordVerifyModal, setPasswordVerifyModal] = useState(false)
     const [courseData, setCourseData] = useState()
     const course = courseData && courseData.course[l]
-    const [scrollStop, setScrollStop] = useState(false)
     const [photo, setPhoto] = useState()
     const [individual, setIndividual] = useState(false)
     const [group, setGroup] = useState(false)

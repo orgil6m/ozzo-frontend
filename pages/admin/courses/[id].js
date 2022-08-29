@@ -9,6 +9,7 @@ import Loading from '../../../components/Loading';
 import { Messages } from '../../../locales/DispatchMessages';
 import { getCourses, updateCourse } from '../../../Datas/Courses';
 import { CoursesLocale } from "../../../locales/Courses"
+import Verify from '../../../components/Verify';
 import moment from 'moment';
 
 export async function getServerSideProps({ params }) {
@@ -30,6 +31,7 @@ const AdminCourse = ({courseID, api}) => {
     const message  = Messages[l]
     const [loading, setLoading] = useState(false)
     const [courseData, setCourseData] = useState()
+    const [VerifyModal, setVerifyModal] = useState(false) 
     const course = courseData && courseData.course[l]
     const [photo, setPhoto] = useState()
     const [individual, setIndividual] = useState(false)
@@ -123,7 +125,6 @@ const AdminCourse = ({courseID, api}) => {
             group,
             updatedDate,
             updatedBy : auth.user.username,
-
         };
         try{
             const response = await updateCourse(JSON.stringify(raw))
@@ -135,6 +136,9 @@ const AdminCourse = ({courseID, api}) => {
             }
         }catch (err) {}
         // setBody(JSON.stringify(raw))
+    }
+    const deleteCourse = async (id) => {
+        console.log(id)
     }
     const addProgramme = () => {
         if(tab === 0) { 
@@ -408,10 +412,24 @@ const AdminCourse = ({courseID, api}) => {
                             Хадгалах
                         </button>
                         }
+                         <button className='col-span-2 px-20 bg-red-500 h-10 rounded-md text-white transition-all duration-300 ease-in-out hover:opacity-80'
+                        onClick={()=> deleteCourse(courseID)} type="button">
+                        Устгах
+                    </button>
                         </div>
+                       
                     </div>
+                
                 </form>
+                
             </div>
+            {VerifyModal ?
+      <Verify body={body} endpoint={"/api/ozzo/updateUser"} setVerifyModal={setVerifyModal} setScrollStop={setScrollStop} api={api} method={"PUT"}/>
+      :
+      <>
+      </>
+      }
+            
         </div>
   )
 }

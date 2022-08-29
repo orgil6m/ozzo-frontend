@@ -33,7 +33,7 @@ const Sidebar = () => {
     const LoggedUser = () =>{
         return (
             <div className="flex flex-col justify-around items-between text-gray-500 mt-10">
-                {auth.user.admin === true  ?
+                {auth.user && auth.user.admin === true  ?
                 <>
                 <Link href='/admin' >
                     <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-base hover:text-black hover:border-red-500 flex items-center ${router.pathname == "/admin" ? "border-red-500  text-black " : "border-white"}`}>
@@ -47,7 +47,7 @@ const Sidebar = () => {
                 </>
                 :
                 <></>}
-                {auth.user.teacher === true ?
+                {auth.user && auth.user.teacher === true ?
                 <>
                     <Link href='/teacher' >
                         <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-base hover:text-black hover:border-red-500 flex items-center ${router.pathname == "/teacher" ? "border-red-500  text-black " : "border-white"}`}>
@@ -63,7 +63,7 @@ const Sidebar = () => {
                 </>
                 :
                 <></>}
-                {auth.user.artist === true ?
+                {auth.user && auth.user.artist === true ?
                 <>
                     <Link href='/artist' >
                         <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-base hover:text-black hover:border-red-500 flex items-center ${router.pathname == "/artist" ? "border-red-500  text-black " : "border-white"}`}>
@@ -77,7 +77,7 @@ const Sidebar = () => {
                 </>
                 :
                 <></>}
-                {auth.user.service ===  true  ?
+                {auth.user && auth.user.service ===  true  ?
                 <>
                 <Link href='/service' >
                     <a onClick={() => setShowSidebar(!showSidebar)} className={`transition-all duration-500 ease-in-out m-2 pl-3 py-2 pt-2 border-l-2 text-base hover:text-black hover:border-red-500 flex items-center ${router.pathname == "/service" ? "border-red-500  text-black " : "border-white"}`}>

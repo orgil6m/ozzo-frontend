@@ -36,7 +36,7 @@ const Navbar = () => {
   const LoggedUser = () => {
     return (
         <>
-        {auth.user.admin === true ?
+        {auth.user && auth.user.admin === true ?
           <Link href='/admin' >
             <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/admin" ? "border-red-500  text-black " : "border-transparent"}`}>
               {Button.admin}
@@ -44,7 +44,7 @@ const Navbar = () => {
           </Link>
           :
         <></>}
-        {auth.user.artist === true ?
+        {auth.user &&  auth.user.artist === true ?
           <Link href='/artist'>
             <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/artist" ? "border-red-500  text-black " : "border-transparent"}`}>
                {Button.artist}
@@ -52,7 +52,7 @@ const Navbar = () => {
           </Link>
         :
         <></>}
-      {auth.user.teacher === true   ?
+      {auth.user && auth.user.teacher === true   ?
         <Link href='/teacher'>
           <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/teacher" ? "border-red-500  text-black " : "border-transparent"}`}>
               {Button.teacher}
@@ -61,7 +61,7 @@ const Navbar = () => {
         :
         <></>}
 
-        {auth.user.service === true ?
+        {auth.user && auth.user.service === true ?
         <Link href='/service'>
           <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/service" ? "border-red-500  text-black " : "border-transparent"}`}>
               {Button.service}

@@ -6,9 +6,10 @@ import { NavbarLocale } from '../locales/Navbar';
 import {DataContext} from "../store/GlobalState"
 import EditAudioModal from "../components/EditAudioModal"
 import AddAudioModal from "../components/AddAudioModal"
-import PasswordVerify from '../components/PasswordVerify';
+import Verify from '../components/Verify';
 import Loading from '../components/Loading';
 import { Messages } from '../locales/DispatchMessages';
+import { updateUser } from "../Datas/Users"
 
 export async function getServerSideProps() {
   const api = process.env.API_URL
@@ -32,7 +33,7 @@ const Admin = ({ api }) => {
   const [loading, setLoading] = useState(false)
   const [audios, setAudios] = useState([])
   const [editAudioModal, setEditAudioModal] = useState(false)
-  const [passwordVerifyMdoal, setPasswordVerifyModal] = useState(false) 
+  const [VerifyModal, setVerifyModal] = useState(false) 
   const [currentAudio, setCurrentAudio] = useState()
   const [scrollStop, setScrollStop] = useState(false)
   const [addAudioModal, setAddAudioModal] = useState(false)
@@ -118,7 +119,7 @@ const Admin = ({ api }) => {
     const updatedField = [...informations]
     updatedField[l].bio.text = bio
     setInformations(updatedField)
-    setPasswordVerifyModal(true)
+    setVerifyModal(true)
     const raw = { 
         "_id" : auth.user._id,
         artistPhoto,
@@ -270,8 +271,8 @@ const Admin = ({ api }) => {
     :
     <></>
     }
-     {passwordVerifyMdoal ?
-      <PasswordVerify body={body} setPasswordVerifyModal={setPasswordVerifyModal} setScrollStop={setScrollStop} api={api} method={"PUT"}/>
+     {VerifyModal ?
+      <Verify dataFetch={updateUser(body)} setVerifyModal={setVerifyModal} setScrollStop={setScrollStop} api={api} method={"PUT"}/>
       :
       <>
       </>

@@ -10,8 +10,6 @@ const Layout =({children})=> {
     const timer = useRef();
     const {state, dispatch} = useContext(DataContext)
     const {auth} = state
-
-
     useEffect(() => {
     const token = window.localStorage.getItem("token");
     const user = JSON.parse(window.localStorage.getItem("user"))
