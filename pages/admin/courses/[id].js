@@ -63,7 +63,6 @@ const AdminCourse = ({courseID, api}) => {
             courseData && courseData.updatedBy && setUpdatedBy(courseData.updatedBy)
         }
     }, [courseData, router.locale])
-
     if(!auth.user || auth.user === undefined){
         return(
             <Loading />
@@ -111,7 +110,9 @@ const AdminCourse = ({courseID, api}) => {
     }
     const updateCourseData = async (id) => {
         setLoading(true)
+    console.log(courseData && courseData)
         const updatedField = [...courseData.course]
+        updatedField[l].title = title
         updatedField[l].beginner = beginner
         updatedField[l].intermediate = intermediate
         updatedField[l].advanced = advanced
