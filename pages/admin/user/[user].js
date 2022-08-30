@@ -110,18 +110,7 @@ const AdminUser = ({userID, api}) => {
       title : "Артистын эрх",
       initialState : isArtist,
       setInitialState : setIsArtist,
-    },
-    {
-      title : "Cервисийн эрх",
-      initialState : isService,
-      setInitialState : setIsService,
-    },
-    {
-      title : "Лабель эрх",
-      initialState : isLabel,
-      setInitialState : setIsLabel,
-    },
-    
+    }
   ]
   useEffect(()  =>  {
     getUser(userID).then(response =>response.json()).then(result => {
@@ -147,8 +136,6 @@ const AdminUser = ({userID, api}) => {
         setIsAdmin(userData &&  userData.admin)
         setIsArtist(userData &&  userData.artist)
         setIsTeacher(userData &&  userData.teacher)
-        setIsService(userData &&  userData.service)
-        setIsLabel(userData &&  userData.label)
         setIsDirector(userData && userData.director)
       }
   }, [userData])
@@ -182,6 +169,11 @@ const AdminUser = ({userID, api}) => {
       else if(action === "title") setTitle(field)
       else if(action === "number") setNumber(field)
   }
+  const setDataBody = (body) => {
+    console.log(body)
+    setBody(body)
+    setDataFetch(updateUser(body))
+  }
   const updateUserData = async (id) => {
       if(username.length === 0 || !username) return  dispatch({type:'NOTIFY',payload:{error: message.usernameRequired_error}})
       if(password.length === 0 || !password) return  dispatch({type:'NOTIFY',payload:{error: message.passwordRequired_error }})
@@ -205,12 +197,9 @@ const AdminUser = ({userID, api}) => {
           teacher:isTeacher,
           admin:isAdmin,
           director :isDirector,
-          service:isService,
           artist:isArtist,
-          label :isLabel,
       };
-      setBody(JSON.stringify(raw))
-      setDataFetch(updateUser(body))
+      setDataBody(JSON.stringify(raw))
   }
 
   const deleteUserData = async (id) => {

@@ -220,15 +220,11 @@ const Admin = () => {
                 <th scope="col" className="px-6 py-3">
                   Багш
                 </th>
-                <th scope="col" className="px-6 py-3">
-                  Сервис
-                </th>
+               
                 <th scope="col" className="px-6 py-3">
                   Артист
                 </th>
-                  <th scope="col" className="px-6 py-3">
-                  Лабель
-                </th>
+                 
             </tr>
           </thead>
           <thead className="text-xs text-gray-800 uppercase border-b ">
@@ -285,33 +281,7 @@ const Admin = () => {
                 </select>
               </th>
               <th scope="col" className="px-2 py-3">
-                <select className='py-2 outline-none px-4' onChange={(e)=> filter(e.target.value, "service")}>
-                  <option value={""}>
-                    Шүүх
-                  </option>
-                  <option value={true}>
-                    Тийм
-                  </option>
-                  <option value={false}>
-                    Үгүй
-                  </option>
-                </select>
-              </th>
-              <th scope="col" className="px-2 py-3">
                 <select className='py-2 outline-none px-4' onChange={(e)=> filter(e.target.value, "artist")}>
-                  <option value={""}>
-                    Шүүх
-                  </option>
-                  <option value={true}>
-                    Тийм
-                  </option>
-                  <option value={false}>
-                    Үгүй
-                  </option>
-                </select>
-              </th>
-              <th scope="col" className="px-2 py-3">
-                <select className='py-2 outline-none px-4' onChange={(e)=> filter(e.target.value, "label")}>
                   <option value={""}>
                     Шүүх
                   </option>
@@ -331,7 +301,7 @@ const Admin = () => {
               <tr key={index} onClick={()=> {setSelect(index)} } className={`border-b ${select === index ? "text-gray-900 bg-gray-100" : ""}`}> 
               {row.profilephoto || row.artistPhoto ?
                 <td scope="row" className="w-20 font-medium text-gray-900 " >
-                  <div className='h-20 w-20 bg-cover bg-center m-2 rounded-sm' 
+                  <div className={`h-20 w-20 bg-cover bg-center m-2 rounded-sm ${row.active ? "border-2 border-green-300 " : "border-2 border-amber-300"}`}
                   style={{'backgroundImage': `url(${row.profilephoto && row.profilephoto || row.artistPhoto}`}}
                   onClick={()=> router.push("/admin/user/"+row._id)}
                   >
@@ -339,7 +309,7 @@ const Admin = () => {
                 </td>
                 :
                 <td scope="row" className=" font-medium text-gray-900">
-                  <div className='h-20 w-20 flex bg-gray-100 justify-center items-center m-2 rounded-sm' onClick={()=> router.push("/admin/user/"+row._id)}>
+                  <div className={`h-20 w-20 flex bg-gray-100 justify-center items-center m-2 rounded-sm ${row.active ? "border-2 border-green-300 " : "border-2 border-amber-300"}`} onClick={()=> router.push("/admin/user/"+row._id)}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
@@ -402,19 +372,6 @@ const Admin = () => {
                   }
                 </td>
                 <td  scope="row" className='px-6 py-3'>
-                {row.service ?
-                  <div className='flex justify-center items-center text-green-500'>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  :
-                  <div className='flex justify-center items-center text-red-500'>
-                  -
-                  </div>
-                  }
-                </td>
-                <td  scope="row" className='px-6 py-3'>
                 {row.artist ?
                   <div className='flex justify-center items-center text-green-500'>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -427,19 +384,7 @@ const Admin = () => {
                   </div>
                   }
                 </td>
-                <td  scope="row" className='px-6 py-3'>
-                {row.label ?
-                  <div className='flex justify-center items-center text-green-500'>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  :
-                  <div className='flex justify-center items-center text-red-500'>
-                    -
-                  </div>
-                  }
-                </td>
+             
               </tr>
             )))
             
