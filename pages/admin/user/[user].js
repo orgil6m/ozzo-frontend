@@ -45,9 +45,7 @@ const AdminUser = ({userID, api}) => {
   const [isActive, setIsActive] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
   const [isTeacher, setIsTeacher] = useState(false)
-  const [isService, setIsService] = useState(false)
   const [isArtist, setIsArtist] = useState(false)
-  const [isLabel, setIsLabel] = useState(false)
   const [isDirector, setIsDirector] = useState(false)
   const [method, setMethod] = useState("")
   const [dataFetch, setDataFetch] = useState()
@@ -169,10 +167,11 @@ const AdminUser = ({userID, api}) => {
       else if(action === "title") setTitle(field)
       else if(action === "number") setNumber(field)
   }
-  const setDataBody = (body) => {
+  const setDataBody = (body, req) => {
     console.log(body)
+    console.log(req)
     setBody(body)
-    setDataFetch(updateUser(body))
+    setDataFetch(req(body))
   }
   const updateUserData = async (id) => {
       if(username.length === 0 || !username) return  dispatch({type:'NOTIFY',payload:{error: message.usernameRequired_error}})
@@ -199,17 +198,15 @@ const AdminUser = ({userID, api}) => {
           director :isDirector,
           artist:isArtist,
       };
-      setDataBody(JSON.stringify(raw))
+      setDataBody(JSON.stringify(raw), updateUser)
   }
-
   const deleteUserData = async (id) => {
     setVerifyModal(true)
     setMethod("DELETE")
-    setDataFetch(deleteUser(body))
     const raw = { 
       "_id" : id
-    }
-    setBody(JSON.stringify(raw))
+    } 
+    setDataBody(JSON.stringify(raw), deleteUser)
   }
 
   return (
@@ -392,7 +389,6 @@ const AdminUser = ({userID, api}) => {
         <>
           <Verify dataFetch={dataFetch} setVerifyModal={setVerifyModal} setScrollStop={setScrollStop} type={"admin"}
           action={method === "DELETE" ? "routerBack" :""} 
-          
          /> 
       
          </>
