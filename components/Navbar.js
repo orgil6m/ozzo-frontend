@@ -44,6 +44,14 @@ const Navbar = () => {
           </Link>
           :
         <></>}
+        {auth.user && auth.user.admin === true ?
+          <Link href='/hr' >
+            <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/hr" ? "border-red-500  text-black " : "border-transparent"}`}>
+              {Button.hr}
+            </a>
+          </Link>
+          :
+        <></>}
         {auth.user &&  auth.user.artist === true ?
           <Link href='/artist'>
             <a className={`transition-all duration-500 ease-in-out m-2 p-2 py-2 pt-2 border-b-2 text-md hover:text-black hover:border-red-500 ${router.pathname == "/artist" ? "border-red-500  text-black " : "border-transparent"}`}>

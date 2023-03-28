@@ -11,7 +11,7 @@ const NavbarLocale = [
     more : "Бүгдийг үзэх",
     learnmore: "Дэлгэрэнгүй",
     artists: "Артистууд",
-     service : [
+    service : [
       {
         title: 'Хөгжмийн Академи',
         url : "/services/academy",
@@ -49,6 +49,7 @@ const NavbarLocale = [
         color :  "bg-indigo-500/10"
       },
     ],
+    career : "Ажлын байр",
   },
   {
     ozzo: "OZZO LLC",
@@ -62,7 +63,7 @@ const NavbarLocale = [
     recent : "Recent news",
     more : "See all",
     learnmore: "Learn more",
-    
+    artists :"Artists",
     service : [
       {
         title: 'Music Academy',
@@ -100,7 +101,8 @@ const NavbarLocale = [
         icon : <DevIcon />,
         color :  "bg-indigo-500/10"
       },
-    ]
+    ],
+    career : "Career",
   },
   {
     ozzo: "奥佐公司",
@@ -114,6 +116,7 @@ const NavbarLocale = [
     learnmore: "了解更多",
     artists: "艺术家",
     login : "符号",
+    artists : "艺术家",
     service : [
       {
         title: "音乐学院",
@@ -151,7 +154,8 @@ const NavbarLocale = [
         icon : <DevIcon />,
         color :  "bg-indigo-500/10"
       }
-    ]
+    ],
+    career : "职业",
   },
 ]
 

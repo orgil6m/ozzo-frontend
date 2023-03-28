@@ -1,17 +1,23 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-   env: {
+  reactStrictMode: false,
+  env: {
     API_URL: process.env.API_URL,
   },
-  
-  "presets": ["next/babel"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*",
+      },
+    ],
+  },
   i18n: {
-    locales: ['mn', 'en', 'cn'],
-    defaultLocale: 'mn',
+    locales: ["mn", "en", "cn"],
+    defaultLocale: "mn",
     localeDetection: false,
   },
   trailingSlash: true,
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

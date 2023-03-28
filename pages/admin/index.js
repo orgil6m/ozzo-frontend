@@ -54,11 +54,7 @@ const Index = () => {
             setCourseData(response)
         })
     }, [])
-    useEffect(() => {
-        const user = JSON.parse(window.localStorage.getItem("user"))
-        if(!user) return router.push('/login')
-    }, [])
-
+   
     if(!auth.user || auth.user === undefined){
         return  <Loading />
     } 

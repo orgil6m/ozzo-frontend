@@ -47,6 +47,7 @@ const ProfileLocale = [
         artist :"Артист",
         teacher :"Багш",
         service :"Сервис",
+        hr :"Хүний нөөц",
       },
       {
         title: "Edit Profile",
@@ -75,6 +76,7 @@ const ProfileLocale = [
         artist :"Artist",
         teacher :"Teacher",
         service :"Service",
+        hr :"Human resources",
       },
       {
         title: "编辑个人资料",
@@ -103,6 +105,7 @@ const ProfileLocale = [
         artist :"艺术家",
         teacher :"老师",
         service :"服务",
+        hr :"人力资源",
       },
     ]
 

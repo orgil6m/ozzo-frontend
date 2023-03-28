@@ -168,8 +168,6 @@ const AdminUser = ({userID, api}) => {
       else if(action === "number") setNumber(field)
   }
   const setDataBody = (body, req) => {
-    console.log(body)
-    console.log(req)
     setBody(body)
     setDataFetch(req(body))
   }

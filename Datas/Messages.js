@@ -7,7 +7,7 @@ const getMessages = async () => {
       },
     })
     const jsonData = await response.json()
-     return jsonData.data && jsonData.data.reverse()
+    return jsonData.data && jsonData.data.reverse()
 }
 
 const postMessage = async (body) => {
