@@ -6,12 +6,15 @@ import CoverPhoto from "../components/CoverPhoto";
 import daavkatunes from "../Assets/daavkatunes.svg";
 import { sendFeedBack } from "../Datas/feedbacks";
 import Loading from "../components/Loading";
-
-import { useRouter } from "next/router";
 import { DataContext } from "../store/GlobalState";
 
 const Survey = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const [loading, setLoading] = useState(false);
   const { state, dispatch } = useContext(DataContext);
 
@@ -33,112 +36,7 @@ const Survey = () => {
     setLoading(false);
   };
   const inputStyle =
-    "transition-all duration-300 ease-in-out my-2 w-full outline-none bg-white border border-gray-200 rounded-md p-2 focus:border-blue-500 placeholder:font-light";
-  const surveyTexts = [
-    {
-      value: "type",
-      label:
-        "Та DGL хөгжмийн академид ямар төрлөөр(хөгжмөөр) суралцаж байгаа вэ?",
-      options: [
-        "Гитар",
-        "Төгөлдөр хуур",
-        "Үкүлэлэ",
-        "Морин хуур",
-        "Саксафон",
-        "Ятга",
-        "Хийл",
-        "Бөмбөр",
-        "Дуулаач",
-        "Хөөмий",
-      ],
-    },
-    {
-      value: "duration",
-      label: `Та DGL хөгжмийн академид хэд дэх сардаа суралцаж байна вэ?`,
-      placeholder: "Суралцсан хугацаагаа бичнэ үү",
-    },
-    {
-      value: "branch",
-      label: "Та DGL хөгжмийн академиийн аль салбарт суралцаж байгаа вэ?",
-      options: [
-        "Тэнгис салбар, ЧД",
-        "Бөхийн өргөө салбар, БЗД",
-        "Саппоро салбар, СХД",
-        "Морьтон салбар, ХУД",
-        "Хороолол салбар, БГД",
-      ],
-    },
-    {
-      value: "environment",
-      label: "Та манай сургалтын орчин нөхцөлийг үнэлнэ үү? (0-10 оноо)",
-      radio: [
-        "10. Маш цэвэр, тухтай орчинтой",
-        "9",
-        "8",
-        "7",
-        "6",
-        "5",
-        "4",
-        "3",
-        "2",
-        "1",
-        "0. Маш бохир, тухгүй орчинтой",
-      ],
-      value2: "environment-feedback",
-    },
-    {
-      value: "curriculum",
-      label: "Та манай сургалтын хөтөлбөрийг үнэлнэ үү?  (0-10 оноо)",
-      radio: [
-        "10. Маш ойлгомжтой, сайн боловсруулагдсан",
-        "9",
-        "8",
-        "7",
-        "6",
-        "5",
-        "4",
-        "3",
-        "2",
-        "1",
-        "0. Маш ойлгомжгүй, муу боловсруулагдсан",
-      ],
-      value2: "curriculum-feedback",
-    },
-    {
-      value: "teacher",
-      label:
-        "Та манай багшийн харилцаа хандлага, заах арга барилыг үнэлнэ үү? (0-10 оноо)",
-      radio: [
-        "10. Маш эерэг хандлагатай, заах арга барил сайн",
-        "9",
-        "8",
-        "7",
-        "6",
-        "5",
-        "4",
-        "3",
-        "2",
-        "1",
-        "0. Маш сөрөг хандлагатай, заах арга барил муу",
-      ],
-      value2: "teacher-feedback",
-    },
-    {
-      value: "name",
-      label: "Таны нэр?",
-      placeholder: "Энд нэрээ бичнэ үү",
-    },
-    {
-      value: "age",
-      label: "Таны нас?",
-      placeholder: "Энд насаа бичнэ үү",
-    },
-    {
-      value: "number",
-      label: "Тантай холбогдох утасны дугаар хэд вэ?",
-      placeholder: "Утасны дугаараа бичнэ үү",
-    },
-  ];
+    "transition-all duration-300 ease-in-out my-2 w-full outline-none bg-white border  rounded-md p-2 focus:border-blue-500 placeholder:font-light error:border-red-500";
 
   return (
     <div className="w-full flex flex-col ">
@@ -175,16 +73,19 @@ const Survey = () => {
         >
           {surveyTexts.map((row, index) => (
             <div key={index} className="flex flex-col">
-              <label className="font-medium">
+              <label htmlFor={row.label} className="font-medium">
                 {index + 1}. {row.label}
                 <span className="text-red-500">*</span>
               </label>
               {row.placeholder ? (
-                <input
-                  {...register(row.value, { required: true })}
-                  placeholder={row.placeholder}
-                  className={inputStyle}
-                />
+                <div className="flex flex-col">
+                  <input
+                    {...register(row.value, { required: true })}
+                    aria-invalid={errors[row.label] ? "true" : "false"}
+                    placeholder={row.placeholder}
+                    className={inputStyle}
+                  />
+                </div>
               ) : row.options ? (
                 <select
                   {...register(row.value, { required: true })}
@@ -243,3 +144,117 @@ const Survey = () => {
 };
 
 export default Survey;
+
+export const surveyTexts = [
+  {
+    value: "type",
+    label:
+      "Та DGL хөгжмийн академид ямар төрлөөр(хөгжмөөр) суралцаж байгаа вэ?",
+    options: [
+      "Гитар",
+      "Төгөлдөр хуур",
+      "Үкүлэлэ",
+      "Морин хуур",
+      "Саксафон",
+      "Ятга",
+      "Хийл",
+      "Бөмбөр",
+      "Дуулаач",
+      "Хөөмий",
+    ],
+  },
+  {
+    value: "duration",
+    label: `Та DGL хөгжмийн академид хэд дэх сардаа суралцаж байна вэ?`,
+    options: [
+      "Эхний сардаа",
+      "2 дахь сардаа",
+      "3 дахь сардаа",
+      "3-6 дахь сардаа",
+      "6-9 дахь сардаа",
+      "9-12 дахь сардаа",
+      "1 жилээс дээш",
+    ],
+  },
+  {
+    value: "branch",
+    label: "Та DGL хөгжмийн академиийн аль салбарт суралцаж байгаа вэ?",
+    options: [
+      "Тэнгис салбар, ЧД",
+      "Бөхийн өргөө салбар, БЗД",
+      "Саппоро салбар, СХД",
+      "Морьтон салбар, ХУД",
+      "Хороолол салбар, БГД",
+    ],
+  },
+  {
+    value: "environment",
+    label: "Та манай сургалтын орчин нөхцөлийг үнэлнэ үү? (0-10 оноо)",
+    radio: [
+      "10. Маш цэвэр, тухтай орчинтой",
+      "9",
+      "8",
+      "7",
+      "6",
+      "5",
+      "4",
+      "3",
+      "2",
+      "1",
+      "0. Маш бохир, тухгүй орчинтой",
+    ],
+    value2: "environment-feedback",
+  },
+  {
+    value: "curriculum",
+    label: "Та манай сургалтын хөтөлбөрийг үнэлнэ үү?  (0-10 оноо)",
+    radio: [
+      "10. Маш ойлгомжтой, сайн боловсруулагдсан",
+      "9",
+      "8",
+      "7",
+      "6",
+      "5",
+      "4",
+      "3",
+      "2",
+      "1",
+      "0. Маш ойлгомжгүй, муу боловсруулагдсан",
+    ],
+    value2: "curriculum-feedback",
+  },
+  {
+    value: "teacher",
+    label:
+      "Та манай багшийн харилцаа хандлага, заах арга барилыг үнэлнэ үү? (0-10 оноо)",
+    radio: [
+      "10. Маш эерэг хандлагатай, заах арга барил сайн",
+      "9",
+      "8",
+      "7",
+      "6",
+      "5",
+      "4",
+      "3",
+      "2",
+      "1",
+      "0. Маш сөрөг хандлагатай, заах арга барил муу",
+    ],
+    value2: "teacher-feedback",
+  },
+  {
+    value: "name",
+    label: "Таны нэр?",
+    placeholder: "Энд нэрээ бичнэ үү",
+  },
+  {
+    value: "age",
+    label: "Таны нас?",
+    placeholder: "Энд насаа бичнэ үү",
+  },
+  {
+    value: "number",
+    label: "Тантай холбогдох утасны дугаар хэд вэ?",
+    placeholder: "Утасны дугаараа бичнэ үү",
+  },
+];
