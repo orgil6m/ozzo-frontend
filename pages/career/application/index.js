@@ -80,7 +80,11 @@ const Application = () => {
       <div className="w-full flex flex-col items-center ">
         <div className="w-full md:shadow-lg md:p-20 pt-4 pb-20 flex flex-col lg:w-3/4">
           <div className="flex items-center">
-            <img src={logo.src} className="mr-2 w-12 rounded-md mb-2" />
+            <img
+              src={logo.src}
+              className="mr-2 w-12 rounded-md mb-2"
+              alt="logo"
+            />
             <p className="text-xl font-medium">ОЗЗО ХХК</p>
           </div>
           {tab === 0 ? (
