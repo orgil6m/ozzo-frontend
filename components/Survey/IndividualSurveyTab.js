@@ -28,11 +28,8 @@ const IndividualSurveyTab = ({ surveyData }) => {
             d="M15 19l-7-7 7-7"
           />
         </svg>
-        <div className="flex items-center mb-4 text-lg">
-          <span className="mx-2 font-bold">Суралцагч:</span>
-          <span>{surveyData[surveyIndex].name} </span>
-        </div>
-        <div className="">
+
+        <div className="font-bold">
           <span>{parseInt(surveyIndex) + 1}</span>
           <span className="mx-2">/</span>
           <span>{parseInt(surveyData.length)}</span>
@@ -67,29 +64,6 @@ const IndividualSurveyTab = ({ surveyData }) => {
             <span className="mt-2 ml-6">
               {row.options ? (
                 row.options.map((r, i) => (
-                  <div key={i} className="py-2 flex items-center gap-2">
-                    <div
-                      className={`w-4 h-4 border-2 rounded-full flex items-center justify-center ${
-                        surveyData[surveyIndex][row.value] === r
-                          ? " border-red-500"
-                          : ""
-                      }`}
-                    >
-                      {surveyData[surveyIndex][row.value] === r && (
-                        <div
-                          className={`w-2 h-2 rounded-full ${
-                            surveyData[surveyIndex][row.value] === r
-                              ? "bg-red-500 "
-                              : ""
-                          }`}
-                        />
-                      )}
-                    </div>
-                    {r}
-                  </div>
-                ))
-              ) : row.radio ? (
-                row.radio.map((r, i) => (
                   <div key={i} className="py-2 flex items-center gap-2">
                     <div
                       className={`w-4 h-4 border-2 rounded-full flex items-center justify-center ${

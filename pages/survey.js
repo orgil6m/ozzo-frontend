@@ -1,8 +1,6 @@
 import Image from "next/image";
 import React, { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
-import cover from "../Assets/cover.jpg";
-import CoverPhoto from "../components/CoverPhoto";
 import daavkatunes from "../Assets/daavkatunes.svg";
 import { sendFeedBack } from "../Datas/feedbacks";
 import Loading from "../components/Loading";
@@ -77,7 +75,7 @@ const Survey = () => {
                 {index + 1}. {row.label}
                 <span className="text-red-500">*</span>
               </label>
-              {row.placeholder ? (
+              {row.type == "input" ? (
                 <div className="flex flex-col">
                   <input
                     {...register(row.value, { required: true })}
@@ -86,7 +84,7 @@ const Survey = () => {
                     className={inputStyle}
                   />
                 </div>
-              ) : row.options ? (
+              ) : row.type == "select" ? (
                 <select
                   {...register(row.value, { required: true })}
                   className={inputStyle}
@@ -97,9 +95,9 @@ const Survey = () => {
                     </option>
                   ))}
                 </select>
-              ) : row.radio ? (
+              ) : row.type == "radio" ? (
                 <div className="flex my-4 flex-col w-full">
-                  {row.radio.map((r, i) => (
+                  {row.options.map((r, i) => (
                     <label
                       key={i}
                       htmlFor={row.label + r}
@@ -115,20 +113,34 @@ const Survey = () => {
                       {r}
                     </label>
                   ))}
-                  <label className="italic mt-4 text-blue-500">
-                    Сайжруулах хэрэгтэй бол юуг нь сайжруулах вэ?
-                  </label>
-                  <textarea
-                    {...register(row.value2)}
-                    placeholder="Энд бичнэ үү..."
-                    className={inputStyle}
-                  />
+                  {row.value2 && (
+                    <>
+                      <label className="italic mt-4 text-blue-500">
+                        Сайжруулах хэрэгтэй бол юуг нь сайжруулах вэ?
+                      </label>
+
+                      <textarea
+                        {...register(row.value2)}
+                        placeholder="Энд бичнэ үү..."
+                        className={inputStyle}
+                      />
+                    </>
+                  )}
                 </div>
               ) : (
                 <></>
               )}
             </div>
           ))}
+          <div className="w-full flex justify-center">
+            <div className="mb-12 flex flex-col">
+              <span className="border-l-4 border-red-500 pl-4 bg-red-500/10 py-2 pr-4 rounded">
+                Энэхүү судалгаа нь зөвхөн байгууллагын дотоод үйл ажиллагааг
+                сайжруулах зорилгоор авагдаж байгаа тул бид таны мэдээллийг
+                чандлан нууцлах болно.
+              </span>
+            </div>
+          </div>
           <div className="flex justify-end">
             <button
               type="submit"
@@ -148,6 +160,7 @@ export default Survey;
 export const surveyTexts = [
   {
     value: "type",
+    type: "select",
     label:
       "Та DGL хөгжмийн академид ямар төрлөөр(хөгжмөөр) суралцаж байгаа вэ?",
     options: [
@@ -166,6 +179,7 @@ export const surveyTexts = [
   {
     value: "duration",
     label: `Та DGL хөгжмийн академид хэд дэх сардаа суралцаж байна вэ?`,
+    type: "select",
     options: [
       "Эхний сардаа",
       "2 дахь сардаа",
@@ -179,6 +193,7 @@ export const surveyTexts = [
   {
     value: "branch",
     label: "Та DGL хөгжмийн академиийн аль салбарт суралцаж байгаа вэ?",
+    type: "select",
     options: [
       "Тэнгис салбар, ЧД",
       "Бөхийн өргөө салбар, БЗД",
@@ -190,7 +205,8 @@ export const surveyTexts = [
   {
     value: "environment",
     label: "Та манай сургалтын орчин нөхцөлийг үнэлнэ үү? (0-10 оноо)",
-    radio: [
+    type: "radio",
+    options: [
       "10. Маш цэвэр, тухтай орчинтой",
       "9",
       "8",
@@ -208,7 +224,8 @@ export const surveyTexts = [
   {
     value: "curriculum",
     label: "Та манай сургалтын хөтөлбөрийг үнэлнэ үү?  (0-10 оноо)",
-    radio: [
+    type: "radio",
+    options: [
       "10. Маш ойлгомжтой, сайн боловсруулагдсан",
       "9",
       "8",
@@ -223,11 +240,13 @@ export const surveyTexts = [
     ],
     value2: "curriculum-feedback",
   },
+
   {
     value: "teacher",
+    type: "radio",
     label:
       "Та манай багшийн харилцаа хандлага, заах арга барилыг үнэлнэ үү? (0-10 оноо)",
-    radio: [
+    options: [
       "10. Маш эерэг хандлагатай, заах арга барил сайн",
       "9",
       "8",
@@ -243,18 +262,46 @@ export const surveyTexts = [
     value2: "teacher-feedback",
   },
   {
-    value: "name",
-    label: "Таны нэр?",
-    placeholder: "Энд нэрээ бичнэ үү",
+    value: "overall",
+    label: "Та манай академийг ерөнхийд нь үнэлнэ үү?  (0-10 оноо)",
+    type: "radio",
+    options: [
+      "10. Маш сайн",
+      "9",
+      "8",
+      "7",
+      "6",
+      "5",
+      "4",
+      "3",
+      "2",
+      "1",
+      "0. Маш муу",
+    ],
+    value2: "overall-feedback",
+  },
+  {
+    value: "price",
+    label: "Сургалтын төлбөр?",
+    type: "radio",
+    options: ["Боломжийн үнэтэй", "Бага зэрэг үнэтэй", "Хэтэрхий үнэтэй"],
+    value2: "price-feedback",
+  },
+  {
+    value: "gender",
+    type: "radio",
+    label: "Таны хүйс?",
+    options: ["Эрэгтэй", "Эмэгтэй", "Бусад"],
   },
   {
     value: "age",
     label: "Таны нас?",
+    type: "input",
     placeholder: "Энд насаа бичнэ үү",
   },
-  {
-    value: "number",
-    label: "Тантай холбогдох утасны дугаар хэд вэ?",
-    placeholder: "Утасны дугаараа бичнэ үү",
-  },
+  // {
+  //   value: "number",
+  //   label: "Тантай холбогдох утасны дугаар хэд вэ?",
+  //   placeholder: "Утасны дугаараа бичнэ үү",
+  // },
 ];

@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { surveyTexts } from "../../pages/survey";
-import DoughnutChart from "../DoughnutChart";
+import DoughnutChart from "./DoughnutChart";
 import { backgroundColors } from "../../Datas/feedbacks";
-import BarChart from "../BarChart";
+import BarChart from "./BarChart";
+import AnswerDisplay from "./AnswerDisplay";
 
 const QuestionSurveyTab = ({ surveyData }) => {
   const [index, setIndex] = useState(0);
+  const [display, setDisplay] = useState(0);
+  const inputStyle =
+    "transition-all duration-300 ease-in-out my-2 w-full  outline-none border border-gray-200 rounded-md py-2 px-2 focus:border-red-300 text-sm placeholder:font-light ";
+
   const countData = (row, options) => {
     const c = [];
     options.forEach((r, i) => {
@@ -38,8 +43,18 @@ const QuestionSurveyTab = ({ surveyData }) => {
             </option>
           ))}
         </select>
+        {surveyTexts[index].options && (
+          <select
+            className={inputStyle}
+            onChange={(e) => setDisplay(e.target.value)}
+          >
+            <option value="0">Дугуй график</option>
+            <option value="1">Баганан график</option>
+            <option value="2">Текст</option>
+          </select>
+        )}
         <div>
-          {surveyTexts[index].options ? (
+          {display == 0 && surveyTexts[index].options ? (
             <div className="w-full flex justify-center">
               <DoughnutChart
                 data={{
@@ -58,18 +73,18 @@ const QuestionSurveyTab = ({ surveyData }) => {
                 }}
               />
             </div>
-          ) : surveyTexts[index].radio ? (
+          ) : display == 1 && surveyTexts[index].options ? (
             <div>
               <div className="w-full px-20">
                 <BarChart
                   data={{
-                    labels: [...surveyTexts[index].radio],
+                    labels: [...surveyTexts[index].options],
                     datasets: [
                       {
                         data: [
                           ...countData(
                             surveyTexts[index],
-                            surveyTexts[index].radio
+                            surveyTexts[index].options
                           ),
                         ],
                         backgroundColor: backgroundColors,
@@ -78,6 +93,18 @@ const QuestionSurveyTab = ({ surveyData }) => {
                   }}
                 />
               </div>
+            </div>
+          ) : (
+            <div className="mt-4">
+              {surveyData.map((r, i) => (
+                <div key={i} className="ml-6 mt-2">
+                  {i + 1}. {r[surveyTexts[index].value]}
+                </div>
+              ))}
+            </div>
+          )}
+          {surveyTexts[index].value2 && (
+            <>
               <span className="border-l-4 border-red-500 py-2 px-4 font-bold uppercase  text-lg">
                 Санал, шүүмжүүд
               </span>
@@ -87,13 +114,8 @@ const QuestionSurveyTab = ({ surveyData }) => {
                     key={i}
                     className="p-4 my-2 border border-gray-100 rounded-md flex gap-5 items-center "
                   >
-                    <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center uppercase text-blue-500 font-bold">
-                      {r.name.slice(0, 1)}
-                    </div>
+                    <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center uppercase text-blue-500 font-bold"></div>
                     <div className="flex flex-col gap-2">
-                      <div className="flex text-xs text-gray-500">
-                        {r.name} | {r.number}
-                      </div>
                       {r[surveyTexts[index].value2]}
                       <span
                         className={`flex text-xs items-center ${
@@ -118,17 +140,7 @@ const QuestionSurveyTab = ({ surveyData }) => {
                   </div>
                 ))}
               </div>
-            </div>
-          ) : surveyTexts[index].placeholder ? (
-            <div className="mt-4">
-              {surveyData.map((r, i) => (
-                <div key={i} className="ml-6 mt-2">
-                  {i + 1}. {r[surveyTexts[index].value]}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <></>
+            </>
           )}
         </div>
       </div>
